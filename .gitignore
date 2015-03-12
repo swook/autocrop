@@ -8,3 +8,6 @@ chen/analysis/images_withbbox
 # CPP artifacts
 retarget
 
+# Untrackable (and outdated) Google Doc files
+old/
+
