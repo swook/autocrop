@@ -1,9 +1,9 @@
 # Analysis of data from Chen
-chen/*.tar
-chen/*.mat
-chen/image
-chen/readme
-chen/analysis/images_withbbox
+**/chen/*.tar
+**/chen/*.mat
+**/chen/image
+**/chen/readme
+**/chen/analysis/images_withbbox
 
 # CPP artifacts
 retarget
