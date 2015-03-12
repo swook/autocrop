@@ -1,0 +1,77 @@
+Proposed titles
+===============
+- Image retargeting for specified aspect ratios
+- Image retargeting hints for landscape scenes
+- Image retargeting on screens of mobile devices
+
+Keywords
+========
+- Image cropping
+- Image retargeting
+- Cropping hints
+  - One target goal could be a service which provides hints on how to crop
+    [depending on content distribution (symm/faces/geom)]
+- Artifact-free
+  - No seam carving, removal of content, skew/scaling of objects
+
+Todos
+=====
+- Pick image retargeting algorithm
+  - Chen Fang. Boundary simplicity and content preservation.
+
+- Pick performance metrics
+  - Earth-Mover's Distance (EMD)
+  - SIFT-flow
+
+- Initial implementation on PC with OpenCV
+- Initial implementation on Muzei
+
+
+Problems
+========
+- Evaluation
+  - Use existing training datasets
+  - Anything better?
+    - Can hire students for studies?
+    - Online data collection?
+      - Can create a website with suggested cropping and let people drag better crop
+    - Image copyrights?
+      [M] Flickr is usually ok. Can also choose similar images.
+      [D] If used in app in future, can have problem
+    [D] CVPR paper provides images as well
+
+[M] Start with initial simple idea then think about own dataset.
+    Not a problem to get 1-200 images.
+
+[D] Could use prof. photographer images as "already cropped"
+    Two datasets: Good/Bad by pros/people.
+    [M] Flickr, lot of likes against average image
+
+
+Dengxin's Idea
+==============
+In image resizing, there are multiple operations possible.
+Intelligently select crop/resize/multiop
+
+
+Michael's Suggestion
+====================
+1. Intelligently select photos from phone gallery.
+2. Given image source, diversify backgrounds. (Always vary)
+
+
+Logistics
+=========
+[M] Just e-mail all the time, then organise time.
+    Could work in the student room.
+    Organise weekly meeting slots after administrative work is done.
+
+
+TODO
+====
+Write a draft of project proposal.
+- Title + few sentences.
+
+[M] Project is two parts: reimplement algo, port to phone
+    Second is improving algorithms more.
+

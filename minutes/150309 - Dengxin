@@ -1,0 +1,8 @@
+1) Propose next meeting time with Michael
+2) Contact saliency authors in Haifa for code
+3) Continue implementation of algo
+
+Could look into making image transitions "smooth"
+- Don't display greatly different image after current one
+
+Don't look into object class detection. Too complicated.
