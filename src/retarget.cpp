@@ -38,7 +38,7 @@ int main(int argc, char** argv)
 	 * Read image file
 	 */
 	std::string const f = vm["input-file"].as<std::string>();
-	Mat const img = imread(f, 1);
+	Mat const img = imread(f, CV_LOAD_IMAGE_COLOR);
 	if (!img.data) {
 		throw std::runtime_error("Invalid input file: " + f);
 		return -1;
@@ -59,7 +59,6 @@ int main(int argc, char** argv)
 	if (vm.count("output-file")) {
 		imwrite(vm["output-file"].as<std::string>(), out);
 	}
-
 
 	return 0;
 

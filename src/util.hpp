@@ -2,10 +2,6 @@
 
 using namespace cv;
 
-void _showImage(const char* title, const Mat& img)
-{
-}
-
 void showImage(const char* title, const Mat& img)
 {
 	std::cout << "Showing image: \"" << title << "\"." << std::endl;
