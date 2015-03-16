@@ -19,7 +19,7 @@ Mat _getPatternDistinct(const Mat& img)
 	     Y  = H - 1,    // Limit of y indexing
 	     X  = W - 1,
 	     IH = H - 2,    // Inner width (sans 1-pixel border)
-	     IW = W - 2,    // Inner height
+	     IW = W - 2;    // Inner height
 
 	const uchar* row_p = img.ptr<uchar>(0); // Pixel values of i-1th row
 	const uchar* row   = img.ptr<uchar>(1); // Pixel values of ith row
