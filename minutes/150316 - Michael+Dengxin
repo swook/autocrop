@@ -1,0 +1,32 @@
+Done
+====
+Contacted Chen:
+- Code not available, property of Adobe
+  - Asked if open source implementation okay
+    - I am not sure actually, I am not a legal expert :)
+      I would suggest consulting an attorney.
+
+Contacted saliency authors:
+- No response
+- Matlab code is .p file, only helpful to validate
+
+M: Check out this saliency paper
+- Saliency detection: A boolean map approach
+
+Initial implementation of pattern distinctiveness map
+- Need to use SLIC
+- Need to implement colour distinctiveness
+
+M: SPSM - Beyond Bag of Features: Spatial Pyramid Matching
+
+
+Questions
+=========
+Using vlfeat on Android?
+
+Recommended ML library for SVR/SVM?
+- OpenCV ml
+- mlpack
+- SHARK
+M: libsvm/liblinear
+
