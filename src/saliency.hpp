@@ -40,41 +40,26 @@ void _getSLICSegments(const Mat& img, std::vector<vl_uint32>& segmentation)
 
 	// Visualise segmentation
 	Mat mat = img;
-	int** labels = new int*[mat.rows];
-	for (int i = 0; i < mat.rows; ++i) {
-		labels[i] = new int[mat.cols];
-		for (int j = 0; j < mat.cols; ++j) {
-			labels[i][j] = (int) segmentation[j + mat.cols*i];
-		}
+	int** labels = new int*[H];
+	for (uint j = 0; j < H; j++) {
+		labels[j] = new int[W];
+		for (uint i = 0; i < W; i++)
+			labels[j][i] = (int) segmentation[j*W + i];
 	}
-	int label = 0;
-	int labelTop = -1;
-	int labelBottom = -1;
-	int labelLeft = -1;
-	int labelRight = -1;
-	for (int i = 0; i < mat.rows; i++) {
-		for (int j = 0; j < mat.cols; j++) {
-			label = labels[i][j];
-			labelTop = label;
-			if (i > 0) {
-				labelTop = labels[i - 1][j];
-			}
-			labelBottom = label;
-			if (i < mat.rows - 1) {
-				labelBottom = labels[i + 1][j];
-			}
-			labelLeft = label;
-			if (j > 0) {
-				labelLeft = labels[i][j - 1];
-			}
-			labelRight = label;
-			if (j < mat.cols - 1) {
-				labelRight = labels[i][j + 1];
-			}
-			if (label != labelTop || label != labelBottom || label!= labelLeft || label != labelRight) {
-				mat.at<Vec3b>(i, j)[0] = 0;
-				mat.at<Vec3b>(i, j)[1] = 0;
-				mat.at<Vec3b>(i, j)[2] = 255;
+
+	int label, labelTop, labelBottom, labelLeft, labelRight;
+	for (uint j = 1; j < H - 1; j++) {
+		for (uint i = 1; i < W - 1; i++) {
+			label       = labels[j][i];
+			labelTop    = labels[j - 1][i];
+			labelBottom = labels[j + 1][i];
+			labelLeft   = labels[j][i - 1];
+			labelRight  = labels[j][i + 1];
+			if (label != labelTop  || label != labelBottom ||
+			    label != labelLeft || label != labelRight) {
+				mat.at<Vec3b>(j, i)[0] = 0;
+				mat.at<Vec3b>(j, i)[1] = 0;
+				mat.at<Vec3b>(j, i)[2] = 255;
 			}
 		}
 	}
