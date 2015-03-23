@@ -1,0 +1,23 @@
+M&D: Resize image to avoid long processing times.
+
+M: Should really try boolean saliency map, especially if code exists
+   - Saliency detection: A boolean map approach
+
+D: Might be interesting to see how some information can be lost due to image
+   resizing before processing.
+
+
+Comments
+--------
+Try not to get side-tracked, generating saliency maps is not the prime goal of
+this project.
+
+Make use of existing code and see how they work to save time.
+
+M: Can organise second weekly meeting. Just ask.
+
+
+Carried on from previous weeks
+------------------------------
+M: SPSM - Beyond Bag of Features: Spatial Pyramid Matching
+M: libsvm/liblinear for ML
