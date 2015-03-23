@@ -30,13 +30,13 @@ void _getSLICSegments(const Mat& img, std::vector<vl_uint32>& segmentation)
 		}
 	}
 
-	vl_size regionSize    = HW / 5e3,
+	vl_size regionSize    = HW / 2e3,
 		minRegionSize = HW / 5e4;
 	printf("\nSLIC parameters:\n- regionSize: %llu\n- minRegionSize: %llu\n",
 	       regionSize, minRegionSize);
 
 	vl_slic_segment(segmentation.data(), img_vl, W, H, img.channels(),
-			regionSize, 200, minRegionSize);
+			regionSize, 100, minRegionSize);
 
 	// Visualise segmentation
 	Mat mat = img;
@@ -211,7 +211,7 @@ Mat _getColourDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
  * 2) Acquire colour distinctiveness map
  * 3) Calculate pixelwise multiplication of the two maps
  */
-const float maxSize = 1000.f;
+const float maxSize = 600.f;
 
 Mat getSaliency(const Mat& img)
 {
@@ -221,6 +221,8 @@ Mat getSaliency(const Mat& img)
 	     W  = img.cols,
 	     HW = H * W;
 
+	// Scale image to have not more than maxSize pixels on its larger
+	// dimension
 	float scale = (float) max(H, W) / maxSize;
 	if (scale > 1.f) {
 		resize(img, img_BGR, Size(W / scale, H / scale));
@@ -258,6 +260,7 @@ Mat getSaliency(const Mat& img)
 	//out = patternD.mul(colourD);
 	Mat out = patternD;
 
+	// Scale back to original size for further processing
 	if (scale > 1.f) {
 		Mat out_scaled = Mat();
 		resize(out, out_scaled, img.size());
