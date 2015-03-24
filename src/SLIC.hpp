@@ -1,6 +1,7 @@
 #pragma once
 
 #include "opencv2/opencv.hpp"
+using namespace cv;
 
 #include "util.hpp"
 
@@ -9,10 +10,9 @@ extern "C" {
 #include "vl/slic.h"
 }
 
-typedef unsigned int uint;
-
-using namespace cv;
-
+/**
+ * Calculates SLIC segmentation for a given LAB image
+ */
 void _getSLICSegments(const Mat& img, std::vector<vl_uint32>& segmentation)
 {
 	uint H = img.rows,

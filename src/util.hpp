@@ -1,8 +1,9 @@
 #pragma once
 
 #include "opencv2/opencv.hpp"
-
 using namespace cv;
+
+typedef unsigned int uint;
 
 void showImage(const char* title, const Mat& img)
 {
@@ -18,7 +19,11 @@ void showImageAndWait(const char* title, const Mat& img)
 	waitKey(0);
 }
 
-float var(std::vector<float>& v) {
+/**
+ * Calculates the variance of values in a given list of floats
+ */
+float var(std::vector<float>& v)
+{
 	auto n = v.size();
 	if (n == 0) return 0.f;
 
@@ -29,4 +34,12 @@ float var(std::vector<float>& v) {
 			float diff = e - mean;
 			return b + diff * diff;
 		}) / n);
+}
+
+/**
+ * Adds a Gaussian of specified standard deviation centred at a specified
+ * coordinate on a given image
+ */
+void addGaussian(Mat& img, uint x, uint y, float std)
+{
 }

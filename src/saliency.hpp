@@ -1,11 +1,10 @@
 #pragma once
 
 #include "opencv2/opencv.hpp"
+using namespace cv;
 
 #include "SLIC.hpp"
 #include "util.hpp"
-
-using namespace cv;
 
 /**
  * Generates a pattern distinctiveness map
@@ -101,7 +100,8 @@ Mat _getPatternDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 /**
  * Generates a colour distinctiveness map
  *
- * 1)
+ * 1) Calculate average colour per SLIC region
+ * 2) Calculate sum of euclidean distance between colours
  */
 Mat _getColourDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
                        uint spxl_n)
@@ -156,6 +156,24 @@ Mat _getColourDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 			idx = segmentation[j*W + i];
 			out.ptr<float>(j)[i] = spxl_dist[idx];
 		}
+
+	// Normalise
+	Mat out_norm;
+	normalize(out, out_norm, 0.f, 1.f, NORM_MINMAX);
+	return out_norm;
+}
+
+/**
+ * Generates a Gaussian weight map
+ *
+ * 1) Threshold given distinctiveness map with thresholds in 0:0.1:1
+ * 2) Compute centre of mass
+ * 3) Place Gaussian with standard deviation 1000 at CoM
+ *    (Weight according to threshold)
+ */
+Mat _getWeightMap(Mat& D)
+{
+	auto out = Mat(D.size(), CV_32F);
 
 	// Normalise
 	Mat out_norm;
@@ -219,8 +237,14 @@ Mat getSaliency(const Mat& img)
 	Mat colourD = _getColourDistinct(img_lab, segmentation, spxl_n);
 	showImage("Colour Distinctiveness", colourD);
 
+	Mat D = patternD.mul(colourD);
+	showImage("Distinctiveness", D);
+
+	Mat G = _getWeightMap(D);
+	showImage("Gaussian Weight Map", G);
+
 	Mat out;
-	normalize(patternD.mul(colourD), out, 0.f, 1.f, NORM_MINMAX);
+	normalize(D.mul(G), out, 0.f, 1.f, NORM_MINMAX);
 	showImage("Saliency Map", out);
 
 	// Scale back to original size for further processing
