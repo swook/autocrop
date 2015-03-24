@@ -147,7 +147,7 @@ Mat _getPatternDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 				_distpatches.push_back(row_n[x - 1]);
 				_distpatches.push_back(row_n[x]    );
 				_distpatches.push_back(row_n[x + 1]);
-				i += 9;
+				i++;
 			}
 
 			_patches.push_back(row_p[x - 1]);
@@ -165,7 +165,7 @@ Mat _getPatternDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 		row = row_n;
 	}
 	_distpatches.shrink_to_fit();
-	auto distpatches = Mat(i / 9, 9, CV_8U, _distpatches.data());
+	auto distpatches = Mat(i, 9, CV_8U, _distpatches.data());
 	auto patches     = Mat(X*Y, 9, CV_8U, _patches.data());
 
 	/*******/
