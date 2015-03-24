@@ -57,7 +57,9 @@ int main(int argc, char** argv)
 	 * Save output if necessary
 	 */
 	if (vm.count("output-file")) {
-		imwrite(vm["output-file"].as<std::string>(), out);
+		Mat out_norm;
+		normalize(out, out_norm, 0.f, 255.f, NORM_MINMAX);
+		imwrite(vm["output-file"].as<std::string>(), out_norm);
 	}
 
 	return 0;

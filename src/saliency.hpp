@@ -182,7 +182,10 @@ Mat _getPatternDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 	Mat out;
 	copyMakeBorder(out_inner, out, 1, 1, 1, 1, BORDER_CONSTANT, 0);
 
-	return out;
+	// Normalise
+	Mat out_norm;
+	normalize(out, out_norm, 0.f, 1.f, NORM_MINMAX);
+	return out_norm;
 }
 
 /**
@@ -254,11 +257,15 @@ Mat getSaliency(const Mat& img)
 	auto var_thresh = _getSLICVariances(img_grey, segmentation, spxl_vars);
 
 	// Compute distinctiveness maps
-	Mat patternD = _getPatternDistinct(img_grey, segmentation, spxl_vars,
-					   var_thresh);
-	Mat colourD = _getColourDistinct(img_lab, segmentation, spxl_n);
-	//out = patternD.mul(colourD);
-	Mat out = patternD;
+	Mat patternD = _getPatternDistinct(img_grey, segmentation, spxl_vars, var_thresh);
+	showImage("Pattern Distinctiveness", patternD);
+
+	Mat colourD  = _getColourDistinct(img_lab, segmentation, spxl_n);
+	showImage("Colour Distinctiveness", colourD);
+
+	Mat out;
+	normalize(patternD.mul(colourD), out, 0.f, 1.f, NORM_MINMAX);
+	showImage("Saliency Map", out);
 
 	// Scale back to original size for further processing
 	if (scale > 1.f) {
