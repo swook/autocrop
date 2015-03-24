@@ -173,7 +173,27 @@ Mat _getColourDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
  */
 Mat _getWeightMap(Mat& D)
 {
-	auto out = Mat(D.size(), CV_32F);
+	Mat out = Mat::zeros(D.size(), CV_32F);
+
+	float thresh = 0.f, v, M;
+	Vec2f CoM;
+	for (uint i = 0; i < 10; i++) {
+		M      = 0.f;
+		CoM[0] = 0.f;
+		CoM[1] = 0.f;
+		for (uint y = 0; y < out.rows; y++)
+			for (uint x = 0; x < out.cols; x++) {
+				v = D.ptr<float>(y)[x];
+				if (v > thresh) {
+					CoM[0] += v * (float)x;
+					CoM[1] += v * (float)y;
+					M += v;
+				}
+			}
+
+		addGaussian(out, round(CoM[0] / M), round(CoM[1] / M), 10000, thresh);
+		thresh += 0.1f;
+	}
 
 	// Normalise
 	Mat out_norm;
@@ -237,7 +257,8 @@ Mat getSaliency(const Mat& img)
 	Mat colourD = _getColourDistinct(img_lab, segmentation, spxl_n);
 	showImage("Colour Distinctiveness", colourD);
 
-	Mat D = patternD.mul(colourD);
+	Mat D;
+	normalize(patternD.mul(colourD), D, 0.f, 1.f, NORM_MINMAX);
 	showImage("Distinctiveness", D);
 
 	Mat G = _getWeightMap(D);
