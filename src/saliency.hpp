@@ -198,15 +198,61 @@ Mat _getPatternDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 Mat _getColourDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
                        uint spxl_n)
 {
-	// 1. Aggregate pixels by super pixel
-	auto spxl_vals = std::vector<std::vector<float>>(spxl_n);
+	uint H  = img.rows,
+	     W  = img.cols,
+	     HW = H * W;
+
+	// 1. Aggregate colours of regions
+	auto spxl_cols = std::vector<Vec3f>(spxl_n);
+	auto spxl_cnts = std::vector<uint>(spxl_n);
+	// Allocate
+	for (uint i = 0; i < spxl_n; i++)
+		spxl_cols[i] = Vec3f();
+
+	// Aggregate Lab colour values
+	Vec3f col;
+	for (uint idx = 0, j = 0; j < H; j++)
+		for (uint i = 0; i < W; i++) {
+			idx = segmentation[j*W + i];
+			col = spxl_cols[idx];
+			col[0] += (float)img.ptr<Vec3b>(j)[i][0];
+			col[1] += (float)img.ptr<Vec3b>(j)[i][1];
+			col[2] += (float)img.ptr<Vec3b>(j)[i][2];
+			spxl_cols[idx] = col;
+			spxl_cnts[idx]++;
+		}
+
+	// Divide by no. of pixels
 	for (uint i = 0; i < spxl_n; i++) {
-		spxl_vals[i] = std::vector<float>(0);
-		spxl_vals[i].reserve(20);
+		spxl_cols[i][0] /= spxl_cnts[i];
+		spxl_cols[i][1] /= spxl_cnts[i];
+		spxl_cols[i][2] /= spxl_cnts[i];
 	}
 
+	// 2. Aggregate colour distances
+	auto spxl_dist = std::vector<float>(spxl_n);
+	float dist;
+	for (uint i1 = 0; i1 < spxl_n; i1++) {
+		dist = 0.f;
+		for (uint i2 = 0; i2 < spxl_n; i2++) {
+			if (i1 == i2) continue;
+			dist += norm(spxl_cols[i1] - spxl_cols[i2]);
+		}
+		spxl_dist[i1] = dist / spxl_n;
+	}
+
+	// 3. Assign distance value to output colour distinctiveness map
 	auto out = Mat(img.size(), CV_32F);
-	return out;
+	for (uint idx = 0, j = 0; j < H; j++)
+		for (uint i = 0; i < W; i++) {
+			idx = segmentation[j*W + i];
+			out.ptr<float>(j)[i] = spxl_dist[idx];
+		}
+
+	// Normalise
+	Mat out_norm;
+	normalize(out, out_norm, 0.f, 1.f, NORM_MINMAX);
+	return out_norm;
 }
 
 /**
@@ -262,7 +308,7 @@ Mat getSaliency(const Mat& img)
 	Mat patternD = _getPatternDistinct(img_grey, segmentation, spxl_vars, var_thresh);
 	showImage("Pattern Distinctiveness", patternD);
 
-	Mat colourD  = _getColourDistinct(img_lab, segmentation, spxl_n);
+	Mat colourD = _getColourDistinct(img_lab, segmentation, spxl_n);
 	showImage("Colour Distinctiveness", colourD);
 
 	Mat out;
