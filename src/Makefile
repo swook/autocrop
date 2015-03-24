@@ -6,7 +6,7 @@ CLIBS+=`pkg-config --libs opencv`   # OpenCV
 
 all: retarget
 
-retarget: retarget.cpp saliency.hpp retarget.hpp util.hpp
+retarget: retarget.cpp SLIC.hpp saliency.hpp retarget.hpp util.hpp
 	$(CC) $(CCOPT) $(CLIBS) $(CVLIB) $< -o $@
 
 clean:
