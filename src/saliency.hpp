@@ -30,16 +30,18 @@ void _getSLICSegments(const Mat& img, std::vector<vl_uint32>& segmentation)
 		}
 	}
 
-	vl_size regionSize    = HW / 2e3,
-		minRegionSize = HW / 5e4;
+	// Run SLIC code from vlfeat
+	vl_size regionSize    = 30,
+		minRegionSize = 5;
 	printf("\nSLIC parameters:\n- regionSize: %llu\n- minRegionSize: %llu\n",
 	       regionSize, minRegionSize);
 
 	vl_slic_segment(segmentation.data(), img_vl, W, H, img.channels(),
-			regionSize, 100, minRegionSize);
+			regionSize, 1000, minRegionSize);
 
 	// Visualise segmentation
-	Mat mat = img;
+	Mat vis;
+	cvtColor(img, vis, CV_Lab2BGR);
 	int** labels = new int*[H];
 	for (uint j = 0; j < H; j++) {
 		labels[j] = new int[W];
@@ -57,13 +59,13 @@ void _getSLICSegments(const Mat& img, std::vector<vl_uint32>& segmentation)
 			labelRight  = labels[j][i + 1];
 			if (label != labelTop  || label != labelBottom ||
 			    label != labelLeft || label != labelRight) {
-				mat.at<Vec3b>(j, i)[0] = 0;
-				mat.at<Vec3b>(j, i)[1] = 0;
-				mat.at<Vec3b>(j, i)[2] = 255;
+				vis.at<Vec3b>(j, i)[0] = 0;
+				vis.at<Vec3b>(j, i)[1] = 0;
+				vis.at<Vec3b>(j, i)[2] = 255;
 			}
 		}
 	}
-	showImage("SLIC", mat);
+	showImage("SLIC", vis);
 }
 
 float _getSLICVariances(Mat& grey, std::vector<vl_uint32>& segmentation,
