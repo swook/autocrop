@@ -6,6 +6,8 @@ using namespace cv;
 #include "SLIC.hpp"
 #include "util.hpp"
 
+const float _9 = 1.f / 9.f;
+
 /**
  * Generates a pattern distinctiveness map
  *
@@ -40,33 +42,34 @@ Mat _getPatternDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 
 	// Iterate over all inner pixels (patches) with variance above threshold
 	uint i = 0, spxl_i;
+	float p1, p2, p3, p4, p5, p6, p7, p8, p9, m;
 	for (uint y = 1; y < Y; y++) {
 		row_n = img.ptr<uchar>(y + 1);
 		for (uint x = 1; x < X; x++) {
+			p1 = row_p[x - 1]; p2 = row_p[x]; p3 = row_p[x + 1];
+			p4 =   row[x - 1]; p5 =   row[x]; p6 =   row[x + 1];
+			p7 = row_n[x - 1]; p8 = row_n[x]; p9 = row_n[x + 1];
+			m = _9 * (p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9);
+
 			spxl_i = segmentation[y*X + x];
 			if (spxl_vars[spxl_i] > var_thresh) {
-				_distpatches.push_back(row_p[x - 1]);
-				_distpatches.push_back(row_p[x]    );
-				_distpatches.push_back(row_p[x + 1]);
-				_distpatches.push_back(row  [x - 1]);
-				_distpatches.push_back(row  [x]    );
-				_distpatches.push_back(row  [x + 1]);
-				_distpatches.push_back(row_n[x - 1]);
-				_distpatches.push_back(row_n[x]    );
-				_distpatches.push_back(row_n[x + 1]);
+				_distpatches.push_back(p1 - m);
+				_distpatches.push_back(p2 - m);
+				_distpatches.push_back(p3 - m);
+				_distpatches.push_back(p4 - m);
+				_distpatches.push_back(p5 - m);
+				_distpatches.push_back(p6 - m);
+				_distpatches.push_back(p7 - m);
+				_distpatches.push_back(p8 - m);
+				_distpatches.push_back(p9 - m);
 				i++;
 			}
 
-			_patches.push_back(row_p[x - 1]);
-			_patches.push_back(row_p[x]    );
-			_patches.push_back(row_p[x + 1]);
-			_patches.push_back(row  [x - 1]);
-			_patches.push_back(row  [x]    );
-			_patches.push_back(row  [x + 1]);
-			_patches.push_back(row_n[x - 1]);
-			_patches.push_back(row_n[x]    );
-			_patches.push_back(row_n[x + 1]);
-
+			_patches.push_back(p1); _patches.push_back(p2);
+			_patches.push_back(p3); _patches.push_back(p4);
+			_patches.push_back(p5); _patches.push_back(p6);
+			_patches.push_back(p7); _patches.push_back(p8);
+			_patches.push_back(p9);
 		}
 		row_p = row;
 		row = row_n;
@@ -147,7 +150,7 @@ Mat _getColourDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 			if (i1 == i2 || spxl_cnts[i2] == 0) continue;
 			dist += norm(spxl_cols[i1] - spxl_cols[i2]);
 		}
-		spxl_dist[i1] = dist / spxl_n;
+		spxl_dist[i1] = dist;
 	}
 
 	// 3. Assign distance value to output colour distinctiveness map
