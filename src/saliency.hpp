@@ -118,20 +118,19 @@ Mat _getColourDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 		spxl_cols[i] = Vec3f();
 
 	// Aggregate Lab colour values
-	Vec3f col;
 	for (uint idx = 0, j = 0; j < H; j++)
-		for (uint i = 0; i < W; i++) {
+		for (uint i = 0; i < W; i++)
+		{
 			idx = segmentation[j*W + i];
-			col = spxl_cols[idx];
-			col[0] += (float)img.ptr<Vec3b>(j)[i][0];
-			col[1] += (float)img.ptr<Vec3b>(j)[i][1];
-			col[2] += (float)img.ptr<Vec3b>(j)[i][2];
-			spxl_cols[idx] = col;
+			spxl_cols[idx][0] += (float)img.ptr<Vec3b>(j)[i][0];
+			spxl_cols[idx][1] += (float)img.ptr<Vec3b>(j)[i][1];
+			spxl_cols[idx][2] += (float)img.ptr<Vec3b>(j)[i][2];
 			spxl_cnts[idx]++;
 		}
 
 	// Divide by no. of pixels
-	for (uint i = 0; i < spxl_n; i++) {
+	for (uint i = 0; i < spxl_n; i++)
+	{
 		spxl_cols[i][0] /= spxl_cnts[i];
 		spxl_cols[i][1] /= spxl_cnts[i];
 		spxl_cols[i][2] /= spxl_cnts[i];
@@ -140,10 +139,12 @@ Mat _getColourDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 	// 2. Aggregate colour distances
 	auto spxl_dist = std::vector<float>(spxl_n);
 	float dist;
-	for (uint i1 = 0; i1 < spxl_n; i1++) {
+	for (uint i1 = 0; i1 < spxl_n; i1++)
+	{
+		if (spxl_cnts[i1] == 0) continue;
 		dist = 0.f;
 		for (uint i2 = 0; i2 < spxl_n; i2++) {
-			if (i1 == i2) continue;
+			if (i1 == i2 || spxl_cnts[i2] == 0) continue;
 			dist += norm(spxl_cols[i1] - spxl_cols[i2]);
 		}
 		spxl_dist[i1] = dist / spxl_n;
@@ -152,7 +153,8 @@ Mat _getColourDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 	// 3. Assign distance value to output colour distinctiveness map
 	auto out = Mat(img.size(), CV_32F);
 	for (uint idx = 0, j = 0; j < H; j++)
-		for (uint i = 0; i < W; i++) {
+		for (uint i = 0; i < W; i++)
+		{
 			idx = segmentation[j*W + i];
 			out.ptr<float>(j)[i] = spxl_dist[idx];
 		}
