@@ -11,3 +11,6 @@ retarget
 # Untrackable (and outdated) Google Doc files
 old/
 
+# Output from programme
+datasets/**/*_saliency.jpg
+
