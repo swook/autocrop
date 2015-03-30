@@ -81,6 +81,7 @@ Mat _getPatternDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 	auto patches     = Mat(X*Y, 9, CV_8U, _patches.data());
 	printf("%.1f%% of patches considered distinct\n", 100.f * (float)i  / (float)(X*Y));
 
+
 	/*******/
 	/* PCA */
 	/*******/
@@ -97,9 +98,19 @@ Mat _getPatternDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 	Mat out;
 	copyMakeBorder(out_inner, out, 1, 1, 1, 1, BORDER_CONSTANT, 0);
 
-	// Normalise
+
+	/*******************/
+	/* Post-processing */
+	/*******************/
+
+	// Dilate-then-erode to close holes
+	Mat out_closed;
+	morphologyEx(out, out_closed, MORPH_CLOSE,
+	             getStructuringElement(MORPH_RECT, Size(3, 3)));
+
+	// Normalise then return
 	Mat out_norm;
-	normalize(out, out_norm, 0.f, 1.f, NORM_MINMAX);
+	normalize(out_closed, out_norm, 0.f, 1.f, NORM_MINMAX);
 	return out_norm;
 }
 
