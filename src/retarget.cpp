@@ -18,6 +18,7 @@ int main(int argc, char** argv)
 	    ("help", "Show this message")
 	    ("input-file,i", po::value<string>(), "Input file path")
 	    ("output-file,o", po::value<string>(), "Output file path (default: output.png)")
+	    ("headless,hl", po::bool_switch()->default_value(false), "Run without graphical output")
 	;
 
 	po::positional_options_description p;
@@ -33,6 +34,8 @@ int main(int argc, char** argv)
 			<< desc;
 		return 1;
 	}
+
+	if (vm["headless"].as<bool>()) GRAPHICAL = false;
 
 	/*
 	 * Read image file

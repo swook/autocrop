@@ -7,8 +7,12 @@ using namespace cv;
 
 typedef unsigned int uint;
 
+bool GRAPHICAL = true;
+
 void showImage(const char* title, const Mat& img)
 {
+	if (!GRAPHICAL) return;
+
 	std::cout << "\nShowing image: \"" << title << "\"." << std::endl;
 	namedWindow(title, CV_WINDOW_NORMAL);
 	imshow(title, img);
@@ -16,6 +20,8 @@ void showImage(const char* title, const Mat& img)
 
 void showImageAndWait(const char* title, const Mat& img)
 {
+	if (!GRAPHICAL) return;
+
 	showImage(title, img);
 	std::cout << "Press any key to continue..." << std::endl;
 	waitKey(0);
