@@ -203,14 +203,17 @@ Mat _getWeightMap(Mat& D)
 
 	float thresh = 0.f, v, M;
 	Vec2f CoM;
-	for (uint i = 0; i < 10; i++) {
+	for (uint i = 0; i < 10; i++)
+	{
 		M      = 0.f;
 		CoM[0] = 0.f;
 		CoM[1] = 0.f;
 		for (uint y = 0; y < out.rows; y++)
-			for (uint x = 0; x < out.cols; x++) {
+			for (uint x = 0; x < out.cols; x++)
+			{
 				v = D.ptr<float>(y)[x];
-				if (v > thresh) {
+				if (v > thresh)
+				{
 					CoM[0] += v * (float)x;
 					CoM[1] += v * (float)y;
 					M += v;
@@ -220,6 +223,9 @@ Mat _getWeightMap(Mat& D)
 		addGaussian(out, round(CoM[0] / M), round(CoM[1] / M), 10000, thresh);
 		thresh += 0.1f;
 	}
+
+	// Add centre prior
+	addGaussian(out, out.cols / 2, out.rows / 2, 10000, 5);
 
 	// Normalise
 	Mat out_norm;
