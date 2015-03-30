@@ -54,7 +54,10 @@ Mat _getPatternDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 			m = _9 * (p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9);
 
 			spxl_i = segmentation[y*X + x];
-			if (spxl_vars[spxl_i] > var_thresh) {
+			// TODO: "To disregard lighting effects we a-priori
+			//        subtract from each patch its mean value."
+			if (spxl_vars[spxl_i] > var_thresh)
+			{
 				_distpatches.push_back(p1 - m);
 				_distpatches.push_back(p2 - m);
 				_distpatches.push_back(p3 - m);
@@ -296,7 +299,7 @@ Mat getSaliency(const Mat& img)
 	auto var_thresh_2 = _getSLICVariances(img_grey_2, segmentation_2, spxl_vars_2);
 	auto var_thresh_4 = _getSLICVariances(img_grey_4, segmentation_4, spxl_vars_4);
 
-	// Compute distinctiveness maps
+	// Compute pattern distinctiveness maps
 	Mat patternD_1 = _getPatternDistinct(img_grey_1, segmentation_1, spxl_vars_1, var_thresh_1);
 	Mat patternD_2 = _getPatternDistinct(img_grey_2, segmentation_2, spxl_vars_2, var_thresh_2);
 	Mat patternD_4 = _getPatternDistinct(img_grey_4, segmentation_4, spxl_vars_4, var_thresh_4);
@@ -306,6 +309,7 @@ Mat getSaliency(const Mat& img)
 	Mat patternD = (patternD_1 + patternD_2_ + patternD_4_) / 3;
 	showImage("Pattern Distinctiveness", patternD);
 
+	// Compute colour distinctiveness maps
 	Mat colourD_1 = _getColourDistinct(img_lab_1, segmentation_1, spxl_n_1);
 	Mat colourD_2 = _getColourDistinct(img_lab_2, segmentation_2, spxl_n_2);
 	Mat colourD_4 = _getColourDistinct(img_lab_4, segmentation_4, spxl_n_4);
@@ -315,12 +319,15 @@ Mat getSaliency(const Mat& img)
 	Mat colourD = (colourD_1 + colourD_2_ + colourD_4_) / 3;
 	showImage("Colour Distinctiveness", colourD);
 
+	// Calculate distinctiveness map from pattern and colour distinctiveness
 	Mat D = colourD.mul(patternD);
 	showImage("Distinctiveness", D);
 
+	// Compute Gaussian weight map to highlight clusters
 	Mat G = _getWeightMap(D);
 	showImage("Gaussian Weight Map", G);
 
+	// Final Saliency Map
 	Mat out;
 	normalize(D.mul(G), out, 0.f, 1.f, NORM_MINMAX);
 	//showImage("Saliency Map", out);
