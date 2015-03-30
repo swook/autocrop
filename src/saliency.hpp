@@ -220,7 +220,7 @@ Mat _getWeightMap(Mat& D)
  * 2) Acquire colour distinctiveness map
  * 3) Calculate pixelwise multiplication of the two maps
  */
-const float maxSize = 600.f;
+const float maxSize = 800.f;
 
 Mat getSaliency(const Mat& img)
 {

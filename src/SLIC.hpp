@@ -31,13 +31,13 @@ void _getSLICSegments(const Mat& img, std::vector<vl_uint32>& segmentation)
 	}
 
 	// Run SLIC code from vlfeat
-	vl_size regionSize    = 40,
-		minRegionSize = 4;
+	vl_size regionSize    = 50,
+		minRegionSize = 35;
 	printf("\nSLIC parameters:\n- regionSize: %llu\n- minRegionSize: %llu\n",
 	       regionSize, minRegionSize);
 
 	vl_slic_segment(segmentation.data(), img_vl, W, H, img.channels(),
-			regionSize, 1000, minRegionSize);
+			regionSize, 800, minRegionSize);
 
 	//return; // Skip visualisation. Comment out to tune parameters.
 
