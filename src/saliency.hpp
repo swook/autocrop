@@ -233,15 +233,9 @@ Mat getSaliency(const Mat& img)
 	// Scale image to have not more than maxSize pixels on its larger
 	// dimension
 	float scale = (float) max(H, W) / maxSize;
-	if (scale > 1.f) {
-		resize(img, img_BGR_1, Size(W / scale, H / scale));
-
-		W = W / scale;
-		H = H / scale;
-	} else {
-		img_BGR_1 = img;
-	}
-
+	resize(img, img_BGR_1, Size(W / scale, H / scale));
+	W = W / scale;
+	H = H / scale;
 
 	Mat img_BGR_2, img_BGR_4;
 	resize(img_BGR_1, img_BGR_2, Size(W / 2, H / 2));
@@ -327,10 +321,9 @@ Mat getSaliency(const Mat& img)
 	showImage("Boolean Map", bms.getSaliencyMap());
 
 	// Scale back to original size for further processing
-	if (scale > 1.f) {
-		Mat out_scaled = Mat();
-		resize(out, out_scaled, img.size());
-		std::swap(out, out_scaled);
-	}
+	Mat out_scaled = Mat();
+	resize(out, out_scaled, img.size());
+	std::swap(out, out_scaled);
+
 	return out;
 }
