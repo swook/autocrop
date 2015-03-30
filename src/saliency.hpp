@@ -3,6 +3,8 @@
 #include "opencv2/opencv.hpp"
 using namespace cv;
 
+#include "../lib/BMS/BMS.cpp"
+
 #include "SLIC.hpp"
 #include "util.hpp"
 
@@ -240,12 +242,6 @@ Mat getSaliency(const Mat& img)
 		img_BGR_1 = img;
 	}
 
-	//auto img_lab = Mat(img_BGR_1.size(), img_BGR_1.type());
-	//cvtColor(img_BGR_1, img_lab, CV_BGR2Lab);
-	//auto bms = BMS(img_lab, 3, true, false, CL_Lab, false);
-	//bms.computeSaliency(1000);
-	//auto out = bms.getSaliencyMap();
-	///*
 
 	Mat img_BGR_2, img_BGR_4;
 	resize(img_BGR_1, img_BGR_2, Size(W / 2, H / 2));
@@ -322,8 +318,13 @@ Mat getSaliency(const Mat& img)
 
 	Mat out;
 	normalize(D.mul(G), out, 0.f, 1.f, NORM_MINMAX);
-	showImage("Saliency Map", out);
-	//*/
+	//showImage("Saliency Map", out);
+
+	// Show result of Boolean Map approach
+	// 2013. Zhang and Sclaroff
+	auto bms = BMS(img_lab_1, 3, true, false, CL_Lab, false);
+	bms.computeSaliency(4);
+	showImage("Boolean Map", bms.getSaliencyMap());
 
 	// Scale back to original size for further processing
 	if (scale > 1.f) {
