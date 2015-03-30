@@ -31,13 +31,15 @@ void _getSLICSegments(const Mat& img, std::vector<vl_uint32>& segmentation)
 	}
 
 	// Run SLIC code from vlfeat
-	vl_size regionSize    = 30,
-		minRegionSize = 5;
+	vl_size regionSize    = 40,
+		minRegionSize = 4;
 	printf("\nSLIC parameters:\n- regionSize: %llu\n- minRegionSize: %llu\n",
 	       regionSize, minRegionSize);
 
 	vl_slic_segment(segmentation.data(), img_vl, W, H, img.channels(),
 			regionSize, 1000, minRegionSize);
+
+	//return; // Skip visualisation. Comment out to tune parameters.
 
 	// Visualise segmentation
 	Mat vis;
@@ -66,6 +68,9 @@ void _getSLICSegments(const Mat& img, std::vector<vl_uint32>& segmentation)
 		}
 	}
 	showImage("SLIC", vis);
+	//char* title[20];
+	//sprintf(title, "SLIC: %d", rand());
+	//showImage(title, vis);
 }
 
 float _getSLICVariances(Mat& grey, std::vector<vl_uint32>& segmentation,

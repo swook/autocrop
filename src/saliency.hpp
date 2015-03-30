@@ -77,6 +77,7 @@ Mat _getPatternDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 	_distpatches.shrink_to_fit();
 	auto distpatches = Mat(i, 9, CV_8U, _distpatches.data());
 	auto patches     = Mat(X*Y, 9, CV_8U, _patches.data());
+	printf("%.1f%% of patches considered distinct\n", 100.f * (float)i  / (float)(X*Y));
 
 	/*******/
 	/* PCA */
@@ -141,16 +142,20 @@ Mat _getColourDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
 
 	// 2. Aggregate colour distances
 	auto spxl_dist = std::vector<float>(spxl_n);
-	float dist;
+	float dist, weight;
 	for (uint i1 = 0; i1 < spxl_n; i1++)
 	{
 		if (spxl_cnts[i1] == 0) continue;
 		dist = 0.f;
-		for (uint i2 = 0; i2 < spxl_n; i2++) {
-			if (i1 == i2 || spxl_cnts[i2] == 0) continue;
-			dist += norm(spxl_cols[i1] - spxl_cols[i2]);
+		for (uint i2 = i1 + 1; i2 < spxl_n; i2++) {
+			if (spxl_cnts[i2] == 0) continue;
+
+			weight = norm(spxl_cols[i1] - spxl_cols[i2]);
+
+			dist += weight;
+			spxl_dist[i2] += weight;
 		}
-		spxl_dist[i1] = dist;
+		spxl_dist[i1] += dist;
 	}
 
 	// 3. Assign distance value to output colour distinctiveness map
@@ -318,6 +323,7 @@ Mat getSaliency(const Mat& img)
 	Mat out;
 	normalize(D.mul(G), out, 0.f, 1.f, NORM_MINMAX);
 	showImage("Saliency Map", out);
+	//*/
 
 	// Scale back to original size for further processing
 	if (scale > 1.f) {
