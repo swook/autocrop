@@ -217,7 +217,7 @@ const float maxSize = 600.f;
 
 Mat getSaliency(const Mat& img)
 {
-	Mat img_BGR;
+	Mat img_BGR_1;
 
 	uint H  = img.rows,
 	     W  = img.cols,
@@ -227,43 +227,89 @@ Mat getSaliency(const Mat& img)
 	// dimension
 	float scale = (float) max(H, W) / maxSize;
 	if (scale > 1.f) {
-		resize(img, img_BGR, Size(W / scale, H / scale));
+		resize(img, img_BGR_1, Size(W / scale, H / scale));
 
 		W = W / scale;
 		H = H / scale;
 	} else {
-		img_BGR = img;
+		img_BGR_1 = img;
 	}
 
-	// Get grayscale image to work on
-	auto img_grey = Mat(img_BGR.size(), img_BGR.type());
-	cvtColor(img_BGR, img_grey, CV_BGR2GRAY);
+	//auto img_lab = Mat(img_BGR_1.size(), img_BGR_1.type());
+	//cvtColor(img_BGR_1, img_lab, CV_BGR2Lab);
+	//auto bms = BMS(img_lab, 3, true, false, CL_Lab, false);
+	//bms.computeSaliency(1000);
+	//auto out = bms.getSaliencyMap();
+	///*
 
-	auto img_lab = Mat(img_BGR.size(), img_BGR.type());
-	cvtColor(img_BGR, img_lab, CV_BGR2Lab);
+	Mat img_BGR_2, img_BGR_4;
+	resize(img_BGR_1, img_BGR_2, Size(W / 2, H / 2));
+	resize(img_BGR_1, img_BGR_4, Size(W / 4, H / 4));
+
+	// Get grayscale image to work on
+	auto img_grey_1 = Mat(img_BGR_1.size(), img_BGR_1.type());
+	auto img_grey_2 = Mat(img_BGR_2.size(), img_BGR_2.type());
+	auto img_grey_4 = Mat(img_BGR_4.size(), img_BGR_4.type());
+	cvtColor(img_BGR_1, img_grey_1, CV_BGR2GRAY);
+	cvtColor(img_BGR_2, img_grey_2, CV_BGR2GRAY);
+	cvtColor(img_BGR_4, img_grey_4, CV_BGR2GRAY);
+
+	auto img_lab_1 = Mat(img_BGR_1.size(), img_BGR_1.type());
+	auto img_lab_2 = Mat(img_BGR_2.size(), img_BGR_2.type());
+	auto img_lab_4 = Mat(img_BGR_4.size(), img_BGR_4.type());
+	cvtColor(img_BGR_1, img_lab_1, CV_BGR2Lab);
+	cvtColor(img_BGR_2, img_lab_2, CV_BGR2Lab);
+	cvtColor(img_BGR_4, img_lab_4, CV_BGR2Lab);
 
 	// Get SLIC superpixels
-	auto segmentation = std::vector<vl_uint32>(H*W);
-	_getSLICSegments(img_lab, segmentation);
+	auto segmentation_1 = std::vector<vl_uint32>(H*W);
+	auto segmentation_2 = std::vector<vl_uint32>(H*W/4);
+	auto segmentation_4 = std::vector<vl_uint32>(H*W/16);
+	_getSLICSegments(img_lab_2, segmentation_2);
+	_getSLICSegments(img_lab_4, segmentation_4);
+	_getSLICSegments(img_lab_1, segmentation_1); // Out-of-order for vis purposes
 
 	// Calculate variance of super pixels
-	auto spxl_n = std::accumulate(segmentation.begin(),
-		segmentation.end(), 0, [&](vl_uint32 b, vl_uint32 n) {
+	auto spxl_n_1 = std::accumulate(segmentation_1.begin(),
+		segmentation_1.end(), 0, [&](vl_uint32 b, vl_uint32 n) {
 			return n > b ? n : b;
 		}) + 1;
-	printf("Calculated %d superpixels.\n", spxl_n);
-	auto spxl_vars  = std::vector<float>(spxl_n);
-	auto var_thresh = _getSLICVariances(img_grey, segmentation, spxl_vars);
+	auto spxl_n_2 = std::accumulate(segmentation_2.begin(),
+		segmentation_2.end(), 0, [&](vl_uint32 b, vl_uint32 n) {
+			return n > b ? n : b;
+		}) + 1;
+	auto spxl_n_4 = std::accumulate(segmentation_4.begin(),
+		segmentation_4.end(), 0, [&](vl_uint32 b, vl_uint32 n) {
+			return n > b ? n : b;
+		}) + 1;
+	printf("\nCalculated %d, %d, %d superpixels.\n", spxl_n_1, spxl_n_2, spxl_n_4);
+	auto spxl_vars_1  = std::vector<float>(spxl_n_1);
+	auto spxl_vars_2  = std::vector<float>(spxl_n_2);
+	auto spxl_vars_4  = std::vector<float>(spxl_n_4);
+	auto var_thresh_1 = _getSLICVariances(img_grey_1, segmentation_1, spxl_vars_1);
+	auto var_thresh_2 = _getSLICVariances(img_grey_2, segmentation_2, spxl_vars_2);
+	auto var_thresh_4 = _getSLICVariances(img_grey_4, segmentation_4, spxl_vars_4);
 
 	// Compute distinctiveness maps
-	Mat patternD = _getPatternDistinct(img_grey, segmentation, spxl_vars, var_thresh);
+	Mat patternD_1 = _getPatternDistinct(img_grey_1, segmentation_1, spxl_vars_1, var_thresh_1);
+	Mat patternD_2 = _getPatternDistinct(img_grey_2, segmentation_2, spxl_vars_2, var_thresh_2);
+	Mat patternD_4 = _getPatternDistinct(img_grey_4, segmentation_4, spxl_vars_4, var_thresh_4);
+	Mat patternD_2_, patternD_4_;
+	resize(patternD_2, patternD_2_, patternD_1.size());
+	resize(patternD_4, patternD_4_, patternD_1.size());
+	Mat patternD = (patternD_1 + patternD_2_ + patternD_4_) / 3;
 	showImage("Pattern Distinctiveness", patternD);
 
-	Mat colourD = _getColourDistinct(img_lab, segmentation, spxl_n);
+	Mat colourD_1 = _getColourDistinct(img_lab_1, segmentation_1, spxl_n_1);
+	Mat colourD_2 = _getColourDistinct(img_lab_2, segmentation_2, spxl_n_2);
+	Mat colourD_4 = _getColourDistinct(img_lab_4, segmentation_4, spxl_n_4);
+	Mat colourD_2_, colourD_4_;
+	resize(colourD_2, colourD_2_, colourD_1.size());
+	resize(colourD_4, colourD_4_, colourD_1.size());
+	Mat colourD = (colourD_1 + colourD_2_ + colourD_4_) / 3;
 	showImage("Colour Distinctiveness", colourD);
 
-	Mat D;
-	normalize(patternD.mul(colourD), D, 0.f, 1.f, NORM_MINMAX);
+	Mat D = colourD.mul(patternD);
 	showImage("Distinctiveness", D);
 
 	Mat G = _getWeightMap(D);
