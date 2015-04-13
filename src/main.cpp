@@ -6,6 +6,7 @@ using namespace cv;
 
 #include "autocrop.hpp"
 #include "saliency.hpp"
+#include "train.hpp"
 #include "util.hpp"
 
 int main(int argc, char** argv)

@@ -10,4 +10,4 @@ public:
 	void train();
 };
 
-cv::Mat getFeatureVector(cv::Mat& img);
+cv::Mat getFeatureVector(const cv::Mat& img);

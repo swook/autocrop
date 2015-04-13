@@ -32,45 +32,48 @@ void Trainer::train()
  *   -----------
  *   21 features
  */
-Mat getFeatureVector(Mat& img)
+Mat getFeatureVector(const Mat& img)
 {
 	// Calculate saliency map
 	Mat _saliency = getSaliency(img);
 
+	// Resize to be 100x100
 	Mat saliency;
-	resize(_saliency, saliency, Size(100, 100));
+	resize(_saliency, saliency, Size(4, 4));
+	std::cout << saliency << std::endl;
 
 	// Initialise feature vector
 	const int featsN = 21;
-	double feats[featsN];
+	Mat      feats = Mat(Size(1, featsN), CV_64F);
+	double* _feats = feats.ptr<double>(0);
 
 	// Add mean values for 1/16ths
-	feats[0]  = mean(saliency(Rect(0,   0, 25, 25)))[0],
-	feats[1]  = mean(saliency(Rect(25,  0, 25, 25)))[0],
-	feats[2]  = mean(saliency(Rect(50,  0, 25, 25)))[0],
-	feats[3]  = mean(saliency(Rect(75,  0, 25, 25)))[0],
-	feats[4]  = mean(saliency(Rect(0,  25, 25, 25)))[0],
-	feats[5]  = mean(saliency(Rect(25, 25, 25, 25)))[0],
-	feats[6]  = mean(saliency(Rect(50, 25, 25, 25)))[0],
-	feats[7]  = mean(saliency(Rect(75, 25, 25, 25)))[0],
-	feats[8]  = mean(saliency(Rect(0,  50, 25, 25)))[0],
-	feats[9]  = mean(saliency(Rect(25, 50, 25, 25)))[0],
-	feats[10] = mean(saliency(Rect(50, 50, 25, 25)))[0],
-	feats[11] = mean(saliency(Rect(75, 50, 25, 25)))[0],
-	feats[12] = mean(saliency(Rect(0,  75, 25, 25)))[0],
-	feats[13] = mean(saliency(Rect(25, 75, 25, 25)))[0],
-	feats[14] = mean(saliency(Rect(50, 75, 25, 25)))[0],
-	feats[15] = mean(saliency(Rect(75, 75, 25, 25)))[0];
+	_feats[0]  = (double) saliency.at<float>(0, 0);
+	_feats[1]  = (double) saliency.at<float>(0, 1);
+	_feats[2]  = (double) saliency.at<float>(0, 2);
+	_feats[3]  = (double) saliency.at<float>(0, 3);
+	_feats[4]  = (double) saliency.at<float>(1, 0);
+	_feats[5]  = (double) saliency.at<float>(1, 1);
+	_feats[6]  = (double) saliency.at<float>(1, 2);
+	_feats[7]  = (double) saliency.at<float>(1, 3);
+	_feats[8]  = (double) saliency.at<float>(2, 0);
+	_feats[9]  = (double) saliency.at<float>(2, 1);
+	_feats[10] = (double) saliency.at<float>(2, 2);
+	_feats[11] = (double) saliency.at<float>(2, 3);
+	_feats[12] = (double) saliency.at<float>(3, 0);
+	_feats[13] = (double) saliency.at<float>(3, 1);
+	_feats[14] = (double) saliency.at<float>(3, 2);
+	_feats[15] = (double) saliency.at<float>(3, 3);
 
 	// Add mean values for 1/4ths
-	feats[16] = .25f * (feats[0]  + feats[1]  + feats[4]  + feats[5]);
-	feats[17] = .25f * (feats[2]  + feats[3]  + feats[6]  + feats[7]);
-	feats[18] = .25f * (feats[8]  + feats[9]  + feats[12] + feats[13]);
-	feats[19] = .25f * (feats[10] + feats[11] + feats[14] + feats[15]);
+	_feats[16] = .25f * (_feats[0]  + _feats[1]  + _feats[4]  + _feats[5]);
+	_feats[17] = .25f * (_feats[2]  + _feats[3]  + _feats[6]  + _feats[7]);
+	_feats[18] = .25f * (_feats[8]  + _feats[9]  + _feats[12] + _feats[13]);
+	_feats[19] = .25f * (_feats[10] + _feats[11] + _feats[14] + _feats[15]);
 
 	// Add mean value for all pixels in saliency map
-	feats[20] = .25f * (feats[16] + feats[17] + feats[18] + feats[19]);
+	_feats[20] = .25f * (_feats[16] + _feats[17] + _feats[18] + _feats[19]);
 
-	// Return constructed vector
-	return Mat(Size(1, featsN), CV_32F, feats);
+	// Return
+	return feats;
 }
