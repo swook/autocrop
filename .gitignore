@@ -5,7 +5,8 @@
 **/chen/readme
 **/chen/analysis/images_withbbox
 
-# CPP artifacts
+# Build artifacts
+build/
 retarget
 
 # Untrackable (and outdated) Google Doc files

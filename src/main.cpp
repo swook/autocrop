@@ -1,12 +1,12 @@
 #include "boost/program_options.hpp"
-#include "opencv2/opencv.hpp"
-
-#include "retarget.hpp"
-#include "util.hpp"
-
 namespace po = boost::program_options;
 
+#include "opencv2/opencv.hpp"
 using namespace cv;
+
+#include "autocrop.hpp"
+#include "saliency.hpp"
+#include "util.hpp"
 
 int main(int argc, char** argv)
 {
@@ -16,8 +16,8 @@ int main(int argc, char** argv)
 	po::options_description desc("Available options");
 	desc.add_options()
 	    ("help", "Show this message")
-	    ("input-file,i", po::value<string>(), "Input file path")
-	    ("output-file,o", po::value<string>(), "Output file path (default: output.png)")
+	    ("input-file,i", po::value<std::string>(), "Input file path")
+	    ("output-file,o", po::value<std::string>(), "Output file path (default: output.png)")
 	    ("headless,hl", po::bool_switch()->default_value(false), "Run without graphical output")
 	;
 
