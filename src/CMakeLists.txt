@@ -4,6 +4,7 @@ set(
   "autocrop.cpp"
   "SLIC.cpp"
   "saliency.cpp"
+  "train.cpp"
 )
 
 add_library(autocrop ${MAIN_SOURCES})
