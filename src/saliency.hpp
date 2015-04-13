@@ -1,7 +1,6 @@
 #pragma once
 
 #include "opencv2/opencv.hpp"
-using namespace cv;
 
 extern "C" {
 #include "vl/generic.h"
@@ -16,7 +15,7 @@ extern "C" {
  * 3) Project each patch into PCA space
  * 4) Take L1-norm and store to map
  */
-Mat _getPatternDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
+cv::Mat _getPatternDistinct(const cv::Mat& img, std::vector<vl_uint32>& segmentation,
                         std::vector<float>& spxl_vars, float var_thresh);
 
 /**
@@ -25,7 +24,7 @@ Mat _getPatternDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
  * 1) Calculate average colour per SLIC region
  * 2) Calculate sum of euclidean distance between colours
  */
-Mat _getColourDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
+cv::Mat _getColourDistinct(const cv::Mat& img, std::vector<vl_uint32>& segmentation,
                        uint spxl_n);
 
 /**
@@ -36,7 +35,7 @@ Mat _getColourDistinct(const Mat& img, std::vector<vl_uint32>& segmentation,
  * 3) Place Gaussian with standard deviation 1000 at CoM
  *    (Weight according to threshold)
  */
-Mat _getWeightMap(Mat& D);
+cv::Mat _getWeightMap(cv::Mat& D);
 
 /**
  * Generates a saliency map using a method from Margolin et al. (2013)
@@ -45,4 +44,4 @@ Mat _getWeightMap(Mat& D);
  * 2) Acquire colour distinctiveness map
  * 3) Calculate pixelwise multiplication of the two maps
  */
-Mat getSaliency(const Mat& img);
+cv::Mat getSaliency(const cv::Mat& img);
