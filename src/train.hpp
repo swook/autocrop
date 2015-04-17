@@ -6,8 +6,12 @@
 class Trainer
 {
 public:
-	void add(cv::Mat& img);
+	void init();
+	void add(const cv::Mat& img);
 	void train();
+
+private:
+	cv::Ptr<cv::ml::SVM> model;
+	cv::Mat              data;
 };
 
-cv::Mat getFeatureVector(const cv::Mat& img);

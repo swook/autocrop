@@ -4,6 +4,7 @@ set(
   "autocrop.cpp"
   "SLIC.cpp"
   "saliency.cpp"
+  "feature.cpp"
   "train.cpp"
 )
 
