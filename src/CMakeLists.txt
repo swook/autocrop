@@ -6,6 +6,7 @@ set(
   "saliency.cpp"
   "feature.cpp"
   "train.cpp"
+  "classify.cpp"
 )
 
 add_library(autocrop ${MAIN_SOURCES})
