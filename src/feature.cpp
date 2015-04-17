@@ -28,7 +28,7 @@ Mat getFeatureVector(const Mat& img)
 	// Calculate saliency map
 	Mat _saliency = getSaliency(img);
 
-	// Resize to be 100x100
+	// Resize to be 4x4. Use INTER_AREA to average pixel values
 	Mat saliency;
 	resize(_saliency, saliency, Size(4, 4), INTER_AREA);
 
