@@ -29,6 +29,7 @@ private:
 
 	// Training dataset of size N*FEATS_N where N is number of data points
 	// and FEATS_N is the number of features.
-	cv::Mat data;
+	cv::Mat features;
+	cv::Mat responses;
 };
 

@@ -41,7 +41,7 @@ int main(int argc, char** argv)
 	ds::Chen chen;
 	Trainer trainer;
 	chen.addToTrainer(trainer);
-	//trainer.train();
+	trainer.train();
 
 	return 0;
 

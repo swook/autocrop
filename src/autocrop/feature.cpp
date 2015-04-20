@@ -64,7 +64,7 @@ cv::Mat getFeatureVector(const cv::Mat& saliency, const cv::Mat& grad,
 	resize(cr_saliency, _saliency, Size(4, 4), INTER_AREA);
 
 	// Initialise feature vector
-	Mat     feats = Mat(Size(FEATS_N + 1, 1), CV_32F);
+	Mat     feats = Mat(Size(FEATS_N, 1), CV_32F);
 	float* _feats = feats.ptr<float>(0);
 
 

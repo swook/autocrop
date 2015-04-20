@@ -32,7 +32,8 @@ namespace ds
 		auto img_gt = MAT[0].data<std::vector<std::vector<MatlabIOContainer>>>();
 
 #pragma omp parallel for
-		for (int i = 0; i < img_gt.size(); i++)
+		//for (int i = 0; i < img_gt.size(); i++)
+		for (int i = 0; i < 10; i++)
 		{
 			auto path = img_gt[i][0].data<std::string>();
 
