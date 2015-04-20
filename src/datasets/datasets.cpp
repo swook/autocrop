@@ -90,6 +90,7 @@ namespace ds
 					crop = getFixedCrop(grey, mat.row(c));
 				} catch (std::exception e) {
 					std::cout << "Invalid crop: " << mat.row(c) << std::endl;
+					continue;
 				}
 				trainer.add(saliency, grad, crop, GOOD_CROP);
 			}
