@@ -1,14 +1,39 @@
+# Saliency
 set(
-  MAIN_SOURCES
+  SALIENCY_SOURCES
   "util.cpp"
-  "autocrop.cpp"
-  "SLIC.cpp"
-  "saliency.cpp"
-  "feature.cpp"
-  "train.cpp"
-  "classify.cpp"
+  "saliency/SLIC.cpp"
+  "saliency/saliency.cpp"
 )
 
-add_library(autocrop ${MAIN_SOURCES})
+add_library(saliency_lib ${SALIENCY_SOURCES})
 
-target_link_libraries(autocrop)
+
+# Trainer
+set(
+  TRAINER_SOURCES
+  "datasets/datasets.cpp"
+  "autocrop/feature.cpp"
+  "trainer/train.cpp"
+)
+
+add_library(trainer_lib ${SALIENCY_SOURCES} ${TRAINER_SOURCES})
+
+
+# Classifier
+set(
+  CLASSIFIER_SOURCES
+  "autocrop/feature.cpp"
+  "classifier/classify.cpp"
+)
+
+add_library(classifier_lib ${SALIENCY_SOURCES} ${CLASSIFIER_SOURCES})
+
+
+# Autocrop
+set(
+  AUTOCROP_SOURCES
+  "autocrop/autocrop.cpp"
+)
+
+add_library(autocrop_lib ${SALIENCY_SOURCES} ${CLASSIFIER_SOURCES} ${AUTOCROP_SOURCES})

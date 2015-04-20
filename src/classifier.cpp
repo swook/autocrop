@@ -4,9 +4,9 @@ namespace po = boost::program_options;
 #include "opencv2/opencv.hpp"
 using namespace cv;
 
-#include "autocrop.hpp"
-#include "saliency.hpp"
-#include "feature.hpp"
+#include "autocrop/autocrop.hpp"
+#include "saliency/saliency.hpp"
+#include "autocrop/feature.hpp"
 #include "util.hpp"
 
 int main(int argc, char** argv)
@@ -52,8 +52,7 @@ int main(int argc, char** argv)
 	/*
 	 * Call retargeting methods
 	 */
-	Mat out = crop(img);
-	Mat vec = getFeatureVector(img);
+	Mat out = img;
 
 	// Show output image
 	showImageAndWait("Output Image", out);

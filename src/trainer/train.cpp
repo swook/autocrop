@@ -2,8 +2,8 @@
 #include "opencv2/ml.hpp"
 using namespace cv;
 
-#include "saliency.hpp"
-#include "feature.hpp"
+#include "../datasets/datasets.hpp"
+#include "../autocrop/feature.hpp"
 #include "train.hpp"
 
 Trainer::Trainer()
@@ -26,6 +26,16 @@ void Trainer::add(const Mat& img)
 {
 	Mat features = getFeatureVector(img);
 	data.push_back(features);
+
+	// TODO: Get class somehow
+	int _class = 1;
+	// TODO: See if this actually works... print Trainer::data
+	data.push_back(_class);
+}
+
+void Trainer::addDataset(const ds::DataSet set)
+{
+	// TODO
 }
 
 void Trainer::train()

@@ -1,7 +1,7 @@
 #include "opencv2/core.hpp"
 using namespace cv;
 
-#include "saliency.hpp"
+#include "../saliency/saliency.hpp"
 #include "feature.hpp"
 
 
@@ -84,6 +84,7 @@ Mat getFeatureVector(const Mat& img)
 	// TODO
 
 	// Ratio of saliency energy inside crop to total saliency energy
+	// TODO: Do I need to take crop window as function param?
 
 
 	// Return full feature vector

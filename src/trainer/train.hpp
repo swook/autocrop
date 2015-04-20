@@ -3,6 +3,8 @@
 #include "opencv2/core.hpp"
 #include "opencv2/ml.hpp"
 
+#include "../datasets/datasets.hpp"
+
 class Trainer
 {
 public:
@@ -14,6 +16,12 @@ public:
 
 	// Add image into training dataset
 	void add(const cv::Mat& img);
+
+	// Add dataset to training dataset
+	//
+	// NOTE: Appends to any existing training data in member `data`.
+	//       Call init() to clear model and dataset if necessary.
+	void addDataset(const ds::DataSet set);
 
 	// Train model using added datasets
 	void train();

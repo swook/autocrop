@@ -2,7 +2,7 @@
 using namespace cv;
 
 #include "SLIC.hpp"
-#include "util.hpp"
+#include "../util.hpp"
 
 extern "C" {
 #include "vl/generic.h"

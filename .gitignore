@@ -15,3 +15,5 @@ old/
 # Output from programme
 datasets/**/*_saliency.jpg
 
+# Misc
+.clang_complete
