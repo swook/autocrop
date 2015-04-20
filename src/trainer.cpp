@@ -16,7 +16,7 @@ int main(int argc, char** argv)
 	po::options_description desc("Available options");
 	desc.add_options()
 	    ("help", "Show this message")
-	    ("headless,hl", po::bool_switch()->default_value(false), "Run without graphical output")
+	    ("headless", po::bool_switch()->default_value(false), "Run without graphical output")
 	;
 
 	po::positional_options_description p;
@@ -28,7 +28,7 @@ int main(int argc, char** argv)
 
 	if (vm.count("help")) {
 		std::cout << "Usage: " << argv[0]
-			<< " [options] input-file" << std::endl
+			<< " [options]" << std::endl
 			<< desc;
 		return 1;
 	}
@@ -42,6 +42,7 @@ int main(int argc, char** argv)
 	Trainer trainer;
 	chen.addToTrainer(trainer);
 	trainer.train();
+	trainer.save();
 
 	return 0;
 

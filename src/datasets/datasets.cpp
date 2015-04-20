@@ -21,6 +21,39 @@ namespace ds
 
 	Chen::Chen() : DataSet() {}
 
+	/**
+	 * Crop coordinates given by datasets can be noisy with some examples being
+	 * - Zero width/height crops
+	 * - Negative starting coordinates
+	 */
+	Rect Chen::getFixedCrop(const Mat& img, const Mat& crop)
+	{
+		int y    = crop.at<double>(0),
+		    x    = crop.at<double>(1),
+		    ymax = crop.at<double>(2),
+		    xmax = crop.at<double>(3);
+
+		// Correct bad data
+		y = y < 0 ? 0 : y;
+		x = x < 0 ? 0 : x;
+		ymax = ymax < 0 ? 0 : ymax;
+		xmax = xmax < 0 ? 0 : xmax;
+		ymax = ymax >= img.rows ? img.rows - 1 : ymax;
+		xmax = xmax >= img.cols ? img.cols - 1 : xmax;
+		int h    = ymax - y,
+		    w    = xmax - x;
+
+		std::cout << "Current crop: " << crop << std::endl;
+		if (h < 1 && w < 1)
+		{
+			std::cout << "Bad crop: " << crop << std::endl;
+			throw std::runtime_error("Invalid crop");
+		}
+
+		return Rect(x, y, w, h);
+	}
+
+
 	void Chen::addToTrainer(Trainer& trainer)
 	{
 		MatlabIO mio;
@@ -50,7 +83,16 @@ namespace ds
 			Mat grad     = getGrad(grey);
 
 			for (int c = 0; c < mat.rows; c++)
-				trainer.add(saliency, grad, mat.row(c), GOOD_CROP);
+			{
+				// Mechanical turk data is good crop
+				Rect crop;
+				try {
+					crop = getFixedCrop(grey, mat.row(c));
+				} catch (std::exception e) {
+					std::cout << "Invalid crop: " << mat.row(c) << std::endl;
+				}
+				trainer.add(saliency, grad, crop, GOOD_CROP);
+			}
 		}
 
 	}

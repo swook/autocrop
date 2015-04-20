@@ -15,14 +15,15 @@ public:
 	void init();
 
 	// Add image into training dataset
-	void add(const cv::Mat& img, const cv::Mat& crop, const int cls);
+	void add(const cv::Mat& img, const cv::Rect crop, const int cls);
 	void add(const cv::Mat& saliency, const cv::Mat& grad,
-			const cv::Mat& crop, const int cls);
+			const cv::Rect crop, const int cls);
 
 	// Train model using added datasets
 	void train();
 
-	// TODO: Store model to file
+	// Store model to file
+	void save();
 
 private:
 	cv::Ptr<cv::ml::SVM> model;

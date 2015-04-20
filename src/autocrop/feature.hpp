@@ -4,10 +4,10 @@
 
 #define FEATS_N 21
 
-cv::Mat getFeatureVector(const cv::Mat& img, const cv::Mat& crop);
+cv::Mat getFeatureVector(const cv::Mat& img, const cv::Rect crop);
 
 cv::Mat getFeatureVector(const cv::Mat& saliency, const cv::Mat& edges,
-	const cv::Mat& crop);
+	const cv::Rect crop);
 
 cv::Rect getFixedCrop(const cv::Mat& img, const cv::Mat& crop);
 

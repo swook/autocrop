@@ -47,6 +47,7 @@ namespace ds
 	{
 	public:
 		Chen();
-		void addToTrainer(Trainer& trainer);
+		cv::Rect getFixedCrop(const cv::Mat& img, const cv::Mat& crop);
+		void     addToTrainer(Trainer& trainer);
 	};
 }

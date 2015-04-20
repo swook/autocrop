@@ -16,7 +16,7 @@ using namespace cv;
  * while datasets should use the other method to reduce calculation of saliency
  * and edge maps.
  */
-Mat getFeatureVector(const Mat& img, const Mat& crop)
+Mat getFeatureVector(const Mat& img, const Rect crop)
 {
 	// Calculate saliency map
 	Mat _saliency = getSaliency(img);
@@ -43,19 +43,16 @@ Mat getFeatureVector(const Mat& img, const Mat& crop)
  *   23 features
  */
 cv::Mat getFeatureVector(const cv::Mat& saliency, const cv::Mat& grad,
-	const cv::Mat& crop)
+	const cv::Rect crop)
 {
 	int h = saliency.rows,
 	    w = saliency.cols;
 
-	// Get crop
-	Rect rect = getFixedCrop(saliency, crop);
+	Mat cr_saliency = saliency(crop);
+	Mat cr_grad     = grad(crop);
 
-	Mat cr_saliency = saliency(rect);
-	Mat cr_grad     = grad(rect);
-
-	// showImage("cropped saliency", cr_saliency);
-	// showImageAndWait("cropped gradient", cr_grad);
+	showImage("cropped saliency", cr_saliency);
+	showImageAndWait("cropped gradient", cr_grad);
 
 
 	// Resize cropped saliency map to be 4x4. Use INTER_AREA to average pixel
@@ -130,39 +127,6 @@ cv::Mat getFeatureVector(const cv::Mat& saliency, const cv::Mat& grad,
 
 	// Return full feature vector
 	return feats;
-}
-
-/**
- * Crop coordinates given by datasets can be noisy with some examples being
- * - Zero width/height crops
- * - Negative starting coordinates
- */
-Rect getFixedCrop(const Mat& img, const Mat& crop)
-{
-	int y    = crop.at<double>(0),
-	    x    = crop.at<double>(1),
-	    ymax = crop.at<double>(2),
-	    xmax = crop.at<double>(3);
-
-	// Correct bad data
-	y = y < 0 ? 0 : y;
-	x = x < 0 ? 0 : x;
-	ymax = ymax < 0 ? 0 : ymax;
-	xmax = xmax < 0 ? 0 : xmax;
-	ymax = ymax >= img.rows ? img.rows - 1 : ymax;
-	xmax = xmax >= img.cols ? img.cols - 1 : xmax;
-
-	int h    = ymax - y,
-	    w    = xmax - x;
-
-	std::cout << "Current crop: " << crop << std::endl;
-	if (h < 1 && w < 1)
-	{
-		std::cout << "Bad crop: " << crop << std::endl;
-		throw std::runtime_error("Invalid crop");
-	}
-
-	return Rect(x, y, w, h);
 }
 
 

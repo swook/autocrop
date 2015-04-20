@@ -24,30 +24,28 @@ void Trainer::init()
 	responses = Mat(Size(1, 0), CV_32F);
 }
 
-void Trainer::add(const Mat& img, const Mat& crop, const int cls)
+void Trainer::add(const Mat& img, const Rect crop, const int cls)
 {
 	add(getSaliency(img), getGrad(img), crop, cls);
 }
 
-void Trainer::add(const Mat& saliency, const Mat& grad, const Mat& crop,
+void Trainer::add(const Mat& saliency, const Mat& grad, const Rect crop,
 		const int cls)
 {
-	try
-	{
-		Mat featvec = getFeatureVector(saliency, grad, crop);
-		features.push_back(featvec);
-		responses.push_back(cls);
-		std::cout << features << std::endl;
-	}
-	catch (const std::exception& e)
-	{
-		std::cout << "Invalid crop for given image" << std::endl;
-	}
+	Mat featvec = getFeatureVector(saliency, grad, crop);
+	features.push_back(featvec);
+	responses.push_back(cls);
+	std::cout << features << std::endl;
 }
 
 void Trainer::train()
 {
 	auto traindata = ml::TrainData::create(features, ml::ROW_SAMPLE, responses);
 	model->trainAuto(traindata);
+}
+
+void Trainer::save()
+{
+	model->save("autocrop_model.xml");
 }
 
