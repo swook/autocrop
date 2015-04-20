@@ -20,7 +20,7 @@ void Trainer::init()
 
 	// Matrix with FEATS_N+1 columns
 	// NOTE: FEATS_N defined in feature.hpp
-	data = Mat(Size(0, FEATS_N + 1), CV_32F);
+	data = Mat(Size(FEATS_N + 1, 0), CV_32F);
 }
 
 void Trainer::add(const Mat& img, const Mat& crop, const int cls)
