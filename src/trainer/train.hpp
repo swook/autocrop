@@ -15,13 +15,9 @@ public:
 	void init();
 
 	// Add image into training dataset
-	void add(const cv::Mat& img);
-
-	// Add dataset to training dataset
-	//
-	// NOTE: Appends to any existing training data in member `data`.
-	//       Call init() to clear model and dataset if necessary.
-	void addDataset(const ds::DataSet set);
+	void add(const cv::Mat& img, const cv::Mat& crop, const int cls);
+	void add(const cv::Mat& saliency, const cv::Mat& grad,
+			const cv::Mat& crop, const int cls);
 
 	// Train model using added datasets
 	void train();

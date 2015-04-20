@@ -271,6 +271,8 @@ Mat getSaliency(const Mat& img)
 	cvtColor(img_BGR_2, img_lab_2, CV_BGR2Lab);
 	cvtColor(img_BGR_4, img_lab_4, CV_BGR2Lab);
 
+	/*
+
 	// Get SLIC superpixels
 	auto segmentation_1 = std::vector<vl_uint32>(H*W);
 	auto segmentation_2 = std::vector<vl_uint32>(H*W/4);
@@ -333,11 +335,16 @@ Mat getSaliency(const Mat& img)
 	normalize(D.mul(G), out, 0.f, 1.f, NORM_MINMAX);
 	//showImage("Saliency Map", out);
 
+	*/
+
 	// Show result of Boolean Map approach
 	// 2013. Zhang and Sclaroff
 	auto bms = BMS(img_lab_1, 3, true, false, CL_Lab, false);
 	bms.computeSaliency(4);
-	showImage("Boolean Map", bms.getSaliencyMap());
+	Mat out = bms.getSaliencyMap();
+	out.convertTo(out, CV_32F);
+	normalize(out, out, 0.f, 1.f, NORM_MINMAX);
+	//showImage("Boolean Map", bms.getSaliencyMap());
 
 	// Scale back to original size for further processing
 	Mat out_scaled = Mat();

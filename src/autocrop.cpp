@@ -53,7 +53,6 @@ int main(int argc, char** argv)
 	 * Call retargeting methods
 	 */
 	Mat out = crop(img);
-	Mat vec = getFeatureVector(img);
 
 	// Show output image
 	showImageAndWait("Output Image", out);

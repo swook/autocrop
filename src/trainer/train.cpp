@@ -3,6 +3,7 @@
 using namespace cv;
 
 #include "../datasets/datasets.hpp"
+#include "../saliency/saliency.hpp"
 #include "../autocrop/feature.hpp"
 #include "train.hpp"
 
@@ -17,25 +18,30 @@ void Trainer::init()
 	if (model)  model->clear();
 	else        model = ml::SVM::create();
 
-	// Matrix with FEATS_N columns
+	// Matrix with FEATS_N+1 columns
 	// NOTE: FEATS_N defined in feature.hpp
-	data = Mat(Size(0, FEATS_N), CV_64F);
+	data = Mat(Size(0, FEATS_N + 1), CV_32F);
 }
 
-void Trainer::add(const Mat& img)
+void Trainer::add(const Mat& img, const Mat& crop, const int cls)
 {
-	Mat features = getFeatureVector(img);
-	data.push_back(features);
-
-	// TODO: Get class somehow
-	int _class = 1;
-	// TODO: See if this actually works... print Trainer::data
-	data.push_back(_class);
+	add(getSaliency(img), getGrad(img), crop, cls);
 }
 
-void Trainer::addDataset(const ds::DataSet set)
+void Trainer::add(const Mat& saliency, const Mat& grad, const Mat& crop,
+		const int cls)
 {
-	// TODO
+	try
+	{
+		Mat features = getFeatureVector(saliency, grad, crop);
+		features.at<float>(0, FEATS_N) = cls;
+		data.push_back(features);
+		std::cout << features << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << "Invalid crop for given image" << std::endl;
+	}
 }
 
 void Trainer::train()

@@ -1,15 +1,28 @@
 #pragma once
 
 #include "opencv2/core.hpp"
+#include "../trainer/train.hpp"
 
 // A namespace is used to contain all dataset related classes/methods
 namespace ds
 {
-	// Status codes for parsing in dataset
+	// Classes available
 	enum
 	{
-		EOS = 1, // End of set
+		GOOD_CROP = 1,
+		BAD_CROP  = 0,
 	};
+
+	// Representation of stored data
+	struct Entry
+	{
+		const cv::Mat saliency;
+		const cv::Mat grad;
+		const cv::Mat crop;
+		const int     cls;
+	};
+	typedef std::vector<Entry> Entries;
+
 
 	// A DataSet contains details to acquire images (including candidate
 	// crops) with associated classifications.
@@ -17,10 +30,11 @@ namespace ds
 	// The classification is 0|1 where 1 is a good crop.
 	class DataSet
 	{
+	public:
 		DataSet();
-		void init();
-		cv::Mat getRow();
-		cv::Mat getMat();
+		void addToTrainer(Trainer& trainer);
+
+		Entries data;
 	};
 
 
@@ -29,7 +43,10 @@ namespace ds
 	//
 	// Composed of images and crop windows collected using Amazon Mechanical
 	// Turk.
-	class Chen : DataSet
+	class Chen : public DataSet
 	{
+	public:
+		Chen();
+		void addToTrainer(Trainer& trainer);
 	};
 }
