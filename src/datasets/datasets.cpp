@@ -31,20 +31,22 @@ namespace ds
 
 		auto img_gt = MAT[0].data<std::vector<std::vector<MatlabIOContainer>>>();
 
-		std::string path;
-		Mat mat, img, grey, saliency, grad, feats;
-
+#pragma omp parallel for
 		for (int i = 0; i < img_gt.size(); i++)
 		{
-			path = img_gt[i][0].data<std::string>();
-			mat  = img_gt[i][1].data<Mat>();
+			auto path = img_gt[i][0].data<std::string>();
 
-			std::cout << "Loading: " << path << std::endl;
-			img = imread("../datasets/Chen/image/" + path);
+			std::cout << "Loading: " << path  << " (" << i << "/" <<
+				img_gt.size() << ")" << std::endl;
+
+			Mat mat = img_gt[i][1].data<Mat>();
+			Mat img = imread("../datasets/Chen/image/" + path);
+
+			Mat grey;
 			cvtColor(img, grey, CV_BGR2GRAY);
 
-			saliency = getSaliency(img);
-			grad     = getGrad(grey);
+			Mat saliency = getSaliency(img);
+			Mat grad     = getGrad(grey);
 
 			for (int c = 0; c < mat.rows; c++)
 				trainer.add(saliency, grad, mat.row(c), GOOD_CROP);
