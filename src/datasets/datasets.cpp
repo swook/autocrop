@@ -93,6 +93,10 @@ namespace ds
 					continue;
 				}
 				trainer.add(saliency, grad, crop, GOOD_CROP);
+
+				// Randomly generated crop is "bad"
+				// TODO: Make sure overlap with good crop is not large
+				trainer.add(saliency, grad, randomCrop(saliency), BAD_CROP);
 			}
 		}
 

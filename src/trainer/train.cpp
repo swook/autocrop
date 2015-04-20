@@ -35,7 +35,8 @@ void Trainer::add(const Mat& saliency, const Mat& grad, const Rect crop,
 	Mat featvec = getFeatureVector(saliency, grad, crop);
 	features.push_back(featvec);
 	responses.push_back(cls);
-	std::cout << features << std::endl;
+
+	//std::cout << featvec << std::endl;
 }
 
 void Trainer::train()

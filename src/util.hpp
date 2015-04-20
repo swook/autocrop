@@ -13,3 +13,6 @@ void showImageAndWait(const char* title, const cv::Mat& img);
 float var(std::vector<float>& v);
 
 void addGaussian(cv::Mat& img, uint x, uint y, float std, float weight);
+
+cv::Rect randomCrop(const cv::Mat& img);
+
