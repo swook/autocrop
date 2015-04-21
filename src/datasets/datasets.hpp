@@ -1,7 +1,7 @@
 #pragma once
 
 #include "opencv2/core.hpp"
-#include "../trainer/train.hpp"
+#include "../training/train.hpp"
 
 // A namespace is used to contain all dataset related classes/methods
 namespace ds

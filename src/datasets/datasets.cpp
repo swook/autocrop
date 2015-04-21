@@ -7,7 +7,7 @@ using namespace cv;
 #include "datasets.hpp"
 #include "../util.hpp"
 #include "../saliency/saliency.hpp"
-#include "../autocrop/feature.hpp"
+#include "../features/feature.hpp"
 
 // DataSets namespace
 namespace ds

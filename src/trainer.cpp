@@ -5,7 +5,7 @@ namespace po = boost::program_options;
 using namespace cv;
 
 #include "datasets/datasets.hpp"
-#include "trainer/train.hpp"
+#include "training/train.hpp"
 #include "util.hpp"
 
 int main(int argc, char** argv)

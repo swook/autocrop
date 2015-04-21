@@ -4,7 +4,7 @@ using namespace cv;
 
 #include "../datasets/datasets.hpp"
 #include "../saliency/saliency.hpp"
-#include "../autocrop/feature.hpp"
+#include "../features/feature.hpp"
 #include "train.hpp"
 
 Trainer::Trainer()
