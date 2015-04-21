@@ -33,12 +33,14 @@ add_subdirectory(src)
 
 # Binaries
 add_executable(saliency   "src/saliency.cpp")
+add_executable(features   "src/get_features.cpp")
 add_executable(classifier "src/classifier.cpp")
 add_executable(trainer    "src/trainer.cpp")
 add_executable(autocrop   "src/autocrop.cpp")
 
 # Depend on OpenCV and Boost
 target_link_libraries(saliency   saliency_lib   -lvl           ${OpenCV_LIBS} ${Boost_LIBRARIES})
+target_link_libraries(features   features_lib   -lvl -lcvmatio ${OpenCV_LIBS} ${Boost_LIBRARIES})
 target_link_libraries(classifier classifier_lib -lvl           ${OpenCV_LIBS} ${Boost_LIBRARIES})
 target_link_libraries(trainer    trainer_lib    -lvl -lcvmatio ${OpenCV_LIBS} ${Boost_LIBRARIES})
 target_link_libraries(autocrop   autocrop_lib   -lvl           ${OpenCV_LIBS} ${Boost_LIBRARIES})

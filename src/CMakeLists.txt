@@ -9,31 +9,42 @@ set(
 add_library(saliency_lib ${SALIENCY_SOURCES})
 
 
-# Trainer
+# Features
 set(
-  TRAINER_SOURCES
+  FEATURES_SOURCES
+  ${SALIENCY_SOURCES}
   "datasets/datasets.cpp"
   "features/feature.cpp"
-  "training/train.cpp"
+  "training/train.cpp" # TODO: Remove
 )
 
-add_library(trainer_lib ${SALIENCY_SOURCES} ${TRAINER_SOURCES})
-
+add_library(features_lib ${FEATURES_SOURCES})
 
 # Classifier
 set(
   CLASSIFIER_SOURCES
-  "features/feature.cpp"
+  ${FEATURES_SOURCES}
   "classify/classify.cpp"
 )
 
-add_library(classifier_lib ${SALIENCY_SOURCES} ${CLASSIFIER_SOURCES})
+add_library(classifier_lib ${CLASSIFIER_SOURCES})
+
+
+# Trainer
+set(
+  TRAINER_SOURCES
+  ${FEATURES_SOURCES} # TODO: Remove
+  "training/train.cpp"
+)
+
+add_library(trainer_lib ${TRAINER_SOURCES})
 
 
 # Autocrop
 set(
   AUTOCROP_SOURCES
+  ${CLASSIFIER_SOURCES}
   "autocrop/autocrop.cpp"
 )
 
-add_library(autocrop_lib ${SALIENCY_SOURCES} ${CLASSIFIER_SOURCES} ${AUTOCROP_SOURCES})
+add_library(autocrop_lib ${AUTOCROP_SOURCES})
