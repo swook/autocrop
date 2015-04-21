@@ -1,0 +1,15 @@
+> Allow saliency calculation on folders
+   - Use to cache saliency calculation of images
+
+> Cache extracted features in get_features binary
+
+> Script to get top images from Flicker/Photo.net
+
+> Generate "bad" random crop with overlap below threshold
+
+> Cache trained model for use in classifier
+
+> Write pipeline script
+
+> Compare resulting crop with crops displayed in Chen paper
+
