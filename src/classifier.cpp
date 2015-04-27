@@ -7,7 +7,7 @@ using namespace cv;
 #include "autocrop/autocrop.hpp"
 #include "saliency/saliency.hpp"
 #include "features/feature.hpp"
-#include "util.hpp"
+#include "util/opencv.hpp"
 
 int main(int argc, char** argv)
 {

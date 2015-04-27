@@ -5,7 +5,7 @@ namespace po = boost::program_options;
 using namespace cv;
 
 #include "saliency/saliency.hpp"
-#include "util.hpp"
+#include "util/opencv.hpp"
 
 int main(int argc, char** argv)
 {

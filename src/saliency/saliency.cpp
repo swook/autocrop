@@ -1,7 +1,7 @@
 #include "../../lib/BMS/BMS.cpp"
 
 #include "SLIC.hpp"
-#include "../util.hpp"
+#include "../util/opencv.hpp"
 
 const float _9 = 1.f / 9.f;
 

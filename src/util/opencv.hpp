@@ -4,15 +4,13 @@
 
 extern bool GRAPHICAL;
 
-typedef unsigned int uint;
+typedef unsigned int         uint;
+typedef std::vector<cv::Mat> Mats;
 
 void showImage(const char* title, const cv::Mat& img);
+void showImage(const char* title, const Mats&    imgs);
 
 void showImageAndWait(const char* title, const cv::Mat& img);
-
-float var(std::vector<float>& v);
+void showImageAndWait(const char* title, const Mats&    imgs);
 
 void addGaussian(cv::Mat& img, uint x, uint y, float std, float weight);
-
-cv::Rect randomCrop(const cv::Mat& img);
-

@@ -4,8 +4,8 @@
 #include "opencv2/imgproc.hpp"
 using namespace cv;
 
+#include "../util/opencv.hpp"
 #include "../saliency/saliency.hpp"
-#include "../util.hpp"
 #include "feature.hpp"
 
 

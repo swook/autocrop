@@ -2,7 +2,8 @@
 using namespace cv;
 
 #include "SLIC.hpp"
-#include "../util.hpp"
+#include "../util/opencv.hpp"
+#include "../util/math.hpp"
 
 extern "C" {
 #include "vl/generic.h"

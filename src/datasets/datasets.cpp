@@ -5,7 +5,7 @@ using namespace cv;
 #include "cvmatio/MatlabIO.hpp"
 
 #include "datasets.hpp"
-#include "../util.hpp"
+#include "../util/math.hpp"
 #include "../saliency/saliency.hpp"
 #include "../features/feature.hpp"
 

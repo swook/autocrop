@@ -1,7 +1,8 @@
 # Saliency
 set(
   SALIENCY_SOURCES
-  "util.cpp"
+  "util/opencv.cpp"
+  "util/math.cpp"
   "saliency/SLIC.cpp"
   "saliency/saliency.cpp"
 )

@@ -1,11 +1,47 @@
-#include <cmath>
-
 #include "opencv2/opencv.hpp"
 using namespace cv;
 
-typedef unsigned int uint;
+#include "opencv.hpp"
 
 bool GRAPHICAL = true;
+
+Mat my_hconcat(const Mats& imgs)
+{
+	int h = imgs[0].rows;
+
+	Mats outs;
+	for (int i = 0; i < imgs.size(); i++)
+	{
+		Mat img = imgs[i];
+		Mat out = img;
+
+		// If gray-scale, make BGR
+		if (img.channels() == 1)
+		{
+			cvtColor(img, out, CV_GRAY2BGR);
+		}
+
+		// Make no. of rows match
+		if (out.rows != h)
+		{
+			double ratio = (double) h / (double) img.rows;
+			resize(out, out, Size(img.cols * ratio, h));
+		}
+
+		// Convert to CV_8UC3
+		if (out.type() != CV_8UC3)
+		{
+			normalize(out, out, 0, 255, NORM_MINMAX);
+			out.convertTo(out, CV_8UC3);
+		}
+
+		outs.push_back(out);
+	}
+
+	Mat out;
+	hconcat(outs, out);
+	return out;
+}
 
 void showImage(const char* title, const Mat& img)
 {
@@ -14,6 +50,11 @@ void showImage(const char* title, const Mat& img)
 	std::cout << "\nShowing image: \"" << title << "\"." << std::endl;
 	namedWindow(title, CV_WINDOW_NORMAL);
 	imshow(title, img);
+}
+
+void showImage(const char* title, const Mats& imgs)
+{
+	showImage(title, my_hconcat(imgs));
 }
 
 void showImageAndWait(const char* title, const Mat& img)
@@ -25,22 +66,11 @@ void showImageAndWait(const char* title, const Mat& img)
 	waitKey(0);
 }
 
-/**
- * Calculates the variance of values in a given list of floats
- */
-float var(std::vector<float>& v)
+void showImageAndWait(const char* title, const Mats& imgs)
 {
-	auto n = v.size();
-	if (n == 0) return 0.f;
-
-	auto sum = std::accumulate(std::begin(v), std::end(v), 0.0);
-	auto mean = sum / n;
-	return sqrt(std::accumulate(std::begin(v), std::end(v), 0.f,
-		[&](const float b, const float e) {
-			float diff = e - mean;
-			return b + diff * diff;
-		}) / n);
+	showImageAndWait(title, my_hconcat(imgs));
 }
+
 
 /**
  * Adds a Gaussian of specified standard deviation centred at a specified
@@ -97,32 +127,5 @@ void addGaussian(Mat& img, uint x, uint y, float std, float weight)
 			}
 		}
 	}
-}
-
-
-float randInt(const float min, const float max)
-{
-	return roundf(rand() / (float)RAND_MAX * (max - min) + min);
-}
-
-
-/**
- * Returns a random crop window for a given image.
- *
- * This is used to generate "bad" crops for the trainer.
- *
- * TODO: Ensure overlap with "good" crop is not too big
- */
-Rect randomCrop(const Mat& img)
-{
-	int h = img.rows,
-	    w = img.cols;
-
-	int x0 = randInt(0, w - 2),
-	    y0 = randInt(0, h - 2),
-	    dx = randInt(1, w - 1 - x0),
-	    dy = randInt(1, h - 1 - y0);
-
-	return Rect(x0, y0, dx, dy);
 }
 

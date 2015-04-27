@@ -6,7 +6,7 @@ using namespace cv;
 
 #include "datasets/datasets.hpp"
 #include "training/train.hpp"
-#include "util.hpp"
+#include "util/opencv.hpp"
 
 int main(int argc, char** argv)
 {
