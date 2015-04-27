@@ -134,9 +134,10 @@ cv::Mat getFeatureVector(const cv::Mat& saliency, const cv::Mat& grad,
 Mat getGrad(const Mat& img)
 {
 	// Blur to remove high frequency textures
-	Mat blurred;
-	auto kernel_size = Size(3, 3);
-	blur(img, blurred, kernel_size);
+	Mat   blurred;
+	Size  kernel_size = Size(3, 3);
+	float sigma       = 1.f;
+	GaussianBlur(img, blurred, kernel_size, sigma);
 
 	// Calculate gradient of image
 	Mat out;
