@@ -43,7 +43,7 @@ Mat my_hconcat(const Mats& imgs)
 	return out;
 }
 
-void showImage(const char* title, const Mat& img)
+void showImage(std::string title, const Mat& img)
 {
 	if (!GRAPHICAL) return;
 
@@ -52,12 +52,12 @@ void showImage(const char* title, const Mat& img)
 	imshow(title, img);
 }
 
-void showImage(const char* title, const Mats& imgs)
+void showImage(std::string title, const Mats& imgs)
 {
 	showImage(title, my_hconcat(imgs));
 }
 
-void showImageAndWait(const char* title, const Mat& img)
+void showImageAndWait(std::string title, const Mat& img)
 {
 	if (!GRAPHICAL) return;
 
@@ -66,7 +66,7 @@ void showImageAndWait(const char* title, const Mat& img)
 	waitKey(0);
 }
 
-void showImageAndWait(const char* title, const Mats& imgs)
+void showImageAndWait(std::string title, const Mats& imgs)
 {
 	showImageAndWait(title, my_hconcat(imgs));
 }

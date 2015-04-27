@@ -9,7 +9,7 @@ project(sfm)
 
 # Add libraries
 find_package(OpenCV REQUIRED core highgui imgproc ml xphoto)
-find_package(Boost  REQUIRED program_options system)
+find_package(Boost  REQUIRED program_options system filesystem)
 
 include_directories(${Boost_INCLUDE_DIRS})
 #set(Boost_USE_STATIC_LIBS ON)

@@ -1,10 +1,12 @@
 # Saliency
 set(
   SALIENCY_SOURCES
+  "util/file.cpp"
   "util/opencv.cpp"
   "util/math.cpp"
   "saliency/SLIC.cpp"
   "saliency/saliency.cpp"
+  "features/feature.cpp"
 )
 
 add_library(saliency_lib ${SALIENCY_SOURCES})
