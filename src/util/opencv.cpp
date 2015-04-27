@@ -72,10 +72,6 @@ void showImageAndWait(std::string title, const Mats& imgs)
 }
 
 
-/**
- * Adds a Gaussian of specified standard deviation centred at a specified
- * coordinate on a given image
- */
 void addGaussian(Mat& img, uint x, uint y, float std, float weight)
 {
 	uint H  = img.rows,

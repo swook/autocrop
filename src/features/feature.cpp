@@ -9,13 +9,6 @@ using namespace cv;
 #include "feature.hpp"
 
 
-/**
- * Convenience method for providing source image, not saliency map and edge map.
- *
- * This version is used for cases where only one data point exists per image
- * while datasets should use the other method to reduce calculation of saliency
- * and edge maps.
- */
 Mat getFeatureVector(const Mat& img, const Rect crop)
 {
 	// Calculate saliency map
@@ -31,17 +24,6 @@ Mat getFeatureVector(const Mat& img, const Rect crop)
 }
 
 
-/**
- * getFeatureVector constructs a feature vector from a given saliency map and
- * gradient map.
- *
- * The final feature vector length is:
- *   21 Visual composition
- *    1 Boundary simplicity
- *    1 Content preservation
- *   -----------
- *   23 features
- */
 cv::Mat getFeatureVector(const cv::Mat& saliency, const cv::Mat& grad,
 	const cv::Rect crop)
 {
@@ -130,7 +112,6 @@ cv::Mat getFeatureVector(const cv::Mat& saliency, const cv::Mat& grad,
 }
 
 
-// Get gradient
 Mat getGrad(const Mat& img)
 {
 	// Blur to remove high frequency textures

@@ -21,11 +21,6 @@ namespace ds
 
 	Chen::Chen() : DataSet() {}
 
-	/**
-	 * Crop coordinates given by datasets can be noisy with some examples being
-	 * - Zero width/height crops
-	 * - Negative starting coordinates
-	 */
 	Rect Chen::getFixedCrop(const Mat& img, const Mat& crop)
 	{
 		int y    = crop.at<double>(0),

@@ -6,9 +6,6 @@ using namespace cv;
 
 #include "math.hpp"
 
-/**
- * Calculates the variance of values in a given list of floats
- */
 float var(std::vector<float>& v)
 {
 	auto n = v.size();
@@ -30,13 +27,6 @@ float randInt(const float min, const float max)
 }
 
 
-/**
- * Returns a random crop window for a given image.
- *
- * This is used to generate "bad" crops for the trainer.
- *
- * TODO: Ensure overlap with "good" crop is not too big
- */
 Rect randomCrop(const Mat& img)
 {
 	int h = img.rows,

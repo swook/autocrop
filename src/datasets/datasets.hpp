@@ -47,7 +47,14 @@ namespace ds
 	{
 	public:
 		Chen();
+
+		/**
+		 * Crop coordinates given by datasets can be noisy with some examples being
+		 * - Zero width/height crops
+		 * - Negative starting coordinates
+		 */
 		cv::Rect getFixedCrop(const cv::Mat& img, const cv::Mat& crop);
+
 		void     addToTrainer(Trainer& trainer);
 	};
 }
