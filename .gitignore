@@ -19,3 +19,4 @@ datasets/**/*.exr
 
 # Misc
 .clang_complete
+.*
