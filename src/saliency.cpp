@@ -77,7 +77,7 @@ int main(int argc, char** argv)
 	}
 	else if (fs::is_directory(in_path))
 	{
-		Mat         sali, grad;
+		Mat         sali, grad, grey;
 		path        ipath;
 		std::string osali, ograd;
 
@@ -107,8 +107,9 @@ int main(int argc, char** argv)
 				std::cout << "Processing " << ins[i] << "..." << std::endl;
 
 				// Calculate saliency and gradient map
+				cvtColor(img, grey, CV_BGR2GRAY);
 				sali = getSaliency(img);
-				grad = getGrad(img);
+				grad = getGrad(grey);
 
 				// Save calculated maps
 				std::cout << "Writing to " << osali << std::endl;
