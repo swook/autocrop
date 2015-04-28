@@ -24,7 +24,6 @@ set(
 set(
   FEATURES_SOURCES
   ${SALIENCY_SOURCES}
-  "features/feature.cpp"
 )
 
 add_library(features_lib ${FEATURES_SOURCES} ${DATASETS_SOURCES})
@@ -45,7 +44,7 @@ add_library(trainer_lib ${TRAINER_SOURCES})
 set(
   CLASSIFIER_SOURCES
   ${FEATURES_SOURCES}
-  "classify/classify.cpp"
+  "classify/Classifier.cpp"
 )
 
 add_library(classifier_lib ${CLASSIFIER_SOURCES})

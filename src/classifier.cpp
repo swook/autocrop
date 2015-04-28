@@ -4,9 +4,7 @@ namespace po = boost::program_options;
 #include "opencv2/opencv.hpp"
 using namespace cv;
 
-#include "autocrop/autocrop.hpp"
-#include "saliency/saliency.hpp"
-#include "features/feature.hpp"
+#include "classify/Classifier.hpp"
 #include "util/opencv.hpp"
 
 int main(int argc, char** argv)
@@ -18,7 +16,6 @@ int main(int argc, char** argv)
 	desc.add_options()
 	    ("help", "Show this message")
 	    ("input-file,i", po::value<std::string>(), "Input file path")
-	    ("output-file,o", po::value<std::string>(), "Output file path (default: output.png)")
 	    ("headless,hl", po::bool_switch()->default_value(false), "Run without graphical output")
 	;
 
@@ -38,7 +35,8 @@ int main(int argc, char** argv)
 
 	if (vm["headless"].as<bool>()) GRAPHICAL = false;
 
-	/*
+
+	/**
 	 * Read image file
 	 */
 	std::string const f = vm["input-file"].as<std::string>();
@@ -49,22 +47,22 @@ int main(int argc, char** argv)
 	}
 	showImage("Input Image", img);
 
-	/*
-	 * Call retargeting methods
-	 */
-	Mat out = img;
 
-	// Show output image
-	showImageAndWait("Output Image", out);
-
-	/*
-	 * Save output if necessary
+	/**
+	 * Load trained model
 	 */
-	if (vm.count("output-file")) {
-		Mat out_norm;
-		normalize(out, out_norm, 0.f, 255.f, NORM_MINMAX);
-		imwrite(vm["output-file"].as<std::string>(), out_norm);
-	}
+	Classifier classifier;
+	classifier.loadModel("Trained_model.yml");
+	bool good_crop = classifier.classify(img);
+
+
+	/**
+	 * Print output
+	 */
+	if (good_crop)
+		std::cout << "The input image is a good crop." << std::endl;
+	else
+		std::cout << "The input image is a bad crop." << std::endl;
 
 	return 0;
 
