@@ -77,23 +77,20 @@ int main(int argc, char** argv)
 	}
 	else if (fs::is_directory(in_path))
 	{
-		Mat         sali, grad, grey;
-		path        ipath;
-		std::string osali, ograd;
-
 		paths ins = getUnprocessedImagePaths(in_path);
 
 		// If output-dir specified, write output files
 		// Also, calculate gradient image for constructing features
 		if (vm.count("output-dir"))
 		{
+#pragma omp parallel for
 			for (int i = 0; i < ins.size(); i++)
 			{
-				ipath = ins[i];
-				osali = vm["output-dir"].as<std::string>() + "/" +
-				        setSuffix(ins[i], "saliency").filename().string();
-				ograd = vm["output-dir"].as<std::string>() + "/" +
-				        setSuffix(ins[i], "grad").filename().string();
+				path ipath = ins[i];
+				std::string osali = vm["output-dir"].as<std::string>() + "/" +
+				                    setSuffix(ins[i], "saliency").filename().string(),
+				            ograd = vm["output-dir"].as<std::string>() + "/" +
+				                    setSuffix(ins[i], "grad").filename().string();
 
 				if (fs::exists(osali)) continue;
 
@@ -104,24 +101,28 @@ int main(int argc, char** argv)
 					std::cout << ins[i] << " is not a valid image." << std::endl;
 					continue;
 				}
-				std::cout << "Processing " << ins[i] << "..." << std::endl;
+				std::cout << "> Processing\t" << i << "/" << ins.size()
+					<< ": " << ins[i] << "..." << std::endl;
 
 				// Calculate saliency and gradient map
+				Mat sali, grad, grey;
 				cvtColor(img, grey, CV_BGR2GRAY);
 				sali = getSaliency(img);
 				grad = getGrad(grey);
 
 				// Save calculated maps
-				std::cout << "Writing to " << osali << std::endl;
+				std::cout << "> Writing\t" << i << "/" << ins.size()
+					<< ": " << osali << "..." << std::endl;
 				imwrite(osali, sali);
 				imwrite(ograd, grad);
 			}
 		}
 		else
 		{
+			Mat sali;
 			for (int i = 0; i < ins.size(); i++)
 			{
-				ipath = ins[i];
+				path ipath = ins[i];
 
 				// Load Image
 				Mat const img = imread(ins[i].string(), CV_LOAD_IMAGE_COLOR);
