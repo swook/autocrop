@@ -1,8 +1,13 @@
 #pragma once
 
 #include "opencv2/core.hpp"
+#include "FeatMat.hpp"
 
-#define FEATS_N 21
+#define FEATS_N 23
+
+
+void addImageToFeatMat(FeatMat& featMat, const Mat& saliency, const Mat& grad,
+		const Rect crop, const int cls);
 
 /**
  * Convenience method for providing source image, not saliency map and edge map.

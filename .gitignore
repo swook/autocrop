@@ -13,7 +13,9 @@ retarget
 old/
 
 # Output from programme
-datasets/**/*_saliency.jpg
+datasets/**/*.exr
+*.yml
+*.xml
 
 # Misc
 .clang_complete

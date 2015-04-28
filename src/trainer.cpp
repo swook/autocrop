@@ -38,9 +38,7 @@ int main(int argc, char** argv)
 	/*
 	 * Run trainer
 	 */
-	ds::Chen chen;
 	Trainer trainer;
-	chen.addToTrainer(trainer);
 	trainer.train();
 	trainer.save();
 

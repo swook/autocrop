@@ -4,9 +4,21 @@
 #include "opencv2/imgproc.hpp"
 using namespace cv;
 
+#include "feature.hpp"
+#include "FeatMat.hpp"
 #include "../util/opencv.hpp"
 #include "../saliency/saliency.hpp"
-#include "feature.hpp"
+
+
+void addImageToFeatMat(FeatMat& featMat, const Mat& saliency, const Mat& grad,
+		const Rect crop, const int cls)
+{
+	// Get feature vector
+	Mat featVec = getFeatureVector(saliency, grad, crop);
+
+	// Add feature vector and class to feature matrix
+	featMat.addFeatVec(featVec, cls);
+}
 
 
 Mat getFeatureVector(const Mat& img, const Rect crop)
@@ -24,8 +36,8 @@ Mat getFeatureVector(const Mat& img, const Rect crop)
 }
 
 
-cv::Mat getFeatureVector(const cv::Mat& saliency, const cv::Mat& grad,
-	const cv::Rect crop)
+cv::Mat getFeatureVector(const Mat& saliency, const Mat& grad,
+	const Rect crop)
 {
 	int h = saliency.rows,
 	    w = saliency.cols;

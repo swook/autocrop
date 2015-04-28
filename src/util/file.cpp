@@ -37,21 +37,19 @@ bool isGradImage(path file)
 
 path setSuffix(path file, std::string suffix)
 {
-	if (!fs::is_regular_file(file))
+	if (!file.has_filename())
 	{
 		throw std::runtime_error("Cannot set suffix of directory " + file.string());
 	}
-
 	std::smatch match;
 	std::regex_match(file.string(), match, fname_regex);
 	if (match.size())
 		return path(std::regex_replace(file.string(), fname_regex,
-		            "$2_" + suffix + ".$5"));
+		            "$2_" + suffix + ".exr"));
 	else
 	{
 		return path(file.parent_path().string() + "/" +
-		            file.stem().string() + "_" + suffix +
-			    file.extension().string());
+		            file.stem().string() + "_" + suffix + ".exr");
 	}
 }
 

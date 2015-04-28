@@ -1,25 +1,80 @@
 #include "opencv2/core.hpp"
-#include "opencv2/imgproc.hpp"
+#include "opencv2/imgcodecs.hpp"
+#include "opencv2/imgcodecs/imgcodecs_c.h"
 using namespace cv;
 
 #include "cvmatio/MatlabIO.hpp"
 
 #include "datasets.hpp"
 #include "../util/math.hpp"
-#include "../saliency/saliency.hpp"
+#include "../util/file.hpp"
 #include "../features/feature.hpp"
+#include "../features/FeatMat.hpp"
+
+
+Rect getFixedCrop(const Mat& img, const Mat& crop);
+
 
 // DataSets namespace
 namespace ds
 {
-	DataSet::DataSet()
+
+	void Chen::addToFeatMat(FeatMat& featMat)
 	{
-		data = std::vector<Entry>();
+		MatlabIO mio;
+		mio.open("../datasets/Chen/500_image_dataset.mat", "r");
+
+		auto MAT = mio.read();
+		mio.close();
+
+		auto img_gt = MAT[0].data<std::vector<std::vector<MatlabIOContainer>>>();
+
+#pragma omp parallel for
+		for (int i = 0; i < img_gt.size(); i++)
+		{
+			auto fn = img_gt[i][0].data<std::string>();
+
+			//std::cout << "Loading: " << fn << " (" << i << "/" <<
+			//	img_gt.size() << ")" << std::endl;
+
+			Mat mat = img_gt[i][1].data<Mat>();
+			path ipath = path("../datasets/Chen/image/" + fn);
+
+			// Load cached image maps. Abort if invalid image [maps]
+			Mat saliency, grad;
+			try {
+				saliency = imread(setSuffix(ipath, "saliency").string(), CV_LOAD_IMAGE_UNCHANGED);
+				grad     = imread(setSuffix(ipath, "grad").string(), CV_LOAD_IMAGE_UNCHANGED);
+			}
+			catch (std::exception e) {
+				std::cout << "Error reading: " << ipath << std::endl;
+				continue;
+			}
+			if (!saliency.data || !grad.data) continue;
+
+			// Image is bad crop
+			Rect crop = Rect(0, 0, saliency.cols, saliency.rows);
+			addImageToFeatMat(featMat, saliency, grad, crop, BAD_CROP);
+
+			// For each Mechanical Turk crop for given image
+			for (int c = 0; c < mat.rows; c++)
+			{
+				// Mechanical turk data is good crop
+				try {
+					crop = getFixedCrop(saliency, mat.row(c));
+				} catch (std::exception e) {
+					std::cout << "Invalid crop: " << mat.row(c) << std::endl;
+					continue;
+				}
+				addImageToFeatMat(featMat, saliency, grad, crop, GOOD_CROP);
+
+				// Randomly generated crop is "bad"
+				// TODO: Make sure overlap with good crop is not large
+				addImageToFeatMat(featMat, saliency, grad, randomCrop(saliency), BAD_CROP);
+			}
+		}
+
 	}
-
-	void DataSet::addToTrainer(Trainer& trainer) {}
-
-	Chen::Chen() : DataSet() {}
 
 	Rect Chen::getFixedCrop(const Mat& img, const Mat& crop)
 	{
@@ -38,62 +93,14 @@ namespace ds
 		int h    = ymax - y,
 		    w    = xmax - x;
 
-		std::cout << "Current crop: " << crop << std::endl;
-		if (h < 1 && w < 1)
+		//std::cout << "Current crop: " << crop << std::endl;
+		if (h < 1 || w < 1 || h > img.rows - 1 || w > img.cols - 1)
 		{
-			std::cout << "Bad crop: " << crop << std::endl;
+			//std::cout << "Bad crop: " << crop << std::endl;
 			throw std::runtime_error("Invalid crop");
 		}
 
 		return Rect(x, y, w, h);
 	}
-
-
-	void Chen::addToTrainer(Trainer& trainer)
-	{
-		MatlabIO mio;
-		mio.open("../datasets/Chen/500_image_dataset.mat", "r");
-
-		auto MAT = mio.read();
-		mio.close();
-
-		auto img_gt = MAT[0].data<std::vector<std::vector<MatlabIOContainer>>>();
-
-#pragma omp parallel for
-		//for (int i = 0; i < img_gt.size(); i++)
-		for (int i = 0; i < 10; i++)
-		{
-			auto path = img_gt[i][0].data<std::string>();
-
-			std::cout << "Loading: " << path  << " (" << i << "/" <<
-				img_gt.size() << ")" << std::endl;
-
-			Mat mat = img_gt[i][1].data<Mat>();
-			Mat img = imread("../datasets/Chen/image/" + path);
-
-			Mat grey;
-			cvtColor(img, grey, CV_BGR2GRAY);
-
-			Mat saliency = getSaliency(img);
-			Mat grad     = getGrad(grey);
-
-			for (int c = 0; c < mat.rows; c++)
-			{
-				// Mechanical turk data is good crop
-				Rect crop;
-				try {
-					crop = getFixedCrop(grey, mat.row(c));
-				} catch (std::exception e) {
-					std::cout << "Invalid crop: " << mat.row(c) << std::endl;
-					continue;
-				}
-				trainer.add(saliency, grad, crop, GOOD_CROP);
-
-				// Randomly generated crop is "bad"
-				// TODO: Make sure overlap with good crop is not large
-				trainer.add(saliency, grad, randomCrop(saliency), BAD_CROP);
-			}
-		}
-
-	}
 }
+

@@ -7,6 +7,7 @@ set(
   "saliency/SLIC.cpp"
   "saliency/saliency.cpp"
   "features/feature.cpp"
+  "features/FeatMat.cpp"
 )
 
 add_library(saliency_lib ${SALIENCY_SOURCES})
@@ -17,8 +18,6 @@ set(
   FEATURES_SOURCES
   ${SALIENCY_SOURCES}
   "datasets/datasets.cpp"
-  "features/feature.cpp"
-  "training/train.cpp" # TODO: Remove
 )
 
 add_library(features_lib ${FEATURES_SOURCES})

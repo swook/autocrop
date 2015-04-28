@@ -3,7 +3,7 @@
 namespace fs = boost::filesystem;
 namespace po = boost::program_options;
 
-#include "opencv2/opencv.hpp"
+#include "opencv2/core.hpp"
 using namespace cv;
 
 #include "saliency/saliency.hpp"

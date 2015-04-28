@@ -1,8 +1,3 @@
-> Allow saliency calculation on folders
-   - Use to cache saliency calculation of images
-
-> Cache extracted features in get_features binary
-
 > Script to get top images from Flickr/Photo.net
 
 > Generate "bad" random crop with overlap below threshold
