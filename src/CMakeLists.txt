@@ -1,26 +1,45 @@
 # Saliency
 set(
   SALIENCY_SOURCES
-  "util/file.cpp"
   "util/opencv.cpp"
   "util/math.cpp"
   "saliency/SLIC.cpp"
   "saliency/saliency.cpp"
   "features/feature.cpp"
-  "features/FeatMat.cpp"
 )
 
-add_library(saliency_lib ${SALIENCY_SOURCES})
+add_library(saliency_lib ${SALIENCY_SOURCES} "util/file.cpp")
+
+
+# Datasets
+set(
+  DATASETS_SOURCES
+  "datasets/datasets.cpp"
+  "features/FeatMat.cpp"
+  "util/file.cpp"
+)
 
 
 # Features
 set(
   FEATURES_SOURCES
   ${SALIENCY_SOURCES}
-  "datasets/datasets.cpp"
+  "features/feature.cpp"
 )
 
-add_library(features_lib ${FEATURES_SOURCES})
+add_library(features_lib ${FEATURES_SOURCES} ${DATASETS_SOURCES})
+
+
+# Trainer
+set(
+  TRAINER_SOURCES
+  ${FEATURES_SOURCES}
+  "training/train.cpp"
+  "features/FeatMat.cpp"
+)
+
+add_library(trainer_lib ${TRAINER_SOURCES})
+
 
 # Classifier
 set(
@@ -32,15 +51,6 @@ set(
 add_library(classifier_lib ${CLASSIFIER_SOURCES})
 
 
-# Trainer
-set(
-  TRAINER_SOURCES
-  ${FEATURES_SOURCES} # TODO: Remove
-  "training/train.cpp"
-)
-
-add_library(trainer_lib ${TRAINER_SOURCES})
-
 
 # Autocrop
 set(
@@ -50,3 +60,4 @@ set(
 )
 
 add_library(autocrop_lib ${AUTOCROP_SOURCES})
+

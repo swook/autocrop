@@ -13,6 +13,16 @@ FeatMat::FeatMat()
 	resps = Mat(Size(      1, 0), CV_32F);
 }
 
+void FeatMat::addFeatVec(const Mat& saliency, const Mat& grad, const Rect crop,
+	const int cls)
+{
+	// Get feature vector
+	Mat featVec = getFeatureVector(saliency, grad, crop);
+
+	// Add feature vector and class to feature matrix
+	addFeatVec(featVec, cls);
+}
+
 void FeatMat::addFeatVec(const Mat featVec, const int cls)
 {
 	assert(featVec.cols == feats.cols);
@@ -24,6 +34,16 @@ void FeatMat::addFeatVec(const Mat featVec, const int cls)
 	resps.push_back(cls);
 
 	mtx.unlock();
+}
+
+Mat& FeatMat::getFeatureMatrix()
+{
+	return feats;
+}
+
+Mat& FeatMat::getResponseVector()
+{
+	return resps;
 }
 
 void FeatMat::save(std::string fpath)

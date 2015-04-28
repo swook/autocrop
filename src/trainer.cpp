@@ -6,7 +6,6 @@ using namespace cv;
 
 #include "datasets/datasets.hpp"
 #include "training/train.hpp"
-#include "util/opencv.hpp"
 
 int main(int argc, char** argv)
 {
@@ -16,7 +15,6 @@ int main(int argc, char** argv)
 	po::options_description desc("Available options");
 	desc.add_options()
 	    ("help", "Show this message")
-	    ("headless", po::bool_switch()->default_value(false), "Run without graphical output")
 	;
 
 	po::positional_options_description p;
@@ -33,14 +31,13 @@ int main(int argc, char** argv)
 		return 1;
 	}
 
-	if (vm["headless"].as<bool>()) GRAPHICAL = false;
-
 	/*
 	 * Run trainer
 	 */
 	Trainer trainer;
+	trainer.loadFeatures("Training.yml");
 	trainer.train();
-	trainer.save();
+	trainer.save("Trained_model.yml");
 
 	return 0;
 

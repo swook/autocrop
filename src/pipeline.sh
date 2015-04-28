@@ -10,3 +10,7 @@ $BUILD/saliency ../datasets/Chen/image --output-dir ../datasets/Chen/image
 
 # Calculate features
 $BUILD/features
+
+# Run trainer
+$BUILD/trainer
+

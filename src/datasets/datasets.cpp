@@ -54,7 +54,7 @@ namespace ds
 
 			// Image is bad crop
 			Rect crop = Rect(0, 0, saliency.cols, saliency.rows);
-			addImageToFeatMat(featMat, saliency, grad, crop, BAD_CROP);
+			featMat.addFeatVec(saliency, grad, crop, BAD_CROP);
 
 			// For each Mechanical Turk crop for given image
 			for (int c = 0; c < mat.rows; c++)
@@ -66,11 +66,11 @@ namespace ds
 					std::cout << "Invalid crop: " << mat.row(c) << std::endl;
 					continue;
 				}
-				addImageToFeatMat(featMat, saliency, grad, crop, GOOD_CROP);
+				featMat.addFeatVec(saliency, grad, crop, GOOD_CROP);
 
 				// Randomly generated crop is "bad"
 				// TODO: Make sure overlap with good crop is not large
-				addImageToFeatMat(featMat, saliency, grad, randomCrop(saliency), BAD_CROP);
+				featMat.addFeatVec(saliency, grad, randomCrop(saliency), BAD_CROP);
 			}
 		}
 
