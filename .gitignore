@@ -4,6 +4,7 @@
 **/Chen/image
 **/Chen/readme
 **/Chen/analysis/images_withbbox
+**/Chen/analysis/good_crops
 
 # Build artifacts
 build/
