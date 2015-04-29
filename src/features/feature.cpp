@@ -28,8 +28,10 @@ Mat getFeatureVector(const Mat& img, const Rect crop)
 cv::Mat getFeatureVector(const Mat& saliency, const Mat& grad,
 	const Rect crop)
 {
-	int h = saliency.rows,
-	    w = saliency.cols;
+	int h  = saliency.rows,
+	    w  = saliency.cols,
+	    ch = crop.height,
+	    cw = crop.width;
 
 	Mat cr_saliency = saliency(crop);
 	Mat cr_grad     = grad(crop);
@@ -93,10 +95,10 @@ cv::Mat getFeatureVector(const Mat& saliency, const Mat& grad,
 	 */
 	// Take average gradient along boundary
 	_feats[21] = .25f * (
-			mean(grad(Rect(0, 0,   w, 1)))[0]   + // Top
-			mean(grad(Rect(0, h-1, w, 1)))[0]   + // Bottom
-			mean(grad(Rect(0,   1, 1, h-2)))[0] + // Left
-			mean(grad(Rect(w-1, 1, 1, h-2)))[0]   // Right
+			mean(cr_grad(Rect(0,    0,    cw, 1)))[0]   + // Top
+			mean(cr_grad(Rect(0,    ch-1, cw, 1)))[0]   + // Bottom
+			mean(cr_grad(Rect(0,    1,    1,  ch-2)))[0] + // Left
+			mean(cr_grad(Rect(cw-1, 1,    1,  ch-2)))[0]   // Right
 	             );
 
 

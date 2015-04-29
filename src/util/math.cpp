@@ -29,13 +29,15 @@ float randInt(const float min, const float max)
 
 Rect randomCrop(const Mat& img)
 {
-	int h = img.rows,
-	    w = img.cols;
+	int h    = img.rows,
+	    w    = img.cols,
+	    minw = 4,
+	    minh = 4;
 
-	int x0 = randInt(0, w - 2),
-	    y0 = randInt(0, h - 2),
-	    dx = randInt(1, w - 1 - x0),
-	    dy = randInt(1, h - 1 - y0);
+	int x0 = randInt(0,    w - minw),
+	    y0 = randInt(0,    h - minh),
+	    dx = randInt(minw, w - 1 - x0),
+	    dy = randInt(minh, h - 1 - y0);
 
 	return Rect(x0, y0, dx, dy);
 }

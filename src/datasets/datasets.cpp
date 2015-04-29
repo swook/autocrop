@@ -90,11 +90,11 @@ namespace ds
 		xmax = xmax < 0 ? 0 : xmax;
 		ymax = ymax >= img.rows ? img.rows - 1 : ymax;
 		xmax = xmax >= img.cols ? img.cols - 1 : xmax;
-		int h    = ymax - y,
-		    w    = xmax - x;
+		int h = ymax - y,
+		    w = xmax - x;
 
 		//std::cout << "Current crop: " << crop << std::endl;
-		if (h < 1 || w < 1 || h > img.rows - 1 || w > img.cols - 1)
+		if (h < 2 || w < 2)
 		{
 			//std::cout << "Bad crop: " << crop << std::endl;
 			throw std::runtime_error("Invalid crop");
