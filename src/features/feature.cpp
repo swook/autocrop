@@ -127,6 +127,6 @@ Mat getGrad(const Mat& img)
 	Mat out;
 	Sobel(blurred, out, CV_32F, 1, 1);
 
-	return out;
+	return abs(out);
 }
 
