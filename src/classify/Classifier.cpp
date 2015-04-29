@@ -14,6 +14,6 @@ bool Classifier::classify(const Mat& img)
 	std::cout << featVec << std::endl;
 	model->predict(featVec, result);
 
-	return (int) result.at<float>(0, 0) != 0;
+	return (int) result.at<float>(0, 0) == 1;
 }
 

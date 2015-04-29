@@ -87,6 +87,7 @@ cv::Mat getFeatureVector(const Mat& saliency, const Mat& grad,
 	// Add mean value for all pixels in saliency map
 	_feats[20] = .25f * (_feats[16] + _feats[17] + _feats[18] + _feats[19]);
 
+	return feats;
 
 
 	/**

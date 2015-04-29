@@ -1,11 +1,7 @@
 #include "boost/program_options.hpp"
 namespace po = boost::program_options;
 
-#include "opencv2/core.hpp"
-using namespace cv;
-
-#include "datasets/datasets.hpp"
-#include "training/train.hpp"
+#include "training/Trainer.hpp"
 
 int main(int argc, char** argv)
 {

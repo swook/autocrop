@@ -3,8 +3,7 @@
 #include "opencv2/core.hpp"
 #include "FeatMat.hpp"
 
-#define FEATS_N 23
-
+#define FEATS_N 21
 
 
 /**

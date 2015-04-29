@@ -33,7 +33,7 @@ add_library(features_lib ${FEATURES_SOURCES} ${DATASETS_SOURCES})
 set(
   TRAINER_SOURCES
   ${FEATURES_SOURCES}
-  "training/train.cpp"
+  "training/Trainer.cpp"
   "features/FeatMat.cpp"
 )
 
