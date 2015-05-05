@@ -5,7 +5,8 @@ using namespace cv;
 
 #include "cvmatio/MatlabIO.hpp"
 
-#include "datasets.hpp"
+#include "Chen.hpp"
+#include "../constants.hpp"
 #include "../util/math.hpp"
 #include "../util/file.hpp"
 #include "../features/feature.hpp"
