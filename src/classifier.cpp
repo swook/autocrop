@@ -53,16 +53,16 @@ int main(int argc, char** argv)
 	 */
 	Classifier classifier;
 	classifier.loadModel("Trained_model.yml");
-	bool good_crop = classifier.classify(img);
+	bool good = classifier.classify(img);
 
 
 	/**
 	 * Print output
 	 */
-	if (good_crop)
-		std::cout << "The input image is a good crop." << std::endl;
+	if (good)
+		std::cout << "The input image has good saliency composition." << std::endl;
 	else
-		std::cout << "The input image is a bad crop." << std::endl;
+		std::cout << "The input image has bad saliency composition." << std::endl;
 
 	return 0;
 

@@ -16,7 +16,7 @@ Mat getFeatureVector(const Mat& img, const Rect crop)
 	Mat _saliency = getSaliency(img);
 
 	// Calculate gradient image
-	Mat _grad = getGrad(img);
+	Mat _grad = getGradient(img);
 
 	// Calculate feature vector
 	Mat feats = getFeatureVector(_saliency, _grad, crop);
@@ -116,7 +116,7 @@ cv::Mat getFeatureVector(const Mat& saliency, const Mat& grad,
 }
 
 
-Mat getGrad(const Mat& img)
+Mat getGradient(const Mat& img)
 {
 	// Blur to remove high frequency textures
 	Mat   blurred;

@@ -21,7 +21,7 @@ void Trainer::init()
 
 void Trainer::add(const Mat& img, const Rect crop, const int cls)
 {
-	add(getSaliency(img), getGrad(img), crop, cls);
+	add(getSaliency(img), getGradient(img), crop, cls);
 }
 
 void Trainer::add(const Mat& saliency, const Mat& grad, const Rect crop,
@@ -50,9 +50,9 @@ void Trainer::train()
 	termCriteria.type     = TermCriteria::COUNT;
 	termCriteria.maxCount = 1000;
 	termCriteria.epsilon  = 0.01f;
-	model->setTermCriteria(termCriteria);
+	//model->setTermCriteria(termCriteria);
 
-	int  kFold    = 15;   // K-fold Cross-Validation
+	int  kFold    = 20;   // K-fold Cross-Validation
 	bool balanced = true;
 
 	// Set candidate hyperparameter values

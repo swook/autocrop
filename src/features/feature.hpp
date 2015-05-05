@@ -27,12 +27,12 @@ cv::Mat getFeatureVector(const cv::Mat& img, const cv::Rect crop);
  *   -----------
  *   23 features
  */
-cv::Mat getFeatureVector(const cv::Mat& saliency, const cv::Mat& edges,
+cv::Mat getFeatureVector(const cv::Mat& saliency, const cv::Mat& gradient,
 	const cv::Rect crop);
 
 /**
- * getGrad gets a gradient map which is used for the boundary simplicity based
- * feature
+ * getGradient gets a gradient map which is used for the boundary simplicity
+ * based feature
  */
-cv::Mat getGrad(const cv::Mat& img);
+cv::Mat getGradient(const cv::Mat& img);
 

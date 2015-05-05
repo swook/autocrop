@@ -16,6 +16,11 @@ public:
 	 * signifying whether the image is a good crop
 	 */
 	bool classify(const cv::Mat& img);
+	bool classify(const cv::Mat& img, const cv::Rect crop);
+	bool classify(const cv::Mat& saliency, const cv::Mat& gradient);
+	bool classify(const cv::Mat& saliency, const cv::Mat& gradient,
+	              const cv::Rect crop);
+
 private:
 	cv::Ptr<cv::ml::SVM> model;
 };

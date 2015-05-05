@@ -108,7 +108,7 @@ int main(int argc, char** argv)
 				Mat sali, grad, grey;
 				cvtColor(img, grey, CV_BGR2GRAY);
 				sali = getSaliency(img);
-				grad = getGrad(grey);
+				grad = getGradient(grey);
 
 				// Save calculated maps
 				std::cout << "> Writing\t" << i << "/" << ins.size()
