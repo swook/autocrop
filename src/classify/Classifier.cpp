@@ -31,6 +31,6 @@ bool Classifier::classify(const Mat& saliency, const Mat& gradient,
 	Mat result;
 	model->predict(featVec, result);
 
-	return (int) result.at<float>(0, 0) == 1;
+	return (int) result.at<float>(0, 0) == GOOD_CROP;
 }
 
