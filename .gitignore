@@ -6,6 +6,9 @@
 **/Chen/analysis/images_withbbox
 **/Chen/analysis/good_crops
 
+# EarthPorn dataset
+datasets/EarthPorn/*.jpg
+
 # Build artifacts
 build/
 retarget
