@@ -82,9 +82,9 @@ def get_photo(i, url):
         with open(fn, 'wb') as f:
             f.write(response.read())
         response.close()
-    except err:
+    except Exception as err:
         print(err)
-        print('[%04d] Failed.' % i)
+        print('! [%04d] Failed.' % i)
 
 
 if __name__ == '__main__':
