@@ -36,6 +36,7 @@ def get_urls(n):
             response = urlopen('%s?%s' % (api_url, options))
             charset = response.headers.get_content_charset() or 'utf-8'
             data = json.loads(response.read().decode(charset))['data']['children']
+            response.close()
         except:
             sleep(2) # Pause a little
             continue
@@ -80,6 +81,7 @@ def get_photo(i, url):
         response = urlopen(Request(url, headers={'User-Agent': 'Auto-Crop Study'}))
         with open(fn, 'wb') as f:
             f.write(response.read())
+        response.close()
     except err:
         print(err)
         print('[%04d] Failed.' % i)
