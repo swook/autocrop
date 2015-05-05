@@ -35,8 +35,8 @@ namespace ds
 		{
 			auto fn = img_gt[i][0].data<std::string>();
 
-			//std::cout << "Loading: " << fn << " (" << i << "/" <<
-			//	img_gt.size() << ")" << std::endl;
+			std::cout << "Loading: " << fn << " (" << i << "/" <<
+				img_gt.size() << ")" << std::endl;
 
 			Mat mat = img_gt[i][1].data<Mat>();
 			path ipath = path("../datasets/Chen/image/" + fn);

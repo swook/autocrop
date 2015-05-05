@@ -14,9 +14,10 @@ add_library(saliency_lib ${SALIENCY_SOURCES} "util/file.cpp")
 # Datasets
 set(
   DATASETS_SOURCES
-  "datasets/Chen.cpp"
-  "features/FeatMat.cpp"
   "util/file.cpp"
+  "features/FeatMat.cpp"
+  "datasets/Chen.cpp"
+  "datasets/EarthPorn.cpp"
 )
 
 

@@ -1,5 +1,8 @@
+#include "../constants.hpp"
+
 #include "Classifier.hpp"
 #include "../features/feature.cpp"
+
 using namespace cv;
 
 void Classifier::loadModel(std::string fpath)
