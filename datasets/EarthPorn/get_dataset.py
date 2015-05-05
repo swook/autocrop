@@ -48,7 +48,7 @@ def get_urls(n):
             dom = child['data']['domain']
 
             # Downloads disabled for flickr.com links, avoid
-            if dom == 'www.flickr.com':
+            if dom == 'flickr.com':
                 continue
 
             # Fix URLs for imgur links
@@ -76,9 +76,13 @@ def get_photo(i, url):
     print('- [%04d] Getting %s' % (i, url))
 
     # Download URL to file specified by fn
-    response = urlopen(Request(url, headers={'User-Agent': 'Auto-Crop Study'}))
-    with open(fn, 'wb') as f:
-        f.write(response.read())
+    try:
+        response = urlopen(Request(url, headers={'User-Agent': 'Auto-Crop Study'}))
+        with open(fn, 'wb') as f:
+            f.write(response.read())
+    except err:
+        print(err)
+        print('[%04d] Failed.' % i)
 
 
 if __name__ == '__main__':
