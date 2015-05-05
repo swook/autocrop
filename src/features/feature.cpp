@@ -118,16 +118,27 @@ cv::Mat getFeatureVector(const Mat& saliency, const Mat& grad,
 
 Mat getGradient(const Mat& img)
 {
+	// Set to single-channel
+	Mat gray = img;
+	if (img.channels() == 3)
+	{
+		cvtColor(img, gray, CV_BGR2GRAY);
+	}
+
 	// Blur to remove high frequency textures
 	Mat   blurred;
-	Size  kernel_size = Size(3, 3);
+	Size  kernel_size = Size(7, 7);
 	float sigma       = 1.f;
-	GaussianBlur(img, blurred, kernel_size, sigma);
+	GaussianBlur(gray, blurred, kernel_size, sigma);
 
 	// Calculate gradient of image
-	Mat out;
-	Sobel(blurred, out, CV_32F, 1, 1);
+	Mat grad;
+	Sobel(blurred, grad, CV_32F, 1, 1, 5);
 
-	return abs(out);
+	// Fix range
+	Mat out;
+	normalize(grad, out, 0.f, 1.f, NORM_MINMAX);
+
+	return out;
 }
 
