@@ -124,10 +124,20 @@ def show_image(idx):
     imshow(fpath, cur_img)
     print('[%03d/%03d] Showing %s' % (idx, len(files), fpath))
 
-cv.namedWindow('main', cv.WINDOW_NORMAL)
+cv.namedWindow('main', cv.WINDOW_OPENGL | cv.WINDOW_KEEPRATIO)
 def imshow(name, img):
+    # Make it 800px wide on major axis
+    (h, w, _) = img.shape
+    if h < w:
+        ratio = 800. / w
+    else:
+        ratio = 500. / h
+    h *= ratio
+    w *= ratio
+
     cv.imshow('main', img)
     cv.setWindowTitle('main', name)
+    cv.resizeWindow('main', int(w), int(h))
 
 def upvote():
     global cur_img, data, files, idx
