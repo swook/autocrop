@@ -100,7 +100,7 @@ def next_image():
     global idx, files
 
     idx += 1
-    while files[idx] in data.keys():
+    while idx < len(files) and files[idx] in data.keys():
         idx += 1
 
     #last_idx = len(files) - 1
@@ -122,7 +122,7 @@ def show_image(idx):
     cur_img_path = new_img_path
     cur_img = cv.imread(cur_img_path)
     imshow(fpath, cur_img)
-    print('Showing %s' % fpath)
+    print('[%03d/%03d] Showing %s' % (idx, len(files), fpath))
 
 cv.namedWindow('main', cv.WINDOW_NORMAL)
 def imshow(name, img):
