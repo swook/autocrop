@@ -101,13 +101,16 @@ def prev_image():
 
 def next_image():
     global idx, files
+    idx += 1
+
+    show_image(idx)
+
+def next_unclassified_image():
+    global idx, files
 
     idx += 1
     while idx < len(files) and files[idx] in data.keys():
         idx += 1
-
-    #last_idx = len(files) - 1
-    #idx = last_idx if idx > last_idx else idx
 
     show_image(idx)
 
@@ -156,7 +159,7 @@ def upvote():
 
     # Pause then move to next image
     cv.waitKey(500)
-    next_image()
+    next_unclassified_image()
 
 def downvote():
     global cur_img, data, files, idx
@@ -172,7 +175,7 @@ def downvote():
 
     # Pause then move to next image
     cv.waitKey(500)
-    next_image()
+    next_unclassified_image()
 
 data = {} # Is dict with filenames as key
 outfile = 'classifications.json'
