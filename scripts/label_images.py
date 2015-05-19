@@ -198,7 +198,7 @@ def save():
     global data, if_path
     out_path = '%s/%s' % (if_path, outfile)
     with open(out_path, 'w') as f:
-        json.dump(data, f)
+        json.dump(data, f, indent=2)
         print('Saved output to %s' % out_path)
 
 if __name__ == '__main__':
