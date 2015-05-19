@@ -128,7 +128,12 @@ def show_image(idx):
     cur_img_path = new_img_path
     cur_img = cv.imread(cur_img_path)
     imshow(fpath, cur_img)
-    print('[%03d/%03d] Showing %s' % (idx, len(files), fpath))
+
+    if fpath in data:
+        print('[%03d/%03d] Showing %s (%s)' % (idx, len(files), fpath,
+            'GOOD' if data[fpath] else 'BAD'))
+    else:
+        print('[%03d/%03d] Showing %s' % (idx, len(files), fpath))
 
 cv.namedWindow('main', cv.WINDOW_OPENGL | cv.WINDOW_KEEPRATIO)
 def imshow(name, img):
