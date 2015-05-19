@@ -34,8 +34,9 @@ def main():
 
     # Main loop
     global idx, data
-    idx = 0
+    idx = -1
     load()
+    next_image()
     show_image(idx)
 
     signal.signal(signal.SIGINT, cleanup)
@@ -97,7 +98,10 @@ def prev_image():
 
 def next_image():
     global idx, files
+
     idx += 1
+    while files[idx] in data.keys():
+        idx += 1
 
     #last_idx = len(files) - 1
     #idx = last_idx if idx > last_idx else idx
