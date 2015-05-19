@@ -37,6 +37,9 @@ def main():
     idx = -1
     load()
     next_image()
+    if idx >= len(files):
+        print('All %d images have been classified.' % len(files))
+        idx = 0
     show_image(idx)
 
     signal.signal(signal.SIGINT, cleanup)
