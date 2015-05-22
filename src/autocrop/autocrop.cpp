@@ -67,11 +67,13 @@ Mat autocrop(const Mat& in, float w2hrat)
 
 	// Clean up
 	classifier.clear();
+	showImage("Saliency", saliency);
 	saliency.release();
 	gradient.release();
 
 	const int    C = candidates.size();
 	const float fC = (float) C;
+	std::cout << C << " valid candidates left out of " << MAX_CROP_CANDIDATES << std::endl;
 
 	// Sort by S_compos in ascending order
 	std::sort(candidates.begin(), candidates.end(),

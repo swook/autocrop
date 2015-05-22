@@ -48,8 +48,15 @@ void showImage(std::string title, const Mat& img)
 	if (!GRAPHICAL) return;
 
 	std::cout << "\nShowing image: \"" << title << "\"." << std::endl;
-	namedWindow(title, CV_WINDOW_NORMAL);
+	namedWindow(title, CV_WINDOW_NORMAL | CV_WINDOW_KEEPRATIO);
 	imshow(title, img);
+
+	float ratio;
+	if (img.cols < img.rows)
+		ratio = 800.f / img.rows;
+	else
+		ratio = 1100.f / img.cols;
+	resizeWindow(title, ratio * img.cols, ratio * img.rows);
 }
 
 void showImage(std::string title, const Mats& imgs)
