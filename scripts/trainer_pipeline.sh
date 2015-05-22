@@ -10,8 +10,8 @@ echo; echo "> Preprocessing Chen images..."
 $BUILD/saliency ../datasets/Chen/image --output-dir ../datasets/Chen/image
 
 # Preprocess EarthPorn images
-echo; echo "> Preprocessing EarthPorn images..."
-$BUILD/saliency ../datasets/EarthPorn --output-dir ../datasets/EarthPorn
+#echo; echo "> Preprocessing EarthPorn images..."
+#$BUILD/saliency ../datasets/EarthPorn --output-dir ../datasets/EarthPorn
 
 # Calculate features
 echo; echo "> Calculating features..."

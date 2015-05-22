@@ -25,7 +25,7 @@ endif(APPLE)
 # Set compile options
 set(
   CMAKE_CXX_FLAGS
-  "${CMAKE_CXX_FLAGS} -O3 -m64 -fopenmp -msse3 -msse4"
+  "${CMAKE_CXX_FLAGS} -O3 -m64 -DNDEBUG -fopenmp -msse3 -msse4 -mavx"
 )
 
 # Add libraries

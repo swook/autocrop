@@ -6,8 +6,8 @@ using namespace cv;
 
 #include "feature.hpp"
 #include "FeatMat.hpp"
-#include "../util/opencv.hpp"
 #include "../saliency/saliency.hpp"
+#include "../util/opencv.hpp"
 
 
 Mat getFeatureVector(const Mat& img, const Rect crop)
@@ -36,8 +36,8 @@ cv::Mat getFeatureVector(const Mat& saliency, const Mat& grad,
 	Mat cr_saliency = saliency(crop);
 	Mat cr_grad     = grad(crop);
 
-	showImage("cropped saliency", cr_saliency);
-	showImageAndWait("cropped gradient", cr_grad);
+	//showImage("cropped saliency", cr_saliency);
+	//showImageAndWait("cropped gradient", cr_grad);
 
 
 	// Resize cropped saliency map to be 4x4. Use INTER_AREA to average pixel
@@ -61,22 +61,9 @@ cv::Mat getFeatureVector(const Mat& saliency, const Mat& grad,
 	 */
 
 	// Add mean values for 1/16ths
-	_feats[0]  = _saliency.at<float>(0, 0);
-	_feats[1]  = _saliency.at<float>(0, 1);
-	_feats[2]  = _saliency.at<float>(0, 2);
-	_feats[3]  = _saliency.at<float>(0, 3);
-	_feats[4]  = _saliency.at<float>(1, 0);
-	_feats[5]  = _saliency.at<float>(1, 1);
-	_feats[6]  = _saliency.at<float>(1, 2);
-	_feats[7]  = _saliency.at<float>(1, 3);
-	_feats[8]  = _saliency.at<float>(2, 0);
-	_feats[9]  = _saliency.at<float>(2, 1);
-	_feats[10] = _saliency.at<float>(2, 2);
-	_feats[11] = _saliency.at<float>(2, 3);
-	_feats[12] = _saliency.at<float>(3, 0);
-	_feats[13] = _saliency.at<float>(3, 1);
-	_feats[14] = _saliency.at<float>(3, 2);
-	_feats[15] = _saliency.at<float>(3, 3);
+	float* p_saliency = _saliency.ptr<float>(0);
+	for (int i = 0; i < 16; i++)
+		_feats[i] = p_saliency[i];
 
 	// Add mean values for 1/4ths
 	_feats[16] = .25f * (_feats[0]  + _feats[1]  + _feats[4]  + _feats[5]);
@@ -96,11 +83,13 @@ cv::Mat getFeatureVector(const Mat& saliency, const Mat& grad,
 	 */
 	// Take average gradient along boundary
 	_feats[21] = .25f * (
-			mean(cr_grad(Rect(0,    0,    cw, 1)))[0]   + // Top
-			mean(cr_grad(Rect(0,    ch-1, cw, 1)))[0]   + // Bottom
-			mean(cr_grad(Rect(0,    1,    1,  ch-2)))[0] + // Left
-			mean(cr_grad(Rect(cw-1, 1,    1,  ch-2)))[0]   // Right
+			mean(cr_grad(Rect(0,    0, cw, 1   )))[0] + // Top
+			mean(cr_grad(Rect(0, ch-1, cw, 1   )))[0] + // Bottom
+			mean(cr_grad(Rect(0,    1,  1, ch-2)))[0] + // Left
+			mean(cr_grad(Rect(cw-1, 1,  1, ch-2)))[0]   // Right
 	             );
+
+	return feats;
 
 
 	/**
@@ -127,13 +116,13 @@ Mat getGradient(const Mat& img)
 
 	// Blur to remove high frequency textures
 	Mat   blurred;
-	Size  kernel_size = Size(7, 7);
+	Size  kernel_size = Size(3, 3);
 	float sigma       = 1.f;
 	GaussianBlur(gray, blurred, kernel_size, sigma);
 
 	// Calculate gradient of image
 	Mat grad;
-	Sobel(blurred, grad, CV_32F, 1, 1, 5);
+	Sobel(blurred, grad, CV_32F, 1, 1, 3);
 
 	// Fix range
 	Mat out;

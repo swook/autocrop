@@ -10,14 +10,14 @@ typedef std::vector<cv::Mat> Mats;
 /**
  * showImage shows a given image in a window with a given title
  */
-void showImage(std::string title, const Mat& img);
+void showImage(std::string title, const cv::Mat& img);
 void showImage(std::string title, const Mats& imgs);
 
 /**
  * showImage shows a given image in a window with a given title and waits for
  * any user input
  */
-void showImageAndWait(std::string title, const Mat& img);
+void showImageAndWait(std::string title, const cv::Mat& img);
 void showImageAndWait(std::string title, const Mats& imgs);
 
 /**

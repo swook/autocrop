@@ -5,6 +5,7 @@ using namespace cv;
 
 #include "FeatMat.hpp"
 #include "feature.hpp"
+#include "../constants.hpp"
 #include "../util/file.hpp"
 
 FeatMat::FeatMat()
@@ -26,6 +27,7 @@ void FeatMat::addFeatVec(const Mat& saliency, const Mat& grad, const Rect crop,
 void FeatMat::addFeatVec(const Mat featVec, const int cls)
 {
 	assert(featVec.cols == feats.cols);
+	assert(cls == GOOD_CROP || cls == BAD_CROP);
 
 	// Add vector (with class) to matrix
 	mtx.lock();
@@ -67,5 +69,6 @@ void FeatMat::load(std::string fpath)
 
 	assert(feats.cols == FEATS_N);
 	assert(resps.cols == 1);
+	assert(feats.rows == resps.rows);
 }
 

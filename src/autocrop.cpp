@@ -17,6 +17,7 @@ int main(int argc, char** argv)
 	po::options_description desc("Available options");
 	desc.add_options()
 	    ("help", "Show this message")
+	    ("aspect-ratio,r", po::value<float>()->default_value(1.f), "Width-to-height ratio")
 	    ("input-file,i", po::value<std::string>(), "Input file path")
 	    ("output-file,o", po::value<std::string>(), "Output file path (default: output.png)")
 	    ("headless,hl", po::bool_switch()->default_value(false), "Run without graphical output")
@@ -42,28 +43,25 @@ int main(int argc, char** argv)
 	 * Read image file
 	 */
 	std::string const f = vm["input-file"].as<std::string>();
-	Mat const img = imread(f, CV_LOAD_IMAGE_COLOR);
-	if (!img.data) {
+	Mat const in = imread(f, CV_LOAD_IMAGE_COLOR);
+	if (!in.data) {
 		throw std::runtime_error("Invalid input file: " + f);
 		return -1;
 	}
-	showImage("Input Image", img);
 
 	/*
 	 * Call retargeting methods
 	 */
-	Mat out = crop(img);
+	Mat out = autocrop(in, vm["aspect-ratio"].as<float>());
 
 	// Show output image
-	showImageAndWait("Output Image", out);
+	showImageAndWait("Input - Cropped", {in, out});
 
 	/*
 	 * Save output if necessary
 	 */
 	if (vm.count("output-file")) {
-		Mat out_norm;
-		normalize(out, out_norm, 0.f, 255.f, NORM_MINMAX);
-		imwrite(vm["output-file"].as<std::string>(), out_norm);
+		imwrite(vm["output-file"].as<std::string>(), out);
 	}
 
 	return 0;

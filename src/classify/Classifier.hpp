@@ -20,6 +20,14 @@ public:
 	bool classify(const cv::Mat& saliency, const cv::Mat& gradient);
 	bool classify(const cv::Mat& saliency, const cv::Mat& gradient,
 	              const cv::Rect crop);
+	float classifyRaw(const cv::Mat& img);
+	float classifyRaw(const cv::Mat& saliency, const cv::Mat& gradient,
+	                  const cv::Rect crop);
+
+	/**
+	 * clear resets the model to clear memory
+	 */
+	void clear();
 
 private:
 	cv::Ptr<cv::ml::SVM> model;

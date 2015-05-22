@@ -41,22 +41,27 @@ void Trainer::train()
 	auto resps = featMat.getResponseVector();
 	auto traindata = ml::TrainData::create(feats, ml::ROW_SAMPLE, resps);
 
+	std::cout << "> Training with " << feats.rows << " rows of data." << std::endl;
+	std::cout << "> Training with " << feats.cols << " features." << std::endl;
+
 	// Set SVM parameters
+	model->setType(ml::SVM::C_SVC);
 	model->setKernel(ml::SVM::LINEAR);
-	model->setType  (ml::SVM::C_SVC);
+
+	model->setC(20.f);
 
 	// Set termination criteria
 	TermCriteria termCriteria;
-	termCriteria.type     = TermCriteria::COUNT;
-	termCriteria.maxCount = 1000;
-	termCriteria.epsilon  = 0.01f;
-	//model->setTermCriteria(termCriteria);
+	termCriteria.type     = TermCriteria::COUNT | TermCriteria::EPS;
+	termCriteria.maxCount = 1e4;
+	termCriteria.epsilon  = 1e-7;
+	model->setTermCriteria(termCriteria);
 
-	int  kFold    = 20;   // K-fold Cross-Validation
+	int  kFold    = 10;   // K-fold Cross-Validation
 	bool balanced = true;
 
 	// Set candidate hyperparameter values
-	ml::ParamGrid Cgrid      = ml::SVM::getDefaultGrid(ml::SVM::C),
+	ml::ParamGrid CGrid      = ml::SVM::getDefaultGrid(ml::SVM::C),
 	              gammaGrid  = ml::SVM::getDefaultGrid(ml::SVM::GAMMA),
 	              pGrid      = ml::SVM::getDefaultGrid(ml::SVM::P),
 	              nuGrid     = ml::SVM::getDefaultGrid(ml::SVM::NU),
@@ -64,9 +69,16 @@ void Trainer::train()
 	              degreeGrid = ml::SVM::getDefaultGrid(ml::SVM::DEGREE)
 	;
 
+	CGrid.logStep = 1.5f;
+	CGrid.minVal = 0.001f;
+	CGrid.maxVal = 100.f;
+
 	// Run cross-validation with SVM
-	model->trainAuto(traindata, kFold, Cgrid, gammaGrid, pGrid, nuGrid,
-	                 coeffGrid, degreeGrid, balanced);
+	model->trainAuto(traindata, kFold, CGrid, gammaGrid, pGrid, nuGrid,
+			 coeffGrid, degreeGrid, balanced);
+
+	float err = model->calcError(traindata, false, noArray());
+	std::cout << "> Training error on whole dataset: " << err << std::endl;
 }
 
 void Trainer::save(std::string fpath)

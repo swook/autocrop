@@ -31,8 +31,8 @@ Rect randomCrop(const Mat& img)
 {
 	int h    = img.rows,
 	    w    = img.cols,
-	    minw = 4,
-	    minh = 4;
+	    minw = 30,
+	    minh = 30;
 
 	int x0 = randInt(0,    w - minw),
 	    y0 = randInt(0,    h - minh),
@@ -40,5 +40,27 @@ Rect randomCrop(const Mat& img)
 	    dy = randInt(minh, h - 1 - y0);
 
 	return Rect(x0, y0, dx, dy);
+}
+
+
+Rect randomCrop(const Mat& img, const float w2hrat)
+{
+	int h    = img.rows,
+	    w    = img.cols,
+	    minw = 30,
+	    minh = 30;
+
+	int x0, y0, dx, dy;
+	while (1)
+	{
+		x0 = randInt(0,    w - minw);
+		y0 = randInt(0,    h - minh);
+		dy = randInt(minh, h - 1 - y0);
+		dx = roundf((float) dy * w2hrat);
+
+		if (x0 + dx + 1 > w) continue;
+
+		return Rect(x0, y0, dx, dy);
+	}
 }
 
