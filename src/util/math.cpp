@@ -58,7 +58,7 @@ Rect randomCrop(const Mat& img, const float w2hrat)
 		dy = randInt(minh, h - 1 - y0);
 		dx = roundf((float) dy * w2hrat);
 
-		if (x0 + dx + 1 > w) continue;
+		if (dx < minw || x0 + dx + 1 > w) continue;
 
 		return Rect(x0, y0, dx, dy);
 	}
