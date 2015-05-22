@@ -1,0 +1,10 @@
+Get trainer working
+Write automatic cropper
+Write quantitative evaluation code
+Write simple annotating programme to annotate Michael's wallpapers
+
+Notes
+-----
+Just use Chen dataset for now
+Shouldn't need to set special termination criteria
+Play with adding/removing boundary simplicity
