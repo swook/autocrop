@@ -3,6 +3,7 @@
 import argparse
 import json
 import os
+import random
 import signal
 import sys
 import time
@@ -27,10 +28,13 @@ def main():
     files = [f for f in os.listdir(if_path) if \
              os.path.isfile('%s/%s' % (if_path, f)) and \
              f.lower().endswith(valid_suffices)]
-    files = sorted(files)
     if len(files) == 0:
         print('No images to read in: %s' % if_path)
         return
+
+    # Shuffle files to reduce bias due to neighbouring images
+    random.shuffle(files)
+    #files = sorted(files)
 
     # Main loop
     global idx, data
