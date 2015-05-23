@@ -7,6 +7,8 @@ extern bool GRAPHICAL;
 typedef unsigned int         uint;
 typedef std::vector<cv::Mat> Mats;
 
+cv::Mat my_hconcat(const Mats& imgs);
+
 /**
  * showImage shows a given image in a window with a given title
  */

@@ -61,7 +61,7 @@ int main(int argc, char** argv)
 	 * Save output if necessary
 	 */
 	if (vm.count("output-file")) {
-		imwrite(vm["output-file"].as<std::string>(), out);
+		imwrite(vm["output-file"].as<std::string>(), my_hconcat({in, out}));
 	}
 
 	return 0;
