@@ -1,0 +1,49 @@
+Auto-cropping
+-------------
+
+Pipeline works
+Need quantitative evaluation - saliency overlap, see paper
+
+Need to improve trainer
+Currently using C-SVC with linear kernel.
+	How to best validate?
+	Shouldn't CV take care of this?
+
+Use edges to decide if image is too cluttered?
+See: Snap point detection paper
+
+Later: try another SPSM level (8x8)
+
+
+Wallpaper Suitability
+---------------------
+
+Got classification script done
+	Works on all of our machines?
+	How to combine data? What kind of ML?
+		SVM? But multiple classes per feature vector
+			Average
+			Majority voting
+			Discard
+			Other weighting
+			Trust SVM + CV
+
+Classification for case where cropped image may be suitable
+- Classify good if good crop is 80% of image size or more
+
+Get rotation data from EXIF
+- Apply to script and further code
+
+Read Michael's code and try it out
+- Feature vector
+  - No. of object classes
+
+Maybe focus on generating features:
+	Blur
+	Edges (clutter)
+	Face Detection
+
+
+Next Meeting: Wednesday 11.00
+------------
+
