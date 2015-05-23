@@ -1,10 +1,8 @@
-> Script to get top images from Flickr/Photo.net
-
 > Generate "bad" random crop with overlap below threshold
 
-> Cache trained model for use in classifier
-
-> Write pipeline script
+> Quantitative analysis of auto-cropping result
 
 > Compare resulting crop with crops displayed in Chen paper
+
+> Create own phone photos dataset
 
