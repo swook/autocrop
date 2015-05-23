@@ -8,8 +8,9 @@ import signal
 import sys
 import time
 
-import numpy as np
 import cv2   as cv
+import numpy as np
+import PIL.Image
 
 def main():
 
@@ -131,6 +132,24 @@ def show_image(idx):
 
     cur_img_path = new_img_path
     cur_img = cv.imread(cur_img_path)
+
+    # Try to get rotation data and if set, rotate image correctly
+    try:
+        pil_img   = PIL.Image.open(cur_img_path)
+        rot_code  = pil_img._getexif()[274]
+        (h, w, _) = cur_img.shape
+        if rot_code == 3:
+            cur_img = cv.warpAffine(cur_img, cv.getRotationMatrix2D((w/2., h/2.), 180, 1.), (w, h))
+        elif rot_code == 6:
+            m = min(h, w)
+            cur_img = cv.warpAffine(cur_img, cv.getRotationMatrix2D((m/2., m/2.), -90, 1.), (h, w))
+        elif rot_code == 8:
+            cur_img = cv.warpAffine(cur_img, cv.getRotationMatrix2D((w/2., w/2.), 90, 1.), (h, w))
+        pil_img.close()
+    except:
+        if pil_img:
+            pil_img.close()
+
     imshow(fpath, cur_img)
 
     if fpath in data:
