@@ -18,6 +18,9 @@ set(
   "features/FeatMat.cpp"
   "datasets/Chen.cpp"
   "datasets/EarthPorn.cpp"
+
+  "autocrop/autocrop.cpp"
+  "classify/Classifier.cpp"
 )
 
 
@@ -60,4 +63,14 @@ set(
 )
 
 add_library(autocrop_lib ${AUTOCROP_SOURCES})
+
+
+# Evaluate
+set(
+  EVALUATE_SOURCES
+  ${DATASETS_SOURCES}
+  ${AUTOCROP_SOURCES}
+)
+
+add_library(evaluate_lib ${EVALUATE_SOURCES})
 

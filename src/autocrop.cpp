@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 	po::options_description desc("Available options");
 	desc.add_options()
 	    ("help", "Show this message")
-	    ("aspect-ratio,r", po::value<float>()->default_value(1.f), "Width-to-height ratio")
+	    ("aspect-ratio,r", po::value<float>()->default_value(0.f), "Width-to-height ratio")
 	    ("input-file,i", po::value<std::string>(), "Input file path")
 	    ("output-file,o", po::value<std::string>(), "Output file path (default: output.png)")
 	    ("headless,hl", po::bool_switch()->default_value(false), "Run without graphical output")

@@ -7,6 +7,8 @@ using namespace cv;
 
 #include "Chen.hpp"
 #include "../constants.hpp"
+#include "../autocrop/autocrop.hpp"
+#include "../classify/Classifier.hpp"
 #include "../util/math.hpp"
 #include "../util/file.hpp"
 #include "../features/feature.hpp"
@@ -40,27 +42,83 @@ namespace ds
 				continue;
 			}
 
+			Rect bad_crop, good_crop;
+
 			// Image is bad crop
-			Rect crop = Rect(0, 0, saliency.cols, saliency.rows);
-			featMat.addFeatVec(saliency, gradient, crop, BAD_CROP);
+			bad_crop = Rect(0, 0, saliency.cols, saliency.rows);
+			featMat.addFeatVec(saliency, gradient, bad_crop, BAD_CROP);
 
 			// For each Mechanical Turk crop for given image
 			for (int c = 0; c < crops.rows; c++)
 			{
 				// Mechanical turk data is good crop
 				try {
-					crop = getFixedCrop(saliency, crops.row(c));
+					good_crop = getFixedCrop(saliency, crops.row(c));
 				} catch (std::exception e) {
 					std::cout << "Invalid crop: " << crops.row(c) << std::endl;
 					continue;
 				}
-				featMat.addFeatVec(saliency, gradient, crop, GOOD_CROP);
+				featMat.addFeatVec(saliency, gradient, good_crop, GOOD_CROP);
 
 				// Randomly generated crop is "bad"
-				// TODO: Make sure overlap with good crop is not large
-				featMat.addFeatVec(saliency, gradient, randomCrop(saliency), BAD_CROP);
+				// Only picks crop with less than 0.4 overlap
+				bad_crop = randomCrop(saliency, good_crop, 0.3);
+				featMat.addFeatVec(saliency, gradient, bad_crop, BAD_CROP);
 			}
 		}
+	}
+
+	void Chen::quantEval()
+	{
+		getTurkCrops();
+
+		// Initialise classifier
+		Classifier classifier;
+		classifier.loadModel("Trained_model.yml");
+
+		std::vector<float> overlaps;
+
+#pragma omp parallel for
+		for (int i = 0; i < turkCrops.size(); i++)
+		{
+			auto fname = turkCrops[i].fname;
+			auto _crops = turkCrops[i].crops;
+
+			Mat saliency, gradient;
+			try {
+				auto maps = getMaps(fname);
+				saliency = maps.first;
+				gradient = maps.second;
+			} catch (std::exception e) {
+				printf("Error in loading %s\n", fname.c_str());
+				continue;
+			}
+
+			Rect auto_crop = getBestCrop(classifier, saliency, gradient);
+
+			// Get list of valid crops
+			std::vector<Rect> crops;
+			Rect crop;
+			float max_overlap = 0.;
+			for (int c = 0; c < _crops.rows; c++)
+			{
+				// Mechanical turk data is good crop
+				try {
+					crop = getFixedCrop(saliency, _crops.row(c));
+					crops.push_back(crop);
+				} catch (std::exception e) {
+					continue;
+				}
+
+				max_overlap = max(max_overlap, cropOverlap(auto_crop, crop));
+			}
+
+			overlaps.push_back(max_overlap);
+			printf("Max overlap is %.3f for %s\n", max_overlap,
+				fname.c_str());
+		}
+
+		printf("\nMean max overlap is: %.3f\n", mean(overlaps));
 	}
 
 	void Chen::getTurkCrops()

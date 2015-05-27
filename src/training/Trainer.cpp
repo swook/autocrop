@@ -48,16 +48,16 @@ void Trainer::train()
 	model->setType(ml::SVM::C_SVC);
 	model->setKernel(ml::SVM::LINEAR);
 
-	model->setC(20.f);
+	model->setC(10.f);
 
 	// Set termination criteria
 	TermCriteria termCriteria;
 	termCriteria.type     = TermCriteria::COUNT | TermCriteria::EPS;
 	termCriteria.maxCount = 1e4;
 	termCriteria.epsilon  = 1e-7;
-	model->setTermCriteria(termCriteria);
+	//model->setTermCriteria(termCriteria);
 
-	int  kFold    = 10;   // K-fold Cross-Validation
+	int  kFold    = 20;   // K-fold Cross-Validation
 	bool balanced = true;
 
 	// Set candidate hyperparameter values

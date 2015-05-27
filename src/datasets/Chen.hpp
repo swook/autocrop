@@ -21,6 +21,11 @@ namespace ds
 	{
 	public:
 		void addToFeatMat(FeatMat& featMat);
+
+		/**
+		 * Quantitative evaluation of autocropper
+		 */
+		void quantEval();
 	private:
 
 		struct TurkCrop

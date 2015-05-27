@@ -10,25 +10,35 @@ using namespace cv;
 #include "../util/math.hpp"
 #include "../util/opencv.hpp"
 
-/**
- * Crops a given image with a window of given aspect ratio (default: 1)
- * Uses a method from Chen et al. (2014)
- *
- * 1) Generate a saliency map using method from Margolin et al. (2013)
- * 2)
- */
 Mat autocrop(const Mat& in, float w2hrat)
 {
 	// Get saliency map and sum of values
 	Mat saliency = getSaliency(in);
-	float sum_saliency = sum(saliency)[0];
 
 	// Calculate gradient map
 	Mat gradient = getGradient(in);
 
+	// Get best crop
+	Rect crop = getBestCrop(saliency, gradient, w2hrat);
+	std::cout << "Input image is: " << in.size() << std::endl;
+	std::cout << "Final crop is: " << crop << std::endl;
+
+	return in(crop);
+}
+
+Rect getBestCrop(const Mat& saliency, const Mat& gradient, float w2hrat)
+{
 	// Initialise classifier
 	Classifier classifier;
 	classifier.loadModel("Trained_model.yml");
+
+	return getBestCrop(classifier, saliency, gradient, w2hrat);
+}
+
+Rect getBestCrop(const Classifier& classifier, const Mat& saliency,
+	const Mat& gradient, float w2hrat)
+{
+	float sum_saliency = sum(saliency)[0];
 
 	// Generate crop candidates
 	const int MAX_CROP_CANDIDATES = 10000;
@@ -38,7 +48,9 @@ Mat autocrop(const Mat& in, float w2hrat)
 	for (int i = 0; i < MAX_CROP_CANDIDATES; i++)
 	{
 		// Generate single random crop
-		Rect crop = randomCrop(in, w2hrat);
+		Rect crop;
+		if (w2hrat > 1e-5) crop = randomCrop(saliency, w2hrat);
+		else               crop = randomCrop(saliency);
 		Mat cr_saliency = saliency(crop);
 
 		// Calculate content preservation
@@ -64,12 +76,6 @@ Mat autocrop(const Mat& in, float w2hrat)
 #pragma omp critical
 		candidates.push_back(new Candidate(crop, S_compos, S_boundary));
 	}
-
-	// Clean up
-	classifier.clear();
-	showImage("Saliency", saliency);
-	saliency.release();
-	gradient.release();
 
 	const int    C = candidates.size();
 	const float fC = (float) C;
@@ -112,29 +118,8 @@ Mat autocrop(const Mat& in, float w2hrat)
 			return i->S_final > j->S_final;
 		}
 	);
-	Mat final_crop = in(candidates[0]->crop);
 
-
-	// TMP
-	std::cout << *candidates[0] << std::endl;
-	std::cout << *candidates[1] << std::endl;
-	std::cout << *candidates[2] << std::endl;
-	std::cout << *candidates[3] << std::endl;
-	std::cout << *candidates[4] << std::endl;
-	std::cout << *candidates[5] << std::endl;
-	showImage("Top candidates", {
-		in(candidates[0]->crop),
-		in(candidates[1]->crop),
-		in(candidates[2]->crop),
-		in(candidates[3]->crop),
-		in(candidates[4]->crop)
-	});
-
-	// Free allocated structs
-	for (int i = 0; i < candidates.size(); i++)
-		free(candidates[i]);
-
-	return final_crop;
+	return candidates[0]->crop;
 }
 
 

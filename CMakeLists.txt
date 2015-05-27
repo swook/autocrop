@@ -25,7 +25,7 @@ endif(APPLE)
 # Set compile options
 set(
   CMAKE_CXX_FLAGS
-  "${CMAKE_CXX_FLAGS} -O3 -m64 -DNDEBUG -fopenmp -msse3 -msse4 -mavx"
+  "${CMAKE_CXX_FLAGS} -O3 -m64 -g -fopenmp -msse3 -msse4 -mavx"
 )
 
 # Add libraries
@@ -37,6 +37,7 @@ add_executable(features   "src/get_features.cpp")
 add_executable(classifier "src/classifier.cpp")
 add_executable(trainer    "src/trainer.cpp")
 add_executable(autocrop   "src/autocrop.cpp")
+add_executable(evaluate   "src/evaluate.cpp")
 
 # Depend on OpenCV and Boost
 target_link_libraries(saliency   saliency_lib   -lvl           ${OpenCV_LIBS} ${Boost_LIBRARIES})
@@ -44,3 +45,5 @@ target_link_libraries(features   features_lib   -lvl -lcvmatio ${OpenCV_LIBS} ${
 target_link_libraries(classifier classifier_lib -lvl           ${OpenCV_LIBS} ${Boost_LIBRARIES})
 target_link_libraries(trainer    trainer_lib    -lvl -lcvmatio ${OpenCV_LIBS} ${Boost_LIBRARIES})
 target_link_libraries(autocrop   autocrop_lib   -lvl           ${OpenCV_LIBS} ${Boost_LIBRARIES})
+target_link_libraries(evaluate   evaluate_lib   -lvl -lcvmatio ${OpenCV_LIBS} ${Boost_LIBRARIES})
+

@@ -17,25 +17,25 @@ void Classifier::loadModel(std::string fpath)
 	model = ml::SVM::load<ml::SVM>(fpath);
 }
 
-bool Classifier::classify(const Mat& img)
+bool Classifier::classify(const Mat& img) const
 {
 	return classify(img, Rect(0, 0, img.cols, img.rows));
 }
 
-bool Classifier::classify(const Mat& img, const cv::Rect crop)
+bool Classifier::classify(const Mat& img, const cv::Rect crop) const
 {
 	Mat saliency = getSaliency(img);
 	Mat gradient = getGradient(img);
 	return classify(saliency, gradient, crop);
 }
 
-bool Classifier::classify(const Mat& saliency, const Mat& gradient)
+bool Classifier::classify(const Mat& saliency, const Mat& gradient) const
 {
 	return classify(saliency, gradient, Rect(0, 0, saliency.cols, saliency.rows));
 }
 
 bool Classifier::classify(const Mat& saliency, const Mat& gradient,
-                          const Rect crop)
+                          const Rect crop) const
 {
 	Mat featVec = getFeatureVector(saliency, gradient, crop);
 	Mat result;
@@ -44,7 +44,7 @@ bool Classifier::classify(const Mat& saliency, const Mat& gradient,
 	return (int) result.at<float>(0, 0) == GOOD_CROP;
 }
 
-float Classifier::classifyRaw(const Mat& img)
+float Classifier::classifyRaw(const Mat& img) const
 {
 	Mat saliency = getSaliency(img);
 	Mat gradient = getGradient(img);
@@ -52,7 +52,7 @@ float Classifier::classifyRaw(const Mat& img)
 }
 
 float Classifier::classifyRaw(const Mat& saliency, const Mat& gradient,
-                             const Rect crop)
+                             const Rect crop) const
 {
 	Mat featVec = getFeatureVector(saliency, gradient, crop);
 	Mat result;

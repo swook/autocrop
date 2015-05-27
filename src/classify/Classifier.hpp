@@ -15,14 +15,14 @@ public:
 	 * classify generates features from a given image and returns a boolean
 	 * signifying whether the image is a good crop
 	 */
-	bool classify(const cv::Mat& img);
-	bool classify(const cv::Mat& img, const cv::Rect crop);
-	bool classify(const cv::Mat& saliency, const cv::Mat& gradient);
+	bool classify(const cv::Mat& img) const;
+	bool classify(const cv::Mat& img, const cv::Rect crop) const;
+	bool classify(const cv::Mat& saliency, const cv::Mat& gradient) const;
 	bool classify(const cv::Mat& saliency, const cv::Mat& gradient,
-	              const cv::Rect crop);
-	float classifyRaw(const cv::Mat& img);
+	              const cv::Rect crop) const;
+	float classifyRaw(const cv::Mat& img) const;
 	float classifyRaw(const cv::Mat& saliency, const cv::Mat& gradient,
-	                  const cv::Rect crop);
+	                  const cv::Rect crop) const;
 
 	/**
 	 * clear resets the model to clear memory
