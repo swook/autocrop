@@ -339,8 +339,9 @@ Mat getSaliency(const Mat& img)
 
 	// Show result of Boolean Map approach
 	// 2013. Zhang and Sclaroff
-	auto bms = BMS(img_lab_1, 3, true, false, CL_Lab, false);
-	bms.computeSaliency(4);
+	// input_image, dilation_width, normalize, handle_border, colour_space, whitening
+	auto bms = BMS(img_lab_1, 1, true, true, CL_Lab, true);
+	bms.computeSaliency(1);
 	Mat out = bms.getSaliencyMap();
 	out.convertTo(out, CV_32F);
 	normalize(out, out, 0.f, 1.f, NORM_MINMAX);
