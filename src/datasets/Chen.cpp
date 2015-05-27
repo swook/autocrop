@@ -13,69 +13,91 @@ using namespace cv;
 #include "../features/FeatMat.hpp"
 
 
-Rect getFixedCrop(const Mat& img, const Mat& crop);
-
-
 // DataSets namespace
 namespace ds
 {
 
 	void Chen::addToFeatMat(FeatMat& featMat)
 	{
+		getTurkCrops();
+
+#pragma omp parallel for
+		for (int i = 0; i < turkCrops.size(); i++)
+		{
+			auto fname = turkCrops[i].fname;
+			auto crops = turkCrops[i].crops;
+
+			printf("Loading %s (%d/%d)\n", fname.c_str(), i + 1,
+				turkCrops.size());
+
+			Mat saliency, gradient;
+			try {
+				auto maps = getMaps(fname);
+				saliency = maps.first;
+				gradient = maps.second;
+			} catch (std::exception e) {
+				printf("Error in loading %s", fname.c_str());
+				continue;
+			}
+
+			// Image is bad crop
+			Rect crop = Rect(0, 0, saliency.cols, saliency.rows);
+			featMat.addFeatVec(saliency, gradient, crop, BAD_CROP);
+
+			// For each Mechanical Turk crop for given image
+			for (int c = 0; c < crops.rows; c++)
+			{
+				// Mechanical turk data is good crop
+				try {
+					crop = getFixedCrop(saliency, crops.row(c));
+				} catch (std::exception e) {
+					std::cout << "Invalid crop: " << crops.row(c) << std::endl;
+					continue;
+				}
+				featMat.addFeatVec(saliency, gradient, crop, GOOD_CROP);
+
+				// Randomly generated crop is "bad"
+				// TODO: Make sure overlap with good crop is not large
+				featMat.addFeatVec(saliency, gradient, randomCrop(saliency), BAD_CROP);
+			}
+		}
+	}
+
+	void Chen::getTurkCrops()
+	{
+		// Reset list
+		std::vector<TurkCrop>().swap(turkCrops);
+
+		// Read mat file with Mechanical Turk sourced crops
 		MatlabIO mio;
 		mio.open("../datasets/Chen/500_image_dataset.mat", "r");
-
 		auto MAT = mio.read();
 		mio.close();
 
 		auto img_gt = MAT[0].data<std::vector<std::vector<MatlabIOContainer>>>();
 
-#pragma omp parallel for
 		for (int i = 0; i < img_gt.size(); i++)
-		{
-			auto fn = img_gt[i][0].data<std::string>();
-
-			std::cout << "Loading: " << fn << " (" << i << "/" <<
-				img_gt.size() << ")" << std::endl;
-
-			Mat mat = img_gt[i][1].data<Mat>();
-			path ipath = path("../datasets/Chen/image/" + fn);
-
-			// Load cached image maps. Abort if invalid image [maps]
-			Mat saliency, grad;
-			try {
-				saliency = imread(setSuffix(ipath, "saliency").string(), CV_LOAD_IMAGE_UNCHANGED);
-				grad     = imread(setSuffix(ipath, "grad").string(), CV_LOAD_IMAGE_UNCHANGED);
-			}
-			catch (std::exception e) {
-				std::cout << "Error reading: " << ipath << std::endl;
-				continue;
-			}
-			if (!saliency.data || !grad.data) continue;
-
-			// Image is bad crop
-			Rect crop = Rect(0, 0, saliency.cols, saliency.rows);
-			featMat.addFeatVec(saliency, grad, crop, BAD_CROP);
-
-			// For each Mechanical Turk crop for given image
-			for (int c = 0; c < mat.rows; c++)
-			{
-				// Mechanical turk data is good crop
-				try {
-					crop = getFixedCrop(saliency, mat.row(c));
-				} catch (std::exception e) {
-					std::cout << "Invalid crop: " << mat.row(c) << std::endl;
-					continue;
-				}
-				featMat.addFeatVec(saliency, grad, crop, GOOD_CROP);
-
-				// Randomly generated crop is "bad"
-				// TODO: Make sure overlap with good crop is not large
-				featMat.addFeatVec(saliency, grad, randomCrop(saliency), BAD_CROP);
-			}
-		}
-
+			turkCrops.push_back((TurkCrop) {
+				img_gt[i][0].data<std::string>(),
+				img_gt[i][1].data<Mat>()
+			});
 	}
+
+
+	std::pair<Mat, Mat> Chen::getMaps(std::string fname)
+	{
+		path ipath = path("../datasets/Chen/image/" + fname);
+
+		// Load cached image maps. Abort if invalid image [maps]
+		Mat saliency = imread(setSuffix(ipath, "saliency").string(), CV_LOAD_IMAGE_UNCHANGED);
+		Mat grad     = imread(setSuffix(ipath, "grad").string(), CV_LOAD_IMAGE_UNCHANGED);
+
+		if (!saliency.data || !grad.data)
+			throw std::runtime_error("Chen: Error in loading image maps");
+
+		return std::pair<Mat, Mat>(saliency, grad);
+	}
+
 
 	Rect Chen::getFixedCrop(const Mat& img, const Mat& crop)
 	{
