@@ -1,3 +1,6 @@
+# Datasets
+datasets/**/*.zip
+
 # Analysis of data from Chen
 **/Chen/*.tar
 **/Chen/*.mat
@@ -9,12 +12,17 @@
 # EarthPorn dataset
 datasets/EarthPorn/*.jpg
 
+# Phone datasets
+datasets/Michael
+datasets/Wookie
+
 # Build artifacts
 build/
 retarget
 
 # Untrackable (and outdated) Google Doc files
 old/
+references/
 
 # Output from programme
 datasets/**/*.exr
