@@ -114,7 +114,7 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 
 
 	// Return top 10 crop candidates
-	return Candidates(candidates.begin(), candidates.begin() + 20);
+	return Candidates(candidates.begin(), candidates.begin() + CROP_CANDS_N);
 }
 
 

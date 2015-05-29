@@ -78,10 +78,12 @@ namespace ds
 
 		std::vector<float> indices;
 		std::vector<float> overlaps;
+		std::vector<float> overlaps0;
+
+		const int N = 30; //turkCrops.size();
 
 #pragma omp parallel for
-		for (int i = 0; i < turkCrops.size(); i++)
-		//for (int i = 0; i < 20; i++)
+		for (int i = 0; i < N; i++)
 		{
 			auto fname = turkCrops[i].fname;
 			auto _crops = turkCrops[i].crops;
@@ -103,7 +105,7 @@ namespace ds
 
 			Rect crop;
 			int best_crop;
-			float overlap, max_overlap = 0.;
+			float overlap, max_overlap = 0.f, max_overlap0 = 0.f;
 
 			for (int a = 0; a < crop_cands.size(); a++)
 				for (int c = 0; c < _crops.rows; c++)
@@ -117,21 +119,31 @@ namespace ds
 					}
 
 					overlap = cropOverlap(crop_cands[a]->crop, crop);
-					max_overlap = max(max_overlap, overlap);
 
+					max_overlap = max(max_overlap, overlap);
 					if (max_overlap == overlap)
 						best_crop = a;
+
+					if (a == 0)
+						max_overlap0 = max(max_overlap0, overlap);
 				}
 
 			indices.push_back(best_crop);
 			overlaps.push_back(max_overlap);
+			overlaps0.push_back(max_overlap0);
 
 			printf("> Best crop index: %2d\tMax overlap: %.2f\tFilename: %s\n",
 				best_crop, max_overlap, fname.c_str());
 		}
 
-		printf("\nMean best crop index is: %.1f\n", mean(indices));
-		printf("Mean max overlap is: %.3f\n", mean(overlaps));
+		printf("\n%d images were evaluated.\n", N);
+
+		printf("\nFor top %d crop candidates:\n", CROP_CANDS_N);
+		printf("- Mean best crop index is: %.1f\n", mean(indices));
+		printf("- Mean max overlap is: %.3f\n", mean(overlaps));
+
+		printf("\nFor top candidates only:\n");
+		printf("- Mean max overlap is: %.3f\n", mean(overlaps0));
 	}
 
 	void Chen::getTurkCrops()
