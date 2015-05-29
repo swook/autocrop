@@ -44,6 +44,9 @@ void Trainer::train()
 	std::cout << "> Training with " << feats.rows << " rows of data." << std::endl;
 	std::cout << "> Training with " << feats.cols << " features." << std::endl;
 
+	// Split training data into training and testing subset
+	traindata->setTrainTestSplitRatio(.95f, true);
+
 	// Set SVM parameters
 	model->setType(ml::SVM::C_SVC);
 	model->setKernel(ml::SVM::LINEAR);
@@ -77,8 +80,12 @@ void Trainer::train()
 	model->trainAuto(traindata, kFold, CGrid, gammaGrid, pGrid, nuGrid,
 			 coeffGrid, degreeGrid, balanced);
 
+	// Calculate error on dataset
 	float err = model->calcError(traindata, false, noArray());
 	std::cout << "> Training error on whole dataset: " << err << std::endl;
+
+	err = model->calcError(traindata, true, noArray());
+	std::cout << "> Training error on test data subset: " << err << std::endl;
 }
 
 void Trainer::save(std::string fpath)
