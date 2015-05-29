@@ -57,20 +57,12 @@ Rect getBestCrop(const Classifier& classifier, const Mat& saliency,
 		float S_content = sum(cr_saliency)[0] / sum_saliency;
 		if (S_content < 0.4) continue;
 
-		// Calculate saliency composition
-		float S_compos = classifier.classifyRaw(saliency, gradient, crop);
-
 		// Calculate boundary simplicity
-		int ch = crop.height,
-		    cw = crop.width;
 		Mat cr_gradient = gradient(crop);
-		float S_boundary = .25f * (
-			mean(cr_gradient(Rect(0,    0, cw, 1   )))[0] + // Top
-			mean(cr_gradient(Rect(0, ch-1, cw, 1   )))[0] + // Bottom
-			mean(cr_gradient(Rect(0,    1,  1, ch-2)))[0] + // Left
-			mean(cr_gradient(Rect(cw-1, 1,  1, ch-2)))[0]   // Right
-		);
+		float S_boundary = boundarySimplicity(cr_gradient);
 
+		// Calculate saliency composition
+		float S_compos = classifier.classifyRaw(cr_saliency, cr_gradient);
 
 		// Add to valid candidates list
 #pragma omp critical
@@ -120,6 +112,23 @@ Rect getBestCrop(const Classifier& classifier, const Mat& saliency,
 	);
 
 	return candidates[0]->crop;
+}
+
+
+float boundarySimplicity(const Mat& gradient)
+{
+	const int h  = gradient.rows,
+	          w  = gradient.cols,
+		  b  = 3, // Boundary width
+		  h_ = h - 2 * b,
+		  n  = w * b + h_ * b;
+
+	return (
+		sum(gradient(Rect(0,   0, w, b )))[0] + // Top
+		sum(gradient(Rect(0, h-b, w, b )))[0] + // Bottom
+		sum(gradient(Rect(0,   b, b, h_)))[0] + // Left
+		sum(gradient(Rect(w-b, b, b, h_)))[0]   // Right
+	) / n;
 }
 
 

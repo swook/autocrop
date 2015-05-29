@@ -32,3 +32,10 @@ Rect getBestCrop(const Mat& saliency, const Mat& gradient, float w2hrat = 0.f);
 Rect getBestCrop(const Classifier& classifier, const Mat& saliency,
 	const Mat& gradient, float w2hrat = 0.f);
 
+/**
+ * Boundary Simplicity metric
+ *
+ * Averages the boundary pixel values
+ */
+float boundarySimplicity(const cv::Mat& gradient);
+
