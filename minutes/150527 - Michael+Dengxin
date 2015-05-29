@@ -1,0 +1,11 @@
+Dengxin: Get upper bound on overlap by looking at all crop candidates
+- Generate crop candidates
+- Get maximum overlap over all candidates
+- If this is not 0.9 or so, then can look into previous steps
+  - Identify where the issue might be
+
+Michael: Try parameters/setup from last week. Those looked good.
+- Original 2-level spatial pyramid
+- Blurring in saliency map is good to pad objects
+- C range usually [1e-5, 1e5]
+
