@@ -123,11 +123,12 @@ Mat getFeatureVector(const Mat& saliency, const Mat& gradient)
 Mat getGradient(const Mat& img)
 {
 	// Set to single-channel
-	Mat gray = img;
+	Mat gray;
 	if (img.channels() == 3)
 	{
 		cvtColor(img, gray, CV_BGR2GRAY);
 	}
+	else gray = img;
 
 	// Blur to remove high frequency textures
 	Mat   blurred;
