@@ -55,7 +55,7 @@ int main(int argc, char** argv)
 	classifier.loadModel("Trained_model.yml");
 	float score = classifier.classifyRaw(img);
 	std::cout << "Score: " << score << std::endl;
-	bool good = classifier.classify(img);
+	bool good = score < 0;
 
 
 	/**
