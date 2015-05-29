@@ -40,8 +40,8 @@ Rect randomCrop(const Mat& img, const float w2hrat)
 {
 	int h    = img.rows,
 	    w    = img.cols,
-	    minw = w / 4,
-	    minh = h / 4;
+	    minh = max(32, h / 5),
+	    minw = max(32, w / 5);
 
 	int x0, y0, dx, dy;
 	while (1)
@@ -49,12 +49,13 @@ Rect randomCrop(const Mat& img, const float w2hrat)
 		x0 = randInt(0,    w - minw);
 		y0 = randInt(0,    h - minh);
 		dy = randInt(minh, h - 1 - y0);
-		if (w2hrat > 1e-5)
+		if (w2hrat > 1e-5) // Valid aspect ratio
+		{
 			dx = roundf((float) dy * w2hrat);
+			if (dx < minw || x0 + dx + 1 > w) continue;
+		}
 		else
 			dx = randInt(minw, w - 1 - x0);
-
-		if (dx < minw || x0 + dx + 1 > w) continue;
 
 		return Rect(x0, y0, dx, dy);
 	}
@@ -84,8 +85,10 @@ float cropOverlap(const Rect crop1, const Rect crop2)
 	int ow = max(0, min(x1b, x2b) - max(x1a, x2a)),
 	    oh = max(0, min(y1b, y2b) - max(y1a, y2a));
 
-	int oA = ow * oh,
-	    A1 = crop1.width * crop1.height,
+	int oA = ow * oh;
+	if (oA == 0) return 0;
+
+	int A1 = crop1.width * crop1.height,
 	    A2 = crop2.width * crop2.height;
 
 	return oA / (float) (A1 + A2 - oA);
