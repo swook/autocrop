@@ -32,10 +32,11 @@ Rect getBestCrop(const Mat& saliency, const Mat& gradient, float w2hrat)
 	Classifier classifier;
 	classifier.loadModel("Trained_model.yml");
 
-	return getBestCrop(classifier, saliency, gradient, w2hrat);
+	Candidates candidates = getCropCandidates(classifier, saliency, gradient, w2hrat);
+	return candidates[0]->crop;
 }
 
-Rect getBestCrop(const Classifier& classifier, const Mat& saliency,
+Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 	const Mat& gradient, float w2hrat)
 {
 	float sum_saliency = sum(saliency)[0];
@@ -111,7 +112,9 @@ Rect getBestCrop(const Classifier& classifier, const Mat& saliency,
 		}
 	);
 
-	return candidates[0]->crop;
+
+	// Return top 10 crop candidates
+	return Candidates(candidates.begin(), candidates.begin() + 20);
 }
 
 

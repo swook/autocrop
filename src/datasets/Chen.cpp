@@ -76,10 +76,12 @@ namespace ds
 		Classifier classifier;
 		classifier.loadModel("Trained_model.yml");
 
+		std::vector<float> indices;
 		std::vector<float> overlaps;
 
 #pragma omp parallel for
 		for (int i = 0; i < turkCrops.size(); i++)
+		//for (int i = 0; i < 20; i++)
 		{
 			auto fname = turkCrops[i].fname;
 			auto _crops = turkCrops[i].crops;
@@ -94,31 +96,42 @@ namespace ds
 				continue;
 			}
 
-			Rect auto_crop = getBestCrop(classifier, saliency, gradient);
+			Candidates crop_cands = getCropCandidates(classifier, saliency, gradient);
 
 			// Get list of valid crops
 			std::vector<Rect> crops;
+
 			Rect crop;
-			float max_overlap = 0.;
-			for (int c = 0; c < _crops.rows; c++)
-			{
-				// Mechanical turk data is good crop
-				try {
-					crop = getFixedCrop(saliency, _crops.row(c));
-					crops.push_back(crop);
-				} catch (std::exception e) {
-					continue;
+			int best_crop;
+			float overlap, max_overlap = 0.;
+
+			for (int a = 0; a < crop_cands.size(); a++)
+				for (int c = 0; c < _crops.rows; c++)
+				{
+					// Mechanical turk data is good crop
+					try {
+						crop = getFixedCrop(saliency, _crops.row(c));
+						crops.push_back(crop);
+					} catch (std::exception e) {
+						continue;
+					}
+
+					overlap = cropOverlap(crop_cands[a]->crop, crop);
+					max_overlap = max(max_overlap, overlap);
+
+					if (max_overlap == overlap)
+						best_crop = a;
 				}
 
-				max_overlap = max(max_overlap, cropOverlap(auto_crop, crop));
-			}
-
+			indices.push_back(best_crop);
 			overlaps.push_back(max_overlap);
-			printf("Max overlap is %.3f for %s\n", max_overlap,
-				fname.c_str());
+
+			printf("> Best crop index: %2d\tMax overlap: %.2f\tFilename: %s\n",
+				best_crop, max_overlap, fname.c_str());
 		}
 
-		printf("\nMean max overlap is: %.3f\n", mean(overlaps));
+		printf("\nMean best crop index is: %.1f\n", mean(indices));
+		printf("Mean max overlap is: %.3f\n", mean(overlaps));
 	}
 
 	void Chen::getTurkCrops()

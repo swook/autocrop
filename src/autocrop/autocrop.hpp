@@ -8,17 +8,18 @@
 struct Candidate
 {
 	const cv::Rect crop;
-	const float    S_compos;
-	const float    S_boundary;
-	float          R_compos;
-	float          R_boundary;
-	float          S_final;
+	float S_compos;
+	float S_boundary;
+	float R_compos;
+	float R_boundary;
+	float S_final;
 
 	Candidate(const cv::Rect crop,
 	          const float S_compos,
 	          const float S_boundary)
 	: crop(crop), S_compos(S_compos), S_boundary(S_boundary) {}
 };
+typedef std::vector<Candidate*> Candidates;
 
 std::ostream& operator<<(std::ostream& os, const Candidate& c);
 
@@ -29,7 +30,8 @@ std::ostream& operator<<(std::ostream& os, const Candidate& c);
 Mat autocrop(const Mat& in, float w2hrat = 0.f);
 
 Rect getBestCrop(const Mat& saliency, const Mat& gradient, float w2hrat = 0.f);
-Rect getBestCrop(const Classifier& classifier, const Mat& saliency,
+
+Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 	const Mat& gradient, float w2hrat = 0.f);
 
 /**
