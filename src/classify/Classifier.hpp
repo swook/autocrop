@@ -21,6 +21,7 @@ public:
 	bool classify(const cv::Mat& saliency, const cv::Mat& gradient,
 	              const cv::Rect crop) const;
 	float classifyRaw(const cv::Mat& img) const;
+	float classifyRaw(const cv::Mat& saliency, const cv::Mat& gradient) const;
 	float classifyRaw(const cv::Mat& saliency, const cv::Mat& gradient,
 	                  const cv::Rect crop) const;
 
@@ -31,4 +32,7 @@ public:
 
 private:
 	cv::Ptr<cv::ml::SVM> model;
+
+	bool _classify(const cv::Mat& featVec) const;
+	float _classifyRaw(const cv::Mat& featVec) const;
 };

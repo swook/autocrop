@@ -9,98 +9,92 @@ using namespace cv;
 #include "../saliency/saliency.hpp"
 #include "../util/opencv.hpp"
 
+Mat getFeatureVector(const Mat& img)
+{
+	// Calculate saliency map
+	Mat saliency = getSaliency(img);
+
+	// Calculate gradient image
+	Mat gradient = getGradient(img);
+
+	// Calculate feature vector
+	return getFeatureVector(saliency, gradient);
+}
 
 Mat getFeatureVector(const Mat& img, const Rect crop)
 {
 	// Calculate saliency map
-	Mat _saliency = getSaliency(img);
+	Mat saliency = getSaliency(img);
 
 	// Calculate gradient image
-	Mat _grad = getGradient(img);
+	Mat gradient = getGradient(img);
 
-	// Calculate feature vector
-	Mat feats = getFeatureVector(_saliency, _grad, crop);
-
-	return feats;
+	return getFeatureVector(saliency, gradient, crop);
 }
 
-
-cv::Mat getFeatureVector(const Mat& saliency, const Mat& grad,
+Mat getFeatureVector(const Mat& saliency, const Mat& gradient,
 	const Rect crop)
 {
+	return getFeatureVector(saliency(crop), gradient(crop));
+}
+
+Mat getFeatureVector(const Mat& saliency, const Mat& gradient)
+{
 	int h  = saliency.rows,
-	    w  = saliency.cols,
-	    ch = crop.height,
-	    cw = crop.width;
+	    w  = saliency.cols;
 
-	Mat cr_saliency = saliency(crop);
-	Mat cr_grad     = grad(crop);
-
-	//showImage("cropped saliency", cr_saliency);
-	//showImageAndWait("cropped gradient", cr_grad);
-
-
-	// Resize cropped saliency map to be 4x4. Use INTER_AREA to average pixel
-	// values
+	// Resize saliency map to be 8x8. Use INTER_AREA to average pixel values
 	Mat _saliency;
-	resize(cr_saliency, _saliency, Size(4, 4), INTER_AREA);
+	resize(saliency, _saliency, Size(8, 8), INTER_AREA);
 
 	// Initialise feature vector
 	Mat     feats = Mat(Size(FEATS_N, 1), CV_32F);
 	float* _feats = feats.ptr<float>(0);
 
+	int i = 0; // Index in feature vector
 
-	/**
-	 * Visual Composition
-	 * - 16 + 4 + 1 = 21 features
-	 *
-	 * 1) Resize image to 4x4 to average saliency values
-	 * 2) Store 1/16ths as feature values
-	 * 3) Average 1/16 values to get feature values for 1/4ths
-	 * 4) Average 1/4 value to get feature value for whole image
-	 */
+	// Add mean values for 1/64ths
+	float* p_saliency = _saliency.ptr<float>(0);
+	for (int c = 0; c < 64; c++)
+	{
+		_feats[i] = p_saliency[i];
+		i++;
+	}
 
 	// Add mean values for 1/16ths
-	float* p_saliency = _saliency.ptr<float>(0);
-	for (int i = 0; i < 16; i++)
-		_feats[i] = p_saliency[i];
+	for (int j = 0; j < 4; j++)
+		for (int k = 0; k < 4; k++)
+		{
+			_feats[i] = .25f * (
+				_feats[16 * j + 2 * k]     +
+				_feats[16 * j + 2 * k + 1] +
+				_feats[16 * j + 2 * k + 8] +
+				_feats[16 * j + 2 * k + 9]
+			);
+			i++;
+		}
 
 	// Add mean values for 1/4ths
-	_feats[16] = .25f * (_feats[0]  + _feats[1]  + _feats[4]  + _feats[5]);
-	_feats[17] = .25f * (_feats[2]  + _feats[3]  + _feats[6]  + _feats[7]);
-	_feats[18] = .25f * (_feats[8]  + _feats[9]  + _feats[12] + _feats[13]);
-	_feats[19] = .25f * (_feats[10] + _feats[11] + _feats[14] + _feats[15]);
+	for (int j = 0; j < 2; j++)
+		for (int k = 0; k < 2; k++)
+		{
+			_feats[i] = 0.25f * (
+				_feats[64 + 8 * j + 2 * k]     +
+				_feats[64 + 8 * j + 2 * k + 1] +
+				_feats[64 + 8 * j + 2 * k + 4] +
+				_feats[64 + 8 * j + 2 * k + 5]
+			);
+			i++;
+		}
 
 	// Add mean value for all pixels in saliency map
-	_feats[20] = .25f * (_feats[16] + _feats[17] + _feats[18] + _feats[19]);
+	_feats[i] = .25f * (
+		_feats[i - 4] +
+		_feats[i - 3] +
+		_feats[i - 2] +
+		_feats[i - 1]
+	);
 
-	return feats;
-
-
-	/**
-	 * Boundary Simplicity
-	 * - 1 feature
-	 */
-	// Take average gradient along boundary
-	_feats[21] = .25f * (
-			mean(cr_grad(Rect(0,    0, cw, 1   )))[0] + // Top
-			mean(cr_grad(Rect(0, ch-1, cw, 1   )))[0] + // Bottom
-			mean(cr_grad(Rect(0,    1,  1, ch-2)))[0] + // Left
-			mean(cr_grad(Rect(cw-1, 1,  1, ch-2)))[0]   // Right
-	             );
-
-	return feats;
-
-
-	/**
-	 * Content Preservation
-	 * - 1 feature
-	 */
-	// Ratio of saliency energy inside crop to total saliency energy
-	_feats[22] = sum(cr_saliency)[0] / sum(saliency)[0];
-
-
-	// Return full feature vector
 	return feats;
 }
 
