@@ -3,8 +3,9 @@
 #include <opencv2/core.hpp>
 
 /**
- * Calculates the mean or variance of values in a given list of floats
+ * Calculates the median, mean or variance of values in a given list of floats
  */
+float median(std::vector<float>& v);
 float mean(std::vector<float>& v);
 float var(std::vector<float>& v);
 

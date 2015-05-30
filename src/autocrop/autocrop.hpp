@@ -31,7 +31,8 @@ Mat autocrop(const Mat& in, float w2hrat = 0.f);
 
 Rect getBestCrop(const Mat& saliency, const Mat& gradient, float w2hrat = 0.f);
 
-#define CROP_CANDS_N 10
+#define CROP_CANDS_N 50
+
 Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 	const Mat& gradient, float w2hrat = 0.f);
 

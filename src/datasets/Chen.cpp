@@ -80,7 +80,7 @@ namespace ds
 		std::vector<float> overlaps;
 		std::vector<float> overlaps0;
 
-		const int N = 30; //turkCrops.size();
+		const int N = turkCrops.size();
 
 #pragma omp parallel for
 		for (int i = 0; i < N; i++)
@@ -141,9 +141,12 @@ namespace ds
 		printf("\nFor top %d crop candidates:\n", CROP_CANDS_N);
 		printf("- Mean best crop index is: %.1f\n", mean(indices));
 		printf("- Mean max overlap is: %.3f\n", mean(overlaps));
+		printf("- Median best crop index is: %.1f\n", median(indices));
+		printf("- Median max overlap is: %.3f\n", median(overlaps));
 
 		printf("\nFor top candidates only:\n");
 		printf("- Mean max overlap is: %.3f\n", mean(overlaps0));
+		printf("- Median max overlap is: %.3f\n", median(overlaps0));
 	}
 
 	void Chen::getTurkCrops()

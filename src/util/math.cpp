@@ -7,21 +7,31 @@ using namespace cv;
 
 #include "math.hpp"
 
+float median(std::vector<float>& v)
+{
+	const int n = v.size();
+	assert(n > 0);
+	if (n == 1) return v[0];
+
+	std::sort(v.begin(), v.end());
+	return v[n / 2];
+}
+
 float mean(std::vector<float>& v)
 {
-	auto n = v.size();
+	const int n = v.size();
 	if (n == 0) return 0.f;
 
-	auto sum = std::accumulate(std::begin(v), std::end(v), 0.0);
+	float sum = std::accumulate(std::begin(v), std::end(v), 0.0);
 	return sum / n;
 }
 
 float var(std::vector<float>& v)
 {
-	auto n = v.size();
+	const int n = v.size();
 	if (n == 0) return 0.f;
 
-	auto _mean = mean(v);
+	float _mean = mean(v);
 	return sqrt(std::accumulate(std::begin(v), std::end(v), 0.f,
 		[&](const float b, const float e) {
 			float diff = e - _mean;
