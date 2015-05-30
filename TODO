@@ -1,8 +1,6 @@
-> Generate "bad" random crop with overlap below threshold
-
-> Quantitative analysis of auto-cropping result
-
 > Compare resulting crop with crops displayed in Chen paper
 
-> Create own phone photos dataset
+> Add more data to trainer?
+  - Could use EarthPorn as good crop
+    and random crops of EarthPorn as bad crop
 
