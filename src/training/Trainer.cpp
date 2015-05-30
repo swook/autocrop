@@ -51,14 +51,7 @@ void Trainer::train()
 	model->setType(ml::SVM::C_SVC);
 	model->setKernel(ml::SVM::LINEAR);
 
-	model->setC(10.f);
-
-	// Set termination criteria
-	TermCriteria termCriteria;
-	termCriteria.type     = TermCriteria::COUNT | TermCriteria::EPS;
-	termCriteria.maxCount = 1e4;
-	termCriteria.epsilon  = 1e-7;
-	//model->setTermCriteria(termCriteria);
+	model->setC(100.f);
 
 	int  kFold    = 20;   // K-fold Cross-Validation
 	bool balanced = true;
@@ -72,18 +65,21 @@ void Trainer::train()
 	              degreeGrid = ml::SVM::getDefaultGrid(ml::SVM::DEGREE)
 	;
 
-	CGrid.logStep = 1.5f;
-	CGrid.minVal = 0.001f;
-	CGrid.maxVal = 100.f;
+	CGrid.logStep = 1.2f;
+	CGrid.minVal = 1e-5;
+	CGrid.maxVal = 1e5;
 
 	// Run cross-validation with SVM
 	model->trainAuto(traindata, kFold, CGrid, gammaGrid, pGrid, nuGrid,
 			 coeffGrid, degreeGrid, balanced);
 
-	// Calculate error on dataset
-	float err = model->calcError(traindata, false, noArray());
+	float err;
+
+	// Calculate error on whole dataset
+	err = model->calcError(traindata, false, noArray());
 	std::cout << "> Training error on whole dataset: " << err << std::endl;
 
+	// Calculate error on test data subset only
 	err = model->calcError(traindata, true, noArray());
 	std::cout << "> Training error on test data subset: " << err << std::endl;
 }
