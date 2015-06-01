@@ -20,6 +20,9 @@ datasets/Wookie
 build/
 retarget
 
+# Python artifacts
+*.pyc
+
 # Untrackable (and outdated) Google Doc files
 old/
 references/
