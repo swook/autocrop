@@ -1,0 +1,29 @@
+Done:
+- Upper bound on quantitative error
+- Basic classifier for wallpaper suitability using fc6
+
+Todo:
+- Look into blurriness feature
+- Read convolutional networks material
+- Cross-validation in training
+
+Michael:
+- Split data into training/testing 2:1
+- Quantitative validation (majority vote)
+  - % of correct classifications
+- Try to recreate plot from paper
+- MMR: Maximal Marginal Relevance, greedy selection to diversify
+- Look into personal-bias (who classifies the dataset)
+
+Dengxin:
+- Complete pipeline by joining autocrop+suitability
+- Blurriness feature
+  - Maybe use Python library for calling matlab code
+- See how our classifications correlate
+  - If high correlation, good for general purpose
+
+Admin
+- Presentation maybe 25th
+- Report due before end (26th)
+  - There is format
+
