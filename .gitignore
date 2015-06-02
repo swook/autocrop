@@ -13,8 +13,11 @@ datasets/**/*.zip
 datasets/EarthPorn/*.jpg
 
 # Phone datasets
-datasets/Michael
-datasets/Wookie
+datasets/Michael/*.mp4
+datasets/Michael/*.jpg
+datasets/Michael/*.pickle
+datasets/Wookie/*.jpg
+datasets/Wookie/*.pickle
 
 # Build artifacts
 build/
