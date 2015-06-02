@@ -35,6 +35,9 @@ datasets/**/*.exr
 *.yml
 *.xml
 
+# Output from pdflatex
+report/*.bbl
+
 # Misc
 .clang_complete
 .*
