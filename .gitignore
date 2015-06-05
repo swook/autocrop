@@ -13,9 +13,10 @@ datasets/**/*.zip
 datasets/EarthPorn/*.jpg
 
 # Phone datasets
-datasets/Michael/*.mp4
+datasets/Michael/*.json
 datasets/Michael/*.jpg
 datasets/Michael/*.pickle
+datasets/Wookie/*.json
 datasets/Wookie/*.jpg
 datasets/Wookie/*.pickle
 
