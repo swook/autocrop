@@ -26,6 +26,9 @@ retarget
 # Python artifacts
 *.pyc
 
+# Suitability training data
+suitability/Trained_model.pkl*
+
 # Untrackable (and outdated) Google Doc files
 old/
 references/
