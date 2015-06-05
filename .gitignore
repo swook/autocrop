@@ -28,7 +28,7 @@ retarget
 *.pyc
 
 # Suitability training data
-suitability/Trained_model.pkl*
+suitability/*.out*
 
 # Untrackable (and outdated) Google Doc files
 old/

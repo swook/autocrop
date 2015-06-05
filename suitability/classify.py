@@ -41,7 +41,7 @@ def main():
              f.lower().endswith(valid_suffices)]
     if len(files) == 0:
         print('No images to read in: %s' % if_path)
-        return
+        cleanup()
 
     random.shuffle(files)
 
