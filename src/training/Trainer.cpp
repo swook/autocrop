@@ -45,7 +45,7 @@ void Trainer::train()
 	std::cout << "> Training with " << feats.cols << " features." << std::endl;
 
 	// Split training data into training and testing subset
-	traindata->setTrainTestSplitRatio(.95f, true);
+	traindata->setTrainTestSplitRatio(.75f, true);
 
 	// Set SVM parameters
 	model->setType(ml::SVM::C_SVC);
