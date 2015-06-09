@@ -11,7 +11,7 @@ import PIL.Image
 
 from Classifier import *
 from FeatMat import *
-import util
+from util import *
 
 def main():
 
@@ -98,46 +98,13 @@ def show_image(idx):
         return
 
     cur_img_path = new_img_path
-    cur_img = cv.imread(cur_img_path)
-
-    # Try to get rotation data and if set, rotate image correctly
-    pil_img = None
-    try:
-        pil_img   = PIL.Image.open(cur_img_path)
-        rot_code  = pil_img._getexif()[274]
-        (h, w, _) = cur_img.shape
-        if rot_code == 3:
-            cur_img = cv.warpAffine(cur_img, cv.getRotationMatrix2D((w/2., h/2.), 180, 1.), (w, h))
-        elif rot_code == 6:
-            m = min(h, w)
-            cur_img = cv.warpAffine(cur_img, cv.getRotationMatrix2D((m/2., m/2.), -90, 1.), (h, w))
-        elif rot_code == 8:
-            cur_img = cv.warpAffine(cur_img, cv.getRotationMatrix2D((w/2., w/2.), 90, 1.), (h, w))
-        pil_img.close()
-    except:
-        if pil_img:
-            pil_img.close()
 
     cls = 'GOOD' if int(classifier.predictFeats(file_to_feat[cur_img_path])[0]) == 1 else 'BAD'
 
-    imshow('[%s] %s' % (cls, fpath), cur_img)
+    imshow('main', '[%s] %s' % (cls, fpath), cur_img_path)
 
     print('[%03d/%03d] Showing %s (%s)' % (idx, len(files), fpath, cls))
 
-cv.namedWindow('main', cv.WINDOW_OPENGL | cv.WINDOW_KEEPRATIO)
-def imshow(name, img):
-    # Make it 800px wide on major axis
-    (h, w, _) = img.shape
-    if h < w:
-        ratio = 800. / w
-    else:
-        ratio = 500. / h
-    h *= ratio
-    w *= ratio
-
-    cv.imshow('main', img)
-    cv.setWindowTitle('main', name)
-    cv.resizeWindow('main', int(w), int(h))
 
 def prev_image():
     global idx
