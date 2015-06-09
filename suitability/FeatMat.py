@@ -36,14 +36,29 @@ class FeatMat:
         return features['fc6']
 
 
-    # Adds classifications from classifications*.json files found in given path
-    def addClasses(self, path, file_to_feat):
+    # Gets all available classifications for a give path
+    def getClasses(self, path):
         files = util.filesWithRe(path, r'.*\/classifications.*\.json$')
+        out = {}
         for fpath in files:
             with open(fpath, 'r') as f:
                 classifs = json.load(f)
 
             for fname, classif in classifs.iteritems():
+                if fname in out:
+                    out[fname].append(classif)
+                else:
+                    out[fname] = [classif]
+
+        return out
+
+
+    # Adds classifications from classifications*.json files found in given path
+    def addClasses(self, path, file_to_feat):
+        classifs = self.getClasses(path)
+
+        for fname, fclassifs in classifs.iteritems():
+            for classif in fclassifs:
                 try:
                     row = file_to_feat['%s/%s' % (path, fname)]
                     if self.X is None:
