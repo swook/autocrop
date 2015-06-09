@@ -1,6 +1,7 @@
 #!/usr/bin/env python2
 
 from multiprocessing import cpu_count
+import os
 
 from sklearn import svm
 from sklearn.cross_validation import KFold
@@ -48,6 +49,9 @@ class Trainer:
 
 
 def main():
+    # Go to script's directory
+    os.chdir(os.path.dirname(os.path.realpath(__file__)))
+
     featMat = FeatMat()
     featMat.addFolder('../datasets/Michael')
     featMat.addFolder('../datasets/Wookie')
