@@ -9,9 +9,9 @@ BUILD="../build"
 echo; echo "> Preprocessing Chen images..."
 $BUILD/saliency ../datasets/Chen/image --output-dir ../datasets/Chen/image
 
-# Preprocess EarthPorn images
-#echo; echo "> Preprocessing EarthPorn images..."
-#$BUILD/saliency ../datasets/EarthPorn --output-dir ../datasets/EarthPorn
+# Preprocess Reddit images
+echo; echo "> Preprocessing Reddit images..."
+$BUILD/saliency ../datasets/Reddit --output-dir ../datasets/Reddit
 
 # Calculate features
 echo; echo "> Calculating features..."

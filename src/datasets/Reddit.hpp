@@ -7,14 +7,14 @@
 namespace ds
 {
 	/**
-	 * Dataset from https://www.reddit.com/r/EarthPorn
+	 * Dataset from https://www.reddit.com/r/Reddit
 	 * Top images from the past year are downloaded.
-	 * See datasets/EarthPorn/get_dataset.py
+	 * See datasets/Reddit/get_dataset.py
 	 *
 	 * The whole image is considered to be well composed,
 	 * and random crops are considered to be badly composed.
 	 */
-	class EarthPorn : public DataSet
+	class Reddit : public DataSet
 	{
 	public:
 		void addToFeatMat(FeatMat& featMat);

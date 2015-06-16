@@ -17,7 +17,7 @@ set(
   "util/file.cpp"
   "features/FeatMat.cpp"
   "datasets/Chen.cpp"
-  "datasets/EarthPorn.cpp"
+  "datasets/Reddit.cpp"
 
   "autocrop/autocrop.cpp"
   "classify/Classifier.cpp"

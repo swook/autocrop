@@ -5,7 +5,7 @@
 #include "opencv2/imgcodecs/imgcodecs_c.h"
 using namespace cv;
 
-#include "EarthPorn.hpp"
+#include "Reddit.hpp"
 #include "../constants.hpp"
 #include "../util/math.hpp"
 #include "../util/file.hpp"
@@ -17,9 +17,9 @@ using namespace cv;
 namespace ds
 {
 
-	void EarthPorn::addToFeatMat(FeatMat& featMat)
+	void Reddit::addToFeatMat(FeatMat& featMat)
 	{
-		paths files = getUnprocessedImagePaths("../datasets/EarthPorn/");
+		paths files = getUnprocessedImagePaths("../datasets/Reddit/");
 #pragma omp parallel for
 		for (int i = 0; i < files.size(); i++)
 		{
@@ -30,25 +30,27 @@ namespace ds
 
 			// Load cached image maps. Abort if invalid image [maps]
 			Mat saliency, grad;
-			try {
+			try
+			{
 				saliency = imread(setSuffix(fpath, "saliency").string(), CV_LOAD_IMAGE_UNCHANGED);
 				grad     = imread(setSuffix(fpath, "grad").string(), CV_LOAD_IMAGE_UNCHANGED);
 			}
-			catch (std::exception e) {
+			catch (std::exception e)
+			{
 				std::cout << "Error reading: " << fpath << std::endl;
 				continue;
 			}
-			if (!saliency.data || !grad.data) continue;
+			if (!saliency.data || !grad.data)
+			{
+				std::cout << "Error reading: " << fpath << std::endl;
+				continue;
+			}
 
 			// Image is good crop
 			Rect crop = Rect(0, 0, saliency.cols, saliency.rows);
 			featMat.addFeatVec(saliency, grad, crop, GOOD_CROP);
 
-
 			// Randomly generated crop is "bad"
-			// TODO: Add multiple
-			featMat.addFeatVec(saliency, grad, randomCrop(saliency), BAD_CROP);
-			featMat.addFeatVec(saliency, grad, randomCrop(saliency), BAD_CROP);
 			featMat.addFeatVec(saliency, grad, randomCrop(saliency), BAD_CROP);
 			featMat.addFeatVec(saliency, grad, randomCrop(saliency), BAD_CROP);
 		}

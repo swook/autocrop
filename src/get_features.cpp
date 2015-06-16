@@ -26,9 +26,9 @@ int main(int argc, char** argv)
 	ds::Chen chen;
 	chen.addToFeatMat(featMat);
 
-	// r/EarthPorn
-	ds::EarthPorn earthPorn;
-	//earthPorn.addToFeatMat(featMat);
+	// Reddit
+	ds::Reddit reddit;
+	reddit.addToFeatMat(featMat);
 
 	// Save feature matrix
 	featMat.save("./Training.yml");

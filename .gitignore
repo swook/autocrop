@@ -9,8 +9,11 @@ datasets/**/*.zip
 **/Chen/analysis/images_withbbox
 **/Chen/analysis/good_crops
 
-# EarthPorn dataset
-datasets/EarthPorn/*.jpg
+# Reddit dataset
+datasets/Reddit/*.jpg
+datasets/Reddit/*.JPG
+datasets/Reddit/*.jpeg
+datasets/Reddit/*.png
 
 # Phone datasets
 datasets/Michael/*.json

@@ -11,19 +11,27 @@ from urllib.parse   import urlencode
 from urllib.parse   import urlsplit
 
 def get_dataset():
-    urls = get_urls(500)
+    urls = get_urls([
+        'CityPorn',
+        'EarthPorn',
+        'itookapicture',
+        'photocritique',
+        'WaterPorn',
+        'windowshots',
+    ], 2000)
 
     for i, url in enumerate(urls):
         get_photo(i, url)
 
 
-def get_urls(n):
+def get_urls(subreddits, n):
+
+    api_url = 'https://api.reddit.com/r/%s/top' % '+'.join(subreddits)
 
     last_name = ''
     urls = []
 
     while len(urls) < n:
-        api_url = 'https://api.reddit.com/r/EarthPorn/top'
         options = urlencode({
             't':     'year',    # Past year
             'after': last_name, # Previous result
@@ -42,6 +50,8 @@ def get_urls(n):
             continue
 
         print('> Received %d entries.' % len(data))
+        if len(data) == 0:
+            break
 
         for child in data:
             url = child['data']['url']
