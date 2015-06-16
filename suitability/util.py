@@ -9,31 +9,33 @@ def filesWithRe(path, regexp):
     files = ['%s/%s' % (path, f) for f in os.listdir(path)]
     return [f for f in files if os.path.isfile(f) and re.match(regexp, f)]
 
+def imread_rotated(path):
+    I = cv.imread(path, cv.IMREAD_UNCHANGED)
+    pil_img = None
+    try:
+        pil_img   = PIL.Image.open(path)
+        rot_code  = pil_img._getexif()[274]
+        (h, w, _) = I.shape
+        if rot_code == 3:
+            I = cv.warpAffine(I, cv.getRotationMatrix2D((w/2., h/2.), 180, 1.), (w, h))
+        elif rot_code == 6:
+            m = min(h, w)
+            I = cv.warpAffine(I, cv.getRotationMatrix2D((m/2., m/2.), -90, 1.), (h, w))
+        elif rot_code == 8:
+            I = cv.warpAffine(I, cv.getRotationMatrix2D((w/2., w/2.), 90, 1.), (h, w))
+        pil_img.close()
+    except:
+        if pil_img:
+            pil_img.close()
+    return I
+
 windows = {}
 def imshow(name, title, _in):
     img = None
 
     # Load img if necessary
     if isinstance(_in, str):
-
-        # Try to get rotation data and if set, rotate image correctly
-        pil_img = None
-        try:
-            img       = cv.imread(_in)
-            pil_img   = PIL.Image.open(_in)
-            rot_code  = pil_img._getexif()[274]
-            (h, w, _) = img.shape
-            if rot_code == 3:
-                img = cv.warpAffine(img, cv.getRotationMatrix2D((w/2., h/2.), 180, 1.), (w, h))
-            elif rot_code == 6:
-                m = min(h, w)
-                img = cv.warpAffine(img, cv.getRotationMatrix2D((m/2., m/2.), -90, 1.), (h, w))
-            elif rot_code == 8:
-                img = cv.warpAffine(img, cv.getRotationMatrix2D((w/2., w/2.), 90, 1.), (h, w))
-            pil_img.close()
-        except:
-            if pil_img:
-                pil_img.close()
+        img = imread_rotated(_in)
 
     elif isinstance(_in, np.array):
         img = _in
