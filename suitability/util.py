@@ -37,7 +37,7 @@ def imshow(name, title, _in):
     if isinstance(_in, str):
         img = imread_rotated(_in)
 
-    elif isinstance(_in, np.array):
+    elif isinstance(_in, np.ndarray):
         img = _in
 
     # Load exception if input argument invalid
@@ -56,6 +56,8 @@ def imshow(name, title, _in):
         ratio = 500. / h
     h *= ratio
     w *= ratio
+
+    img = cv.resize(img, None, fx=ratio, fy=ratio)
 
     cv.imshow(name, img)
     cv.setWindowTitle(name, title)
