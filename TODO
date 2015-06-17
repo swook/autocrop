@@ -1,6 +1,42 @@
 > Compare resulting crop with crops displayed in Chen paper
 
-> Add more data to trainer?
-  - Could use EarthPorn as good crop
-    and random crops of EarthPorn as bad crop
+|> Add more data to trainer?
+|  - Could use EarthPorn as good crop
+|    and random crops of EarthPorn as bad crop
+|
+| DONE
+
+|> Split data into training/testing 2:1
+|
+| DONE
+
+|> Quantitative validation (majority vote)
+|  - % of correct classifications
+|
+| Waiting on Dengxin. Min selection works quite well
+
+|> Try to recreate plot from paper
+|
+| DONE
+
+|> MMR: Maximal Marginal Relevance, greedy selection to diversify
+|
+| DONE
+
+> Look into personal-bias (who classifies the dataset)
+
+|> Complete pipeline by joining autocrop+suitability
+|
+| DONE
+
+|> Blurriness feature
+|  - Maybe use Python library for calling matlab code
+|
+| Stopped: Matlab code much too slow and too many issues including
+|          reference code not working.
+
+|> See how our classifications correlate
+|  - If high correlation, good for general purpose
+|
+| DONE
 
