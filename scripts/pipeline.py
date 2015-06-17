@@ -9,6 +9,8 @@ import sys
 sys.path.append('..')
 import time
 
+from sklearn.preprocessing import normalize
+
 from suitability.Classifier import *
 from suitability.util import *
 
@@ -29,6 +31,7 @@ def main():
     os.chdir('../suitability/')
     featMat = FeatMat()
     file_to_feat = featMat.getFeatures(if_path)
+    print('- Loaded features for %d files' % len(file_to_feat))
 
     # Initialise classifier
     global classifier
@@ -45,12 +48,23 @@ def main():
         print('No images to read in: %s' % if_path)
         cleanup()
 
-    random.shuffle(files)
+    # Create list of last shown times
+    global last_times
+    last_times = [time.time()]*len(files)
+
+    # Classify each image and keep suitable ones
+    suitable = []
+    for fname in files:
+        img_path = '%s/%s' % (if_path, fname)
+        if int(classifier.predictFeats(file_to_feat[img_path])[0]) == 1:
+            suitable.append(fname)
+    files = suitable
+    print('- Classified images to retain list of suitable images only')
 
     # Main loop
     global idx
-    idx = -1
-    next_image()
+    idx = 0
+    show_next_image()
 
     signal.signal(signal.SIGINT, cleanup)
 
@@ -100,24 +114,55 @@ def show_image(idx, I):
     print('- Showing %s [%03d/%03d]' % (fpath, idx, len(files)))
     imshow('main', '%s' % fpath, I)
 
-
 def next_image():
-    global if_path, file_to_feat, cur_img_path, idx, files
+    find_next_image()
+    show_next_image()
 
-    # Get next "suitable" image
-    while True:
-        idx += 1
-        img_path = '%s/%s' % (if_path, files[idx])
+def find_next_image():
+    global idx, files, if_path, file_to_feat, last_times
 
-        if int(classifier.predictFeats(file_to_feat[img_path])[0]) == 0:
-            print('- Skipping unsuitable %s' % img_path)
+    img_path = '%s/%s' % (if_path, files[idx])
+    idx_feat = file_to_feat[img_path]
+
+    # Look through each "suitable" image to find one with maximum distance to
+    # last feature vector
+    now = time.time()
+    n = len(files)
+    dists = np.ndarray((1, n), dtype=float)
+    novelties = np.ndarray((1, n), dtype=float)
+    for i, fname in enumerate(files):
+        if i == idx:
+            dist = 0.
         else:
-            break
+            img_path = '%s/%s' % (if_path, fname)
+            dist = np.linalg.norm(file_to_feat[img_path] - idx_feat)
 
-    # Automatically crop image
+        novelty = now - last_times[i]
+
+        dists[0, i] = dist
+        novelties[0, i] = novelty
+
+    dists = normalize(dists, axis=1)
+    novelties = normalize(novelties, axis=1)
+
+    idx = np.argmax(0.5 * dists + 0.5 * novelties)
+    last_times[idx] = time.time()
+
+def show_next_image():
+    global if_path, files, idx
+    img_path = '%s/%s' % (if_path, files[idx])
+
+    # Automatically crop image (scale down to 1000px width/height max)
     print('- Cropping %s' % img_path)
-    cv.imwrite(tmpfile, imread_rotated(img_path))
-    subprocess.check_call(['../build/autocrop', '-i', tmpfile, '-o', tmpfile, '-h'])
+
+    I = imread_rotated(img_path)
+    h, w, _ = I.shape
+    scale = 1000. / max(h, w)
+    if scale < 1.:
+        I = cv.resize(I, None, fx=scale, fy=scale)
+
+    cv.imwrite(tmpfile, I)
+    subprocess.check_call('../build/autocrop -h -i %s -o %s' % (tmpfile, tmpfile), shell=True)
     I = cv.imread(tmpfile)
 
     show_image(idx, I)
