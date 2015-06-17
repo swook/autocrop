@@ -56,7 +56,7 @@ def main():
     suitable = []
     for fname in files:
         img_path = '%s/%s' % (if_path, fname)
-        if int(classifier.predictFeats(file_to_feat[img_path])[0]) == 1:
+        if classifier.predictFeats(file_to_feat[img_path]) == 1:
             suitable.append(fname)
     files = suitable
     print('- Classified images to retain list of suitable images only')

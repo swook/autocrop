@@ -99,7 +99,7 @@ def show_image(idx):
 
     cur_img_path = new_img_path
 
-    cls = 'GOOD' if int(classifier.predictFeats(file_to_feat[cur_img_path])[0]) == 1 else 'BAD'
+    cls = 'GOOD' if classifier.predictFeats(file_to_feat[cur_img_path]) == 1 else 'BAD'
 
     imshow('main', '[%s] %s' % (cls, fpath), cur_img_path)
 

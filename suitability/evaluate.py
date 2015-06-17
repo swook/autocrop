@@ -26,15 +26,17 @@ def main():
         errs = []
         i = 0
         for fname, fclassifs in classifs.iteritems():
-            tru_cls = np.average(fclassifs)
+            tru_cls = np.min(fclassifs)
             est_cls = classifier.predictFeats(file_to_feat['%s/%s' % (path, fname)])
             errs.append(tru_cls - est_cls)
             if tru_cls != est_cls:
                 #print('%f %d' % (tru_cls, est_cls))
                 i += 1
 
-        err = np.linalg.norm(errs, 1) # L2-error norm
-        print('%.3f L1-error' % (err / len(errs)))
+        err = float(np.linalg.norm(errs, 2)) # L2-error norm
+        print('%.1f%% incorrect' % (100.0 * np.count_nonzero(errs) / len(classifs)))
+        print('%.3f L2-error' % (err / len(errs)))
+        print('')
 
     evaluate_dir('../datasets/Michael')
     evaluate_dir('../datasets/Wookie')

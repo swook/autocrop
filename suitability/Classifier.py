@@ -15,5 +15,5 @@ class Classifier:
 
     def predictFeats(self, feats):
         self.preprocess.transform(feats)
-        return self.clf.predict(feats)
+        return int(self.clf.predict(feats)[0])
 
