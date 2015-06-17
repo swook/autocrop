@@ -1,0 +1,53 @@
+Done
+----
+Autocrop
+- Added 2000 images Reddit dataset to training saliency composition
+
+  > No. of candidates      1      2      3      4      5
+  > ------------------------------------------------------
+  > Mean max overlap     0.591  0.650  0.684  0.706  0.719
+  > Median max overlap   0.582  0.647  0.688  0.711  0.727
+
+
+Suitability
+- Now using cross-validation
+- Blurriness attempted via pymatlab, reference code does not work and incredibly slow.
+
+- Evaluation with min (bad classification overrides) works quite well
+  > 17.1% incorrect for Michael set
+  > 8.3%  incorrect for Wookie set
+
+  Evaluation with max (good classification overrides) is:
+  > 17.5%
+  > 17.3%
+
+- Correlation between classifications:
+
+  > Loaded 275 features for ../datasets/Michael
+  > 95 mismatching classifications
+  > Pearson's coefficient between two classifications: 0.402554
+  >
+  > Loaded 266 features for ../datasets/Wookie
+  > 68 mismatching classifications
+  > Pearson's coefficient between two classifications: 0.399468
+
+- Full pipeline with MMR (Maximal Marginal Relevance) based suggestions
+
+
+TODO
+----
+Properly split train/test data
+Saliency threshold on random "bad" crops on Reddit set
+Try adding mean+sum saliency inside crop as feature
+Run quantitative analyses - update Dengxin + Michael
+
+Try a Flickr dataset
+Show saliency map alongside crops
+
+Could try suitability+autocrop+suitability to get better results
+
+For final qual results (presentation), fix aspect ratio
+- Show saliency map
+- Draw crop on original image
+- Video of sample selection+crops scrolling through
+
