@@ -45,13 +45,13 @@ void Trainer::train()
 	std::cout << "> Training with " << feats.cols << " features." << std::endl;
 
 	// Split training data into training and testing subset
-	traindata->setTrainTestSplitRatio(.75f, true);
+	traindata->setTrainTestSplitRatio(.80f, true);
 
 	// Set SVM parameters
 	model->setType(ml::SVM::C_SVC);
 	model->setKernel(ml::SVM::LINEAR);
 
-	model->setC(100.f);
+	model->setC(15.f);
 
 	int  kFold    = 20;   // K-fold Cross-Validation
 	bool balanced = true;
@@ -65,9 +65,9 @@ void Trainer::train()
 	              degreeGrid = ml::SVM::getDefaultGrid(ml::SVM::DEGREE)
 	;
 
-	CGrid.logStep = 1.2f;
-	CGrid.minVal = 1e-5;
-	CGrid.maxVal = 1e5;
+	CGrid.logStep = 1.05f;
+	CGrid.minVal = 1e-3;
+	CGrid.maxVal = 1e4;
 
 	// Run cross-validation with SVM
 	model->trainAuto(traindata, kFold, CGrid, gammaGrid, pGrid, nuGrid,
