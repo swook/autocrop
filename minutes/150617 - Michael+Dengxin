@@ -44,6 +44,7 @@ Run quantitative analyses - update Dengxin + Michael
 Try a Flickr dataset
 Show saliency map alongside crops
 
+Could try more crop candidates for no fixed crop ratio or in general
 Could try suitability+autocrop+suitability to get better results
 
 For final qual results (presentation), fix aspect ratio
