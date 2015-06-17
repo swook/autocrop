@@ -76,9 +76,9 @@ namespace ds
 		Classifier classifier;
 		classifier.loadModel("Trained_model.yml");
 
+		const int MAX_CROP_CANDS = 10;
 		std::vector<float> indices;
-		std::vector<float> overlaps;
-		std::vector<float> overlaps0;
+		std::vector<std::vector<float>> overlaps(10);
 
 		const int N = turkCrops.size();
 
@@ -107,46 +107,53 @@ namespace ds
 			int best_crop;
 			float overlap, max_overlap = 0.f, max_overlap0 = 0.f;
 
-			for (int a = 0; a < crop_cands.size(); a++)
-				for (int c = 0; c < _crops.rows; c++)
-				{
-					// Mechanical turk data is good crop
-					try {
-						crop = getFixedCrop(saliency, _crops.row(c));
-						crops.push_back(crop);
-					} catch (std::exception e) {
-						continue;
+			for (int C = 1; C <= MAX_CROP_CANDS; C++)
+			{
+				for (int a = 0; a < C; a++)
+					for (int c = 0; c < _crops.rows; c++)
+					{
+						// Mechanical turk data is good crop
+						try {
+							crop = getFixedCrop(saliency, _crops.row(c));
+							crops.push_back(crop);
+						} catch (std::exception e) {
+							continue;
+						}
+
+						overlap = cropOverlap(crop_cands[a]->crop, crop);
+
+						max_overlap = max(max_overlap, overlap);
+						if (max_overlap == overlap)
+							best_crop = a;
+
+						if (a == 0)
+							max_overlap0 = max(max_overlap0, overlap);
 					}
 
-					overlap = cropOverlap(crop_cands[a]->crop, crop);
+				overlaps[C-1].push_back(max_overlap);
 
-					max_overlap = max(max_overlap, overlap);
-					if (max_overlap == overlap)
-						best_crop = a;
-
-					if (a == 0)
-						max_overlap0 = max(max_overlap0, overlap);
+				if (C == MAX_CROP_CANDS)
+				{
+					indices.push_back(best_crop);
+					printf("> Best crop index: %2d\tMax overlap: %.2f\tFilename: %s\n",
+						best_crop, max_overlap, fname.c_str());
 				}
-
-			indices.push_back(best_crop);
-			overlaps.push_back(max_overlap);
-			overlaps0.push_back(max_overlap0);
-
-			printf("> Best crop index: %2d\tMax overlap: %.2f\tFilename: %s\n",
-				best_crop, max_overlap, fname.c_str());
+			}
 		}
 
 		printf("\n%d images were evaluated.\n", N);
 
-		printf("\nFor top %d crop candidates:\n", CROP_CANDS_N);
-		printf("- Mean best crop index is: %.1f\n", mean(indices));
-		printf("- Mean max overlap is: %.3f\n", mean(overlaps));
-		printf("- Median best crop index is: %.1f\n", median(indices));
-		printf("- Median max overlap is: %.3f\n", median(overlaps));
-
-		printf("\nFor top candidates only:\n");
-		printf("- Mean max overlap is: %.3f\n", mean(overlaps0));
-		printf("- Median max overlap is: %.3f\n", median(overlaps0));
+		for (int C = 1; C <= 5; C++)
+		{
+			printf("\nFor %d top candidates only:\n", C);
+			printf("- Mean max overlap is: %.3f\n", mean(overlaps[C-1]));
+			printf("- Median max overlap is: %.3f\n\n", median(overlaps[C-1]));
+			if (C == 5)
+			{
+				printf("- Mean best crop index is: %.1f\n", mean(indices));
+				printf("- Median best crop index is: %.1f\n", median(indices));
+			}
+		}
 	}
 
 	void Chen::getTurkCrops()
