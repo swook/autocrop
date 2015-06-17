@@ -63,7 +63,7 @@ def main():
 
     # Main loop
     global idx
-    idx = 0
+    idx = random.randint(0, len(files) - 1)
     show_next_image()
 
     signal.signal(signal.SIGINT, cleanup)
