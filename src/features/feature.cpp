@@ -35,7 +35,9 @@ Mat getFeatureVector(const Mat& img, const Rect crop)
 Mat getFeatureVector(const Mat& saliency, const Mat& gradient,
 	const Rect crop)
 {
-	return getFeatureVector(saliency(crop), gradient(crop));
+	// TODO: Remove gradient argument from getFeatureVector methods
+	//return getFeatureVector(saliency(crop), gradient(crop));
+	return getFeatureVector(saliency(crop), gradient);
 }
 
 Mat getFeatureVector(const Mat& saliency, const Mat& gradient)
