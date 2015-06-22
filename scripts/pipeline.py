@@ -58,8 +58,10 @@ def main():
         img_path = '%s/%s' % (if_path, fname)
         if classifier.predictFeats(file_to_feat[img_path]) == 1:
             suitable.append(fname)
-    files = suitable
+
     print('- Classified images to retain list of suitable images only')
+    print('- %d/%d suitable images left' % (len(suitable), len(files)))
+    files = suitable
 
     # Main loop
     global idx
@@ -157,7 +159,7 @@ def show_next_image():
 
     I = imread_rotated(img_path)
     h, w, _ = I.shape
-    scale = 1000. / max(h, w)
+    scale = 700. / max(h, w)
     if scale < 1.:
         I = cv.resize(I, None, fx=scale, fy=scale)
 

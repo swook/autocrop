@@ -51,9 +51,9 @@ def imshow(name, title, _in):
 
     (h, w, _) = img.shape
     if h < w:
-        ratio = 800. / w
+        ratio = 1000. / w
     else:
-        ratio = 500. / h
+        ratio = 800. / h
     h *= ratio
     w *= ratio
 
