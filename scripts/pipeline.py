@@ -159,12 +159,12 @@ def show_next_image():
 
     I = imread_rotated(img_path)
     h, w, _ = I.shape
-    scale = 700. / max(h, w)
+    scale = 600. / max(h, w)
     if scale < 1.:
         I = cv.resize(I, None, fx=scale, fy=scale)
 
     cv.imwrite(tmpfile, I)
-    subprocess.check_call('../build/autocrop -h -i %s -o %s' % (tmpfile, tmpfile), shell=True)
+    subprocess.check_call('../build/autocrop -h -i %s -o %s -r 0.5625' % (tmpfile, tmpfile), shell=True)
     I = cv.imread(tmpfile)
 
     show_image(idx, I)

@@ -20,7 +20,7 @@ elif [ -d "$1" ]; then
 			continue
 		fi
 
-		$BIN "$f" -h -o "$OUTD/${f##*/}"
+		$BIN "$f" -h -o "$OUTD/${f##*/}" -r 0.5625
 		echo "Autocropped $f"
 	done
 fi
