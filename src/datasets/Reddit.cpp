@@ -52,8 +52,21 @@ namespace ds
 			featMat.addFeatVec(saliency, grad, crop, GOOD_CROP);
 
 			// Randomly generated crop is "bad"
-			featMat.addFeatVec(saliency, grad, randomCrop(saliency), BAD_CROP);
-			featMat.addFeatVec(saliency, grad, randomCrop(saliency), BAD_CROP);
+			float sum_saliency = sum(saliency)[0];
+			float total_area = saliency.cols * saliency.rows;
+			int n_bad = 0;
+			while (true)
+			{
+				crop = randomCrop(saliency);
+				float S_content = sum(saliency(crop))[0] / sum_saliency;
+				float S_area = (float)(crop.x*crop.y) / total_area;
+				if (S_content < 0.2 && S_area > 0.2)
+				{
+					featMat.addFeatVec(saliency, grad, crop, BAD_CROP);
+					n_bad++;
+				}
+				if (n_bad == 2) break;
+			}
 		}
 
 	}
