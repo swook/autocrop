@@ -1,0 +1,36 @@
+Autocrop
+========
+- Try moving boundary simplicity into training stage
+  - Removes simple weighting which might be wrong
+  - Can try putting each edge as a feature (top, left, bottom, right)
+    - Top simplicity may be more important than bottom simplicity
+
+- Try to center final crop
+
+- Training should be faster...
+
+
+Suitability
+===========
+- Just use Caffe reference ImageNet model. Don't complicate things.
+
+- Only count errors for cases where classifications agree
+
+- Show images with highest possibility of being suitable
+  - Visually show in descending order which images are better as wallpapers
+
+
+Presentation
+============
+- Around about 11am on Friday 26th (Could be 10:45, 11:15...)
+- 15-20 minutes with questions
+
+- Send title+abstract to Michael+Dengxin ASAP
+  - E-mail will be sent out to CVL mailing list
+- Meeting on Thursday 25th at 3pm to review presentation.
+
+
+Report
+======
+- Start working on it, but can finalise after 26th.
+
