@@ -48,7 +48,7 @@ class FeatMat:
         # Get DNN (caffee) features
         feats = []
         with open(fpath + '.pickle', 'rb') as f:
-            feats = pickle.load(f)['fc6']
+            feats = pickle.load(f)['classes']
 
         """
         # Get blurriness features

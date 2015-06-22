@@ -13,8 +13,8 @@ import util
 
 def main():
     extractor = FeatureExtractor()
-    cache_features(extractor, '../datasets/Michael')
-    cache_features(extractor, '../datasets/Wookie')
+    cache_features(extractor, '../datasets/Wookie')  # Train set
+    cache_features(extractor, '../datasets/Michael') # Test set
 
 def cache_features(extractor, path):
     files = util.filesWithRe(path, r'.*\.(jpg|jpeg|png)$')
@@ -29,13 +29,13 @@ def cache_features(extractor, path):
 class FeatureExtractor:
     def __init__(self):
         caffe.set_mode_cpu()
-        net = caffe.Net(caffe_root + '/models/bvlc_reference_caffenet/deploy.prototxt',
-                        caffe_root + '/models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel',
+        net = caffe.Net(caffe_root + '/models/bvlc_googlenet/deploy.prototxt',
+                        caffe_root + '/models/bvlc_googlenet/bvlc_googlenet.caffemodel',
                         caffe.TEST)
 
         # Input preprocessing: 'data' is the name of the input blob == net.inputs[0]
         transformer = caffe.io.Transformer({'data': net.blobs['data'].data.shape})
-        transformer.set_transpose('data', (2,0,1))
+        transformer.set_transpose('data', (2, 0, 1))
 
         # Mean pixel
         transformer.set_mean('data', np.load(caffe_root + '/python/caffe/imagenet/ilsvrc_2012_mean.npy').mean(1).mean(1))
@@ -51,7 +51,7 @@ class FeatureExtractor:
 
     def get_features(self, img_path):
         # Reshape net for single image input
-        self.net.blobs['data'].reshape(1, 3, 227, 227)
+        self.net.blobs['data'].reshape(1, 3, 224, 224)
 
         img = self.transformer.preprocess('data', caffe.io.load_image(img_path))
         self.net.blobs['data'].data[...] = img
@@ -59,8 +59,7 @@ class FeatureExtractor:
         out = self.net.forward()
 
         return {
-            'fc6': self.net.blobs['fc6'].data.flatten(),
-            'fc7': self.net.blobs['fc7'].data.flatten(),
+            'classes': self.net.blobs['loss3/classifier'].data.flatten(),
         }
 
 if __name__ == '__main__':
