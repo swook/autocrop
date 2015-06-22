@@ -53,32 +53,39 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 	float sum_saliency = sum(saliency)[0];
 
 	// Generate crop candidates
-	const int MAX_CROP_CANDIDATES = 10000;
+	const int MAX_CROP_CANDIDATES = 15000;
 	std::vector<Candidate*> candidates;
 
-#pragma omp parallel for
-	for (int i = 0; i < MAX_CROP_CANDIDATES; i++)
+	float thresh_content = 0.4; // Lower bound of S_content for crop candidates
+
+	while (true)
 	{
-		// Generate single random crop
-		Rect crop;
-		if (w2hrat > 1e-5) crop = randomCrop(saliency, w2hrat);
-		else               crop = randomCrop(saliency);
-		Mat cr_saliency = saliency(crop);
+#pragma omp parallel for
+		for (int i = 0; i < MAX_CROP_CANDIDATES; i++)
+		{
+			// Generate single random crop
+			Rect crop;
+			if (w2hrat > 1e-5) crop = randomCrop(saliency, w2hrat);
+			else               crop = randomCrop(saliency);
+			Mat cr_saliency = saliency(crop);
 
-		// Calculate content preservation
-		float S_content = sum(cr_saliency)[0] / sum_saliency;
-		if (S_content < 0.4) continue;
+			// Calculate content preservation
+			float S_content = sum(cr_saliency)[0] / sum_saliency;
+			if (S_content < thresh_content) continue;
 
-		// Calculate boundary simplicity
-		Mat cr_gradient = gradient(crop);
-		float S_boundary = boundarySimplicity(cr_gradient);
+			// Calculate boundary simplicity
+			Mat cr_gradient = gradient(crop);
+			float S_boundary = boundarySimplicity(cr_gradient);
 
-		// Calculate saliency composition
-		float S_compos = classifier.classifyRaw(cr_saliency, cr_gradient);
+			// Calculate saliency composition
+			float S_compos = classifier.classifyRaw(cr_saliency, cr_gradient);
 
-		// Add to valid candidates list
+			// Add to valid candidates list
 #pragma omp critical
-		candidates.push_back(new Candidate(crop, S_compos, S_boundary));
+			candidates.push_back(new Candidate(crop, S_compos, S_boundary));
+		}
+		if (candidates.size() > 100) break;
+		thresh_content *= 0.95;
 	}
 
 	const int    C = candidates.size();
