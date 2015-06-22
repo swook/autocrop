@@ -137,7 +137,7 @@ int main(int argc, char** argv)
 				sali = getSaliency(img);
 
 				// Show saliency map
-				showImageAndWait("Saliency: " + ipath.string(), sali);
+				showImageAndWait("Input - Saliency", {img, sali});
 			}
 		}
 	}
