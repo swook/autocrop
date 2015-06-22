@@ -26,6 +26,17 @@ Mat autocrop(const Mat& in, float w2hrat)
 	return in(crop);
 }
 
+Rect getBestCrop(const Mat& in, float w2hrat)
+{
+	// Get saliency map and sum of values
+	Mat saliency = getSaliency(in);
+
+	// Calculate gradient map
+	Mat gradient = getGradient(in);
+
+	return getBestCrop(saliency, gradient, w2hrat);
+}
+
 Rect getBestCrop(const Mat& saliency, const Mat& gradient, float w2hrat)
 {
 	// Initialise classifier

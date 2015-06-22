@@ -52,16 +52,24 @@ int main(int argc, char** argv)
 	/*
 	 * Call retargeting methods
 	 */
-	Mat out = autocrop(in, vm["aspect-ratio"].as<float>());
+	Rect crop = getBestCrop(in, vm["aspect-ratio"].as<float>());
+	Mat out = in.clone();
+
+	// Set crop border pixels to red
+	Scalar red = Scalar(0, 0, 255);
+	out(Rect(crop.x, crop.y, crop.width, 1)) = red; // Top
+	out(Rect(crop.x+crop.width-1, crop.y, 1, crop.height)) = red; // Right
+	out(Rect(crop.x, crop.y+crop.height-1, crop.width, 1)) = red; // Bottom
+	out(Rect(crop.x, crop.y, 1, crop.height)) = red; // Left
 
 	// Show output image
-	showImageAndWait("Input - Cropped", {in, out});
+	showImageAndWait("Input - Cropped", out);
 
 	/*
 	 * Save output if necessary
 	 */
 	if (vm.count("output-file")) {
-		imwrite(vm["output-file"].as<std::string>(), my_hconcat({in, out}));
+		imwrite(vm["output-file"].as<std::string>(), out);
 	}
 
 	return 0;
