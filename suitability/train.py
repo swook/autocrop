@@ -19,12 +19,12 @@ class Trainer:
     svm = None
 
     def __init__(self):
-        self.svm = svm.SVC(kernel='linear', shrinking=False, verbose=False)
+        self.svm = svm.SVC(kernel='linear', shrinking=True, verbose=False)
         params = {
-            'C': np.logspace(-4, 4, num=20), # Range of C values
+            'C': np.linspace(1e-5, 1e-3, num=100), # Range of C values
         }
         self.clf = GridSearchCV(self.svm, params,
-            cv      = 15,          # 15-fold CV
+            cv      = 5,           # 5-fold CV
             n_jobs  = cpu_count(), # Parallelize over CPUs
             verbose = 2,
         )
@@ -32,28 +32,26 @@ class Trainer:
     def train(self, featMat):
         # Preprocess
         scaler = StandardScaler()
-        scaler.fit(featMat.X, featMat.y)
+        scaler.fit_transform(featMat.X, featMat.y)
 
         # Save preprocess output
         joblib.dump(scaler, 'preprocess.out')
 
-        # TODO: Split dataset into training/testing
-
         # Perform CV
         print('Running SVM trainer on %d rows of data with %d features.' % featMat.X.shape)
         self.clf.fit(featMat.X, featMat.y)
-        print(self.clf)
 
         # Save CV output
-        joblib.dump(self.clf, 'cv.out')
+        print(self.clf.best_estimator_)
+        joblib.dump(self.clf.best_estimator_, 'cv.out')
 
 
 def main():
     # Go to script's directory
     os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
+    # Train on Wookie dataset, evaluate with Michael dataset
     featMat = FeatMat()
-    featMat.addFolder('../datasets/Michael')
     featMat.addFolder('../datasets/Wookie')
 
     trainer = Trainer()
