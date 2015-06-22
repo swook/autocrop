@@ -85,7 +85,7 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 			candidates.push_back(new Candidate(crop, S_compos, S_boundary));
 		}
 		if (candidates.size() > 100) break;
-		thresh_content *= 0.95;
+		thresh_content *= 0.9;
 	}
 
 	const int    C = candidates.size();
