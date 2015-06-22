@@ -45,7 +45,7 @@ void Trainer::train()
 	std::cout << "> Training with " << feats.cols << " features." << std::endl;
 
 	// Split training data into training and testing subset
-	traindata->setTrainTestSplitRatio(.80f, true);
+	//traindata->setTrainTestSplitRatio(.80f, true);
 
 	// Set SVM parameters
 	model->setType(ml::SVM::C_SVC);
@@ -80,8 +80,8 @@ void Trainer::train()
 	std::cout << "> Training error on whole dataset: " << err << std::endl;
 
 	// Calculate error on test data subset only
-	err = model->calcError(traindata, true, noArray());
-	std::cout << "> Training error on test data subset: " << err << std::endl;
+	//err = model->calcError(traindata, true, noArray());
+	//std::cout << "> Training error on test data subset: " << err << std::endl;
 }
 
 void Trainer::save(std::string fpath)

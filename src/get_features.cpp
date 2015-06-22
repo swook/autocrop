@@ -23,8 +23,8 @@ int main(int argc, char** argv)
 
 	// (2014) Chen et al. Automatic Image Cropping using Visual Composition,
 	// Boundary Simplicity and Content Preservation Models.
-	ds::Chen chen;
-	chen.addToFeatMat(featMat);
+	//ds::Chen chen;
+	//chen.addToFeatMat(featMat);
 
 	// Reddit
 	ds::Reddit reddit;
