@@ -52,15 +52,28 @@ int main(int argc, char** argv)
 	/*
 	 * Call retargeting methods
 	 */
-	Rect crop = getBestCrop(in, vm["aspect-ratio"].as<float>());
-	Mat out = in.clone();
+	Mat saliency = getSaliency(in);
+	Mat gradient = getGradient(in);
+	Rect crop = getBestCrop(saliency, gradient, vm["aspect-ratio"].as<float>());
 
 	// Set crop border pixels to red
+	Mat in_crop = in.clone();
 	Scalar red = Scalar(0, 0, 255);
-	out(Rect(crop.x, crop.y, crop.width, 1)) = red; // Top
-	out(Rect(crop.x+crop.width-1, crop.y, 1, crop.height)) = red; // Right
-	out(Rect(crop.x, crop.y+crop.height-1, crop.width, 1)) = red; // Bottom
-	out(Rect(crop.x, crop.y, 1, crop.height)) = red; // Left
+	in_crop(Rect(crop.x, crop.y, crop.width, 1)) = red; // Top
+	in_crop(Rect(crop.x+crop.width-1, crop.y, 1, crop.height)) = red; // Right
+	in_crop(Rect(crop.x, crop.y+crop.height-1, crop.width, 1)) = red; // Bottom
+	in_crop(Rect(crop.x, crop.y, 1, crop.height)) = red; // Left
+
+	// Set cropped out region black
+	Mat out_crop = in.clone();
+	Scalar black = Scalar(0, 0, 0);
+	out_crop(Rect(0, 0, in.cols, crop.y)) = black; // Top
+	out_crop(Rect(crop.x+crop.width, 0, in.cols-crop.x-crop.width, in.rows)) = black; // Right
+	out_crop(Rect(0, crop.y+crop.height, in.cols, in.rows-crop.y-crop.height)) = black; // Bottom
+	out_crop(Rect(0, 0, crop.x, in.rows)) = black; // Left
+
+	// Show saliency and crop side-by-side
+	const Mat out = my_hconcat({saliency, in_crop, out_crop});
 
 	// Show output image
 	showImageAndWait("Input - Cropped", out);
