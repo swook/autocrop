@@ -105,7 +105,7 @@ namespace ds
 
 			Rect crop;
 			int best_crop;
-			float overlap, max_overlap = 0.f, max_overlap0 = 0.f;
+			float overlap, max_overlap = 0.f;
 
 			for (int C = 1; C <= MAX_CROP_CANDS; C++)
 			{
@@ -125,20 +125,14 @@ namespace ds
 						max_overlap = max(max_overlap, overlap);
 						if (max_overlap == overlap)
 							best_crop = a;
-
-						if (a == 0)
-							max_overlap0 = max(max_overlap0, overlap);
 					}
 
 				overlaps[C-1].push_back(max_overlap);
-
-				if (C == MAX_CROP_CANDS)
-				{
-					indices.push_back(best_crop);
-					printf("> Best crop index: %2d\tMax overlap: %.2f\tFilename: %s\n",
-						best_crop, max_overlap, fname.c_str());
-				}
 			}
+
+			indices.push_back(best_crop);
+			printf("[%3d/%3d] Best crop index: %2d, Max overlap: %.2f, Filename: %s\n",
+				i, N, best_crop, max_overlap, fname.c_str());
 		}
 
 		printf("\n%d images were evaluated.\n", N);
@@ -148,12 +142,9 @@ namespace ds
 			printf("\nFor %d top candidates only:\n", C);
 			printf("- Mean max overlap is: %.3f\n", mean(overlaps[C-1]));
 			printf("- Median max overlap is: %.3f\n\n", median(overlaps[C-1]));
-			if (C == 5)
-			{
-				printf("- Mean best crop index is: %.1f\n", mean(indices));
-				printf("- Median best crop index is: %.1f\n", median(indices));
-			}
 		}
+		printf("- Mean best crop index is: %.1f\n", mean(indices));
+		printf("- Median best crop index is: %.1f\n", median(indices));
 	}
 
 	void Chen::getTurkCrops()
