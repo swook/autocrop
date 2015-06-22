@@ -117,6 +117,10 @@ Mat getFeatureVector(const Mat& saliency, const Mat& gradient)
 		_feats[i - 2] +
 		_feats[i - 1]
 	);
+	i++;
+
+	// Add sum of all pixels in saliency map
+	_feats[i] = sum(_saliency)[0];
 
 	return feats;
 }
