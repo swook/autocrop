@@ -35,7 +35,7 @@ def main():
             if len(np.unique(fclassifs)) > 1:
                 b += 1
 
-            tru_cls = np.min(fclassifs)
+            tru_cls = np.average(fclassifs)
             est_cls = classifier.predictFeats(file_to_feat['%s/%s' % (path, fname)])
             errs.append(tru_cls - est_cls)
 
@@ -43,9 +43,11 @@ def main():
                 X[i, c] = classif
             i += 1
 
-        err = float(np.linalg.norm(errs, 2)) # L2-error norm
+        l1err = float(np.linalg.norm(errs, 1)) # L2-error norm
+        l2err = float(np.linalg.norm(errs, 2)) # L2-error norm
         print('%.1f%% incorrect' % (100.0 * np.count_nonzero(errs) / len(classifs)))
-        print('%.3f L2-error' % (err / len(errs)))
+        print('%.3f L1-error' % (l1err / len(errs)))
+        print('%.3f L2-error' % (l2err / len(errs)))
 
         print('')
 
