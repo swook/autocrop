@@ -29,8 +29,8 @@ def cache_features(extractor, path):
 class FeatureExtractor:
     def __init__(self):
         caffe.set_mode_cpu()
-        net = caffe.Net(caffe_root + '/models/bvlc_googlenet/deploy.prototxt',
-                        caffe_root + '/models/bvlc_googlenet/bvlc_googlenet.caffemodel',
+        net = caffe.Net(caffe_root + '/models/bvlc_reference_caffenet/deploy.prototxt',
+                        caffe_root + '/models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel',
                         caffe.TEST)
 
         # Input preprocessing: 'data' is the name of the input blob == net.inputs[0]
@@ -51,7 +51,7 @@ class FeatureExtractor:
 
     def get_features(self, img_path):
         # Reshape net for single image input
-        self.net.blobs['data'].reshape(1, 3, 224, 224)
+        self.net.blobs['data'].reshape(1, 3, 227, 227)
 
         img = self.transformer.preprocess('data', caffe.io.load_image(img_path))
         self.net.blobs['data'].data[...] = img
@@ -59,7 +59,7 @@ class FeatureExtractor:
         out = self.net.forward()
 
         return {
-            'classes': self.net.blobs['loss3/classifier'].data.flatten(),
+            'classes': self.net.blobs['fc6'].data.flatten(),
         }
 
 if __name__ == '__main__':
