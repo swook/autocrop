@@ -147,7 +147,7 @@ def find_next_image():
     dists = normalize(dists, axis=1)
     novelties = normalize(novelties, axis=1)
 
-    idx = np.argmax(0.5 * dists + 0.5 * novelties)
+    idx = np.argmax(0.3 * dists + 0.7 * novelties)
     last_times[idx] = time.time()
 
 def show_next_image():
