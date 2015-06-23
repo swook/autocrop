@@ -45,9 +45,9 @@ Mat getFeatureVector(const Mat& saliency, const Mat& gradient)
 
 	// Resize saliency map to be 8x8. Use INTER_AREA to average pixel values
 	Mat _saliency;
-#ifdef spsm3
+#if spsm3
 	resize(saliency, _saliency, Size(8, 8), INTER_AREA);
-#elif spsm2
+#else
 	resize(saliency, _saliency, Size(4, 4), INTER_AREA);
 #endif
 
@@ -59,7 +59,7 @@ Mat getFeatureVector(const Mat& saliency, const Mat& gradient)
 
 	// Add mean values for 1/64ths
 	float* p_saliency = _saliency.ptr<float>(0);
-#ifdef spsm3
+#if spsm3
 	for (int c = 0; c < 64; c++)
 	{
 		_feats[i] = p_saliency[i];
@@ -68,7 +68,7 @@ Mat getFeatureVector(const Mat& saliency, const Mat& gradient)
 #endif
 
 	// Add mean values for 1/16ths
-#ifdef spsm3
+#if spsm3
 	for (int j = 0; j < 4; j++)
 		for (int k = 0; k < 4; k++)
 		{
@@ -80,7 +80,7 @@ Mat getFeatureVector(const Mat& saliency, const Mat& gradient)
 			);
 			i++;
 		}
-#elif spsm2
+#else
 	for (int c = 0; c < 16; c++)
 	{
 		_feats[i] = p_saliency[i];
@@ -93,12 +93,12 @@ Mat getFeatureVector(const Mat& saliency, const Mat& gradient)
 		for (int k = 0; k < 2; k++)
 		{
 			_feats[i] = 0.25f * (
-#ifdef spsm3
+#if spsm3
 				_feats[64 + 8 * j + 2 * k]     +
 				_feats[64 + 8 * j + 2 * k + 1] +
 				_feats[64 + 8 * j + 2 * k + 4] +
 				_feats[64 + 8 * j + 2 * k + 5]
-#elif spsm2
+#else
 				_feats[8 * j + 2 * k]     +
 				_feats[8 * j + 2 * k + 1] +
 				_feats[8 * j + 2 * k + 4] +

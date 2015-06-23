@@ -40,7 +40,7 @@ namespace ds
 				std::cout << "Error reading: " << fpath << std::endl;
 				continue;
 			}
-			if (!saliency.data)// || !grad.data)
+			if (!saliency.data || !grad.data)
 			{
 				std::cout << "Error reading: " << fpath << std::endl;
 				continue;

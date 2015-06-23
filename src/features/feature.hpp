@@ -7,12 +7,11 @@
  * Switch between 3-level Spatial Pyramid of Saliency Maps (SPSM) and 2-level
  * SPSM by enabling the correct define.
  */
-//#define spsm3 1
-#define spsm2 1
+#define spsm3 false
 
-#ifdef spsm3
+#if spsm3
 #define FEATS_N 90
-#elif spsm2
+#else
 #define FEATS_N 26
 #endif
 
@@ -21,7 +20,7 @@
  * getFeatureVector constructs a feature vector from a given saliency map and
  * gradient map.
  *
- * - 64 + 16 + 4 + 1 + 4 + 1 = 85 features
+ * - 64 + 16 + 4 + 1 + 4 + 1 = 90 features
  *
  * 1) Resize image to 8x8 to average saliency values
  * 2) Store 1/64ths as feature values
