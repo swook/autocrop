@@ -52,16 +52,18 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 {
 	float sum_saliency = sum(saliency)[0];
 
-	// Generate crop candidates
-	const int MAX_CROP_CANDIDATES = 15000;
-	std::vector<Candidate*> candidates;
+	// Candidates generation parameters
+	const int   MAX_INITIAL_CROP_CANDIDATES = 8000;
+	const int   MAX_TOTAL_CROP_CANDIDATES   = 50;
+	const float THRESHOLD_REDUCE_FACTOR     = 0.95;
 
-	float thresh_content = 0.4; // Lower bound of S_content for crop candidates
+	std::vector<Candidate*> candidates;
+	float thresh_content = 0.9; // Lower bound of S_content for crop candidates
 
 	while (true)
 	{
 #pragma omp parallel for
-		for (int i = 0; i < MAX_CROP_CANDIDATES; i++)
+		for (int i = 0; i < MAX_INITIAL_CROP_CANDIDATES; i++)
 		{
 			// Generate single random crop
 			Rect crop;
@@ -81,14 +83,14 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 #pragma omp critical
 			candidates.push_back(new Candidate(crop, S_compos));
 		}
-		if (candidates.size() > 100) break;
-		thresh_content *= 0.9;
-		std::cout << "Reduced thresh_content to " << thresh_content << std::endl;
+		if (candidates.size() > MAX_TOTAL_CROP_CANDIDATES) break;
+		thresh_content *= THRESHOLD_REDUCE_FACTOR;
 	}
+	std::cout << "Final thresh_content: " << thresh_content << std::endl;
 
 	const int    C = candidates.size();
 	const float fC = (float) C;
-	std::cout << C << " valid candidates left out of " << MAX_CROP_CANDIDATES << std::endl;
+	std::cout << C << " valid candidates left." << std::endl;
 
 	// Sort by S_compos in descending order
 	std::sort(candidates.begin(), candidates.end(),
