@@ -50,8 +50,8 @@ Rect randomCrop(const Mat& img, const float w2hrat)
 {
 	int h    = img.rows,
 	    w    = img.cols,
-	    minh = max(32, h / 5),
-	    minw = max(32, w / 5);
+	    minh = 8,
+	    minw = 8;
 
 	int x0, y0, dx, dy;
 	while (1)
