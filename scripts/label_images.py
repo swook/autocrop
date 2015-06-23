@@ -158,7 +158,7 @@ def show_image(idx):
     else:
         print('[%03d/%03d] Showing %s' % (idx, len(files), fpath))
 
-cv.namedWindow('main', cv.WINDOW_OPENGL | cv.WINDOW_KEEPRATIO)
+cv.namedWindow('main', cv.WINDOW_OPENGL)
 def imshow(name, img):
     # Make it 800px wide on major axis
     (h, w, _) = img.shape
