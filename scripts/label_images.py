@@ -147,8 +147,7 @@ def show_image(idx):
             cur_img = cv.warpAffine(cur_img, cv.getRotationMatrix2D((w/2., w/2.), 90, 1.), (h, w))
         pil_img.close()
     except:
-        if pil_img:
-            pil_img.close()
+        pass
 
     imshow(fpath, cur_img)
 
