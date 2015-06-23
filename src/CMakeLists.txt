@@ -59,6 +59,7 @@ add_library(classifier_lib ${CLASSIFIER_SOURCES})
 set(
   AUTOCROP_SOURCES
   ${CLASSIFIER_SOURCES}
+  "util/file.cpp"
   "autocrop/autocrop.cpp"
 )
 

@@ -7,6 +7,7 @@ using namespace cv;
 #include "autocrop/autocrop.hpp"
 #include "saliency/saliency.hpp"
 #include "features/feature.hpp"
+#include "util/file.hpp"
 #include "util/opencv.hpp"
 
 int main(int argc, char** argv)
@@ -53,6 +54,10 @@ int main(int argc, char** argv)
 	 * Call retargeting methods
 	 */
 	Mat saliency = getSaliency(in);
+	try {
+		saliency = imread(setSuffix(f, "saliency").string(), CV_LOAD_IMAGE_UNCHANGED);
+	} catch (std::exception e) {}
+	if (!saliency.data) saliency = getSaliency(in);
 	Mat gradient = getGradient(in);
 	Rect crop = getBestCrop(saliency, gradient, vm["aspect-ratio"].as<float>());
 
