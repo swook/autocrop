@@ -35,9 +35,7 @@ Mat getFeatureVector(const Mat& img, const Rect crop)
 Mat getFeatureVector(const Mat& saliency, const Mat& gradient,
 	const Rect crop)
 {
-	// TODO: Remove gradient argument from getFeatureVector methods
-	//return getFeatureVector(saliency(crop), gradient(crop));
-	return getFeatureVector(saliency(crop), gradient);
+	return getFeatureVector(saliency(crop), gradient(crop));
 }
 
 Mat getFeatureVector(const Mat& saliency, const Mat& gradient)
@@ -119,8 +117,18 @@ Mat getFeatureVector(const Mat& saliency, const Mat& gradient)
 	);
 	i++;
 
+
+	// Boundary simplicity features
+	int b = 2; // No. of breadth of "boundary"
+	_feats[i] = mean(gradient(Rect(0,     0,     w, b)))[0]; i++; // Top
+	_feats[i] = mean(gradient(Rect(0,     h-1-b, w, b)))[0]; i++; // Bottom
+	_feats[i] = mean(gradient(Rect(0,     0,     b, h)))[0]; i++; // Left
+	_feats[i] = mean(gradient(Rect(w-1-b, 0,     b, h)))[0]; i++; // Right
+
+
 	// Add sum of all pixels in saliency map
 	_feats[i] = sum(_saliency)[0];
+
 
 	return feats;
 }

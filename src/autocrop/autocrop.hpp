@@ -9,15 +9,10 @@ struct Candidate
 {
 	const cv::Rect crop;
 	float S_compos;
-	float S_boundary;
-	float R_compos;
-	float R_boundary;
-	float S_final;
 
 	Candidate(const cv::Rect crop,
-	          const float S_compos,
-	          const float S_boundary)
-	: crop(crop), S_compos(S_compos), S_boundary(S_boundary) {}
+	          const float S_compos)
+	: crop(crop), S_compos(S_compos) {}
 };
 typedef std::vector<Candidate*> Candidates;
 
@@ -36,11 +31,4 @@ Rect getBestCrop(const Mat& saliency, const Mat& gradient, float w2hrat = 0.f);
 
 Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 	const Mat& gradient, float w2hrat = 0.f);
-
-/**
- * Boundary Simplicity metric
- *
- * Averages the boundary pixel values
- */
-float boundarySimplicity(const cv::Mat& gradient);
 

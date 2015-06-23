@@ -33,8 +33,7 @@ namespace ds
 			try
 			{
 				saliency = imread(setSuffix(fpath, "saliency").string(), CV_LOAD_IMAGE_UNCHANGED);
-				grad     = Mat();
-				//grad     = imread(setSuffix(fpath, "grad").string(), CV_LOAD_IMAGE_UNCHANGED);
+				grad     = imread(setSuffix(fpath, "grad").string(), CV_LOAD_IMAGE_UNCHANGED);
 			}
 			catch (std::exception e)
 			{
