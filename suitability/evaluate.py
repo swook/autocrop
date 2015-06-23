@@ -29,6 +29,7 @@ def main():
         X = np.ndarray((len(classifs), len(classifs.values()[0])), dtype=float)
 
         b = 0
+        good_n = 0
         for fname, fclassifs in classifs.iteritems():
 
             # If any inconsistent classifications
@@ -36,6 +37,10 @@ def main():
                 b += 1
 
             tru_cls = np.average(fclassifs)
+            if tru_cls == 0.5:
+                continue
+            if tru_cls == 1:
+                good_n += 1
             est_cls = classifier.predictFeats(file_to_feat['%s/%s' % (path, fname)])
             errs.append(tru_cls - est_cls)
 
@@ -43,6 +48,7 @@ def main():
                 X[i, c] = classif
             i += 1
 
+        print('Suitable: %d' % good_n)
         l1err = float(np.linalg.norm(errs, 1)) # L2-error norm
         l2err = float(np.linalg.norm(errs, 2)) # L2-error norm
         print('%.1f%% incorrect' % (100.0 * np.count_nonzero(errs) / len(classifs)))
