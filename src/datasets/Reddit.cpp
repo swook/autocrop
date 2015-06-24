@@ -59,7 +59,7 @@ namespace ds
 				crop = randomCrop(saliency);
 				float S_content = sum(saliency(crop))[0] / sum_saliency;
 				float S_area = (float)(crop.x*crop.y) / total_area;
-				if (S_content < 0.2 && S_area > 0.2)
+				if (S_content < 0.15 && S_area > 0.2)
 				{
 					featMat.addFeatVec(saliency, grad, crop, BAD_CROP);
 					n_bad++;
