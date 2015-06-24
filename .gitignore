@@ -18,7 +18,6 @@ datasets/Reddit/*.png
 # Phone datasets
 datasets/Michael/*.jpg
 datasets/Michael/*.pickle
-datasets/Wookie/*.json
 datasets/Wookie/*.jpg
 datasets/Wookie/*.pickle
 
