@@ -49,8 +49,6 @@ def main():
     out3 = draw_grid(M, N, imgs)
     cv.imwrite('grid_out3.png', out3)
 
-    cv.waitKey()
-
 def get_images(n):
     if_path = '../datasets/Michael/'
 
