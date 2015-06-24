@@ -47,7 +47,7 @@ def imshow(name, title, _in):
     # Create window if necessary
     global windows
     if name not in windows:
-        windows[name] = cv.namedWindow('main', cv.WINDOW_OPENGL | cv.WINDOW_KEEPRATIO)
+        windows[name] = cv.namedWindow(name, cv.WINDOW_OPENGL | cv.WINDOW_KEEPRATIO)
 
     (h, w, _) = img.shape
     if h < w:
