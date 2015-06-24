@@ -50,15 +50,19 @@ Rect getBestCrop(const Mat& saliency, const Mat& gradient, float w2hrat)
 Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 	const Mat& gradient, float w2hrat)
 {
+	bool rat_provided = w2hrat > 1e-5;
 	float sum_saliency = sum(saliency)[0];
 
 	// Candidates generation parameters
-	const int   MAX_INITIAL_CROP_CANDIDATES = 8000;
-	const int   MAX_TOTAL_CROP_CANDIDATES   = 50;
-	const float THRESHOLD_REDUCE_FACTOR     = 0.95;
+	const int   MAX_INITIAL_CROP_CANDIDATES = 4000;
+	const int   MAX_TOTAL_CROP_CANDIDATES   = 40;
+	const float THRESHOLD_REDUCE_FACTOR     = 0.96;
 
 	std::vector<Candidate*> candidates;
-	float thresh_content = 0.9; // Lower bound of S_content for crop candidates
+	float thresh_content0 = 0.68; // Lower bound of S_content for crop candidates
+	if (rat_provided)
+		thresh_content0 = w2hrat*saliency.rows/saliency.cols;
+	float thresh_content = thresh_content0;
 
 	while (true)
 	{
@@ -67,7 +71,7 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 		{
 			// Generate single random crop
 			Rect crop;
-			if (w2hrat > 1e-5) crop = randomCrop(saliency, w2hrat);
+			if (rat_provided) crop = randomCrop(saliency, w2hrat);
 			else               crop = randomCrop(saliency);
 			Mat cr_saliency = saliency(crop);
 			Mat cr_gradient = gradient(crop);
@@ -86,7 +90,7 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 		if (candidates.size() > MAX_TOTAL_CROP_CANDIDATES) break;
 		thresh_content *= THRESHOLD_REDUCE_FACTOR;
 	}
-	std::cout << "Final thresh_content: " << thresh_content << std::endl;
+	std::cout << "thresh_content: " << thresh_content0 << " -> " << thresh_content << std::endl;
 
 	const int    C = candidates.size();
 	const float fC = (float) C;
