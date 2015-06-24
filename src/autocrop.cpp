@@ -70,15 +70,16 @@ int main(int argc, char** argv)
 	in_crop(Rect(crop.x, crop.y, 1, crop.height)) = red; // Left
 
 	// Set cropped out region black
-	Mat out_crop = in.clone();
-	Scalar black = Scalar(0, 0, 0);
-	out_crop(Rect(0, 0, in.cols, crop.y)) = black; // Top
-	out_crop(Rect(crop.x+crop.width, 0, in.cols-crop.x-crop.width, in.rows)) = black; // Right
-	out_crop(Rect(0, crop.y+crop.height, in.cols, in.rows-crop.y-crop.height)) = black; // Bottom
-	out_crop(Rect(0, 0, crop.x, in.rows)) = black; // Left
+	Mat out_crop = in.clone()(crop);
+	double ratio = (double)in.rows / (double)crop.height;
+	resize(out_crop, out_crop, Size(), ratio, ratio);
+
+	// Vertical black strip
+	Mat border = Mat(Size(10, saliency.rows), CV_8UC3);
+	border = Scalar(0, 0, 0);
 
 	// Show saliency and crop side-by-side
-	const Mat out = my_hconcat({saliency, in_crop, out_crop});
+	const Mat out = my_hconcat({saliency, border, in_crop, border, out_crop});
 
 	// Show output image
 	showImageAndWait("Input - Cropped", out);
