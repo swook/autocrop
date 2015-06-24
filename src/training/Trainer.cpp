@@ -51,7 +51,7 @@ void Trainer::train()
 	model->setType(ml::SVM::C_SVC);
 	model->setKernel(ml::SVM::LINEAR);
 
-	model->setC(15.f);
+	model->setC(10.f);
 
 	int  kFold    = 20;   // K-fold Cross-Validation
 	bool balanced = true;
@@ -65,8 +65,8 @@ void Trainer::train()
 	              degreeGrid = ml::SVM::getDefaultGrid(ml::SVM::DEGREE)
 	;
 
-	CGrid.logStep = 1.05f;
-	CGrid.minVal = 1e-3;
+	CGrid.logStep = 1.2f;
+	CGrid.minVal = 1e-4;
 	CGrid.maxVal = 1e4;
 
 	// Run cross-validation with SVM
