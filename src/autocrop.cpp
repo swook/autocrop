@@ -22,6 +22,7 @@ int main(int argc, char** argv)
 	    ("input-file,i", po::value<std::string>(), "Input file path")
 	    ("output-file,o", po::value<std::string>(), "Output file path (default: output.png)")
 	    ("headless,hl", po::bool_switch()->default_value(false), "Run without graphical output")
+	    ("text-only,t", po::bool_switch()->default_value(false), "Only return crop as text")
 	;
 
 	po::positional_options_description p;
@@ -61,34 +62,43 @@ int main(int argc, char** argv)
 	Mat gradient = getGradient(in);
 	Rect crop = getBestCrop(saliency, gradient, vm["aspect-ratio"].as<float>());
 
-	// Set crop border pixels to red
-	Mat in_crop = in.clone();
-	Scalar red = Scalar(0, 0, 255);
-	in_crop(Rect(crop.x, crop.y, crop.width, 1)) = red; // Top
-	in_crop(Rect(crop.x+crop.width-1, crop.y, 1, crop.height)) = red; // Right
-	in_crop(Rect(crop.x, crop.y+crop.height-1, crop.width, 1)) = red; // Bottom
-	in_crop(Rect(crop.x, crop.y, 1, crop.height)) = red; // Left
+	if (!vm["text-only"].as<bool>())
+	{
+		// Set crop border pixels to red
+		Mat in_crop = in.clone();
+		Scalar red = Scalar(0, 0, 255);
+		in_crop(Rect(crop.x, crop.y, crop.width, 1)) = red; // Top
+		in_crop(Rect(crop.x+crop.width-1, crop.y, 1, crop.height)) = red; // Right
+		in_crop(Rect(crop.x, crop.y+crop.height-1, crop.width, 1)) = red; // Bottom
+		in_crop(Rect(crop.x, crop.y, 1, crop.height)) = red; // Left
 
-	// Set cropped out region black
-	Mat out_crop = in.clone()(crop);
-	double ratio = (double)in.rows / (double)crop.height;
-	resize(out_crop, out_crop, Size(), ratio, ratio);
+		// Set cropped out region black
+		Mat out_crop = in.clone()(crop);
+		double ratio = (double)in.rows / (double)crop.height;
+		resize(out_crop, out_crop, Size(), ratio, ratio);
 
-	// Vertical black strip
-	Mat border = Mat(Size(10, saliency.rows), CV_8UC3);
-	border = Scalar(0, 0, 0);
+		// Vertical black strip
+		Mat border = Mat(Size(10, saliency.rows), CV_8UC3);
+		border = Scalar(0, 0, 0);
 
-	// Show saliency and crop side-by-side
-	const Mat out = my_hconcat({saliency, border, in_crop, border, out_crop});
+		// Show saliency and crop side-by-side
+		const Mat out = my_hconcat({saliency, border, in_crop, border, out_crop});
 
-	// Show output image
-	showImageAndWait("Input - Cropped", out);
+		// Show output image
+		showImageAndWait("Input - Cropped", out);
 
-	/*
-	 * Save output if necessary
-	 */
-	if (vm.count("output-file")) {
-		imwrite(vm["output-file"].as<std::string>(), out);
+		/*
+		 * Save output if necessary
+		 */
+		if (vm.count("output-file")) {
+			imwrite(vm["output-file"].as<std::string>(), out);
+		}
+	}
+	else
+	{
+		// Just print final crop
+		std::cout << crop.x << " " << crop.y << " " << crop.width << " "
+			<< crop.height << std::endl;
 	}
 
 	return 0;
