@@ -36,9 +36,7 @@ def main():
             if len(np.unique(fclassifs)) > 1:
                 b += 1
 
-            tru_cls = np.average(fclassifs)
-            if tru_cls == 0.5:
-                continue
+            tru_cls = np.bincount(fclassifs).argmax()
             if tru_cls == 1:
                 good_n += 1
             est_cls = classifier.predictFeats(file_to_feat['%s/%s' % (path, fname)])
