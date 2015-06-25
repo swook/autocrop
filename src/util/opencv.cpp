@@ -43,6 +43,19 @@ Mat my_hconcat(const Mats& imgs)
 	return out;
 }
 
+Mat imread_reduced(std::string path)
+{
+	Mat img = imread(path, CV_LOAD_IMAGE_COLOR);
+
+	int w = img.cols,
+	    h = img.rows;
+	double scale = 800.f / max(w, h);
+	if (scale >= 1.f) return img;
+
+	resize(img, img, Size(), scale, scale);
+	return img;
+}
+
 void showImage(std::string title, const Mat& img)
 {
 	if (!GRAPHICAL) return;

@@ -11,6 +11,7 @@ using namespace cv;
 #include "../classify/Classifier.hpp"
 #include "../util/math.hpp"
 #include "../util/file.hpp"
+#include "../util/opencv.hpp"
 #include "../features/feature.hpp"
 #include "../features/FeatMat.hpp"
 
@@ -171,7 +172,7 @@ namespace ds
 	std::pair<Mat, Mat> Chen::getMaps(std::string fname)
 	{
 		// Load image. Abort if invalid image [maps]
-		Mat img = imread("../datasets/Chen/image/" + fname, CV_LOAD_IMAGE_COLOR);
+		Mat img = imread("../datasets/Chen/image/" + fname);
 		if (!img.data)
 			throw std::runtime_error("Chen: Error in loading image maps");
 

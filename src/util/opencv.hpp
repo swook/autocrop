@@ -8,6 +8,7 @@ typedef unsigned int         uint;
 typedef std::vector<cv::Mat> Mats;
 
 cv::Mat my_hconcat(const Mats& imgs);
+cv::Mat imread_reduced(std::string path);
 
 /**
  * showImage shows a given image in a window with a given title

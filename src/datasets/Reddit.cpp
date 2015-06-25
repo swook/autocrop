@@ -9,6 +9,7 @@ using namespace cv;
 #include "../constants.hpp"
 #include "../util/math.hpp"
 #include "../util/file.hpp"
+#include "../util/opencv.hpp"
 #include "../saliency/saliency.hpp"
 #include "../features/feature.hpp"
 #include "../features/FeatMat.hpp"
@@ -30,7 +31,7 @@ namespace ds
 				files.size() << ")" << std::endl;
 
 			// Load image. Abort if invalid image [maps]
-			Mat img = imread(fpath, CV_LOAD_IMAGE_COLOR);
+			Mat img = imread_reduced(fpath);
 			if (!img.data)
 			{
 				std::cout << "Error reading: " << fpath << std::endl;
