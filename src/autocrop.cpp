@@ -83,7 +83,7 @@ int main(int argc, char** argv)
 		border = Scalar(0, 0, 0);
 
 		// Show saliency and crop side-by-side
-		const Mat out = my_hconcat({saliency, gradient, border, in_crop, border, out_crop});
+		const Mat out = my_hconcat({saliency, border, in_crop, border, out_crop});
 
 		// Show output image
 		showImageAndWait("Input - Cropped", out);
