@@ -94,15 +94,19 @@ class FeatMat:
         classifs = self.getClasses(path)
 
         for fname, fclassifs in classifs.iteritems():
-            for classif in fclassifs:
-                try:
-                    row = file_to_feat['%s/%s' % (path, fname)]
-                    if self.X is None:
-                        self.X = np.array([row], dtype=np.float32)
-                        self.y = np.array([classif], dtype=np.float32)
-                    else:
-                        self.X = np.append(self.X, [row], axis=0)
-                        self.y = np.append(self.y, classif)
-                except:
-                    pass
+            classif = 1 if np.mean(fclassifs) >= 0.5 else 0
+            row = None
+            try:
+                row = file_to_feat['%s/%s' % (path, fname)]
+            except:
+                pass
+            if row is None:
+                continue
+
+            if self.X is None:
+                self.X = np.array([row], dtype=np.float32)
+                self.y = np.array([classif], dtype=np.float32)
+            else:
+                self.X = np.append(self.X, [row], axis=0)
+                self.y = np.append(self.y, classif)
 

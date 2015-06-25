@@ -36,14 +36,17 @@ def main():
             if len(np.unique(fclassifs)) > 1:
                 b += 1
 
-            if np.average(fclassifs) == 0.5:
-                tru_cls = 0.5
-            else:
-                tru_cls = np.bincount(fclassifs).argmax()
+            # Get ground truth class
+            classif = np.mean(fclassifs)
+            tru_cls = 1 if classif >= 0.5 else 0
 
             if tru_cls == 1:
                 good_n += 1
+
+            # Get estimated class
             est_cls = classifier.predictFeats(file_to_feat['%s/%s' % (path, fname)])
+
+            # Add errors
             errs.append(tru_cls - est_cls)
 
             for c, classif in enumerate(fclassifs):

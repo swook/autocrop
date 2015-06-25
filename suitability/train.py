@@ -21,18 +21,18 @@ class Trainer:
     def __init__(self):
         self.svm = svm.SVC(kernel='linear', shrinking=True, verbose=False)
         params = {
-            'C': np.logspace(-4, -3, num=50), # Range of C values
+            'C': np.logspace(-4, -1, num=60), # Range of C values
         }
         self.clf = GridSearchCV(self.svm, params,
-            cv      = 5,           # 5-fold CV
+            cv      = 20,          # k-fold CV
             n_jobs  = cpu_count(), # Parallelize over CPUs
-            verbose = 2,
+            verbose = 1,
         )
 
     def train(self, featMat):
         # Preprocess
         scaler = StandardScaler()
-        featMat.X = scaler.fit_transform(featMat.X)
+        featMat.X = scaler.fit_transform(featMat.X, featMat.y)
 
         # Save preprocess output
         joblib.dump(scaler, 'preprocess.out')
