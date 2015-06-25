@@ -54,12 +54,12 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 	float sum_saliency = sum(saliency)[0];
 
 	// Candidates generation parameters
-	const int   MAX_INITIAL_CROP_CANDIDATES = 4000;
-	const int   MAX_TOTAL_CROP_CANDIDATES   = 40;
-	const float THRESHOLD_REDUCE_FACTOR     = 0.96;
+	const int   MAX_INITIAL_CROP_CANDIDATES = 5000;
+	const int   MAX_TOTAL_CROP_CANDIDATES   = 50;
+	const float THRESHOLD_REDUCE_FACTOR     = 0.95;
 
 	std::vector<Candidate*> candidates;
-	float thresh_content0 = 0.68; // Lower bound of S_content for crop candidates
+	float thresh_content0 = 0.7; // Lower bound of S_content for crop candidates
 	if (rat_provided)
 		thresh_content0 = w2hrat*saliency.rows/saliency.cols;
 	float thresh_content = thresh_content0;
