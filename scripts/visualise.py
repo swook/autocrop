@@ -15,11 +15,13 @@ from suitability.util import *
 def main():
     M = 5
     N = 7
+    print('- Output grid of images is %d x %d' % (M, N))
     fnames, imgs, suitable = get_images(M*N)
 
     # Show all images
     out1 = draw_grid(M, N, imgs)
     cv.imwrite('grid_out1.png', out1)
+    print('- Drawn first grid with all images.')
 
     # Greyscale unsuitable images
     def get_gray(img):
@@ -35,10 +37,12 @@ def main():
 
     out2 = draw_grid(M, N, imgs)
     cv.imwrite('grid_out2.png', out2)
+    print('- Drawn second grid with unsuitable images grayed out.')
 
     # Greyscale areas outside of crop regions
     for i, img in enumerate(imgs):
         if suitable[i]:
+            print('- Cropping %s' % fnames[i])
             cmd = ['../build/autocrop', '-t', '-h', '-r', '0.5625', '-i', fnames[i]]
             crop_nums = subprocess.check_output(cmd).split()[-4:]
             x, y, w, h = tuple([int(num) for num in crop_nums])
@@ -48,6 +52,7 @@ def main():
 
     out3 = draw_grid(M, N, imgs)
     cv.imwrite('grid_out3.png', out3)
+    print('- Drawn third grid with suitable images cropped.')
 
 def get_images(n):
     if_path = '../datasets/Michael/'
