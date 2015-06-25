@@ -13,8 +13,8 @@ from suitability.Classifier import *
 from suitability.util import *
 
 def main():
-    M = 5
-    N = 7
+    M = 3
+    N = 4
     print('- Output grid of images is %d x %d' % (M, N))
     fnames, imgs, suitable = get_images(M*N)
 
@@ -93,7 +93,7 @@ def get_images(n):
     bad = [(files[i], suitable[i]) for i in range(len(files)) if not suitable[i]]
     random.shuffle(good)
     random.shuffle(bad)
-    n_good = n / 4
+    n_good = n * 2 / 5
     n_bad = n - n_good
     pairs = bad[:n_bad] + good[:n_good]
     random.shuffle(pairs)
@@ -107,8 +107,8 @@ def get_images(n):
     return files, imgs, suitable
 
 def draw_grid(M, N, imgs):
-    img_w = 200
-    img_h = 140
+    img_w = 300
+    img_h = 200
     border = 0
 
     W = img_w * N + border * (N + 1)
