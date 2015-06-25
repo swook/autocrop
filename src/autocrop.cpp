@@ -54,12 +54,13 @@ int main(int argc, char** argv)
 	/*
 	 * Call retargeting methods
 	 */
-	Mat saliency = getSaliency(in);
+	Mat saliency, gradient;
 	try {
 		saliency = imread(setSuffix(f, "saliency").string(), CV_LOAD_IMAGE_UNCHANGED);
+		gradient = imread(setSuffix(f, "gradient").string(), CV_LOAD_IMAGE_UNCHANGED);
 	} catch (std::exception e) {}
 	if (!saliency.data) saliency = getSaliency(in);
-	Mat gradient = getGradient(in);
+	if (!gradient.data) gradient = getGradient(in);
 	Rect crop = getBestCrop(saliency, gradient, vm["aspect-ratio"].as<float>());
 
 	if (!vm["text-only"].as<bool>())
@@ -82,7 +83,7 @@ int main(int argc, char** argv)
 		border = Scalar(0, 0, 0);
 
 		// Show saliency and crop side-by-side
-		const Mat out = my_hconcat({saliency, border, in_crop, border, out_crop});
+		const Mat out = my_hconcat({saliency, gradient, border, in_crop, border, out_crop});
 
 		// Show output image
 		showImageAndWait("Input - Cropped", out);

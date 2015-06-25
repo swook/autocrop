@@ -170,16 +170,15 @@ namespace ds
 
 	std::pair<Mat, Mat> Chen::getMaps(std::string fname)
 	{
-		path ipath = path("../datasets/Chen/image/" + fname);
-
-		// Load cached image maps. Abort if invalid image [maps]
-		Mat saliency = imread(setSuffix(ipath, "saliency").string(), CV_LOAD_IMAGE_UNCHANGED);
-		Mat grad     = imread(setSuffix(ipath, "grad").string(), CV_LOAD_IMAGE_UNCHANGED);
-
-		if (!saliency.data || !grad.data)
+		// Load image. Abort if invalid image [maps]
+		Mat img = imread("../datasets/Chen/image/" + fname, CV_LOAD_IMAGE_COLOR);
+		if (!img.data)
 			throw std::runtime_error("Chen: Error in loading image maps");
 
-		return std::pair<Mat, Mat>(saliency, grad);
+		Mat saliency = getSaliency(img),
+		    gradient = getGradient(img);
+
+		return std::pair<Mat, Mat>(saliency, gradient);
 	}
 
 

@@ -32,7 +32,7 @@ bool isGradImage(path file)
 
 	if (match.size() < 3) return false;
 
-	return match[2] == "grad";
+	return match[2] == "gradient";
 }
 
 path setSuffix(path file, std::string suffix)

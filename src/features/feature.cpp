@@ -144,20 +144,11 @@ Mat getGradient(const Mat& img)
 	}
 	else gray = img;
 
-	// Blur to remove high frequency textures
-	Mat   blurred;
-	Size  kernel_size = Size(3, 3);
-	float sigma       = 1.f;
-	GaussianBlur(gray, blurred, kernel_size, sigma);
-
 	// Calculate gradient of image
 	Mat grad;
-	Sobel(blurred, grad, CV_32F, 1, 1, 3);
+	Sobel(gray, grad, CV_32F, 1, 1, 3);
+	grad = abs(grad);
 
-	// Fix range
-	Mat out;
-	normalize(grad, out, 0.f, 1.f, NORM_MINMAX);
-
-	return out;
+	return abs(grad);
 }
 

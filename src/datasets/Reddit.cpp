@@ -9,6 +9,7 @@ using namespace cv;
 #include "../constants.hpp"
 #include "../util/math.hpp"
 #include "../util/file.hpp"
+#include "../saliency/saliency.hpp"
 #include "../features/feature.hpp"
 #include "../features/FeatMat.hpp"
 
@@ -28,27 +29,19 @@ namespace ds
 			std::cout << "Loading: " << fpath << " (" << i << "/" <<
 				files.size() << ")" << std::endl;
 
-			// Load cached image maps. Abort if invalid image [maps]
-			Mat saliency, grad;
-			try
-			{
-				saliency = imread(setSuffix(fpath, "saliency").string(), CV_LOAD_IMAGE_UNCHANGED);
-				grad     = imread(setSuffix(fpath, "grad").string(), CV_LOAD_IMAGE_UNCHANGED);
-			}
-			catch (std::exception e)
+			// Load image. Abort if invalid image [maps]
+			Mat img = imread(fpath, CV_LOAD_IMAGE_COLOR);
+			if (!img.data)
 			{
 				std::cout << "Error reading: " << fpath << std::endl;
 				continue;
 			}
-			if (!saliency.data || !grad.data)
-			{
-				std::cout << "Error reading: " << fpath << std::endl;
-				continue;
-			}
+			Mat saliency = getSaliency(img),
+			    gradient = getGradient(img);
 
 			// Image is good crop
 			Rect crop = Rect(0, 0, saliency.cols, saliency.rows);
-			featMat.addFeatVec(saliency, grad, crop, GOOD_CROP);
+			featMat.addFeatVec(saliency, gradient, crop, GOOD_CROP);
 
 			// Randomly generated crop is "bad"
 			float sum_saliency = sum(saliency)[0];
@@ -61,7 +54,7 @@ namespace ds
 				float S_area = (float)(crop.x*crop.y) / total_area;
 				if (S_content < 0.15 && S_area > 0.2)
 				{
-					featMat.addFeatVec(saliency, grad, crop, BAD_CROP);
+					featMat.addFeatVec(saliency, gradient, crop, BAD_CROP);
 					n_bad++;
 				}
 				if (n_bad == 2) break;
