@@ -32,7 +32,7 @@ class Trainer:
     def train(self, featMat):
         # Preprocess
         scaler = StandardScaler()
-        scaler.fit_transform(featMat.X, featMat.y)
+        featMat.X = scaler.fit_transform(featMat.X)
 
         # Save preprocess output
         joblib.dump(scaler, 'preprocess.out')
