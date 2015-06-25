@@ -25,20 +25,28 @@ namespace ds
 #pragma omp parallel for
 		for (int i = 0; i < files.size(); i++)
 		{
-			auto fpath = files[i].string();
+			auto fpath = files[i];
 
-			std::cout << "Loading: " << fpath << " (" << i << "/" <<
-				files.size() << ")" << std::endl;
+			std::cout << "Loading: " << fpath.string() << " (" << i
+				<< "/" << files.size() << ")" << std::endl;
 
 			// Load image. Abort if invalid image [maps]
-			Mat img = imread_reduced(fpath);
-			if (!img.data)
-			{
-				std::cout << "Error reading: " << fpath << std::endl;
-				continue;
+			Mat saliency, gradient;
+			try {
+				saliency = imread(setSuffix(fpath, "saliency").string(), CV_LOAD_IMAGE_UNCHANGED);
+				gradient = imread(setSuffix(fpath, "gradient").string(), CV_LOAD_IMAGE_UNCHANGED);
+				if (!saliency.data || !gradient.data)
+					throw std::runtime_error("Failed loading maps");
+			} catch (std::exception e) {
+				Mat img = imread_reduced(fpath.string());
+				if (!img.data)
+				{
+					std::cout << "Error reading: " << fpath << std::endl;
+					continue;
+				}
+				saliency = getSaliency(img),
+				gradient = getGradient(img);
 			}
-			Mat saliency = getSaliency(img),
-			    gradient = getGradient(img);
 
 			// Image is good crop
 			Rect crop = Rect(0, 0, saliency.cols, saliency.rows);
