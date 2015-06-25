@@ -43,6 +43,10 @@
 % bachground color titlepage
 \colorlet{secondcolor}{white} % see pages 2  and 3 of this sample presentation
 
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
 % === fill in first information for the presentation ==========================
 \newcommand*{\ETHtitle}{Creating wallpapers using mobile phone photos}
 \newcommand*{\ETHauthor}{Seonwook Park}
@@ -58,7 +62,6 @@
 Supervised by Michael Gygli and Dengxin Dai}}
 \clearpage
 
-%% Slide 2) Table of Contents
 \ETHminimal
 \textbf{Outline\\}
 \begin{itemize}
@@ -74,69 +77,262 @@ Supervised by Michael Gygli and Dengxin Dai}}
 \end{itemize}
 \clearpage
 
-%% Slide 3)
 \ETHminimal
 \textbf{Introduction\\}
+\newline
+\begin{minipage}{0.65\textwidth}
+\begin{itemize}
+	\item A mobile phone photo gallery contains a variety of images.
+	\item Could use photos as wallpapers.
+	\item Two challenges: Suitability and Cropping.
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+	\begin{tikzpicture}[remember picture,overlay]
+	  \node [xshift=-2.2cm,yshift=-4.1cm] at (current page.north east)
+	    {\includegraphics[width=3.2cm]{figures/mobile_gallery.png}};
+	\end{tikzpicture}
+\end{minipage}
+\vspace{16mm}
+\begin{itemize}
+	\item Which image is suitable as a wallpaper?
+	\item Which portion of a selected image should be visible?
+\end{itemize}
 \clearpage
 
-%% Slide 4)
 \ETHminimal
 \textbf{Method: Suitability - Datasets\\}
+\newline
+\begin{minipage}{0.65\textwidth}
+\begin{itemize}
+	\item Two datasets: Michael (275 images) and Wookie (266 images)
+	\item Includes:
+	\begin{itemize}
+		\item Natural scenes
+		\item Cityscapes
+		\item Short-term memory
+		\item Quick photos for messaging
+	\end{itemize}
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+	\begin{tikzpicture}[remember picture,overlay]
+	  \node [xshift=-2.2cm,yshift=-4.1cm] at (current page.north east)
+	    {\includegraphics[width=3cm]{figures/michael_dataset.png}};
+	\end{tikzpicture}
+\end{minipage}
 \clearpage
 
-%% Slide 5)
 \ETHminimal
 \textbf{Method: Suitability - Training\\}
+\begin{itemize}
+	\item Find objects in images to determine if suitable as a wallpaper.
+	\item Done using Caffe, a deep learning library.
+	\item Model used: BVLC Reference CaffeNet, 1000 object classes.
+	\item Acquired feature vector used to train a SVM.
+	\item SVM model trained on Wookie dataset. Michael dataset is used for evaluation.
+\end{itemize}
 \clearpage
 
-%% Slide 6)
 \ETHminimal
 \textbf{Method: Cropping - Saliency\\}
+\begin{itemize}
+	\item To crop an image, need to know what to keep.
+	\item Distinctness compared to neighbouring regions.
+	\item Aim to represent interesting regions in order to be able to
+	      preserve information and yield well composed crops.
+	\item Boolean Map based Saliency (BMS) by Zhang et al.
+\end{itemize}
 \clearpage
 
-%% Slide 7)
 \ETHminimal
 \textbf{Method: Cropping - Features\\}
+\begin{figure}[h!]
+\centering\includegraphics[width=11.5cm]{../figures/example_autocrop.jpg}
+\end{figure}
+\begin{enumerate}
+	\item Saliency Composition
+	\item Boundary Simplicity
+	\item Content Preservation
+\end{enumerate}
 \clearpage
 
-%% Slide 8)
 \ETHminimal
-\textbf{Method: Cropping - Features\\}
+\textbf{Method: Cropping - Features}
+\begin{itemize}
+	\item 3-level spatial pyramid of saliency map
+		\begin{itemize}
+		\item $4\times4$ and $2\times2$ patches.
+		\item $16 + 4 + 1 + 1 = 22$ features.
+		\end{itemize}
+	\item Boundary simplicity
+		\begin{itemize}
+		\item Gradient map using Sobel filter and \texttt{abs}.
+		\item Mean value of 2-pixel wide strips used.
+		\item $4$ features, $1$ per edge.
+		\end{itemize}
+	\item $26$ features in total. Used to train an SVM.
+\end{itemize}
 \clearpage
 
-%% Slide 9)
 \ETHminimal
-\textbf{Method: Cropping - Datasets\\}
+\textbf{Method: Cropping - Datasets}
+\begin{itemize}
+	\item Human crop dataset
+		\begin{itemize}
+		\item Collected from Amazon Mechanical Turks, Chen et al. (2014)
+		\item 500 images, 10 crops per image.
+		\item Used for evaluating model.
+		\end{itemize}
+	\item Reddit dataset
+		\begin{itemize}
+		\item Top 2000 images in the past year.
+		\item Subreddits used: \tiny{CityPorn, EarthPorn, itookapicture, photocritique, WaterPorn, windowshots}\normalsize
+		\item Used for training model.
+		\end{itemize}
+\end{itemize}
 \clearpage
 
-%% Slide 10)
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
 \ETHminimal
 \textbf{Method: Cropping - Final\\}
+\begin{algorithm}
+\scriptsize
+\begin{algorithmic}[1]
+
+\State $saliency \gets$ Saliency Map
+\State $thresh \gets 0.7$
+\State $n \gets 0$
+    \Repeat
+	\State Generate $5000$ crop candidates.
+	\ForAll{crop}
+		\State $cropped \gets saliency(crop)$
+		\State $S\_content = sum(cropped) / sum(saliency)$
+		\If{$S\_content < thresh$}
+			\State Add crop to candidates
+			\State $n = n + 1$
+		\EndIf
+	\EndFor
+	\State $thresh = thresh * 0.95$
+    \Until{n > 50}
+\end{algorithmic}
+\end{algorithm}
 \clearpage
 
-%% Slide 11)
 \ETHminimal
 \textbf{Final pipeline}
+\begin{figure}[h!]
+\centering\includegraphics[width=11.5cm]{../figures/grid5x7_out1.png}
+\end{figure}
 \clearpage
 
-%% Slide 12)
 \ETHminimal
-\textbf{Analysis: Suitability}
+\textbf{Final pipeline}
+\begin{figure}[h!]
+\centering\includegraphics[width=11.5cm]{../figures/grid5x7_out2.png}
+\end{figure}
 \clearpage
 
-%% Slide 13)
+\ETHminimal
+\textbf{Final pipeline}
+\begin{figure}[h!]
+\centering\includegraphics[width=11.5cm]{../figures/grid5x7_out3.png}
+\end{figure}
+\clearpage
+
+\ETHminimal
+\textbf{Analysis: Suitability\\}
+\begin{itemize}
+	\item Classifications gathered from four people.
+	\item When considering images with consensus, misclassification error of
+	      Michael set is $9.8\%$.
+	\item $53$ out of $275$ images are considered suitable.
+\end{itemize}
+\clearpage
+
+\ETHminimal
+\textbf{Results: Cropping (Good)}
+\begin{figure}[h!]
+\centering\includegraphics[width=11.5cm]{../figures/good_crops/109123697_Large.jpg}
+\vskip2mm
+\centering\includegraphics[width=11.5cm]{../figures/good_crops/1158647496_Large.jpg}
+\end{figure}
+\clearpage
+
+\ETHminimal
+\textbf{Results: Cropping (Good)}
+\begin{figure}[h!]
+\centering\includegraphics[width=11.5cm]{../figures/good_crops/236441280_Large.jpg}
+\vskip2mm
+\centering\includegraphics[width=11.5cm]{../figures/good_crops/371485783_Large.jpg}
+\end{figure}
+\clearpage
+
+\ETHminimal
+\textbf{Results: Cropping (Good)}
+\begin{figure}[h!]
+\centering\includegraphics[width=11.5cm]{../figures/good_crops/504325680_Large.jpg}
+\vskip2mm
+\centering\includegraphics[width=11.5cm]{../figures/good_crops/52968615_Large.jpg}
+\end{figure}
+\clearpage
+
+
+\ETHminimal
+\textbf{Results: Cropping (Bad)}
+\begin{figure}[h!]
+\centering\includegraphics[width=11.5cm]{../figures/bad_crops/104726217_Large.jpg}
+\vskip2mm
+\centering\includegraphics[width=11.5cm]{../figures/bad_crops/118697470_Large.jpg}
+\end{figure}
+\clearpage
+
+\ETHminimal
+\textbf{Results: Cropping (Bad)}
+\begin{figure}[h!]
+\centering\includegraphics[width=11.5cm]{../figures/bad_crops/6857081990_Large.jpg}
+\vskip4mm
+\centering\includegraphics[width=11.5cm]{../figures/bad_crops/119260988_Large.jpg}
+\end{figure}
+\clearpage
+
+\ETHminimal
+\textbf{Analysis: Cropping\\}
+\newline
+\begin{gather*}
+	\mathrm{Overlap}(C_i, H_j) = \frac{C_i \cap H_j}{C_i \cup H_j} \\
+	\mathrm{MaxOverlap}(C_i, H) = \max_j\mathrm{Overlap}(C_i, H_j)
+\end{gather*}
+\begin{itemize}
+	\item $C_i$ is the $i$-th crop candidate, and
+	\item $H_j$ is the $j$-th human crop. There are $10$ human crops per image.
+	\item $\mathrm{MaxOverlap}$ is calculated for $i\in\{1, 2, 3, 4, 5\}$.
+	\item $C_0$ is the highest scoring crop.
+\end{itemize}
+\clearpage
+
 \ETHminimal
 \textbf{Analysis: Cropping}
+\begin{figure}[h!]
+\centering\includegraphics[width=9.3cm]{../figures/comparison.pdf}
+\end{figure}
 \clearpage
 
-%% Slide 14)
 \ETHminimal
-\textbf{Summary}
+\textbf{Summary\\}
+\begin{itemize}
+	\item
+\end{itemize}
 \clearpage
 
-%% Slide 15)
 \ETHminimal
-\textbf{Further Work}
+\textbf{Further Work\\}
+\begin{itemize}
+	\item
+\end{itemize}
 \clearpage
 
 
