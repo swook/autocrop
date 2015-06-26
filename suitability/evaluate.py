@@ -23,6 +23,9 @@ def main():
         print('Loaded %d features for %s' % (len(file_to_feat), path))
 
         classifs = featMat.getClasses(path)
+        a = [fclassifs[0] for fclassifs in classifs.values()]
+        b = [fclassifs[1] for fclassifs in classifs.values()]
+        print('Pearson\'s coefficient between two classifications: %f' % pearsonr(a, b)[0])
 
         errs = []
         i = 0
@@ -38,6 +41,8 @@ def main():
 
             # Get ground truth class
             classif = np.mean(fclassifs)
+            if classif != 0 and classif != 1:
+                continue
             tru_cls = 1 if classif >= 0.5 else 0
 
             if tru_cls == 1:
@@ -63,7 +68,6 @@ def main():
         print('')
 
         print('%d mismatching classifications' % b)
-        print('Pearson\'s coefficient between two classifications: %f' % pearsonr(X[:, 0], X[:, 1])[0])
 
     evaluate_dir('../datasets/Michael')
     print('')

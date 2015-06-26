@@ -80,11 +80,15 @@ class FeatMat:
             with open(fpath, 'r') as f:
                 classifs = json.load(f)
 
+            good_n = 0
             for fname, classif in classifs.iteritems():
+                if classif == 1:
+                    good_n += 1
                 if fname in out:
                     out[fname].append(classif)
                 else:
                     out[fname] = [classif]
+            print('%s: %.2f%% are classified as 1.' % (fpath, 100. * good_n / len(classifs)))
 
         return out
 
