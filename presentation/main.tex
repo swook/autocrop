@@ -105,7 +105,11 @@ Supervised by Michael Gygli and Dengxin Dai}}
 \newline
 \begin{minipage}{0.65\textwidth}
 \begin{itemize}
-	\item Two datasets: Michael (275 images) and Wookie (266 images)
+	\item Two datasets:
+	\begin{itemize}
+		\item Michael (275 images)
+		\item Wookie (266 images)
+	\end{itemize}
 	\item Includes:
 	\begin{itemize}
 		\item Natural scenes
@@ -117,30 +121,30 @@ Supervised by Michael Gygli and Dengxin Dai}}
 \end{minipage}
 \begin{minipage}{0.4\textwidth}
 	\begin{tikzpicture}[remember picture,overlay]
-	  \node [xshift=-2.2cm,yshift=-4.1cm] at (current page.north east)
-	    {\includegraphics[width=3cm]{figures/michael_dataset.png}};
+	  \node [xshift=-1.9cm,yshift=-4.8cm] at (current page.north east)
+	    {\includegraphics[width=2.9cm]{figures/michael_dataset.png}};
 	\end{tikzpicture}
 \end{minipage}
 \clearpage
 
 \ETHminimal
 \textbf{Method: Suitability - Training\\}
+\newline
+\begin{figure}[h!]
+\centering\includegraphics[width=11.5cm]{../figures/pipeline_suitability.pdf}
+\end{figure}
 \begin{itemize}
-	\item Find objects in images to determine if suitable as a wallpaper.
-	\item Done using Caffe, a deep learning library.
 	\item Model used: BVLC Reference CaffeNet, 1000 object classes.
-	\item Acquired feature vector used to train a SVM.
-	\item SVM model trained on Wookie dataset. Michael dataset is used for evaluation.
 \end{itemize}
 \clearpage
 
 \ETHminimal
-\textbf{Method: Cropping - Saliency\\}
+\textbf{Method: Cropping - Saliency}
+\begin{figure}[h!]
+\centering\includegraphics[width=11.5cm]{../figures/example_saliency.jpg}
+\end{figure}
 \begin{itemize}
-	\item To crop an image, need to know what to keep.
-	\item Distinctness compared to neighbouring regions.
-	\item Aim to represent interesting regions in order to be able to
-	      preserve information and yield well composed crops.
+	\item Saliency is distinctness compared to neighbouring regions.
 	\item Boolean Map based Saliency (BMS) by Zhang et al.
 \end{itemize}
 \clearpage
@@ -160,18 +164,21 @@ Supervised by Michael Gygli and Dengxin Dai}}
 \ETHminimal
 \textbf{Method: Cropping - Features}
 \begin{itemize}
-	\item 3-level spatial pyramid of saliency map
+	\item Saliency composition
 		\begin{itemize}
-		\item $4\times4$ and $2\times2$ patches.
-		\item $16 + 4 + 1 + 1 = 22$ features.
+		\item 3-level spatial pyramid of saliency map
+		\item $4^2 + 2^2 + 1 = 21$ features.
 		\end{itemize}
 	\item Boundary simplicity
 		\begin{itemize}
-		\item Gradient map using Sobel filter and \texttt{abs}.
+		\item Gradient map generated using Sobel filter and \texttt{abs}.
 		\item Mean value of 2-pixel wide strips used.
 		\item $4$ features, $1$ per edge.
 		\end{itemize}
-	\item $26$ features in total. Used to train an SVM.
+	\item Content preservation
+		\begin{itemize}
+		\item Sum of all salient energy in crop
+		\end{itemize}
 \end{itemize}
 \clearpage
 
@@ -191,35 +198,29 @@ Supervised by Michael Gygli and Dengxin Dai}}
 		\item Used for training model.
 		\end{itemize}
 \end{itemize}
+\begin{tikzpicture}[remember picture,overlay]
+  \node [xshift=-6cm,yshift=-8.6cm] at (current page.north east)
+    {\includegraphics[width=14.4cm]{../figures/example_reddit.jpg}};
+\end{tikzpicture}
 \clearpage
-
-\makeatletter
-\def\BState{\State\hskip-\ALG@thistlm}
-\makeatother
 
 \ETHminimal
 \textbf{Method: Cropping - Final\\}
-\begin{algorithm}
+\newline
+\begin{minipage}{0.4\textwidth}
+\vskip3.6cm
 \scriptsize
-\begin{algorithmic}[1]
-
-\State $saliency \gets$ Saliency Map
-\State $thresh \gets 0.7$
-\State $n \gets 0$
-    \Repeat
-	\State Generate $5000$ crop candidates.
-	\ForAll{crop}
-		\State $cropped \gets saliency(crop)$
-		\State $S\_content = sum(cropped) / sum(saliency)$
-		\If{$S\_content < thresh$}
-			\State Add crop to candidates
-			\State $n = n + 1$
-		\EndIf
-	\EndFor
-	\State $thresh = thresh * 0.95$
-    \Until{n > 50}
-\end{algorithmic}
-\end{algorithm}
+\begin{gather*}
+	S_{content} = \frac{\mathrm{sum(cropped\ saliency)}}{\mathrm{sum(full\ saliency)}}
+\end{gather*}
+$\cdot$ Start from large crops. \\
+$\cdot$ Find smaller crops. \\
+$\cdot$ Stop when enough candidates.
+\end{minipage}
+\begin{tikzpicture}[remember picture,overlay]
+  \node [xshift=-3.9cm,yshift=-4.8cm] at (current page.north east)
+    {\includegraphics[width=6.5cm]{../figures/pipeline_cropfinal.pdf}};
+\end{tikzpicture}
 \clearpage
 
 \ETHminimal
@@ -244,12 +245,33 @@ Supervised by Michael Gygli and Dengxin Dai}}
 \clearpage
 
 \ETHminimal
-\textbf{Analysis: Suitability\\}
+\textbf{Results: Suitability\\}
 \begin{itemize}
-	\item Classifications gathered from four people.
-	\item When considering images with consensus, misclassification error of
-	      Michael set is $9.8\%$.
-	\item $53$ out of $275$ images are considered suitable.
+	\item Top 7 suitable images from Michael dataset.
+	\item Suitability decreases towards right.
+	\item 53 suitable images left out of 275.
+	\item Favours distant natural scenes.
+\end{itemize}
+\begin{tikzpicture}[remember picture,overlay]
+  \node [xshift=-6.4cm,yshift=-7.0cm] at (current page.north east)
+    {\includegraphics[width=12.9cm]{../figures/top7_suitable.jpg}};
+\end{tikzpicture}
+\clearpage
+
+\ETHminimal
+\textbf{Analysis: Suitability}
+\begin{itemize}
+	\item Classifications gathered from four people. (\% marked as suitable)
+	\begin{itemize}
+		\item Michael set: $48\%$, $37\%$, $31\%$, $63\%$
+		\item Wookie set: $23\%$, $20\%$, $17\%$, $37\%$
+	\end{itemize}
+	\item Pearson correlation coeff between two classification sets is \\ 0.51 (Michael), 0.23 (Wookie)
+	\item When considering images with classifications in consensus:
+	\begin{itemize}
+		\item Trained on Wookie set: $9.8\%$ error.
+		\item Trained on Michael set: $12.4\%$ error.
+	\end{itemize}
 \end{itemize}
 \clearpage
 
@@ -284,18 +306,9 @@ Supervised by Michael Gygli and Dengxin Dai}}
 \ETHminimal
 \textbf{Results: Cropping (Bad)}
 \begin{figure}[h!]
-\centering\includegraphics[width=11.5cm]{../figures/bad_crops/104726217_Large.jpg}
+\centering\includegraphics[width=11.5cm]{../figures/bad_crops/6857081990_Large.jpg}
 \vskip2mm
 \centering\includegraphics[width=11.5cm]{../figures/bad_crops/118697470_Large.jpg}
-\end{figure}
-\clearpage
-
-\ETHminimal
-\textbf{Results: Cropping (Bad)}
-\begin{figure}[h!]
-\centering\includegraphics[width=11.5cm]{../figures/bad_crops/6857081990_Large.jpg}
-\vskip4mm
-\centering\includegraphics[width=11.5cm]{../figures/bad_crops/119260988_Large.jpg}
 \end{figure}
 \clearpage
 
@@ -315,107 +328,50 @@ Supervised by Michael Gygli and Dengxin Dai}}
 \clearpage
 
 \ETHminimal
-\textbf{Analysis: Cropping}
-\begin{figure}[h!]
-\centering\includegraphics[width=9.3cm]{../figures/comparison.pdf}
-\end{figure}
+\textbf{Analysis: Cropping\\}
+\begin{minipage}{0.5\textwidth}
+\vskip5.5cm
+\footnotesize{
+	Improvements: \\
+	$\cdot$ 4 Boundary features \\
+	$\cdot$ Saliency sum feature \\
+	$\cdot$ Shrinking content threshold
+}
+\end{minipage}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node [xshift=-4.5cm,yshift=-5.1cm] at (current page.north east)
+    {\includegraphics[width=9cm]{../figures/comparison.pdf}};
+\end{tikzpicture}
 \clearpage
 
 \ETHminimal
 \textbf{Summary\\}
 \begin{itemize}
-	\item
+	\item Trained models to select and crop an image given a set of images.
+	\item Suitability classification error of $9.8\%$.
+	\item Improved cropping algorithm.\\ First 5 crop yields max. overlap of 0.84 over 0.81 from Chen et al.
+	\vskip1cm
+	\item Implementation in \texttt{C++} (Cropping) and \texttt{Python} (Suitability) using OpenCV and Caffe.
 \end{itemize}
 \clearpage
 
 \ETHminimal
 \textbf{Further Work\\}
 \begin{itemize}
-	\item
+	\item Suitability
+	\begin{itemize}
+		\item Train on larger datasets with wide range of objects.
+		\item Add features for image quality and colour distribution.
+		\item Reduce classification bias.
+	\end{itemize}
+
+	\item Cropping
+	\begin{itemize}
+		\item Try different saliency map implementations.
+		\item Find other visual cues such as variance of salient energy.
+	\end{itemize}
 \end{itemize}
 \clearpage
 
-
-%% =========== begin of the standard page ============
-%\ETHminimal%
-%% ==== start here with the text
-%%\tableofcontents
-%\textbf{New colors and their names\\}
-%Here we show the different colors you can use. From left to right, this are the colors ETH1, ETH2, \ldots , ETH9.
-%\newcommand{\quadrat}{(0,0mm)--(0mm,5mm)--(5mm,5mm)--(5mm,0mm)--(0mm,0mm);}
-%\begin{center}
-%	\hspace{-8mm}
-%	\begin{tikzpicture}[overlay]
-%		{\draw[ETHa,fill=ETHa] \quadrat}\label{ETH1}
-%	\end{tikzpicture}
-%	\hspace{10mm}
-%	\begin{tikzpicture}[overlay]
-%		{\draw[ETHb,fill=ETHb]\quadrat}\label{ETH2}
-%	\end{tikzpicture}
-%	\hspace{10mm}
-%	\begin{tikzpicture}[overlay]
-%		{\draw[ETHc,fill=ETHc]\quadrat}\label{ETH3}
-%	\end{tikzpicture}
-%	\hspace{10mm}
-%	\begin{tikzpicture}[overlay]
-%		{\draw[ETHd,fill=ETHd] \quadrat}\label{ETH4}
-%	\end{tikzpicture}
-%	\hspace{10mm}
-%	\begin{tikzpicture}[overlay]
-%		{\draw[ETHe,fill=ETHe] \quadrat}\label{ETH5}
-%	\end{tikzpicture}
-%	\hspace{10mm}
-%	\begin{tikzpicture}[overlay]
-%		{\draw[ETHf,fill=ETHf] \quadrat}\label{ETH6}
-%	\end{tikzpicture}
-%	\hspace{10mm}
-%	\begin{tikzpicture}[overlay]
-%		{\draw[ETHg,fill=ETHg] \quadrat}\label{ETH7}
-%	\end{tikzpicture}
-%	\hspace{10mm}
-%	\begin{tikzpicture}[overlay]
-%		{\draw[ETHh,fill=ETHh] \quadrat}\label{ETH8}
-%	\end{tikzpicture}
-%	\hspace{10mm}
-%	\begin{tikzpicture}[overlay]
-%		{\draw[ETHi,fill=ETHi] \quadrat}\label{ETH9}
-%	\end{tikzpicture}
-%\end{center}
-%\clearpage
-%% =========== begin of the standard page ============
-%\ETHminimal%
-%% ==== start here with the text
-%Please use no more then two of them in your presentation. The first two (counted from the left hand side) are reserved for the administration chapter of the ETHZ (first one for external presentation, second for internal), all others you can freely choose.
-%
-%Please do not forget, fill into your text like in a normal \LaTeX{}-article with the exception that you have to add some additional newline-commands into.
-%
-%On the following page some example for special commands. And be aware of this minimal ETHZ-page-sample here.
-%\clearpage
-%% =========== begin of the standard page ============
-%\ETHslide%
-%% ==== start here with the text
-%\textbf{Some mathematical specialities\\}
-%\ETHbox{0.8\textwidth}{% define the ETHbox
-%  \begin{theorem}[Murphy (1949)]\label{murphy}
-%    Anything that can go wrong, will go wrong.
-%  \end{theorem}
-%}
-%
-%\begin{proof}
-%  A special case of Theorem \ref{murphy} is proven in %\citet{matthews1995}.
-%\end{proof}
-%
-%\ETHitem \quad ETHitem\\
-%
-%\begin{remark}
-%Do not confuse \ETHblue{Murphy's Law} with \ETHbrown{Muphry's Law} by \textit{John Bangsund} which says that ``if you write anything criticizing editing or proofreading, there will be a fault of some kind in what you have written.''
-%\end{remark}
-%\clearpage
-%% =========== begin of inverseseite (inverse page) ============
-%\ETHinverseseite\textcolor{white}{\large\textbf{Conclusion}}\\~\newline\hspace{6mm}\normalsize%
-%%%
-%% ==== start here with the text on the titlepage
-%%%
-%\textcolor{white}{This is the example inverse page. And we showed, that you can use \LaTeX{} to prepare a presentation very easily.}
-%\clearpage
 \end{document}
