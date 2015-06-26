@@ -83,9 +83,31 @@ def get_images(n):
 
     # Classify each image and keep suitable ones
     suitable = [False]*len(files)
+    scores = [0]*len(files)
     for i, fpath in enumerate(files):
         if classifier.predictFeats(file_to_feat[fpath]) == 1:
             suitable[i] = True
+        scores[i] = classifier.getScore(file_to_feat[fpath])
+
+    # Show 10 top suitable images
+    N = 7
+    _, topfs = zip(*sorted(zip(scores, files), reverse=True)[:N])
+    iH = 150
+    iW = 200
+    H = iH
+    W = iW*N
+    out = np.ndarray((H, W, 3), dtype=np.uint8)
+    out.fill(255)
+    for i, fpath in enumerate(topfs):
+        I = imread_rotated(fpath)
+        h, w, _ = I.shape
+        scale = min(float(iW) / w, float(iH) / h)
+        I = cv.resize(I, None, fx=scale, fy=scale)
+        h, w, _ = I.shape
+        x0 = iW*i + iW/2 - w/2
+        y0 = iH/2 - h/2
+        out[y0:y0+h, x0:x0+w,] = I
+    cv.imwrite('top_suitable.jpg', out)
 
     # Get up to n entries
     pairs = sorted(zip(suitable, files))
