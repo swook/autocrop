@@ -15,7 +15,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="pipeline_cropping.svg">
+   sodipodi:docname="pipeline_cropping.svg"
+   inkscape:export-filename="/home/wookie/github/autocrop/figures/pipeline_cropfinal.pdf"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
   <defs
      id="defs4">
     <marker
@@ -437,10 +440,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="146.80758"
-     inkscape:cy="697.27375"
+     inkscape:cx="434.16044"
+     inkscape:cy="655.77492"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g4405"
      showgrid="false"
      inkscape:window-width="1680"
      inkscape:window-height="1006"
@@ -815,12 +818,16 @@
            width="211.59657"
            height="53.598961"
            x="24.262989"
-           y="265.01123" />
+           y="265.01123"
+           inkscape:export-xdpi="300"
+           inkscape:export-ydpi="300" />
         <flowRoot
            xml:space="preserve"
            id="flowRoot4138-4-4"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.97620201px;line-height:100%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           transform="translate(26.445187,196.80772)"><flowRegion
+           transform="translate(26.445187,196.80772)"
+           inkscape:export-xdpi="300"
+           inkscape:export-ydpi="300"><flowRegion
              id="flowRegion4140-3-5"><rect
                id="rect4142-58-9"
                width="188.45486"
@@ -829,7 +836,7 @@
                y="76.316154"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.97620201px;line-height:100%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle" /></flowRegion><flowPara
              style="font-size:18.75px"
-             id="flowPara4146-0-2">Keep crops with S_content &lt; threshold</flowPara></flowRoot>      </g>
+             id="flowPara4146-0-2">Keep crops with S_content &gt; threshold</flowPara></flowRoot>      </g>
     </g>
     <g
        id="g5645"
