@@ -1,11 +1,8 @@
 import json
 import pickle
-#import multiprocessing
 
 import util
 
-#import pymatlab
-#import cv2 as cv
 import numpy as np
 
 class FeatMat:
@@ -14,16 +11,6 @@ class FeatMat:
 
     def __init__(self):
         pass
-        """
-        self.matlab = pymatlab.session_factory()
-        self.matlab.run('cd ../lib/blur_detection/')
-        self.matlab.run('addpath UGM')
-        self.matlab.run('addpath feature')
-        self.matlab.run('matlabpool open %d' % multiprocessing.cpu_count())
-
-    def __del__(self):
-        self.matlab.run('delete(gcp)')
-        """
 
     # Adds folder with features and classification results
     def addFolder(self, path):
@@ -49,30 +36,10 @@ class FeatMat:
         feats = []
         with open(fpath + '.pickle', 'rb') as f:
             feats = pickle.load(f)['classes']
-
-        """
-        # Get blurriness features
-        I = util.imread_rotated(fpath)
-        if I.ndim > 1:
-            I = cv.cvtColor(I, cv.COLOR_BGR2GRAY)
-        h, w = I.shape
-        scale = 640.0 / max(h, w)
-        I = cv.resize(I, None, fx=scale, fy=scale)
-        I.astype(numpy.float64)
-
-        # Call blurDetection via matlab
-        self.matlab.putvalue('I', I)
-        self.matlab.run('I = blurDetection(I);')
-        I = self.matlab.getvalue('I')
-
-        cv.imshow('in', I)
-        cv.waitKey()
-        """
-
         return feats
 
 
-    # Gets all available classifications for a give path
+    # Gets all available classifications for a given path
     def getClasses(self, path):
         files = util.filesWithRe(path, r'.*\/classifications.*\.json$')
         out = {}
