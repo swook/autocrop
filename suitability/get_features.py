@@ -59,7 +59,7 @@ class FeatureExtractor:
         out = self.net.forward()
 
         return {
-            'classes': self.net.blobs['fc6'].data.flatten(),
+            'classes': self.net.blobs['fc7'].data.flatten(),
         }
 
 if __name__ == '__main__':

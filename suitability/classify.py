@@ -25,9 +25,8 @@ def main():
     if_path = args['images-path']
 
     # Parse in features information
-    global file_to_feat
-    featMat = FeatMat()
-    file_to_feat = featMat.getFeatures(if_path)
+    global feats
+    feats = Feats(if_path)
 
     # Initialise classifier
     global classifier
@@ -99,7 +98,7 @@ def show_image(idx):
 
     cur_img_path = new_img_path
 
-    cls = 'GOOD' if classifier.predictFeats(file_to_feat[cur_img_path]) == 1 else 'BAD'
+    cls = 'GOOD' if classifier.predictFeats(feats[fpath]) == 1 else 'BAD'
 
     imshow('main', '[%s] %s' % (cls, fpath), cur_img_path)
 

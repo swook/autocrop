@@ -13,8 +13,8 @@ from suitability.Classifier import *
 from suitability.util import *
 
 def main():
-    M = 3
-    N = 4
+    M = 7
+    N = 8
     print('- Output grid of images is %d x %d' % (M, N))
     fnames, imgs, suitable = get_images(M*N)
 
@@ -55,15 +55,14 @@ def main():
     print('- Drawn third grid with suitable images cropped.')
 
 def get_images(n):
-    if_path = '../datasets/Michael/'
+    if_path = '../datasets/Michael'
 
     # Parse in features information
     global file_to_feat
     cwd = os.getcwd()
     os.chdir('../suitability/')
-    featMat = FeatMat()
-    file_to_feat = featMat.getFeatures(if_path)
-    print('- Loaded features for %d files' % len(file_to_feat))
+    feats = Feats(if_path)
+    print('- Loaded features for %d files' % len(feats))
 
     # Initialise classifier
     global classifier
@@ -73,7 +72,7 @@ def get_images(n):
     # Get list of files
     global files
     valid_suffices = ('png', 'jpg', 'jpeg')
-    files = ['%s/%s' % (if_path, f) for f in os.listdir(if_path) if \
+    files = [f for f in os.listdir(if_path) if \
              os.path.isfile('%s/%s' % (if_path, f)) and \
              f.lower().endswith(valid_suffices)]
     if len(files) == 0:
@@ -85,9 +84,9 @@ def get_images(n):
     suitable = [False]*len(files)
     scores = [0]*len(files)
     for i, fpath in enumerate(files):
-        if classifier.predictFeats(file_to_feat[fpath]) == 1:
+        if classifier.predictFeats(feats[fpath]) == 1:
             suitable[i] = True
-        scores[i] = classifier.getScore(file_to_feat[fpath])
+        scores[i] = classifier.getScore(feats[fpath])
 
     # Show 10 top suitable images
     N = 7
@@ -99,7 +98,7 @@ def get_images(n):
     out = np.ndarray((H, W, 3), dtype=np.uint8)
     out.fill(255)
     for i, fpath in enumerate(topfs):
-        I = imread_rotated(fpath)
+        I = imread_rotated('%s/%s' % (if_path, fpath))
         h, w, _ = I.shape
         scale = min(float(iW) / w, float(iH) / h)
         I = cv.resize(I, None, fx=scale, fy=scale)
@@ -110,16 +109,20 @@ def get_images(n):
     cv.imwrite('top_suitable.jpg', out)
 
     # Get up to n entries
-    pairs = sorted(zip(suitable, files))
-    good = [(files[i], suitable[i]) for i in range(len(files)) if suitable[i]]
-    bad = [(files[i], suitable[i]) for i in range(len(files)) if not suitable[i]]
-    random.shuffle(good)
-    random.shuffle(bad)
-    n_good = n * 2 / 5
-    n_bad = n - n_good
-    pairs = bad[:n_bad] + good[:n_good]
-    random.shuffle(pairs)
-    files, suitable = zip(*pairs)
+    #pairs = sorted(zip(suitable, files))
+    #good = [(files[i], suitable[i]) for i in range(len(files)) if suitable[i]]
+    #bad = [(files[i], suitable[i]) for i in range(len(files)) if not suitable[i]]
+    #random.shuffle(good)
+    #random.shuffle(bad)
+    #n_good = n * 2 / 5
+    #n_bad = n - n_good
+    #pairs = bad[:n_bad] + good[:n_good]
+    #random.shuffle(pairs)
+    #files, suitable = zip(*pairs)
+    files = files[:n]
+    suitable = suitable[:n]
+
+    files = ['%s/%s' % (if_path, fname) for fname in files]
 
     # Load images
     imgs = [None]*len(files)
@@ -129,7 +132,7 @@ def get_images(n):
     return files, imgs, suitable
 
 def draw_grid(M, N, imgs):
-    img_w = 300
+    img_w = 356
     img_h = 200
     border = 0
 

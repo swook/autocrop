@@ -5,9 +5,16 @@ from FeatMat import *
 class Classifier:
     clf = None
 
-    def __init__(self):
-        self.preprocess = joblib.load('preprocess.out')
-        self.clf = joblib.load('cv.out')
+    def __init__(self, trainer=None):
+        if trainer:
+            if trainer.scaler and trainer.estimator:
+                self.preprocess = trainer.scaler
+                self.clf = trainer.estimator
+            else:
+                raise ArgumentError('Provided Trainer is not trained.')
+        else:
+            self.preprocess = joblib.load('preprocess.out')
+            self.clf = joblib.load('cv.out')
 
     def predictImage(self, imgf):
         feats = FeatMat().getFeature(imgf)

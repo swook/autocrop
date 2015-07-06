@@ -26,12 +26,11 @@ def main():
     if_path = args['images-path']
 
     # Parse in features information
-    global file_to_feat
+    global feats
     cwd = os.getcwd()
     os.chdir('../suitability/')
-    featMat = FeatMat()
-    file_to_feat = featMat.getFeatures(if_path)
-    print('- Loaded features for %d files' % len(file_to_feat))
+    feats = Feats(if_path)
+    print('- Loaded features for %d files' % len(feats))
 
     # Initialise classifier
     global classifier
@@ -55,8 +54,7 @@ def main():
     # Classify each image and keep suitable ones
     suitable = []
     for fname in files:
-        img_path = '%s/%s' % (if_path, fname)
-        if classifier.predictFeats(file_to_feat[img_path]) == 1:
+        if classifier.predictFeats(feats[fname]) == 1:
             suitable.append(fname)
 
     print('- Classified images to retain list of suitable images only')
@@ -121,10 +119,9 @@ def next_image():
     show_next_image()
 
 def find_next_image():
-    global idx, files, if_path, file_to_feat, last_times
+    global idx, files, if_path, feats, last_times
 
-    img_path = '%s/%s' % (if_path, files[idx])
-    idx_feat = file_to_feat[img_path]
+    idx_feat = feats[files[idx]]
 
     # Look through each "suitable" image to find one with maximum distance to
     # last feature vector
@@ -136,8 +133,7 @@ def find_next_image():
         if i == idx:
             dist = 0.
         else:
-            img_path = '%s/%s' % (if_path, fname)
-            dist = np.linalg.norm(file_to_feat[img_path] - idx_feat)
+            dist = np.linalg.norm(feats[fname] - idx_feat)
 
         novelty = now - last_times[i]
 

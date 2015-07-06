@@ -1,74 +1,92 @@
 import json
+import os
 import pickle
+import re
 
 import util
 
 import numpy as np
 
+class Feats:
+    data = {}
+    name = ''
+    path = ''
+
+    # Gets features from .pickle files found in given path
+    def __init__(self, path):
+        self.path = path
+        try:
+            self.name = re.search(r'\/([^\/]*)\/?$', path).groups()[0]
+        except:
+            raise ValueError('Invalid path: %s' % path)
+
+        self.data = {}
+        for pikpath in util.filesWithRe(path, r'.*\.pickle$'):
+            fpath = pikpath[:-7] # Strip .pickle
+            with open(pikpath, 'rb') as f:
+                self.data[fpath] = pickle.load(f)['classes']
+
+    def __getitem__(self, fname):
+        return self.data['%s/%s' % (self.path, fname)]
+
+    def __len__(self):
+        return len(self.data)
+
+class Annotations:
+    data = {}
+    name = ''
+    path = ''
+
+    def __init__(self, path):
+        self.path = path
+
+        # Get all annotations in folder or
+        files = []
+        if os.path.isdir(path):
+            files = util.filesWithRe(path, r'.*\/classifications.*\.json$')
+            self.name = re.search(r'\/([^\/]*)\/?$', path).groups()[0] + '/all'
+        elif os.path.isfile(path) and path.endswith('.json'):
+            files = [path]
+            self.name = '/'.join(re.search(r'\/([^\/]*)\/classifications_(.*)\.json', path).groups())
+
+        self.data = {}
+        for fpath in files:
+            with open(fpath, 'r') as f:
+                classifs = json.load(f)
+            for fname, classif in classifs.iteritems():
+                if fname in self.data:
+                    self.data[fname].append(classif)
+                else:
+                    self.data[fname] = [classif]
+
+    def __getitem__(self, fname):
+        return self.data[fname]
+
+    def __len__(self):
+        return len(self.data)
+
+
 class FeatMat:
     X = None
     y = None
 
-    def __init__(self):
-        pass
-
     # Adds folder with features and classification results
     def addFolder(self, path):
-        file_to_feat = self.getFeatures(path)
-        self.addClasses(path, file_to_feat)
+        feats = Feats(path)
+        annotations = Annotations(path)
+        self.add(feats, annotations)
         print('Added folder %s' % path)
         print('There are now %d rows in the feature matrix' % self.X.shape[0])
-
-    # Adds features from .pickle files found in given path
-    def getFeatures(self, path):
-        file_to_feat = {}
-
-        files = util.filesWithRe(path, r'.*\.pickle$')
-        for fpath in files:
-            fpath = fpath[:-7] # Strip .pickle
-            file_to_feat[fpath] = self.getFeature(fpath)
-
-        return file_to_feat
-
-    # Gets features for one given file
-    def getFeature(self, fpath):
-        # Get DNN (caffee) features
-        feats = []
-        with open(fpath + '.pickle', 'rb') as f:
-            feats = pickle.load(f)['classes']
-        return feats
-
-
-    # Gets all available classifications for a given path
-    def getClasses(self, path):
-        files = util.filesWithRe(path, r'.*\/classifications.*\.json$')
-        out = {}
-        for fpath in files:
-            with open(fpath, 'r') as f:
-                classifs = json.load(f)
-
-            good_n = 0
-            for fname, classif in classifs.iteritems():
-                if classif == 1:
-                    good_n += 1
-                if fname in out:
-                    out[fname].append(classif)
-                else:
-                    out[fname] = [classif]
-            print('%s: %.2f%% are classified as 1.' % (fpath, 100. * good_n / len(classifs)))
-
-        return out
-
+        return self
 
     # Adds classifications from classifications*.json files found in given path
-    def addClasses(self, path, file_to_feat):
-        classifs = self.getClasses(path)
-
-        for fname, fclassifs in classifs.iteritems():
+    def add(self, feats, annotations):
+        m = 0
+        for fname, fclassifs in annotations.data.iteritems():
             classif = 1 if np.mean(fclassifs) >= 0.5 else 0
             row = None
             try:
-                row = file_to_feat['%s/%s' % (path, fname)]
+                row = feats[fname]
             except:
                 pass
             if row is None:
@@ -80,4 +98,6 @@ class FeatMat:
             else:
                 self.X = np.append(self.X, [row], axis=0)
                 self.y = np.append(self.y, classif)
+            m += 1
+        print('Added %d rows (%s | %s)' % (m, feats.name, annotations.name))
 
