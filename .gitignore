@@ -29,7 +29,8 @@ retarget
 *.pyc
 
 # Suitability training data
-suitability/*.out*
+suitability/cv.out*
+suitability/preprocess.out*
 
 # Untrackable (and outdated) Google Doc files
 old/
