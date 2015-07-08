@@ -18,7 +18,7 @@ class Trainer:
     def __init__(self):
         self.svm = svm.SVC(kernel='linear', shrinking=True, verbose=False)
         params = {
-            'C': np.logspace(-4, 4, num=10), # Range of C values
+            'C': np.logspace(-5, 5, num=10), # Range of C values
         }
         self.clf = GridSearchCV(self.svm, params,
             cv      = 10,          # k-fold CV

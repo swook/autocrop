@@ -1,5 +1,6 @@
 #!/usr/bin/env python2
 
+from itertools import combinations
 import os
 
 import numpy as np
@@ -80,8 +81,8 @@ class Evaluator:
 
             # Get ground truth class
             classif = np.mean(fclassifs)
-            #if classif != 0 and classif != 1:
-            #    continue
+            if classif != 0 and classif != 1:
+                continue
             tru_cls = 1 if classif >= 0.5 else 0
 
             if tru_cls == 1:
@@ -93,16 +94,34 @@ class Evaluator:
             # Add errors
             errs.append(tru_cls - est_cls)
 
-        log('%d/%d annotations marked with 1' % (good_n, len(self.eval_annos)))
+        A = float(len(errs))            # Agreement
+        G = float(good_n)               # True in agreement
+        T = float(len(self.eval_annos)) # Total
 
-        log('%.1f%% incorrect' % (100.0 * np.count_nonzero(errs) / len(self.eval_annos)))
+        log('%d/%d (%.2f%%) annotations in agreement' % (A, T, A/T*100))
+        log('%d/%d (%.2f%%) annotations of those marked with 1' % (G, A, G/A*100))
 
-        l1err = float(np.linalg.norm(errs, 1)) # L2-error norm
+        log('%.1f%% incorrect' % (100.0 * np.count_nonzero(errs) / T))
+
+        l1err = float(np.linalg.norm(errs, 1)) # L1-error norm
         l2err = float(np.linalg.norm(errs, 2)) # L2-error norm
         log('L1-error: %.3f' % (l1err / len(errs)))
         log('L2-error: %.3f' % (l2err / len(errs)))
 
         return self
+
+    def print_correlations(self, annotations):
+        pairs = combinations(annotations, 2)
+        Rs = []
+        for anno1, anno2 in pairs:
+            _, cls1 = zip(*sorted(anno1.data.items()))
+            _, cls2 = zip(*sorted(anno2.data.items()))
+            cls1 = [x[0] for x in cls1]
+            cls2 = [x[0] for x in cls2]
+            R, p = pearsonr(cls1, cls2)
+            self.log('%s <-> %s: %f %g' % (anno1.name, anno2.name, R, p))
+            Rs.append(R)
+        self.log('Mean R: %f' % np.mean(Rs))
 
     def cleanup(self):
         return self.init()
@@ -129,6 +148,24 @@ def main():
     Wookie_Dengxin = Annotations('../datasets/Wookie/classifications_dengxin.json')
     Wookie_Anphi   = Annotations('../datasets/Wookie/classifications_phineasng.json')
 
+    # Print correlation between annotations
+    Evaluator('Annotation correlations (Michael)')\
+        .print_correlations([
+            Michael_Michael,
+            Michael_Wookie,
+            Michael_Dengxin,
+            Michael_Anphi,
+        ])
+
+    Evaluator('Annotation correlations (Wookie)')\
+        .print_correlations([
+            Wookie_Michael,
+            Wookie_Wookie,
+            Wookie_Dengxin,
+            Wookie_Anphi,
+        ])
+
+    # Print errors when training on one and evaluating on other
     annotations = [
         (Michael_all,     Wookie_all),
         (Michael_Michael, Wookie_Michael),

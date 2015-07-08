@@ -53,6 +53,7 @@ class Annotations:
         for fpath in files:
             with open(fpath, 'r') as f:
                 classifs = json.load(f)
+                print('Loaded %s' % fpath)
             for fname, classif in classifs.iteritems():
                 if fname in self.data:
                     self.data[fname].append(classif)
@@ -75,15 +76,13 @@ class FeatMat:
         feats = Feats(path)
         annotations = Annotations(path)
         self.add(feats, annotations)
-        print('Added folder %s' % path)
-        print('There are now %d rows in the feature matrix' % self.X.shape[0])
         return self
 
     # Adds classifications from classifications*.json files found in given path
     def add(self, feats, annotations):
         m = 0
         for fname, fclassifs in annotations.data.iteritems():
-            classif = 1 if np.mean(fclassifs) >= 0.5 else 0
+            classif = 1 if np.mean(fclassifs) >= 0.4 else 0
             row = None
             try:
                 row = feats[fname]
@@ -99,5 +98,5 @@ class FeatMat:
                 self.X = np.append(self.X, [row], axis=0)
                 self.y = np.append(self.y, classif)
             m += 1
-        print('Added %d rows (%s | %s)' % (m, feats.name, annotations.name))
+        print('Added %d rows (%s), now %d rows' % (m, annotations.name, self.X.shape[0]))
 

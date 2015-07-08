@@ -24,7 +24,7 @@ def cache_features(extractor, path):
         with open('%s.pickle' % fpath, 'w') as f:
             pickle.dump(feats, f)
 
-        print('[%d/%d] Stored features for %s' % (i, len(files), fpath))
+        print('[%d/%d] Stored features for %s' % (i+1, len(files), fpath))
 
 class FeatureExtractor:
     def __init__(self):
@@ -56,10 +56,11 @@ class FeatureExtractor:
         img = self.transformer.preprocess('data', caffe.io.load_image(img_path))
         self.net.blobs['data'].data[...] = img
 
-        out = self.net.forward()
+        layer = 'fc7'
+        out = self.net.forward(end=layer)
 
         return {
-            'classes': self.net.blobs['fc7'].data.flatten(),
+            'classes': self.net.blobs[layer].data.flatten(),
         }
 
 if __name__ == '__main__':
