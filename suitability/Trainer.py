@@ -10,14 +10,14 @@ from sklearn.preprocessing import StandardScaler
 
 import numpy as np
 
-model = 'SVM' # 'Regression' or 'SVM'
+import config
 
 class Trainer:
     clf = None
     svm = None
 
     def __init__(self):
-        if model is 'SVM':
+        if config.model is 'SVM':
             self.svm = svm.SVC(kernel='linear', shrinking=True, verbose=False)
             params = {
                 'C': np.logspace(-5, -1, num=20), # Range of C values
@@ -28,10 +28,10 @@ class Trainer:
                 verbose = 1,
             )
 
-        elif model is 'Regression':
+        elif config.model is 'Regression':
             self.clf = LassoCV(
-                cv         = 5,
-                max_iter   = 5000,
+                cv         = 3,
+                max_iter   = 2000,
                 n_jobs     = cpu_count(),
                 verbose    = True,
             )
@@ -51,9 +51,9 @@ class Trainer:
         self.clf.fit(featMat.X, featMat.y)
 
         # Save CV output
-        if model is 'SVM':
+        if config.model is 'SVM':
             self.estimator = self.clf.best_estimator_
-        elif model is 'Regression':
+        elif config.model is 'Regression':
             self.estimator = self.clf
         print(self.estimator)
 

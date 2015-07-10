@@ -3,6 +3,7 @@ import os
 import pickle
 import re
 
+import config
 import util
 
 import numpy as np
@@ -85,7 +86,10 @@ class FeatMat:
     def add(self, feats, annotations):
         m = 0
         for fname, fclassifs in annotations.data.iteritems():
-            classif = 1 if np.median(sorted(fclassifs)) > 0.5 else 0
+            if config.model is 'SVM':
+                classif = 1 if np.median(sorted(fclassifs)) > 0.5 else 0
+            else:
+                classif = np.mean(fclassifs)
             row = None
             try:
                 row = feats[fname]
