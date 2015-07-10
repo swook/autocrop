@@ -3,28 +3,38 @@
 from multiprocessing import cpu_count
 
 from sklearn import svm
-from sklearn.cross_validation import KFold
-from sklearn.cross_validation import train_test_split
 from sklearn.externals import joblib
 from sklearn.grid_search import GridSearchCV
+from sklearn.linear_model import LassoCV
 from sklearn.preprocessing import StandardScaler
 
 import numpy as np
+
+model = 'SVM' # 'Regression' or 'SVM'
 
 class Trainer:
     clf = None
     svm = None
 
     def __init__(self):
-        self.svm = svm.SVC(kernel='linear', shrinking=True, verbose=False)
-        params = {
-            'C': np.logspace(-5, 5, num=10), # Range of C values
-        }
-        self.clf = GridSearchCV(self.svm, params,
-            cv      = 10,          # k-fold CV
-            n_jobs  = cpu_count(), # Parallelize over CPUs
-            verbose = 1,
-        )
+        if model is 'SVM':
+            self.svm = svm.SVC(kernel='linear', shrinking=True, verbose=False)
+            params = {
+                'C': np.logspace(-5, -1, num=20), # Range of C values
+            }
+            self.clf = GridSearchCV(self.svm, params,
+                cv      = 5,           # k-fold CV
+                n_jobs  = cpu_count(), # Parallelize over CPUs
+                verbose = 1,
+            )
+
+        elif model is 'Regression':
+            self.clf = LassoCV(
+                cv         = 5,
+                max_iter   = 5000,
+                n_jobs     = cpu_count(),
+                verbose    = True,
+            )
 
     def train(self, featMat, persist=True):
         # Preprocess
@@ -37,12 +47,16 @@ class Trainer:
             joblib.dump(scaler, 'preprocess.out')
 
         # Perform CV
-        print('Running SVM trainer on %d rows of data with %d features.' % featMat.X.shape)
+        print('Running trainer on %d rows of data with %d features.' % featMat.X.shape)
         self.clf.fit(featMat.X, featMat.y)
 
         # Save CV output
-        self.estimator = self.clf.best_estimator_
+        if model is 'SVM':
+            self.estimator = self.clf.best_estimator_
+        elif model is 'Regression':
+            self.estimator = self.clf
         print(self.estimator)
+
         if persist:
-            joblib.dump(self.estimator, 'cv.out')
+            joblib.dump(self.clf, 'cv.out')
 

@@ -12,9 +12,11 @@ import cv2 as cv
 from suitability.Classifier import *
 from suitability.util import *
 
+if_path = '../datasets/Wookie'
+
 def main():
-    M = 7
-    N = 8
+    M = 5
+    N = 7
     print('- Output grid of images is %d x %d' % (M, N))
     fnames, imgs, suitable = get_images(M*N)
 
@@ -55,7 +57,6 @@ def main():
     print('- Drawn third grid with suitable images cropped.')
 
 def get_images(n):
-    if_path = '../datasets/Michael'
 
     # Parse in features information
     global file_to_feat
@@ -109,18 +110,18 @@ def get_images(n):
     cv.imwrite('top_suitable.jpg', out)
 
     # Get up to n entries
-    #pairs = sorted(zip(suitable, files))
-    #good = [(files[i], suitable[i]) for i in range(len(files)) if suitable[i]]
-    #bad = [(files[i], suitable[i]) for i in range(len(files)) if not suitable[i]]
-    #random.shuffle(good)
-    #random.shuffle(bad)
-    #n_good = n * 2 / 5
-    #n_bad = n - n_good
-    #pairs = bad[:n_bad] + good[:n_good]
-    #random.shuffle(pairs)
-    #files, suitable = zip(*pairs)
-    files = files[:n]
-    suitable = suitable[:n]
+    pairs = sorted(zip(suitable, files))
+    good = [(files[i], suitable[i]) for i in range(len(files)) if suitable[i]]
+    bad = [(files[i], suitable[i]) for i in range(len(files)) if not suitable[i]]
+    random.shuffle(good)
+    random.shuffle(bad)
+    n_good = len(good) #int(n * 0.2)
+    n_bad = n - n_good
+    pairs = bad[:n_bad] + good[:n_good]
+    random.shuffle(pairs)
+    files, suitable = zip(*pairs)
+    #files = files[:n]
+    #suitable = suitable[:n]
 
     files = ['%s/%s' % (if_path, fname) for fname in files]
 

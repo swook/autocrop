@@ -8,9 +8,9 @@ def main():
     # Go to script's directory
     os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
-    # Train on Wookie dataset, evaluate with Michael dataset
+    # Train on Michael dataset, evaluate with Wookie dataset
     featMat = FeatMat()
-    featMat.addFolder('../datasets/Wookie')
+    featMat.addFolder('../datasets/Michael')
 
     trainer = Trainer()
     trainer.train(featMat)

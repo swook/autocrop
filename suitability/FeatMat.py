@@ -49,6 +49,8 @@ class Annotations:
             files = [path]
             self.name = '/'.join(re.search(r'\/([^\/]*)\/classifications_(.*)\.json', path).groups())
 
+        self.n = len(files)
+
         self.data = {}
         for fpath in files:
             with open(fpath, 'r') as f:
@@ -70,6 +72,7 @@ class Annotations:
 class FeatMat:
     X = None
     y = None
+    anno_n = 0
 
     # Adds folder with features and classification results
     def addFolder(self, path):
@@ -82,7 +85,7 @@ class FeatMat:
     def add(self, feats, annotations):
         m = 0
         for fname, fclassifs in annotations.data.iteritems():
-            classif = 1 if np.mean(fclassifs) >= 0.4 else 0
+            classif = 1 if np.median(sorted(fclassifs)) > 0.5 else 0
             row = None
             try:
                 row = feats[fname]
@@ -98,5 +101,8 @@ class FeatMat:
                 self.X = np.append(self.X, [row], axis=0)
                 self.y = np.append(self.y, classif)
             m += 1
+
         print('Added %d rows (%s), now %d rows' % (m, annotations.name, self.X.shape[0]))
+        self.anno_n += annotations.n
+        self.name = annotations.name
 

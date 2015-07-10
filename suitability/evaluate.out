@@ -1,4 +1,3 @@
-
 [Annotation correlations (Michael)] Michael/michael <-> Michael/wookie: 0.402554 3.89168e-12
 [Annotation correlations (Michael)] Michael/michael <-> Michael/dengxin: 0.475914 5.96992e-17
 [Annotation correlations (Michael)] Michael/michael <-> Michael/phineasng: 0.429794 8.64276e-14
@@ -15,72 +14,121 @@
 [Annotation correlations (Wookie)] Wookie/dengxin <-> Wookie/phineasng: 0.225583 0.000207457
 [Annotation correlations (Wookie)] Mean R: 0.275162
 
-[Michael/all -> Wookie/all|train] Final C: 0.000129
+Tag format: {Dataset Name}/{Annotator}
+            For example my annotations for the Michael dataset is "Michael/Wookie"
+Format: [Trained on -> Evaluated on]
+
 [Michael/all -> Wookie/all|eval] 135/266 (50.75%) annotations in agreement
-[Michael/all -> Wookie/all|eval] 9/135 (6.67%) annotations of those marked with 1
-[Michael/all -> Wookie/all|eval] 12.4% incorrect
-[Michael/all -> Wookie/all|eval] L1-error: 0.244
-[Michael/all -> Wookie/all|eval] L2-error: 0.043
+[Michael/all -> Wookie/all|eval] 6/135 (4.44%) incorrect for annotations in agreement
+[Michael/all -> Wookie/all|eval] 28/266 (10.53%) incorrect
+[Michael/all -> Wookie/all|eval] L1-error: 0.182
+[Michael/all -> Wookie/all|eval] L2-error: 0.023
 
-[Wookie/all -> Michael/all|train] Final C: 0.000129
 [Wookie/all -> Michael/all|eval] 141/275 (51.27%) annotations in agreement
-[Wookie/all -> Michael/all|eval] 53/141 (37.59%) annotations of those marked with 1
-[Wookie/all -> Michael/all|eval] 9.8% incorrect
-[Wookie/all -> Michael/all|eval] L1-error: 0.191
-[Wookie/all -> Michael/all|eval] L2-error: 0.037
+[Wookie/all -> Michael/all|eval] 50/141 (35.46%) incorrect for annotations in agreement
+[Wookie/all -> Michael/all|eval] 95/275 (34.55%) incorrect
+[Wookie/all -> Michael/all|eval] L1-error: 0.438
+[Wookie/all -> Michael/all|eval] L2-error: 0.038
 
-[Michael/michael -> Wookie/michael|train] Final C: 0.001668
-[Michael/michael -> Wookie/michael|eval] 266/266 (100.00%) annotations in agreement
-[Michael/michael -> Wookie/michael|eval] 53/266 (19.92%) annotations of those marked with 1
-[Michael/michael -> Wookie/michael|eval] 24.1% incorrect
-[Michael/michael -> Wookie/michael|eval] L1-error: 0.241
-[Michael/michael -> Wookie/michael|eval] L2-error: 0.030
+[Michael/all -> Wookie/michael|eval] 47/266 (17.67%) incorrect
+[Michael/all -> Wookie/michael|eval] L1-error: 0.177
+[Michael/all -> Wookie/michael|eval] L2-error: 0.026
 
-[Wookie/michael -> Michael/michael|train] Final C: 0.000010
-[Wookie/michael -> Michael/michael|eval] 275/275 (100.00%) annotations in agreement
-[Wookie/michael -> Michael/michael|eval] 101/275 (36.73%) annotations of those marked with 1
-[Wookie/michael -> Michael/michael|eval] 36.7% incorrect
+[Michael/michael -> Wookie/michael|eval] 53/266 (19.92%) incorrect
+[Michael/michael -> Wookie/michael|eval] L1-error: 0.199
+[Michael/michael -> Wookie/michael|eval] L2-error: 0.027
+
+Incorrect with all annotations vs just own annotation:
+> 17.7% vs 19.9%
+
+[Wookie/all -> Michael/michael|eval] 67/275 (24.36%) incorrect
+[Wookie/all -> Michael/michael|eval] L1-error: 0.244
+[Wookie/all -> Michael/michael|eval] L2-error: 0.030
+
+[Wookie/michael -> Michael/michael|eval] 101/275 (36.73%) incorrect
 [Wookie/michael -> Michael/michael|eval] L1-error: 0.367
 [Wookie/michael -> Michael/michael|eval] L2-error: 0.037
 
-[Michael/wookie -> Wookie/wookie|train] Final C: 0.000129
-[Michael/wookie -> Wookie/wookie|eval] 266/266 (100.00%) annotations in agreement
-[Michael/wookie -> Wookie/wookie|eval] 98/266 (36.84%) annotations of those marked with 1
-[Michael/wookie -> Wookie/wookie|eval] 46.2% incorrect
-[Michael/wookie -> Wookie/wookie|eval] L1-error: 0.462
-[Michael/wookie -> Wookie/wookie|eval] L2-error: 0.042
+Incorrect with all annotations vs just own annotation:
+> 24.4% vs 36.7%
 
-[Wookie/wookie -> Michael/wookie|train] Final C: 0.021544
-[Wookie/wookie -> Michael/wookie|eval] 275/275 (100.00%) annotations in agreement
-[Wookie/wookie -> Michael/wookie|eval] 172/275 (62.55%) annotations of those marked with 1
-[Wookie/wookie -> Michael/wookie|eval] 31.3% incorrect
-[Wookie/wookie -> Michael/wookie|eval] L1-error: 0.313
-[Wookie/wookie -> Michael/wookie|eval] L2-error: 0.034
+Average incorrect. All vs own annotations (Wookie):
+> 21.0% vs 28.3%
 
-[Michael/dengxin -> Wookie/dengxin|train] Final C: 0.021544
-[Michael/dengxin -> Wookie/dengxin|eval] 266/266 (100.00%) annotations in agreement
-[Michael/dengxin -> Wookie/dengxin|eval] 62/266 (23.31%) annotations of those marked with 1
-[Michael/dengxin -> Wookie/dengxin|eval] 28.2% incorrect
-[Michael/dengxin -> Wookie/dengxin|eval] L1-error: 0.282
-[Michael/dengxin -> Wookie/dengxin|eval] L2-error: 0.033
+[Michael/all -> Wookie/wookie|eval] 94/266 (35.34%) incorrect
+[Michael/all -> Wookie/wookie|eval] L1-error: 0.353
+[Michael/all -> Wookie/wookie|eval] L2-error: 0.036
 
-[Wookie/dengxin -> Michael/dengxin|train] Final C: 0.001668
-[Wookie/dengxin -> Michael/dengxin|eval] 275/275 (100.00%) annotations in agreement
-[Wookie/dengxin -> Michael/dengxin|eval] 132/275 (48.00%) annotations of those marked with 1
-[Wookie/dengxin -> Michael/dengxin|eval] 25.5% incorrect
-[Wookie/dengxin -> Michael/dengxin|eval] L1-error: 0.255
-[Wookie/dengxin -> Michael/dengxin|eval] L2-error: 0.030
+[Michael/wookie -> Wookie/wookie|eval] 110/266 (41.35%) incorrect
+[Michael/wookie -> Wookie/wookie|eval] L1-error: 0.414
+[Michael/wookie -> Wookie/wookie|eval] L2-error: 0.039
 
-[Michael/phineasng -> Wookie/phineasng|train] Final C: 0.000129
-[Michael/phineasng -> Wookie/phineasng|eval] 266/266 (100.00%) annotations in agreement
-[Michael/phineasng -> Wookie/phineasng|eval] 45/266 (16.92%) annotations of those marked with 1
-[Michael/phineasng -> Wookie/phineasng|eval] 16.9% incorrect
-[Michael/phineasng -> Wookie/phineasng|eval] L1-error: 0.169
+Incorrect with all annotations vs just own annotation:
+> 35.3% vs 41.4%
+
+[Wookie/all -> Michael/wookie|eval] 120/275 (43.64%) incorrect
+[Wookie/all -> Michael/wookie|eval] L1-error: 0.436
+[Wookie/all -> Michael/wookie|eval] L2-error: 0.040
+
+[Wookie/wookie -> Michael/wookie|eval] 140/275 (50.91%) incorrect
+[Wookie/wookie -> Michael/wookie|eval] L1-error: 0.509
+[Wookie/wookie -> Michael/wookie|eval] L2-error: 0.043
+
+Incorrect with all annotations vs just own annotation:
+> 43.6% vs 50.9%
+
+Average incorrect. All vs own annotations (Michael):
+> 39.5% vs 46.1%
+
+[Michael/all -> Wookie/dengxin|eval] 56/266 (21.05%) incorrect
+[Michael/all -> Wookie/dengxin|eval] L1-error: 0.211
+[Michael/all -> Wookie/dengxin|eval] L2-error: 0.028
+
+[Michael/dengxin -> Wookie/dengxin|eval] 53/266 (19.92%) incorrect
+[Michael/dengxin -> Wookie/dengxin|eval] L1-error: 0.199
+[Michael/dengxin -> Wookie/dengxin|eval] L2-error: 0.027
+
+Incorrect with all annotations vs just own annotation:
+> 21.1% vs 19.9%
+
+[Wookie/all -> Michael/dengxin|eval] 78/275 (28.36%) incorrect
+[Wookie/all -> Michael/dengxin|eval] L1-error: 0.284
+[Wookie/all -> Michael/dengxin|eval] L2-error: 0.032
+
+[Wookie/dengxin -> Michael/dengxin|eval] 100/275 (36.36%) incorrect
+[Wookie/dengxin -> Michael/dengxin|eval] L1-error: 0.364
+[Wookie/dengxin -> Michael/dengxin|eval] L2-error: 0.036
+
+Incorrect with all annotations vs just own annotation:
+> 28.4% vs 36.4%
+
+Average incorrect. All vs own annotations (Dengxin):
+> 24.7% vs 28.1%
+
+[Michael/all -> Wookie/phineasng|eval] 43/266 (16.17%) incorrect
+[Michael/all -> Wookie/phineasng|eval] L1-error: 0.162
+[Michael/all -> Wookie/phineasng|eval] L2-error: 0.025
+
+[Michael/phineasng -> Wookie/phineasng|eval] 43/266 (16.17%) incorrect
+[Michael/phineasng -> Wookie/phineasng|eval] L1-error: 0.162
 [Michael/phineasng -> Wookie/phineasng|eval] L2-error: 0.025
 
-[Wookie/phineasng -> Michael/phineasng|train] Final C: 0.001668
-[Wookie/phineasng -> Michael/phineasng|eval] 275/275 (100.00%) annotations in agreement
-[Wookie/phineasng -> Michael/phineasng|eval] 86/275 (31.27%) annotations of those marked with 1
-[Wookie/phineasng -> Michael/phineasng|eval] 27.6% incorrect
-[Wookie/phineasng -> Michael/phineasng|eval] L1-error: 0.276
-[Wookie/phineasng -> Michael/phineasng|eval] L2-error: 0.032
+Incorrect with all annotations vs just own annotation:
+> 16.2% vs 16.2%
+
+[Wookie/all -> Michael/phineasng|eval] 62/275 (22.55%) incorrect
+[Wookie/all -> Michael/phineasng|eval] L1-error: 0.225
+[Wookie/all -> Michael/phineasng|eval] L2-error: 0.029
+
+[Wookie/phineasng -> Michael/phineasng|eval] 86/275 (31.27%) incorrect
+[Wookie/phineasng -> Michael/phineasng|eval] L1-error: 0.313
+[Wookie/phineasng -> Michael/phineasng|eval] L2-error: 0.034
+
+Incorrect with all annotations vs just own annotation:
+> 22.5% vs 31.3%
+
+Average incorrect. All vs own annotations (Anphi):
+> 19.4% vs 23.7%
+
+Average incorrect (all vs own):
+> 26.1% vs 31.6%
