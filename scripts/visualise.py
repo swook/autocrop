@@ -115,7 +115,7 @@ def get_images(n):
     bad = [(files[i], suitable[i]) for i in range(len(files)) if not suitable[i]]
     random.shuffle(good)
     random.shuffle(bad)
-    n_good = len(good) #int(n * 0.2)
+    n_good = int(n * 0.35)
     n_bad = n - n_good
     pairs = bad[:n_bad] + good[:n_good]
     random.shuffle(pairs)
