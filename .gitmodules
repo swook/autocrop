@@ -1,0 +1,3 @@
+[submodule "suitability/Plotting"]
+	path = suitability/Plotting
+	url = https://github.com/walkevin/Plotting.git

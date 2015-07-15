@@ -3,8 +3,19 @@
 from itertools import combinations
 import os
 
+import matplotlib
+matplotlib.use('PDF')
+
+# Import plotting code
+import sys
+sys.path.append(os.path.dirname(__file__) + '/../lib/Plotting')
+from fastcodeTemplate import generate_graph
+
 import numpy as np
+from numpy.lib.recfunctions import append_fields
 from scipy.stats import pearsonr
+from sklearn.metrics import precision_recall_curve
+from sklearn.metrics import average_precision_score
 
 from Classifier import *
 from FeatMat import *
@@ -62,6 +73,15 @@ class Evaluator:
         return self
 
     def evaluate_on(self, feats, annotations):
+        global TrainingData
+        name = annotations.name
+        if name in TrainingData:
+            self.eval_data = TrainingData[name]
+        else:
+            self.eval_data = FeatMat()
+            self.eval_data.add(feats, annotations)
+            TrainingData[name] = self.eval_data
+
         self.eval_feats = feats
         self.eval_annos = annotations
         return self
@@ -73,13 +93,13 @@ class Evaluator:
             self.trainer = Models[name]
         else:
             Models[name] = self.trainer.train(self.train_data, persist=False)
+        self.classifier = Classifier(self.trainer)
         return self
 
     def evaluate(self):
         def log(msg):
             self.log(msg, 'eval')
 
-        self.classifier = Classifier(self.trainer)
         print('')
 
         errs = []
@@ -145,15 +165,45 @@ class Evaluator:
             Rs.append(R)
         self.log('Mean R: %f\n' % np.mean(Rs))
 
+    def plot_PR(self, ofpath, label):
+        y_true = self.eval_data.y
+        y_score = self.classifier.clf.decision_function(self.eval_data.X)
+        precision, recall, _ = precision_recall_curve(y_true, y_score, pos_label=1)
+        area = average_precision_score(y_true, y_score, average='weighted')
+
+        x = np.linspace(0, 1, 200)
+        y = np.interp(x, np.flipud(recall), np.flipud(precision))
+
+        txtpath = 'PR.out'
+        try:
+            dat = np.genfromtxt(txtpath, delimiter='\t', names=True,
+                                deletechars='', replace_space=False)
+        except:
+            dat = np.array(x, dtype=[('Recall', float)])
+
+        label = label + ' (area: %.2f)' % area
+        dat = append_fields(dat, label, y)
+
+        np.savetxt(txtpath, dat, delimiter='\t',
+                   header='\t'.join(dat.dtype.names), comments='')
+
+        if ofpath:
+            title = 'Precision-Recall curve'
+            ylabel = 'Precision'
+            generate_graph(txtpath, ofpath, title, ylabel)
+        return self
+
     def cleanup(self):
         return self.init()
 
 logf = None
 
 def main():
-    # Reset output file
+    # Reset output files
     if os.path.exists('evaluate.out'):
         os.remove('evaluate.out')
+    if os.path.exists('PR.out'):
+        os.remove('PR.out')
 
     global logf
     logf = open('evaluate.out', 'w')
@@ -208,14 +258,18 @@ def main():
     logf.flush()
 
     Evaluator('Michael/all -> Wookie/all')\
-        .train_on(Michael, Michael_all)  \
-        .evaluate_on(Wookie, Wookie_all) \
-        .train().evaluate()
+        .train_on(Michael, Michael_all)   \
+        .evaluate_on(Wookie, Wookie_all)  \
+        .train()                          \
+        .plot_PR(None, 'Trained on Michael set') \
+        .evaluate()
 
-    Evaluator('Wookie/all -> Michael/all')\
-        .train_on(Wookie, Wookie_all) \
-        .evaluate_on(Michael, Michael_all)  \
-        .train().evaluate()
+    Evaluator('Wookie/all -> Michael/all') \
+        .train_on(Wookie, Wookie_all)      \
+        .evaluate_on(Michael, Michael_all) \
+        .train()                           \
+        .plot_PR('PRcurve.pdf', 'Trained on Wookie set') \
+        .evaluate()
     logf.flush()
 
     eAlls = []
