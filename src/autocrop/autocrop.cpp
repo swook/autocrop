@@ -54,9 +54,9 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 	float sum_saliency = sum(saliency)[0];
 
 	// Candidates generation parameters
-	const int   MAX_INITIAL_CROP_CANDIDATES = 5000;
-	const int   MAX_TOTAL_CROP_CANDIDATES   = 50;
-	const float THRESHOLD_REDUCE_FACTOR     = 0.95;
+	const int   MAX_INITIAL_CROP_CANDIDATES = 4000;
+	const int   MAX_TOTAL_CROP_CANDIDATES   = 80;
+	const float THRESHOLD_REDUCE_FACTOR     = 0.98;
 
 	std::vector<Candidate*> candidates;
 	float thresh_content0 = 0.7; // Lower bound of S_content for crop candidates
@@ -72,15 +72,15 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 			// Generate single random crop
 			Rect crop;
 			if (rat_provided) crop = randomCrop(saliency, w2hrat);
-			else               crop = randomCrop(saliency);
+			else              crop = randomCrop(saliency);
 			Mat cr_saliency = saliency(crop);
-			Mat cr_gradient = gradient(crop);
 
 			// Calculate content preservation
 			float S_content = sum(cr_saliency)[0] / sum_saliency;
 			if (S_content < thresh_content) continue;
 
 			// Calculate saliency composition
+			Mat cr_gradient = gradient(crop);
 			float S_compos = classifier.classifyRaw(cr_saliency, cr_gradient);
 
 			// Add to valid candidates list

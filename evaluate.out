@@ -1,1529 +1,1529 @@
-thresh_content: 0.7 -> 0.665
-56 valid candidates left.
-[  0/500] Best crop index:  3, Max overlap: 0.73, Filename: 1010203631_Large.jpg
-thresh_content: 0.7 -> 0.63175
-73 valid candidates left.
-[125/500] Best crop index:  9, Max overlap: 0.90, Filename: 1675751927_Large.jpg
-thresh_content: 0.7 -> 0.63175
-63 valid candidates left.
-[250/500] Best crop index:  5, Max overlap: 0.88, Filename: 465190454_Large.jpg
-thresh_content: 0.7 -> 0.665
-114 valid candidates left.
-[126/500] Best crop index:  5, Max overlap: 0.85, Filename: 168875243_Large.jpg
-thresh_content: 0.7 -> 0.570154
-89 valid candidates left.
-[375/500] Best crop index:  8, Max overlap: 0.89, Filename: 6853262776_Large.jpg
-thresh_content: 0.7 -> 0.63175
-64 valid candidates left.
-[  1/500] Best crop index:  3, Max overlap: 0.91, Filename: 1011366896_Large.jpg
-thresh_content: 0.7 -> 0.600162
-74 valid candidates left.
-[251/500] Best crop index:  6, Max overlap: 0.93, Filename: 46694933_Large.jpg
-thresh_content: 0.7 -> 0.665
-79 valid candidates left.
-[376/500] Best crop index:  1, Max overlap: 0.84, Filename: 6853264676_Large.jpg
-thresh_content: 0.7 -> 0.600162
-82 valid candidates left.
-[127/500] Best crop index:  2, Max overlap: 0.84, Filename: 1702222221_Large.jpg
-thresh_content: 0.7 -> 0.63175
-80 valid candidates left.
-[  2/500] Best crop index:  2, Max overlap: 0.84, Filename: 101685710_Large.jpg
-thresh_content: 0.7 -> 0.600162
-67 valid candidates left.
-[377/500] Best crop index:  5, Max overlap: 0.94, Filename: 6853265432_Large.jpg
-thresh_content: 0.7 -> 0.600162
-78 valid candidates left.
-[252/500] Best crop index:  0, Max overlap: 0.85, Filename: 470081137_Large.jpg
-thresh_content: 0.7 -> 0.665
-113 valid candidates left.
-[  3/500] Best crop index:  2, Max overlap: 0.91, Filename: 1022974255_Large.jpg
-thresh_content: 0.7 -> 0.63175
-51 valid candidates left.
-[128/500] Best crop index:  0, Max overlap: 0.87, Filename: 1738339101_Large.jpg
-thresh_content: 0.7 -> 0.665
-86 valid candidates left.
-[253/500] Best crop index:  7, Max overlap: 0.95, Filename: 471194853_Large.jpg
-thresh_content: 0.7 -> 0.665
-66 valid candidates left.
-[  4/500] Best crop index:  7, Max overlap: 0.82, Filename: 1029965466_Large.jpg
-thresh_content: 0.7 -> 0.665
-71 valid candidates left.
-[129/500] Best crop index:  0, Max overlap: 0.87, Filename: 1740154095_Large.jpg
-thresh_content: 0.7 -> 0.570154
-59 valid candidates left.
-[378/500] Best crop index:  6, Max overlap: 0.88, Filename: 6853270940_Large.jpg
-thresh_content: 0.7 -> 0.7
-58 valid candidates left.
-[  5/500] Best crop index:  2, Max overlap: 0.87, Filename: 1033058219_Large.jpg
-thresh_content: 0.7 -> 0.63175
-59 valid candidates left.
-[254/500] Best crop index:  9, Max overlap: 0.94, Filename: 471368930_Large.jpg
-thresh_content: 0.7 -> 0.63175
-84 valid candidates left.
-[130/500] Best crop index:  9, Max overlap: 0.81, Filename: 174430493_Large.jpg
-thresh_content: 0.7 -> 0.665
-60 valid candidates left.
-[  6/500] Best crop index:  7, Max overlap: 0.91, Filename: 1041468152_Large.jpg
-thresh_content: 0.7 -> 0.63175
-86 valid candidates left.
-[379/500] Best crop index:  6, Max overlap: 0.87, Filename: 6853276082_Large.jpg
-thresh_content: 0.7 -> 0.63175
-52 valid candidates left.
-[255/500] Best crop index:  0, Max overlap: 0.89, Filename: 472513603_Large.jpg
-thresh_content: 0.7 -> 0.665
-105 valid candidates left.
-[131/500] Best crop index:  3, Max overlap: 0.95, Filename: 174643444_Large.jpg
-thresh_content: 0.7 -> 0.63175
-74 valid candidates left.
-[380/500] Best crop index:  7, Max overlap: 0.90, Filename: 6853278840_Large.jpg
-thresh_content: 0.7 -> 0.600162
-79 valid candidates left.
-[256/500] Best crop index:  0, Max overlap: 0.87, Filename: 472916905_Large.jpg
-thresh_content: 0.7 -> 0.600162
-72 valid candidates left.
-[  7/500] Best crop index:  9, Max overlap: 0.83, Filename: 104227458_Large.jpg
-thresh_content: 0.7 -> 0.665
-85 valid candidates left.
-[381/500] Best crop index:  3, Max overlap: 0.83, Filename: 6853308990_Large.jpg
-thresh_content: 0.7 -> 0.600162
-77 valid candidates left.
-[132/500] Best crop index:  1, Max overlap: 0.92, Filename: 176598487_Large.jpg
-thresh_content: 0.7 -> 0.665
-114 valid candidates left.
-[382/500] Best crop index:  7, Max overlap: 0.93, Filename: 6853348602_Large.jpg
-thresh_content: 0.7 -> 0.600162
-69 valid candidates left.
-[257/500] Best crop index:  9, Max overlap: 0.83, Filename: 474242923_Large.jpg
-thresh_content: 0.7 -> 0.63175
-58 valid candidates left.
-[133/500] Best crop index:  1, Max overlap: 0.90, Filename: 177045374_Large.jpg
-thresh_content: 0.7 -> 0.600162
-77 valid candidates left.
-[  8/500] Best crop index:  9, Max overlap: 0.85, Filename: 1042370906_Large.jpg
-thresh_content: 0.7 -> 0.63175
-66 valid candidates left.
-[383/500] Best crop index:  2, Max overlap: 0.90, Filename: 6853351442_Large.jpg
-thresh_content: 0.7 -> 0.665
-61 valid candidates left.
-[258/500] Best crop index:  1, Max overlap: 0.91, Filename: 47558869_Large.jpg
-thresh_content: 0.7 -> 0.665
-51 valid candidates left.
-[134/500] Best crop index:  6, Max overlap: 0.76, Filename: 178668420_Large.jpg
-thresh_content: 0.7 -> 0.63175
-73 valid candidates left.
-[384/500] Best crop index:  7, Max overlap: 0.91, Filename: 6853412628_Large.jpg
-thresh_content: 0.7 -> 0.600162
-84 valid candidates left.
-[  9/500] Best crop index:  0, Max overlap: 0.88, Filename: 1042532514_Large.jpg
-thresh_content: 0.7 -> 0.63175
-54 valid candidates left.
-[135/500] Best crop index:  3, Max overlap: 0.84, Filename: 180477464_Large.jpg
-thresh_content: 0.7 -> 0.600162
-91 valid candidates left.
-[259/500] Best crop index:  4, Max overlap: 0.77, Filename: 476081892_Large.jpg
-thresh_content: 0.7 -> 0.570154
-62 valid candidates left.
-[385/500] Best crop index:  8, Max overlap: 0.78, Filename: 6853418034_Large.jpg
-thresh_content: 0.7 -> 0.63175
-63 valid candidates left.
-[136/500] Best crop index:  9, Max overlap: 0.86, Filename: 1818097578_Large.jpg
-thresh_content: 0.7 -> 0.600162
-59 valid candidates left.
-[ 10/500] Best crop index:  8, Max overlap: 0.88, Filename: 1046856548_Large.jpg
-thresh_content: 0.7 -> 0.63175
-55 valid candidates left.
-[260/500] Best crop index:  4, Max overlap: 0.88, Filename: 476587544_Large.jpg
-thresh_content: 0.7 -> 0.665
-98 valid candidates left.
-[386/500] Best crop index:  5, Max overlap: 0.90, Filename: 6853433974_Large.jpg
-thresh_content: 0.7 -> 0.665
-69 valid candidates left.
-[ 11/500] Best crop index:  0, Max overlap: 0.70, Filename: 104726217_Large.jpg
-thresh_content: 0.7 -> 0.665
-54 valid candidates left.
-[261/500] Best crop index:  3, Max overlap: 0.87, Filename: 481579017_Large.jpg
-thresh_content: 0.7 -> 0.63175
-59 valid candidates left.
-[137/500] Best crop index:  3, Max overlap: 0.88, Filename: 1845766133_Large.jpg
-thresh_content: 0.7 -> 0.665
-70 valid candidates left.
-[262/500] Best crop index:  5, Max overlap: 0.84, Filename: 487683554_Large.jpg
-thresh_content: 0.7 -> 0.7
-243 valid candidates left.
-[138/500] Best crop index:  2, Max overlap: 0.83, Filename: 185015097_Large.jpg
-thresh_content: 0.7 -> 0.600162
-75 valid candidates left.
-[387/500] Best crop index:  1, Max overlap: 0.85, Filename: 6853478100_Large.jpg
-thresh_content: 0.7 -> 0.7
-63 valid candidates left.
-[139/500] Best crop index:  1, Max overlap: 0.93, Filename: 1901798426_Large.jpg
-thresh_content: 0.7 -> 0.63175
-54 valid candidates left.
-[263/500] Best crop index:  4, Max overlap: 0.89, Filename: 487914275_Large.jpg
-thresh_content: 0.7 -> 0.665
-68 valid candidates left.
-[388/500] Best crop index:  6, Max overlap: 0.88, Filename: 6853519666_Large.jpg
-thresh_content: 0.7 -> 0.665
-59 valid candidates left.
-[389/500] Best crop index:  0, Max overlap: 0.89, Filename: 6853519804_Large.jpg
-thresh_content: 0.7 -> 0.600162
-81 valid candidates left.
-[264/500] Best crop index:  7, Max overlap: 0.85, Filename: 489791189_Large.jpg
-thresh_content: 0.7 -> 0.600162
-68 valid candidates left.
-[140/500] Best crop index:  3, Max overlap: 0.87, Filename: 190354034_Large.jpg
-thresh_content: 0.7 -> 0.63175
-68 valid candidates left.
-[390/500] Best crop index:  5, Max overlap: 0.97, Filename: 6854531114_Large.jpg
-thresh_content: 0.7 -> 0.63175
-77 valid candidates left.
-[ 12/500] Best crop index:  5, Max overlap: 0.83, Filename: 104902.jpg
-thresh_content: 0.7 -> 0.63175
-53 valid candidates left.
-[141/500] Best crop index:  3, Max overlap: 0.90, Filename: 1907976389_Large.jpg
-thresh_content: 0.7 -> 0.600162
-85 valid candidates left.
-[265/500] Best crop index:  5, Max overlap: 0.88, Filename: 490466578_Large.jpg
-thresh_content: 0.7 -> 0.665
-131 valid candidates left.
-[391/500] Best crop index:  9, Max overlap: 0.79, Filename: 6854673518_Large.jpg
-thresh_content: 0.7 -> 0.63175
-57 valid candidates left.
-[ 13/500] Best crop index:  9, Max overlap: 0.81, Filename: 1049828137_Large.jpg
-thresh_content: 0.7 -> 0.63175
-79 valid candidates left.
-[266/500] Best crop index:  0, Max overlap: 0.93, Filename: 493121719_Large.jpg
-thresh_content: 0.7 -> 0.63175
-61 valid candidates left.
-[392/500] Best crop index:  2, Max overlap: 0.79, Filename: 6854848592_Large.jpg
-thresh_content: 0.7 -> 0.600162
-74 valid candidates left.
-[142/500] Best crop index:  2, Max overlap: 0.79, Filename: 1913954314_Large.jpg
-thresh_content: 0.7 -> 0.665
-73 valid candidates left.
-[ 14/500] Best crop index:  8, Max overlap: 0.90, Filename: 1055982952_Large.jpg
-thresh_content: 0.7 -> 0.665
-51 valid candidates left.
-[267/500] Best crop index:  6, Max overlap: 0.79, Filename: 493396069_Large.jpg
-thresh_content: 0.7 -> 0.665
-55 valid candidates left.
-[ 15/500] Best crop index:  5, Max overlap: 0.93, Filename: 108059817_Large.jpg
-thresh_content: 0.7 -> 0.63175
-88 valid candidates left.
-[393/500] Best crop index:  9, Max overlap: 0.94, Filename: 6854851202_Large.jpg
-thresh_content: 0.7 -> 0.600162
-58 valid candidates left.
-[143/500] Best crop index:  8, Max overlap: 0.91, Filename: 19153292_Large.jpg
-thresh_content: 0.7 -> 0.7
-51 valid candidates left.
-[394/500] Best crop index:  9, Max overlap: 0.86, Filename: 6854965228_Large.jpg
-thresh_content: 0.7 -> 0.600162
-74 valid candidates left.
-[268/500] Best crop index:  8, Max overlap: 0.92, Filename: 494971901_Large.jpg
-thresh_content: 0.7 -> 0.63175
-67 valid candidates left.
-[ 16/500] Best crop index:  8, Max overlap: 0.93, Filename: 109123697_Large.jpg
-thresh_content: 0.7 -> 0.665
-75 valid candidates left.
-[144/500] Best crop index:  1, Max overlap: 0.90, Filename: 1935576626_Large.jpg
-thresh_content: 0.7 -> 0.665
-71 valid candidates left.
-[269/500] Best crop index:  1, Max overlap: 0.92, Filename: 495125446_Large.jpg
-thresh_content: 0.7 -> 0.665
-54 valid candidates left.
-[ 17/500] Best crop index:  2, Max overlap: 0.88, Filename: 1092621641_Large.jpg
-thresh_content: 0.7 -> 0.7
-158 valid candidates left.
-[270/500] Best crop index:  7, Max overlap: 0.84, Filename: 49574481_Large.jpg
-thresh_content: 0.7 -> 0.600162
-57 valid candidates left.
-[395/500] Best crop index:  2, Max overlap: 0.82, Filename: 6854968570_Large.jpg
-thresh_content: 0.7 -> 0.63175
-83 valid candidates left.
-[145/500] Best crop index:  1, Max overlap: 0.91, Filename: 196137741_Large.jpg
-thresh_content: 0.7 -> 0.665
-82 valid candidates left.
-[271/500] Best crop index:  5, Max overlap: 0.92, Filename: 495880319_Large.jpg
-thresh_content: 0.7 -> 0.665
-76 valid candidates left.
-[396/500] Best crop index:  0, Max overlap: 0.90, Filename: 6855076356_Large.jpg
-thresh_content: 0.7 -> 0.600162
-77 valid candidates left.
-[ 18/500] Best crop index:  4, Max overlap: 0.94, Filename: 1108687475_Large.jpg
-thresh_content: 0.7 -> 0.63175
-64 valid candidates left.
-[146/500] Best crop index:  1, Max overlap: 0.92, Filename: 196810441_Large.jpg
-thresh_content: 0.7 -> 0.63175
-90 valid candidates left.
-[272/500] Best crop index:  8, Max overlap: 0.90, Filename: 496284735_Large.jpg
-thresh_content: 0.7 -> 0.665
-89 valid candidates left.
-[397/500] Best crop index:  7, Max overlap: 0.84, Filename: 6855128566_Large.jpg
-thresh_content: 0.7 -> 0.7
-52 valid candidates left.
-[147/500] Best crop index:  5, Max overlap: 0.87, Filename: 199136372_Large.jpg
-thresh_content: 0.7 -> 0.665
-64 valid candidates left.
-[ 19/500] Best crop index:  6, Max overlap: 0.87, Filename: 110906639_Large.jpg
-thresh_content: 0.7 -> 0.7
-100 valid candidates left.
-[398/500] Best crop index:  7, Max overlap: 0.83, Filename: 6855292276_Large.jpg
-thresh_content: 0.7 -> 0.665
-78 valid candidates left.
-[273/500] Best crop index:  6, Max overlap: 0.87, Filename: 49863386_Large.jpg
-thresh_content: 0.7 -> 0.665
-84 valid candidates left.
-[ 20/500] Best crop index:  3, Max overlap: 0.88, Filename: 1110241932_Large.jpg
-thresh_content: 0.7 -> 0.600162
-68 valid candidates left.
-[148/500] Best crop index:  7, Max overlap: 0.77, Filename: 1991777502_Large.jpg
-thresh_content: 0.7 -> 0.63175
-66 valid candidates left.
-[399/500] Best crop index:  8, Max overlap: 0.87, Filename: 6856011808_Large.jpg
-thresh_content: 0.7 -> 0.665
-71 valid candidates left.
-[274/500] Best crop index:  3, Max overlap: 0.85, Filename: 501074015_Large.jpg
-thresh_content: 0.7 -> 0.665
-110 valid candidates left.
-[ 21/500] Best crop index:  2, Max overlap: 0.92, Filename: 1118631284_Large.jpg
-thresh_content: 0.7 -> 0.7
-51 valid candidates left.
-[ 22/500] Best crop index:  2, Max overlap: 0.88, Filename: 1122011350_Large.jpg
-thresh_content: 0.7 -> 0.63175
-69 valid candidates left.
-[149/500] Best crop index:  3, Max overlap: 0.86, Filename: 1996670157_Large.jpg
-thresh_content: 0.7 -> 0.63175
-62 valid candidates left.
-[400/500] Best crop index:  5, Max overlap: 0.88, Filename: 6856012638_Large.jpg
-thresh_content: 0.7 -> 0.63175
-70 valid candidates left.
-[275/500] Best crop index:  6, Max overlap: 0.81, Filename: 502666125_Large.jpg
-thresh_content: 0.7 -> 0.63175
-74 valid candidates left.
-[150/500] Best crop index:  4, Max overlap: 0.93, Filename: 1996918152_Large.jpg
-thresh_content: 0.7 -> 0.63175
-52 valid candidates left.
-[ 23/500] Best crop index:  7, Max overlap: 0.93, Filename: 113963846_Large.jpg
-thresh_content: 0.7 -> 0.63175
-96 valid candidates left.
-[276/500] Best crop index:  9, Max overlap: 0.87, Filename: 502834405_Large.jpg
-thresh_content: 0.7 -> 0.600162
-56 valid candidates left.
-[401/500] Best crop index:  2, Max overlap: 0.94, Filename: 6856178550_Large.jpg
-thresh_content: 0.7 -> 0.63175
-58 valid candidates left.
-[151/500] Best crop index:  8, Max overlap: 0.88, Filename: 1999863992_Large.jpg
-thresh_content: 0.7 -> 0.63175
-74 valid candidates left.
-[ 24/500] Best crop index:  5, Max overlap: 0.86, Filename: 1145649643_Large.jpg
-thresh_content: 0.7 -> 0.63175
-99 valid candidates left.
-[277/500] Best crop index:  7, Max overlap: 0.91, Filename: 504325680_Large.jpg
-thresh_content: 0.7 -> 0.665
-52 valid candidates left.
-[402/500] Best crop index:  9, Max overlap: 0.88, Filename: 6856279866_Large.jpg
-thresh_content: 0.7 -> 0.600162
-67 valid candidates left.
-[152/500] Best crop index:  2, Max overlap: 0.85, Filename: 201612250_Large.jpg
-thresh_content: 0.7 -> 0.63175
-61 valid candidates left.
-[ 25/500] Best crop index:  4, Max overlap: 0.81, Filename: 1155907432_Large.jpg
-thresh_content: 0.7 -> 0.665
-75 valid candidates left.
-[403/500] Best crop index:  9, Max overlap: 0.80, Filename: 6856320142_Large.jpg
-thresh_content: 0.7 -> 0.665
-67 valid candidates left.
-[153/500] Best crop index:  7, Max overlap: 0.81, Filename: 204812207_Large.jpg
-thresh_content: 0.7 -> 0.63175
-76 valid candidates left.
-[278/500] Best crop index:  9, Max overlap: 0.67, Filename: 504378522_Large.jpg
-thresh_content: 0.7 -> 0.665
-51 valid candidates left.
-[ 26/500] Best crop index:  8, Max overlap: 0.79, Filename: 115726194_Large.jpg
-thresh_content: 0.7 -> 0.665
-53 valid candidates left.
-[404/500] Best crop index:  9, Max overlap: 0.81, Filename: 6856363906_Large.jpg
-thresh_content: 0.7 -> 0.63175
-58 valid candidates left.
-[405/500] Best crop index:  5, Max overlap: 0.86, Filename: 6856386120_Large.jpg
-thresh_content: 0.7 -> 0.600162
-67 valid candidates left.
-[ 27/500] Best crop index:  5, Max overlap: 0.87, Filename: 1158647496_Large.jpg
-thresh_content: 0.7 -> 0.600162
-80 valid candidates left.
-[279/500] Best crop index:  7, Max overlap: 0.88, Filename: 511056550_Large.jpg
-thresh_content: 0.7 -> 0.570154
-51 valid candidates left.
-[154/500] Best crop index:  1, Max overlap: 0.92, Filename: 205274196_Large.jpg
-thresh_content: 0.7 -> 0.63175
-64 valid candidates left.
-[ 28/500] Best crop index:  4, Max overlap: 0.90, Filename: 116065259_Large.jpg
-thresh_content: 0.7 -> 0.600162
-70 valid candidates left.
-[406/500] Best crop index:  3, Max overlap: 0.87, Filename: 6856386376_Large.jpg
-thresh_content: 0.7 -> 0.665
-65 valid candidates left.
-[280/500] Best crop index:  8, Max overlap: 0.87, Filename: 511363734_Large.jpg
-thresh_content: 0.7 -> 0.63175
-55 valid candidates left.
-[155/500] Best crop index:  4, Max overlap: 0.80, Filename: 206067269_Large.jpg
-thresh_content: 0.7 -> 0.63175
-89 valid candidates left.
-[407/500] Best crop index:  2, Max overlap: 0.88, Filename: 6856436246_Large.jpg
-thresh_content: 0.7 -> 0.600162
-78 valid candidates left.
-[ 29/500] Best crop index:  5, Max overlap: 0.93, Filename: 1162200321_Large.jpg
-thresh_content: 0.7 -> 0.665
-89 valid candidates left.
-[156/500] Best crop index:  2, Max overlap: 0.94, Filename: 208195375_Large.jpg
-thresh_content: 0.7 -> 0.7
-238 valid candidates left.
-[ 30/500] Best crop index:  7, Max overlap: 0.81, Filename: 116848678_Large.jpg
-thresh_content: 0.7 -> 0.600162
-71 valid candidates left.
-[281/500] Best crop index:  5, Max overlap: 0.85, Filename: 511857260_Large.jpg
-thresh_content: 0.7 -> 0.7
-70 valid candidates left.
-[282/500] Best crop index:  1, Max overlap: 0.83, Filename: 512146282_Large.jpg
-thresh_content: 0.7 -> 0.665
-62 valid candidates left.
-[ 31/500] Best crop index:  6, Max overlap: 0.95, Filename: 117335388_Large.jpg
-thresh_content: 0.7 -> 0.63175
-85 valid candidates left.
-[157/500] Best crop index:  4, Max overlap: 0.92, Filename: 210132510_Large.jpg
-thresh_content: 0.7 -> 0.600162
-80 valid candidates left.
-[408/500] Best crop index:  6, Max overlap: 0.85, Filename: 6856482824_Large.jpg
-thresh_content: 0.7 -> 0.600162
-75 valid candidates left.
-[283/500] Best crop index:  2, Max overlap: 0.92, Filename: 514279748_Large.jpg
-thresh_content: 0.7 -> 0.63175
-60 valid candidates left.
-[ 32/500] Best crop index:  5, Max overlap: 0.90, Filename: 1173995169_Large.jpg
-thresh_content: 0.7 -> 0.665
-110 valid candidates left.
-[158/500] Best crop index:  4, Max overlap: 0.92, Filename: 211207362_Large.jpg
-thresh_content: 0.7 -> 0.665
-123 valid candidates left.
-[284/500] Best crop index:  8, Max overlap: 0.86, Filename: 515510054_Large.jpg
-thresh_content: 0.7 -> 0.63175
-72 valid candidates left.
-[ 33/500] Best crop index:  0, Max overlap: 0.78, Filename: 1175740307_Large.jpg
-thresh_content: 0.7 -> 0.665
-79 valid candidates left.
-[285/500] Best crop index:  2, Max overlap: 0.85, Filename: 518045753_Large.jpg
-thresh_content: 0.7 -> 0.600162
-72 valid candidates left.
-[409/500] Best crop index:  2, Max overlap: 0.74, Filename: 6856486214_Large.jpg
-thresh_content: 0.7 -> 0.63175
-70 valid candidates left.
-[159/500] Best crop index:  3, Max overlap: 0.94, Filename: 214657170_Large.jpg
-thresh_content: 0.7 -> 0.63175
-96 valid candidates left.
-[ 34/500] Best crop index:  9, Max overlap: 0.91, Filename: 1183481110_Large.jpg
-thresh_content: 0.7 -> 0.665
-64 valid candidates left.
-[410/500] Best crop index:  1, Max overlap: 0.82, Filename: 6856486838_Large.jpg
-thresh_content: 0.7 -> 0.63175
-66 valid candidates left.
-[286/500] Best crop index:  9, Max overlap: 0.86, Filename: 519975403_Large.jpg
-thresh_content: 0.7 -> 0.665
-75 valid candidates left.
-[ 35/500] Best crop index:  2, Max overlap: 0.93, Filename: 1183779253_Large.jpg
-thresh_content: 0.7 -> 0.665
-93 valid candidates left.
-[287/500] Best crop index:  7, Max overlap: 0.83, Filename: 520651056_Large.jpg
-thresh_content: 0.7 -> 0.570154
-71 valid candidates left.
-[160/500] Best crop index:  0, Max overlap: 0.87, Filename: 214768981_Large.jpg
-thresh_content: 0.7 -> 0.63175
-63 valid candidates left.
-[411/500] Best crop index:  7, Max overlap: 0.92, Filename: 6856487480_Large.jpg
-thresh_content: 0.7 -> 0.7
-90 valid candidates left.
-[412/500] Best crop index:  7, Max overlap: 0.85, Filename: 6857081990_Large.jpg
-thresh_content: 0.7 -> 0.665
-61 valid candidates left.
-[288/500] Best crop index:  9, Max overlap: 0.83, Filename: 520706614_Large.jpg
-thresh_content: 0.7 -> 0.600162
-63 valid candidates left.
-[ 36/500] Best crop index:  5, Max overlap: 0.81, Filename: 118697470_Large.jpg
-thresh_content: 0.7 -> 0.63175
-55 valid candidates left.
-[161/500] Best crop index:  8, Max overlap: 0.89, Filename: 214774269_Large.jpg
-thresh_content: 0.7 -> 0.665
-74 valid candidates left.
-[413/500] Best crop index:  6, Max overlap: 0.87, Filename: 6857138918_Large.jpg
-thresh_content: 0.7 -> 0.63175
-82 valid candidates left.
-[ 37/500] Best crop index:  1, Max overlap: 0.65, Filename: 119260988_Large.jpg
-thresh_content: 0.7 -> 0.63175
-61 valid candidates left.
-[289/500] Best crop index:  7, Max overlap: 0.82, Filename: 521629546_Large.jpg
-thresh_content: 0.7 -> 0.63175
-62 valid candidates left.
-[414/500] Best crop index:  7, Max overlap: 0.86, Filename: 68757110_Large.jpg
-thresh_content: 0.7 -> 0.665
-77 valid candidates left.
-[ 38/500] Best crop index:  3, Max overlap: 0.84, Filename: 1192872104_Large.jpg
-thresh_content: 0.7 -> 0.600162
-67 valid candidates left.
-[162/500] Best crop index:  1, Max overlap: 0.87, Filename: 217683137_Large.jpg
-thresh_content: 0.7 -> 0.600162
-52 valid candidates left.
-[290/500] Best crop index:  5, Max overlap: 0.90, Filename: 521655532_Large.jpg
-thresh_content: 0.7 -> 0.63175
-54 valid candidates left.
-[415/500] Best crop index:  2, Max overlap: 0.84, Filename: 690218983_Large.jpg
-thresh_content: 0.7 -> 0.600162
-58 valid candidates left.
-[ 39/500] Best crop index:  2, Max overlap: 0.90, Filename: 119442448_Large.jpg
-thresh_content: 0.7 -> 0.600162
-55 valid candidates left.
-[163/500] Best crop index:  0, Max overlap: 0.92, Filename: 219460039_Large.jpg
-thresh_content: 0.7 -> 0.63175
-83 valid candidates left.
-[416/500] Best crop index:  3, Max overlap: 0.79, Filename: 693687448_Large.jpg
-thresh_content: 0.7 -> 0.600162
-60 valid candidates left.
-[291/500] Best crop index:  0, Max overlap: 0.94, Filename: 523381314_Large.jpg
-thresh_content: 0.7 -> 0.665
-56 valid candidates left.
-[164/500] Best crop index:  9, Max overlap: 0.87, Filename: 225678198_Large.jpg
-thresh_content: 0.7 -> 0.7
-62 valid candidates left.
-[417/500] Best crop index:  2, Max overlap: 0.73, Filename: 69576246_Large.jpg
-thresh_content: 0.7 -> 0.600162
-51 valid candidates left.
-[ 40/500] Best crop index:  9, Max overlap: 0.89, Filename: 1232707579_Large.jpg
-thresh_content: 0.7 -> 0.665
-73 valid candidates left.
-[292/500] Best crop index:  5, Max overlap: 0.91, Filename: 52527495_Large.jpg
-thresh_content: 0.7 -> 0.665
-69 valid candidates left.
-[165/500] Best crop index:  4, Max overlap: 0.74, Filename: 226854451_Large.jpg
-thresh_content: 0.7 -> 0.665
-74 valid candidates left.
-[418/500] Best crop index:  8, Max overlap: 0.93, Filename: 6995780983_Large.jpg
-thresh_content: 0.7 -> 0.665
-68 valid candidates left.
-[ 41/500] Best crop index:  5, Max overlap: 0.95, Filename: 1238479583_Large.jpg
-thresh_content: 0.7 -> 0.665
+thresh_content: 0.7 -> 0.645658
 102 valid candidates left.
-[293/500] Best crop index:  0, Max overlap: 0.91, Filename: 526638047_Large.jpg
-thresh_content: 0.7 -> 0.665
-73 valid candidates left.
-[419/500] Best crop index:  3, Max overlap: 0.93, Filename: 7000751391_Large.jpg
-thresh_content: 0.7 -> 0.63175
-71 valid candidates left.
-[ 42/500] Best crop index:  9, Max overlap: 0.89, Filename: 1248455494_Large.jpg
-thresh_content: 0.7 -> 0.600162
-62 valid candidates left.
-[166/500] Best crop index:  4, Max overlap: 0.94, Filename: 226891448_Large.jpg
-thresh_content: 0.7 -> 0.665
-79 valid candidates left.
-[294/500] Best crop index:  3, Max overlap: 0.84, Filename: 529252466_Large.jpg
-thresh_content: 0.7 -> 0.665
-98 valid candidates left.
-[167/500] Best crop index:  5, Max overlap: 0.90, Filename: 229122444_Large.jpg
-thresh_content: 0.7 -> 0.63175
-53 valid candidates left.
-[ 43/500] Best crop index:  8, Max overlap: 0.90, Filename: 1250903740_Large.jpg
-thresh_content: 0.7 -> 0.665
-110 valid candidates left.
-[295/500] Best crop index:  0, Max overlap: 0.74, Filename: 52968615_Large.jpg
-thresh_content: 0.7 -> 0.7
-84 valid candidates left.
-[168/500] Best crop index:  1, Max overlap: 0.88, Filename: 22991092_Large.jpg
-thresh_content: 0.7 -> 0.600162
-66 valid candidates left.
-[420/500] Best crop index:  5, Max overlap: 0.92, Filename: 7001038129_Large.jpg
-thresh_content: 0.7 -> 0.665
-78 valid candidates left.
-[ 44/500] Best crop index:  4, Max overlap: 0.71, Filename: 1255809126_Large.jpg
-thresh_content: 0.7 -> 0.665
-82 valid candidates left.
-[ 45/500] Best crop index:  4, Max overlap: 0.92, Filename: 1256880283_Large.jpg
-thresh_content: 0.7 -> 0.63175
-70 valid candidates left.
-[421/500] Best crop index:  0, Max overlap: 0.86, Filename: 7001611717_Large.jpg
-thresh_content: 0.7 -> 0.600162
-70 valid candidates left.
-[169/500] Best crop index:  6, Max overlap: 0.93, Filename: 232393377_Large.jpg
-thresh_content: 0.7 -> 0.665
-52 valid candidates left.
-[ 46/500] Best crop index:  6, Max overlap: 0.90, Filename: 1260661717_Large.jpg
-thresh_content: 0.7 -> 0.665
-54 valid candidates left.
-[422/500] Best crop index:  7, Max overlap: 0.67, Filename: 7001730083_Large.jpg
-thresh_content: 0.7 -> 0.600162
-83 valid candidates left.
-[296/500] Best crop index:  6, Max overlap: 0.89, Filename: 531343601_Large.jpg
-thresh_content: 0.7 -> 0.665
-56 valid candidates left.
-[170/500] Best crop index:  5, Max overlap: 0.92, Filename: 234790932_Large.jpg
-thresh_content: 0.7 -> 0.665
-77 valid candidates left.
-[ 47/500] Best crop index:  5, Max overlap: 0.85, Filename: 126085096_Large.jpg
-thresh_content: 0.7 -> 0.665
-51 valid candidates left.
-[423/500] Best crop index:  5, Max overlap: 0.64, Filename: 7002099973_Large.jpg
-thresh_content: 0.7 -> 0.665
-61 valid candidates left.
-[297/500] Best crop index:  1, Max overlap: 0.82, Filename: 531489564_Large.jpg
-thresh_content: 0.7 -> 0.665
-62 valid candidates left.
-[171/500] Best crop index:  5, Max overlap: 0.85, Filename: 235591862_Large.jpg
-thresh_content: 0.7 -> 0.665
-61 valid candidates left.
-[424/500] Best crop index:  8, Max overlap: 0.85, Filename: 7002101111_Large.jpg
-thresh_content: 0.7 -> 0.63175
-91 valid candidates left.
-[ 48/500] Best crop index:  2, Max overlap: 0.91, Filename: 1263185980_Large.jpg
-thresh_content: 0.7 -> 0.63175
-89 valid candidates left.
-[172/500] Best crop index:  4, Max overlap: 0.88, Filename: 236441280_Large.jpg
-thresh_content: 0.7 -> 0.600162
-57 valid candidates left.
-[298/500] Best crop index:  7, Max overlap: 0.95, Filename: 532760973_Large.jpg
-thresh_content: 0.7 -> 0.63175
+[125/500] Best crop index:  2, Max overlap: 0.87, Filename: 1675751927_Large.jpg
+thresh_content: 0.7 -> 0.658834
+105 valid candidates left.
+[  0/500] Best crop index:  2, Max overlap: 0.77, Filename: 1010203631_Large.jpg
+thresh_content: 0.7 -> 0.607688
 87 valid candidates left.
-[425/500] Best crop index:  9, Max overlap: 0.93, Filename: 7002304163_Large.jpg
-thresh_content: 0.7 -> 0.63175
-56 valid candidates left.
-[ 49/500] Best crop index:  8, Max overlap: 0.86, Filename: 1270979145_Large.jpg
-thresh_content: 0.7 -> 0.7
-62 valid candidates left.
-[426/500] Best crop index:  8, Max overlap: 0.95, Filename: 7002304727_Large.jpg
-thresh_content: 0.7 -> 0.63175
-97 valid candidates left.
-[173/500] Best crop index:  2, Max overlap: 0.89, Filename: 237331953_Large.jpg
-thresh_content: 0.7 -> 0.7
-56 valid candidates left.
-[174/500] Best crop index:  2, Max overlap: 0.85, Filename: 244081284_Large.jpg
-thresh_content: 0.7 -> 0.7
-70 valid candidates left.
-[427/500] Best crop index:  3, Max overlap: 0.85, Filename: 7002562155_Large.jpg
-thresh_content: 0.7 -> 0.570154
-73 valid candidates left.
-[299/500] Best crop index:  1, Max overlap: 0.81, Filename: 535530800_Large.jpg
-thresh_content: 0.7 -> 0.63175
-56 valid candidates left.
-[ 50/500] Best crop index:  7, Max overlap: 0.87, Filename: 1276327129_Large.jpg
-thresh_content: 0.7 -> 0.63175
-62 valid candidates left.
-[175/500] Best crop index:  9, Max overlap: 0.93, Filename: 244904543_Large.jpg
-thresh_content: 0.7 -> 0.63175
-78 valid candidates left.
-[428/500] Best crop index:  9, Max overlap: 0.81, Filename: 7002597307_Large.jpg
-thresh_content: 0.7 -> 0.63175
-83 valid candidates left.
-[300/500] Best crop index:  7, Max overlap: 0.83, Filename: 537769071_Large.jpg
-thresh_content: 0.7 -> 0.665
-75 valid candidates left.
-[429/500] Best crop index:  7, Max overlap: 0.79, Filename: 7003256565_Large.jpg
-thresh_content: 0.7 -> 0.63175
-52 valid candidates left.
-[ 51/500] Best crop index:  3, Max overlap: 0.71, Filename: 127790372_Large.jpg
-thresh_content: 0.7 -> 0.63175
-80 valid candidates left.
-[176/500] Best crop index:  0, Max overlap: 0.83, Filename: 24862458_Large.jpg
-thresh_content: 0.7 -> 0.7
-51 valid candidates left.
-[430/500] Best crop index:  3, Max overlap: 0.88, Filename: 7003508961_Large.jpg
-thresh_content: 0.7 -> 0.63175
-68 valid candidates left.
-[301/500] Best crop index:  2, Max overlap: 0.91, Filename: 53875475_Large.jpg
-thresh_content: 0.7 -> 0.63175
-65 valid candidates left.
-[ 52/500] Best crop index:  8, Max overlap: 0.81, Filename: 1296269122_Large.jpg
-thresh_content: 0.7 -> 0.63175
-74 valid candidates left.
-[177/500] Best crop index:  2, Max overlap: 0.62, Filename: 251229229_Large.jpg
-thresh_content: 0.7 -> 0.665
-93 valid candidates left.
-[302/500] Best crop index:  2, Max overlap: 0.80, Filename: 542331268_Large.jpg
-thresh_content: 0.7 -> 0.570154
-72 valid candidates left.
-[431/500] Best crop index:  0, Max overlap: 0.93, Filename: 7003633057_Large.jpg
-thresh_content: 0.7 -> 0.665
-74 valid candidates left.
-[303/500] Best crop index:  9, Max overlap: 0.82, Filename: 544225073_Large.jpg
-thresh_content: 0.7 -> 0.63175
-60 valid candidates left.
-[ 53/500] Best crop index:  1, Max overlap: 0.82, Filename: 130057475_Large.jpg
-thresh_content: 0.7 -> 0.600162
-59 valid candidates left.
-[178/500] Best crop index:  2, Max overlap: 0.87, Filename: 258502232_Large.jpg
-thresh_content: 0.7 -> 0.665
-58 valid candidates left.
-[432/500] Best crop index:  6, Max overlap: 0.90, Filename: 7004028601_Large.jpg
-thresh_content: 0.7 -> 0.665
-77 valid candidates left.
-[ 54/500] Best crop index:  7, Max overlap: 0.87, Filename: 13043341_Large.jpg
-thresh_content: 0.7 -> 0.63175
-78 valid candidates left.
-[304/500] Best crop index:  4, Max overlap: 0.92, Filename: 55408227_Large.jpg
-thresh_content: 0.7 -> 0.665
-76 valid candidates left.
-[433/500] Best crop index:  4, Max overlap: 0.94, Filename: 7004031595_Large.jpg
-thresh_content: 0.7 -> 0.665
-59 valid candidates left.
-[ 55/500] Best crop index:  5, Max overlap: 0.89, Filename: 1305046399_Large.jpg
-thresh_content: 0.7 -> 0.7
-59 valid candidates left.
-[434/500] Best crop index:  9, Max overlap: 0.91, Filename: 7004033151_Large.jpg
-thresh_content: 0.7 -> 0.63175
-63 valid candidates left.
-[179/500] Best crop index:  3, Max overlap: 0.90, Filename: 261171863_Large.jpg
-thresh_content: 0.7 -> 0.7
-156 valid candidates left.
-[ 56/500] Best crop index:  3, Max overlap: 0.93, Filename: 1308223880_Large.jpg
-thresh_content: 0.7 -> 0.63175
-81 valid candidates left.
-[305/500] Best crop index:  1, Max overlap: 0.87, Filename: 56008380_Large.jpg
-thresh_content: 0.7 -> 0.665
-56 valid candidates left.
-[180/500] Best crop index:  9, Max overlap: 0.93, Filename: 264687173_Large.jpg
-thresh_content: 0.7 -> 0.63175
-95 valid candidates left.
-[435/500] Best crop index:  7, Max overlap: 0.89, Filename: 7004039717_Large.jpg
-thresh_content: 0.7 -> 0.63175
-76 valid candidates left.
-[ 57/500] Best crop index:  9, Max overlap: 0.89, Filename: 1313111460_Large.jpg
-thresh_content: 0.7 -> 0.63175
-56 valid candidates left.
-[306/500] Best crop index:  5, Max overlap: 0.88, Filename: 563030678_Large.jpg
-thresh_content: 0.7 -> 0.63175
-75 valid candidates left.
-[181/500] Best crop index:  7, Max overlap: 0.80, Filename: 266460830_Large.jpg
-thresh_content: 0.7 -> 0.63175
-60 valid candidates left.
-[436/500] Best crop index:  8, Max overlap: 0.84, Filename: 7004041683_Large.jpg
-thresh_content: 0.7 -> 0.665
-97 valid candidates left.
-[ 58/500] Best crop index:  5, Max overlap: 0.93, Filename: 1315594870_Large.jpg
-thresh_content: 0.7 -> 0.63175
-86 valid candidates left.
-[307/500] Best crop index:  5, Max overlap: 0.83, Filename: 569711177_Large.jpg
-thresh_content: 0.7 -> 0.600162
-78 valid candidates left.
-[182/500] Best crop index:  2, Max overlap: 0.91, Filename: 271439333_Large.jpg
-thresh_content: 0.7 -> 0.600162
-51 valid candidates left.
-[437/500] Best crop index:  8, Max overlap: 0.86, Filename: 704473751_Large.jpg
-thresh_content: 0.7 -> 0.63175
-59 valid candidates left.
-[ 59/500] Best crop index:  9, Max overlap: 0.72, Filename: 1315613332_Large.jpg
-thresh_content: 0.7 -> 0.665
-66 valid candidates left.
-[308/500] Best crop index:  4, Max overlap: 0.92, Filename: 571793974_Large.jpg
-thresh_content: 0.7 -> 0.665
-58 valid candidates left.
-[183/500] Best crop index:  4, Max overlap: 0.91, Filename: 271595545_Large.jpg
-thresh_content: 0.7 -> 0.665
-71 valid candidates left.
-[ 60/500] Best crop index:  6, Max overlap: 0.86, Filename: 1334989245_Large.jpg
-thresh_content: 0.7 -> 0.665
-59 valid candidates left.
-[309/500] Best crop index:  1, Max overlap: 0.84, Filename: 57813241_Large.jpg
-thresh_content: 0.7 -> 0.63175
-77 valid candidates left.
-[438/500] Best crop index:  7, Max overlap: 0.92, Filename: 706807676_Large.jpg
-thresh_content: 0.7 -> 0.63175
-86 valid candidates left.
-[184/500] Best crop index:  1, Max overlap: 0.88, Filename: 274700974_Large.jpg
-thresh_content: 0.7 -> 0.63175
-76 valid candidates left.
-[310/500] Best crop index:  7, Max overlap: 0.89, Filename: 600728457_Large.jpg
-thresh_content: 0.7 -> 0.63175
-73 valid candidates left.
-[ 61/500] Best crop index:  8, Max overlap: 0.93, Filename: 133910968_Large.jpg
-thresh_content: 0.7 -> 0.63175
-84 valid candidates left.
-[439/500] Best crop index:  3, Max overlap: 0.86, Filename: 716594529_Large.jpg
-thresh_content: 0.7 -> 0.665
-67 valid candidates left.
-[311/500] Best crop index:  4, Max overlap: 0.89, Filename: 60132202_Large.jpg
-thresh_content: 0.7 -> 0.600162
-55 valid candidates left.
-[185/500] Best crop index:  5, Max overlap: 0.89, Filename: 278242_Large.jpg
-thresh_content: 0.7 -> 0.665
-57 valid candidates left.
-[440/500] Best crop index:  1, Max overlap: 0.91, Filename: 721612607_Large.jpg
-thresh_content: 0.7 -> 0.63175
-62 valid candidates left.
-[ 62/500] Best crop index:  4, Max overlap: 0.70, Filename: 13430895_Large.jpg
-thresh_content: 0.7 -> 0.63175
-79 valid candidates left.
-[312/500] Best crop index:  2, Max overlap: 0.90, Filename: 605623074_Large.jpg
-thresh_content: 0.7 -> 0.665
-107 valid candidates left.
-[441/500] Best crop index:  2, Max overlap: 0.90, Filename: 728891636_Large.jpg
-thresh_content: 0.7 -> 0.665
-89 valid candidates left.
-[186/500] Best crop index:  9, Max overlap: 0.86, Filename: 278449981_Large.jpg
-thresh_content: 0.7 -> 0.600162
-82 valid candidates left.
-[ 63/500] Best crop index:  7, Max overlap: 0.91, Filename: 1343768957_Large.jpg
-thresh_content: 0.7 -> 0.665
-80 valid candidates left.
-[442/500] Best crop index:  3, Max overlap: 0.86, Filename: 730765921_Large.jpg
-thresh_content: 0.7 -> 0.600162
-67 valid candidates left.
-[313/500] Best crop index:  2, Max overlap: 0.85, Filename: 61014842_Large.jpg
-thresh_content: 0.7 -> 0.7
-51 valid candidates left.
-[ 64/500] Best crop index:  6, Max overlap: 0.90, Filename: 1347846010_Large.jpg
-thresh_content: 0.7 -> 0.63175
-77 valid candidates left.
-[187/500] Best crop index:  5, Max overlap: 0.90, Filename: 284648287_Large.jpg
-thresh_content: 0.7 -> 0.63175
-75 valid candidates left.
-[314/500] Best crop index:  8, Max overlap: 0.86, Filename: 638464819_Large.jpg
-thresh_content: 0.7 -> 0.63175
-73 valid candidates left.
-[ 65/500] Best crop index:  5, Max overlap: 0.89, Filename: 1348208827_Large.jpg
-thresh_content: 0.7 -> 0.600162
-64 valid candidates left.
-[443/500] Best crop index:  1, Max overlap: 0.84, Filename: 735049260_Large.jpg
-thresh_content: 0.7 -> 0.63175
-72 valid candidates left.
-[188/500] Best crop index:  3, Max overlap: 0.87, Filename: 285465258_Large.jpg
-thresh_content: 0.7 -> 0.63175
-72 valid candidates left.
-[ 66/500] Best crop index:  8, Max overlap: 0.92, Filename: 1349095323_Large.jpg
-thresh_content: 0.7 -> 0.665
-79 valid candidates left.
-[444/500] Best crop index:  5, Max overlap: 0.90, Filename: 761800507_Large.jpg
-thresh_content: 0.7 -> 0.600162
-77 valid candidates left.
-[315/500] Best crop index:  8, Max overlap: 0.85, Filename: 642111916_Large.jpg
-thresh_content: 0.7 -> 0.7
-60 valid candidates left.
-[445/500] Best crop index:  9, Max overlap: 0.87, Filename: 76190740_Large.jpg
-thresh_content: 0.7 -> 0.63175
-77 valid candidates left.
-[189/500] Best crop index:  2, Max overlap: 0.89, Filename: 294716499_Large.jpg
-thresh_content: 0.7 -> 0.63175
-54 valid candidates left.
-[ 67/500] Best crop index:  0, Max overlap: 0.87, Filename: 1350255501_Large.jpg
-thresh_content: 0.7 -> 0.665
-56 valid candidates left.
-[316/500] Best crop index:  2, Max overlap: 0.85, Filename: 6487781379_Large.jpg
-thresh_content: 0.7 -> 0.665
-65 valid candidates left.
-[190/500] Best crop index:  6, Max overlap: 0.90, Filename: 295692974_Large.jpg
-thresh_content: 0.7 -> 0.63175
-77 valid candidates left.
-[ 68/500] Best crop index:  6, Max overlap: 0.85, Filename: 1351032584_Large.jpg
-thresh_content: 0.7 -> 0.570154
-61 valid candidates left.
-[446/500] Best crop index:  8, Max overlap: 0.87, Filename: 762111619_Large.jpg
-thresh_content: 0.7 -> 0.600162
-58 valid candidates left.
-[317/500] Best crop index:  1, Max overlap: 0.91, Filename: 65574317_Large.jpg
-thresh_content: 0.7 -> 0.63175
-63 valid candidates left.
-[191/500] Best crop index:  3, Max overlap: 0.85, Filename: 296064548_Large.jpg
-thresh_content: 0.7 -> 0.63175
-67 valid candidates left.
-[ 69/500] Best crop index:  1, Max overlap: 0.90, Filename: 1352005047_Large.jpg
-thresh_content: 0.7 -> 0.63175
-72 valid candidates left.
-[318/500] Best crop index:  0, Max overlap: 0.85, Filename: 65790614_Large.jpg
-thresh_content: 0.7 -> 0.665
-68 valid candidates left.
-[ 70/500] Best crop index:  7, Max overlap: 0.90, Filename: 1352865693_Large.jpg
-thresh_content: 0.7 -> 0.600162
-76 valid candidates left.
-[447/500] Best crop index:  7, Max overlap: 0.90, Filename: 767892395_Large.jpg
-thresh_content: 0.7 -> 0.63175
-68 valid candidates left.
-[ 71/500] Best crop index:  7, Max overlap: 0.90, Filename: 1367595696_Large.jpg
-thresh_content: 0.7 -> 0.63175
-85 valid candidates left.
-[319/500] Best crop index:  1, Max overlap: 0.85, Filename: 66085770_Large.jpg
-thresh_content: 0.7 -> 0.570154
-54 valid candidates left.
-[192/500] Best crop index:  6, Max overlap: 0.85, Filename: 300979541_Large.jpg
-thresh_content: 0.7 -> 0.63175
-73 valid candidates left.
-[448/500] Best crop index:  7, Max overlap: 0.93, Filename: 768693371_Large.jpg
-thresh_content: 0.7 -> 0.63175
-82 valid candidates left.
-[320/500] Best crop index:  5, Max overlap: 0.96, Filename: 67175822_Large.jpg
-thresh_content: 0.7 -> 0.63175
-68 valid candidates left.
-[ 72/500] Best crop index:  5, Max overlap: 0.94, Filename: 1367679227_Large.jpg
-thresh_content: 0.7 -> 0.665
-72 valid candidates left.
-[449/500] Best crop index:  0, Max overlap: 0.89, Filename: 780522886_Large.jpg
-thresh_content: 0.7 -> 0.63175
-70 valid candidates left.
-[321/500] Best crop index:  6, Max overlap: 0.93, Filename: 672284493_Large.jpg
-thresh_content: 0.7 -> 0.63175
-56 valid candidates left.
-[193/500] Best crop index:  8, Max overlap: 0.87, Filename: 321738279_Large.jpg
-thresh_content: 0.7 -> 0.665
-101 valid candidates left.
-[450/500] Best crop index:  6, Max overlap: 0.88, Filename: 782310010_Large.jpg
-thresh_content: 0.7 -> 0.665
-66 valid candidates left.
-[322/500] Best crop index:  4, Max overlap: 0.89, Filename: 6849161342_Large.jpg
-thresh_content: 0.7 -> 0.7
-109 valid candidates left.
-[451/500] Best crop index:  1, Max overlap: 0.87, Filename: 788697303_Large.jpg
-thresh_content: 0.7 -> 0.600162
-83 valid candidates left.
-[ 73/500] Best crop index:  9, Max overlap: 0.68, Filename: 13681875_Large.jpg
-thresh_content: 0.7 -> 0.665
-99 valid candidates left.
-[194/500] Best crop index:  1, Max overlap: 0.79, Filename: 322195407_Large.jpg
-thresh_content: 0.7 -> 0.7
-123 valid candidates left.
-[ 74/500] Best crop index:  4, Max overlap: 0.84, Filename: 1373163594_Large.jpg
-thresh_content: 0.7 -> 0.63175
-67 valid candidates left.
-[323/500] Best crop index:  0, Max overlap: 0.91, Filename: 6850527306_Large.jpg
-thresh_content: 0.7 -> 0.7
-53 valid candidates left.
-[195/500] Best crop index:  3, Max overlap: 0.85, Filename: 326351586_Large.jpg
-thresh_content: 0.7 -> 0.665
-65 valid candidates left.
-[324/500] Best crop index:  6, Max overlap: 0.92, Filename: 6850638972_Large.jpg
-thresh_content: 0.7 -> 0.63175
-67 valid candidates left.
-[452/500] Best crop index:  1, Max overlap: 0.89, Filename: 789097501_Large.jpg
-thresh_content: 0.7 -> 0.665
-56 valid candidates left.
-[ 75/500] Best crop index:  5, Max overlap: 0.91, Filename: 1381529340_Large.jpg
-thresh_content: 0.7 -> 0.665
-51 valid candidates left.
-[196/500] Best crop index:  0, Max overlap: 0.83, Filename: 328801008_Large.jpg
-thresh_content: 0.7 -> 0.665
-83 valid candidates left.
-[325/500] Best crop index:  6, Max overlap: 0.92, Filename: 6850642018_Large.jpg
-thresh_content: 0.7 -> 0.665
-54 valid candidates left.
-[ 76/500] Best crop index:  6, Max overlap: 0.81, Filename: 138607971_Large.jpg
-thresh_content: 0.7 -> 0.665
-52 valid candidates left.
-[197/500] Best crop index:  5, Max overlap: 0.85, Filename: 329479720_Large.jpg
-thresh_content: 0.7 -> 0.665
-57 valid candidates left.
-[326/500] Best crop index:  1, Max overlap: 0.82, Filename: 6850666002_Large.jpg
-thresh_content: 0.7 -> 0.63175
-72 valid candidates left.
-[453/500] Best crop index:  8, Max overlap: 0.78, Filename: 795230518_Large.jpg
-thresh_content: 0.7 -> 0.665
-85 valid candidates left.
-[198/500] Best crop index:  6, Max overlap: 0.94, Filename: 33006163_Large.jpg
-thresh_content: 0.7 -> 0.665
-107 valid candidates left.
-[327/500] Best crop index:  6, Max overlap: 0.92, Filename: 6850970398_Large.jpg
-thresh_content: 0.7 -> 0.7
-71 valid candidates left.
-[199/500] Best crop index:  2, Max overlap: 0.91, Filename: 332049039_Large.jpg
-thresh_content: 0.7 -> 0.63175
-60 valid candidates left.
-[454/500] Best crop index:  3, Max overlap: 0.89, Filename: 798421473_Large.jpg
-thresh_content: 0.7 -> 0.600162
-52 valid candidates left.
-[ 77/500] Best crop index:  9, Max overlap: 0.83, Filename: 138895540_Large.jpg
-thresh_content: 0.7 -> 0.665
-83 valid candidates left.
-[328/500] Best crop index:  9, Max overlap: 0.85, Filename: 6851012624_Large.jpg
-thresh_content: 0.7 -> 0.665
-67 valid candidates left.
-[200/500] Best crop index:  8, Max overlap: 0.93, Filename: 332532085_Large.jpg
-thresh_content: 0.7 -> 0.665
-69 valid candidates left.
-[ 78/500] Best crop index:  8, Max overlap: 0.90, Filename: 139020551_Large.jpg
-thresh_content: 0.7 -> 0.7
-75 valid candidates left.
-[201/500] Best crop index:  3, Max overlap: 0.84, Filename: 33496701_Large.jpg
-thresh_content: 0.7 -> 0.665
-55 valid candidates left.
-[455/500] Best crop index:  1, Max overlap: 0.86, Filename: 798659701_Large.jpg
-thresh_content: 0.7 -> 0.63175
-65 valid candidates left.
-[329/500] Best crop index:  7, Max overlap: 0.80, Filename: 6851132272_Large.jpg
-thresh_content: 0.7 -> 0.665
-105 valid candidates left.
-[456/500] Best crop index:  8, Max overlap: 0.82, Filename: 799562644_Large.jpg
-thresh_content: 0.7 -> 0.63175
-84 valid candidates left.
-[ 79/500] Best crop index:  6, Max overlap: 0.87, Filename: 1393264200_Large.jpg
-thresh_content: 0.7 -> 0.600162
-73 valid candidates left.
-[202/500] Best crop index:  0, Max overlap: 0.93, Filename: 336081073_Large.jpg
-thresh_content: 0.7 -> 0.665
-66 valid candidates left.
-[330/500] Best crop index:  7, Max overlap: 0.87, Filename: 6851820388_Large.jpg
-thresh_content: 0.7 -> 0.600162
-63 valid candidates left.
-[ 80/500] Best crop index:  5, Max overlap: 0.90, Filename: 1395416954_Large.jpg
-thresh_content: 0.7 -> 0.600162
-66 valid candidates left.
-[457/500] Best crop index:  5, Max overlap: 0.89, Filename: 803375650_Large.jpg
-thresh_content: 0.7 -> 0.63175
-51 valid candidates left.
-[203/500] Best crop index:  3, Max overlap: 0.79, Filename: 33683009_Large.jpg
-thresh_content: 0.7 -> 0.63175
-72 valid candidates left.
-[331/500] Best crop index:  9, Max overlap: 0.93, Filename: 6851859244_Large.jpg
-thresh_content: 0.7 -> 0.665
-67 valid candidates left.
-[204/500] Best crop index:  7, Max overlap: 0.89, Filename: 338774403_Large.jpg
-thresh_content: 0.7 -> 0.600162
-71 valid candidates left.
-[ 81/500] Best crop index:  0, Max overlap: 0.91, Filename: 1397975189_Large.jpg
-thresh_content: 0.7 -> 0.63175
-55 valid candidates left.
-[458/500] Best crop index:  4, Max overlap: 0.88, Filename: 807873536_Large.jpg
-thresh_content: 0.7 -> 0.63175
-58 valid candidates left.
-[205/500] Best crop index:  5, Max overlap: 0.86, Filename: 342363785_Large.jpg
-thresh_content: 0.7 -> 0.600162
-96 valid candidates left.
-[332/500] Best crop index:  8, Max overlap: 0.67, Filename: 6852101020_Large.jpg
-thresh_content: 0.7 -> 0.665
-124 valid candidates left.
-[459/500] Best crop index:  5, Max overlap: 0.78, Filename: 81318524_Large.jpg
-thresh_content: 0.7 -> 0.665
-58 valid candidates left.
-[333/500] Best crop index:  6, Max overlap: 0.94, Filename: 6852321122_Large.jpg
-thresh_content: 0.7 -> 0.600162
-70 valid candidates left.
-[ 82/500] Best crop index:  0, Max overlap: 0.77, Filename: 1402809452_Large.jpg
-thresh_content: 0.7 -> 0.600162
-70 valid candidates left.
-[206/500] Best crop index:  3, Max overlap: 0.92, Filename: 34380598_Large.jpg
-thresh_content: 0.7 -> 0.665
-54 valid candidates left.
-[334/500] Best crop index:  6, Max overlap: 0.91, Filename: 6852492448_Large.jpg
-thresh_content: 0.7 -> 0.63175
-51 valid candidates left.
-[ 83/500] Best crop index:  5, Max overlap: 0.93, Filename: 1405753101_Large.jpg
-thresh_content: 0.7 -> 0.665
-65 valid candidates left.
-[335/500] Best crop index:  3, Max overlap: 0.93, Filename: 6852560486_Large.jpg
-thresh_content: 0.7 -> 0.570154
-64 valid candidates left.
-[460/500] Best crop index:  9, Max overlap: 0.91, Filename: 82052675_Large.jpg
-thresh_content: 0.7 -> 0.7
-62 valid candidates left.
-[ 84/500] Best crop index:  8, Max overlap: 0.83, Filename: 1410307515_Large.jpg
-thresh_content: 0.7 -> 0.600162
-56 valid candidates left.
-[207/500] Best crop index:  4, Max overlap: 0.79, Filename: 345801521_Large.jpg
-thresh_content: 0.7 -> 0.665
-67 valid candidates left.
-[336/500] Best crop index:  3, Max overlap: 0.85, Filename: 6852594740_Large.jpg
-thresh_content: 0.7 -> 0.665
-65 valid candidates left.
-[ 85/500] Best crop index:  6, Max overlap: 0.82, Filename: 1421563502_Large.jpg
-thresh_content: 0.7 -> 0.665
-99 valid candidates left.
-[208/500] Best crop index:  0, Max overlap: 0.84, Filename: 345884594_Large.jpg
-thresh_content: 0.7 -> 0.665
-70 valid candidates left.
-[461/500] Best crop index:  2, Max overlap: 0.94, Filename: 824401800_Large.jpg
-thresh_content: 0.7 -> 0.665
-74 valid candidates left.
-[462/500] Best crop index:  6, Max overlap: 0.82, Filename: 830707819_Large.jpg
-thresh_content: 0.7 -> 0.63175
-66 valid candidates left.
-[209/500] Best crop index:  1, Max overlap: 0.87, Filename: 346203306_Large.jpg
-thresh_content: 0.7 -> 0.63175
-58 valid candidates left.
-[ 86/500] Best crop index:  6, Max overlap: 0.90, Filename: 143349262_Large.jpg
-thresh_content: 0.7 -> 0.7
-55 valid candidates left.
-[463/500] Best crop index:  0, Max overlap: 0.92, Filename: 839361654_Large.jpg
-thresh_content: 0.7 -> 0.570154
-69 valid candidates left.
-[337/500] Best crop index:  9, Max overlap: 0.84, Filename: 6852595302_Large.jpg
-thresh_content: 0.7 -> 0.7
+[375/500] Best crop index:  5, Max overlap: 0.91, Filename: 6853262776_Large.jpg
+thresh_content: 0.7 -> 0.686
 92 valid candidates left.
-[464/500] Best crop index:  8, Max overlap: 0.89, Filename: 843401087_Large.jpg
-thresh_content: 0.7 -> 0.665
-80 valid candidates left.
-[210/500] Best crop index:  3, Max overlap: 0.85, Filename: 349691224_Large.jpg
-thresh_content: 0.7 -> 0.665
-51 valid candidates left.
-[338/500] Best crop index:  7, Max overlap: 0.90, Filename: 6852595620_Large.jpg
-thresh_content: 0.7 -> 0.665
-115 valid candidates left.
-[465/500] Best crop index:  0, Max overlap: 0.78, Filename: 84471596_Large.jpg
-thresh_content: 0.7 -> 0.63175
-75 valid candidates left.
-[ 87/500] Best crop index:  5, Max overlap: 0.95, Filename: 1433915651_Large.jpg
-thresh_content: 0.7 -> 0.665
-63 valid candidates left.
-[466/500] Best crop index:  8, Max overlap: 0.89, Filename: 846545152_Large.jpg
-thresh_content: 0.7 -> 0.63175
-69 valid candidates left.
-[211/500] Best crop index:  8, Max overlap: 0.61, Filename: 352180169_Large.jpg
-thresh_content: 0.7 -> 0.63175
-80 valid candidates left.
-[339/500] Best crop index:  5, Max overlap: 0.88, Filename: 6852653224_Large.jpg
-thresh_content: 0.7 -> 0.665
-53 valid candidates left.
-[ 88/500] Best crop index:  3, Max overlap: 0.80, Filename: 1434318743_Large.jpg
-thresh_content: 0.7 -> 0.63175
-51 valid candidates left.
-[340/500] Best crop index:  6, Max overlap: 0.94, Filename: 6852681750_Large.jpg
-thresh_content: 0.7 -> 0.665
-54 valid candidates left.
-[ 89/500] Best crop index:  0, Max overlap: 0.91, Filename: 1438703196_Large.jpg
-thresh_content: 0.7 -> 0.600162
-70 valid candidates left.
-[212/500] Best crop index:  1, Max overlap: 0.86, Filename: 358806781_Large.jpg
-thresh_content: 0.7 -> 0.600162
-56 valid candidates left.
-[467/500] Best crop index:  5, Max overlap: 0.82, Filename: 84933575_Large.jpg
-thresh_content: 0.7 -> 0.665
-51 valid candidates left.
-[341/500] Best crop index:  2, Max overlap: 0.89, Filename: 6852682192_Large.jpg
-thresh_content: 0.7 -> 0.63175
-62 valid candidates left.
-[ 90/500] Best crop index:  9, Max overlap: 0.83, Filename: 1447330891_Large.jpg
-thresh_content: 0.7 -> 0.63175
-65 valid candidates left.
-[213/500] Best crop index:  4, Max overlap: 0.85, Filename: 363867519_Large.jpg
-thresh_content: 0.7 -> 0.665
-71 valid candidates left.
-[214/500] Best crop index:  5, Max overlap: 0.90, Filename: 364124506_Large.jpg
-thresh_content: 0.7 -> 0.600162
-56 valid candidates left.
-[468/500] Best crop index:  4, Max overlap: 0.88, Filename: 859542660_Large.jpg
-thresh_content: 0.7 -> 0.600162
-85 valid candidates left.
-[342/500] Best crop index:  5, Max overlap: 0.81, Filename: 6852764070_Large.jpg
-thresh_content: 0.7 -> 0.63175
-79 valid candidates left.
-[ 91/500] Best crop index:  5, Max overlap: 0.86, Filename: 144836967_Large.jpg
-thresh_content: 0.7 -> 0.665
-51 valid candidates left.
-[343/500] Best crop index:  9, Max overlap: 0.85, Filename: 6852819890_Large.jpg
-thresh_content: 0.7 -> 0.665
-117 valid candidates left.
-[469/500] Best crop index:  9, Max overlap: 0.95, Filename: 860251190_Large.jpg
-thresh_content: 0.7 -> 0.63175
-66 valid candidates left.
-[215/500] Best crop index:  7, Max overlap: 0.87, Filename: 37133046_Large.jpg
-thresh_content: 0.7 -> 0.7
-62 valid candidates left.
-[216/500] Best crop index:  7, Max overlap: 0.86, Filename: 371485783_Large.jpg
-thresh_content: 0.7 -> 0.665
-59 valid candidates left.
-[344/500] Best crop index:  9, Max overlap: 0.88, Filename: 6852821870_Large.jpg
-thresh_content: 0.7 -> 0.600162
-89 valid candidates left.
-[ 92/500] Best crop index:  1, Max overlap: 0.87, Filename: 1451520385_Large.jpg
-thresh_content: 0.7 -> 0.665
-61 valid candidates left.
-[345/500] Best crop index:  8, Max overlap: 0.83, Filename: 6852888558_Large.jpg
-thresh_content: 0.7 -> 0.665
-96 valid candidates left.
-[ 93/500] Best crop index:  5, Max overlap: 0.92, Filename: 1457024371_Large.jpg
-thresh_content: 0.7 -> 0.7
-355 valid candidates left.
-[346/500] Best crop index:  6, Max overlap: 0.72, Filename: 6853013340_Large.jpg
-thresh_content: 0.7 -> 0.63175
-63 valid candidates left.
-[217/500] Best crop index:  7, Max overlap: 0.87, Filename: 377446890_Large.jpg
-thresh_content: 0.7 -> 0.541647
-75 valid candidates left.
-[470/500] Best crop index:  8, Max overlap: 0.89, Filename: 866331633_Large.jpg
-thresh_content: 0.7 -> 0.665
-114 valid candidates left.
-[347/500] Best crop index:  4, Max overlap: 0.94, Filename: 6853023680_Large.jpg
-thresh_content: 0.7 -> 0.63175
-53 valid candidates left.
-[ 94/500] Best crop index:  2, Max overlap: 0.89, Filename: 1459039732_Large.jpg
-thresh_content: 0.7 -> 0.600162
-63 valid candidates left.
-[218/500] Best crop index:  7, Max overlap: 0.87, Filename: 377880646_Large.jpg
-thresh_content: 0.7 -> 0.63175
-58 valid candidates left.
-[471/500] Best crop index:  6, Max overlap: 0.87, Filename: 869858460_Large.jpg
-thresh_content: 0.7 -> 0.63175
-78 valid candidates left.
-[348/500] Best crop index:  7, Max overlap: 0.91, Filename: 6853036726_Large.jpg
-thresh_content: 0.7 -> 0.665
-72 valid candidates left.
-[472/500] Best crop index:  4, Max overlap: 0.83, Filename: 87097024_Large.jpg
-thresh_content: 0.7 -> 0.63175
-57 valid candidates left.
-[ 95/500] Best crop index:  0, Max overlap: 0.73, Filename: 1459753403_Large.jpg
-thresh_content: 0.7 -> 0.63175
-69 valid candidates left.
-[219/500] Best crop index:  7, Max overlap: 0.84, Filename: 379047973_Large.jpg
-thresh_content: 0.7 -> 0.665
-74 valid candidates left.
-[349/500] Best crop index:  5, Max overlap: 0.92, Filename: 6853040778_Large.jpg
-thresh_content: 0.7 -> 0.665
-65 valid candidates left.
-[473/500] Best crop index:  0, Max overlap: 0.88, Filename: 87749006_Large.jpg
-thresh_content: 0.7 -> 0.665
-114 valid candidates left.
-[220/500] Best crop index:  1, Max overlap: 0.79, Filename: 379266659_Large.jpg
-thresh_content: 0.7 -> 0.63175
-68 valid candidates left.
-[ 96/500] Best crop index:  4, Max overlap: 0.86, Filename: 146931510_Large.jpg
-thresh_content: 0.7 -> 0.63175
-95 valid candidates left.
-[350/500] Best crop index:  0, Max overlap: 0.86, Filename: 6853041222_Large.jpg
-thresh_content: 0.7 -> 0.7
-72 valid candidates left.
-[ 97/500] Best crop index:  9, Max overlap: 0.94, Filename: 1469687892_Large.jpg
-thresh_content: 0.7 -> 0.665
+[126/500] Best crop index:  6, Max overlap: 0.91, Filename: 168875243_Large.jpg
+thresh_content: 0.7 -> 0.62009
 102 valid candidates left.
-[221/500] Best crop index:  9, Max overlap: 0.72, Filename: 379347063_Large.jpg
-thresh_content: 0.7 -> 0.63175
-70 valid candidates left.
-[474/500] Best crop index:  8, Max overlap: 0.92, Filename: 881342176_Large.jpg
-thresh_content: 0.7 -> 0.665
-58 valid candidates left.
-[222/500] Best crop index:  2, Max overlap: 0.88, Filename: 379451946_Large.jpg
-thresh_content: 0.7 -> 0.665
-51 valid candidates left.
-[475/500] Best crop index:  5, Max overlap: 0.88, Filename: 88716968_Large.jpg
-thresh_content: 0.7 -> 0.63175
-71 valid candidates left.
-[ 98/500] Best crop index:  9, Max overlap: 0.83, Filename: 147749309_Large.jpg
-thresh_content: 0.7 -> 0.63175
-63 valid candidates left.
-[351/500] Best crop index:  7, Max overlap: 0.84, Filename: 6853046456_Large.jpg
-thresh_content: 0.7 -> 0.665
-86 valid candidates left.
-[223/500] Best crop index:  4, Max overlap: 0.93, Filename: 380371516_Large.jpg
-thresh_content: 0.7 -> 0.665
-60 valid candidates left.
-[ 99/500] Best crop index:  3, Max overlap: 0.93, Filename: 1479628321_Large.jpg
-thresh_content: 0.7 -> 0.63175
-64 valid candidates left.
-[476/500] Best crop index:  2, Max overlap: 0.80, Filename: 887993249_Large.jpg
-thresh_content: 0.7 -> 0.7
-63 valid candidates left.
-[100/500] Best crop index:  3, Max overlap: 0.91, Filename: 1485042599_Large.jpg
-thresh_content: 0.7 -> 0.665
-74 valid candidates left.
-[224/500] Best crop index:  7, Max overlap: 0.84, Filename: 38218027_Large.jpg
-thresh_content: 0.7 -> 0.63175
-67 valid candidates left.
-[352/500] Best crop index:  3, Max overlap: 0.78, Filename: 6853049124_Large.jpg
-thresh_content: 0.7 -> 0.63175
-61 valid candidates left.
-[101/500] Best crop index:  2, Max overlap: 0.90, Filename: 1488185488_Large.jpg
-thresh_content: 0.7 -> 0.63175
-73 valid candidates left.
-[225/500] Best crop index:  9, Max overlap: 0.88, Filename: 383037318_Large.jpg
-thresh_content: 0.7 -> 0.600162
-63 valid candidates left.
-[477/500] Best crop index:  8, Max overlap: 0.86, Filename: 898619475_Large.jpg
-thresh_content: 0.7 -> 0.63175
-73 valid candidates left.
-[353/500] Best crop index:  9, Max overlap: 0.92, Filename: 6853050148_Large.jpg
-thresh_content: 0.7 -> 0.7
-78 valid candidates left.
-[226/500] Best crop index:  6, Max overlap: 0.84, Filename: 387168001_Large.jpg
-thresh_content: 0.7 -> 0.665
-54 valid candidates left.
-[478/500] Best crop index:  1, Max overlap: 0.79, Filename: 91762968_Large.jpg
-thresh_content: 0.7 -> 0.63175
-63 valid candidates left.
-[102/500] Best crop index:  7, Max overlap: 0.85, Filename: 1488380947_Large.jpg
-thresh_content: 0.7 -> 0.665
-122 valid candidates left.
-[354/500] Best crop index:  9, Max overlap: 0.81, Filename: 6853058902_Large.jpg
-thresh_content: 0.7 -> 0.665
-63 valid candidates left.
-[227/500] Best crop index:  0, Max overlap: 0.94, Filename: 395373405_Large.jpg
-thresh_content: 0.7 -> 0.63175
-71 valid candidates left.
-[355/500] Best crop index:  5, Max overlap: 0.91, Filename: 6853107882_Large.jpg
-thresh_content: 0.7 -> 0.63175
-71 valid candidates left.
-[479/500] Best crop index:  3, Max overlap: 0.87, Filename: 917643980_Large.jpg
-thresh_content: 0.7 -> 0.63175
-86 valid candidates left.
-[103/500] Best crop index:  5, Max overlap: 0.89, Filename: 149689515_Large.jpg
-thresh_content: 0.7 -> 0.63175
-55 valid candidates left.
-[228/500] Best crop index:  1, Max overlap: 0.92, Filename: 3970931_Large.jpg
-thresh_content: 0.7 -> 0.63175
-62 valid candidates left.
-[356/500] Best crop index:  9, Max overlap: 0.62, Filename: 6853135814_Large.jpg
-thresh_content: 0.7 -> 0.665
-63 valid candidates left.
-[104/500] Best crop index:  4, Max overlap: 0.84, Filename: 1497843040_Large.jpg
-thresh_content: 0.7 -> 0.63175
-61 valid candidates left.
-[480/500] Best crop index:  6, Max overlap: 0.90, Filename: 919442457_Large.jpg
-thresh_content: 0.7 -> 0.600162
-58 valid candidates left.
-[229/500] Best crop index:  3, Max overlap: 0.87, Filename: 39908277_Large.jpg
-thresh_content: 0.7 -> 0.63175
-79 valid candidates left.
-[357/500] Best crop index:  0, Max overlap: 0.90, Filename: 6853136446_Large.jpg
-thresh_content: 0.7 -> 0.665
-52 valid candidates left.
-[230/500] Best crop index:  2, Max overlap: 0.94, Filename: 401331354_Large.jpg
-thresh_content: 0.7 -> 0.63175
-76 valid candidates left.
-[481/500] Best crop index:  4, Max overlap: 0.94, Filename: 92721947_Large.jpg
-thresh_content: 0.7 -> 0.665
-54 valid candidates left.
-[358/500] Best crop index:  1, Max overlap: 0.87, Filename: 6853156632_Large.jpg
-thresh_content: 0.7 -> 0.600162
-76 valid candidates left.
-[105/500] Best crop index:  9, Max overlap: 0.83, Filename: 1500796205_Large.jpg
-thresh_content: 0.7 -> 0.63175
-62 valid candidates left.
-[359/500] Best crop index:  1, Max overlap: 0.93, Filename: 6853159252_Large.jpg
-thresh_content: 0.7 -> 0.63175
-65 valid candidates left.
-[231/500] Best crop index:  5, Max overlap: 0.85, Filename: 402301070_Large.jpg
-thresh_content: 0.7 -> 0.600162
-57 valid candidates left.
-[482/500] Best crop index:  7, Max overlap: 0.85, Filename: 931179600_Large.jpg
-thresh_content: 0.7 -> 0.665
-99 valid candidates left.
-[232/500] Best crop index:  1, Max overlap: 0.85, Filename: 405279699_Large.jpg
-thresh_content: 0.7 -> 0.600162
-69 valid candidates left.
-[106/500] Best crop index:  6, Max overlap: 0.74, Filename: 1513471664_Large.jpg
-thresh_content: 0.7 -> 0.7
-55 valid candidates left.
-[233/500] Best crop index:  2, Max overlap: 0.80, Filename: 406813066_Large.jpg
-thresh_content: 0.7 -> 0.665
-55 valid candidates left.
-[483/500] Best crop index:  3, Max overlap: 0.89, Filename: 93300637_Large.jpg
-thresh_content: 0.7 -> 0.600162
-73 valid candidates left.
-[360/500] Best crop index:  7, Max overlap: 0.80, Filename: 6853180932_Large.jpg
-thresh_content: 0.7 -> 0.665
-56 valid candidates left.
-[107/500] Best crop index:  5, Max overlap: 0.91, Filename: 1514752652_Large.jpg
-thresh_content: 0.7 -> 0.7
-296 valid candidates left.
-[361/500] Best crop index:  6, Max overlap: 0.89, Filename: 6853227274_Large.jpg
-thresh_content: 0.7 -> 0.665
-86 valid candidates left.
-[234/500] Best crop index:  5, Max overlap: 0.87, Filename: 41224665_Large.jpg
-thresh_content: 0.7 -> 0.665
-59 valid candidates left.
-[484/500] Best crop index:  5, Max overlap: 0.82, Filename: 937283984_Large.jpg
-thresh_content: 0.7 -> 0.7
-64 valid candidates left.
-[485/500] Best crop index:  5, Max overlap: 0.88, Filename: 939986858_Large.jpg
-thresh_content: 0.7 -> 0.63175
-92 valid candidates left.
-[108/500] Best crop index:  0, Max overlap: 0.94, Filename: 1518253730_Large.jpg
-thresh_content: 0.7 -> 0.63175
-67 valid candidates left.
-[235/500] Best crop index:  3, Max overlap: 0.81, Filename: 412624055_Large.jpg
-thresh_content: 0.7 -> 0.600162
-70 valid candidates left.
-[362/500] Best crop index:  0, Max overlap: 0.94, Filename: 6853228582_Large.jpg
-thresh_content: 0.7 -> 0.63175
-56 valid candidates left.
-[486/500] Best crop index:  3, Max overlap: 0.92, Filename: 941622718_Large.jpg
-thresh_content: 0.7 -> 0.665
-62 valid candidates left.
-[109/500] Best crop index:  7, Max overlap: 0.84, Filename: 1520738528_Large.jpg
-thresh_content: 0.7 -> 0.665
-66 valid candidates left.
-[363/500] Best crop index:  8, Max overlap: 0.85, Filename: 6853240718_Large.jpg
-thresh_content: 0.7 -> 0.63175
-83 valid candidates left.
-[236/500] Best crop index:  6, Max overlap: 0.84, Filename: 413233235_Large.jpg
-thresh_content: 0.7 -> 0.665
-89 valid candidates left.
-[364/500] Best crop index:  1, Max overlap: 0.84, Filename: 6853241848_Large.jpg
-thresh_content: 0.7 -> 0.665
-58 valid candidates left.
-[110/500] Best crop index:  2, Max overlap: 0.90, Filename: 1523881600_Large.jpg
-thresh_content: 0.7 -> 0.63175
-74 valid candidates left.
-[487/500] Best crop index:  3, Max overlap: 0.79, Filename: 944545105_Large.jpg
-thresh_content: 0.7 -> 0.665
-60 valid candidates left.
-[365/500] Best crop index:  7, Max overlap: 0.82, Filename: 6853243376_Large.jpg
-thresh_content: 0.7 -> 0.63175
-91 valid candidates left.
-[237/500] Best crop index:  4, Max overlap: 0.89, Filename: 41506835_Large.jpg
-thresh_content: 0.7 -> 0.665
+[250/500] Best crop index:  2, Max overlap: 0.89, Filename: 465190454_Large.jpg
+thresh_content: 0.7 -> 0.67228
 90 valid candidates left.
-[488/500] Best crop index:  0, Max overlap: 0.89, Filename: 948981768_Large.jpg
-thresh_content: 0.7 -> 0.63175
-80 valid candidates left.
-[111/500] Best crop index:  4, Max overlap: 0.94, Filename: 1539585398_Large.jpg
-thresh_content: 0.7 -> 0.63175
-59 valid candidates left.
-[366/500] Best crop index:  9, Max overlap: 0.83, Filename: 6853244476_Large.jpg
-thresh_content: 0.7 -> 0.665
-126 valid candidates left.
-[112/500] Best crop index:  7, Max overlap: 0.88, Filename: 1547115564_Large.jpg
-thresh_content: 0.7 -> 0.63175
-58 valid candidates left.
-[489/500] Best crop index:  5, Max overlap: 0.90, Filename: 95343110_Large.jpg
-thresh_content: 0.7 -> 0.63175
-73 valid candidates left.
-[238/500] Best crop index:  7, Max overlap: 0.85, Filename: 415821983_Large.jpg
-thresh_content: 0.7 -> 0.63175
-75 valid candidates left.
-[367/500] Best crop index:  4, Max overlap: 0.95, Filename: 6853245664_Large.jpg
-thresh_content: 0.7 -> 0.665
-52 valid candidates left.
-[490/500] Best crop index:  7, Max overlap: 0.91, Filename: 95700975_Large.jpg
-thresh_content: 0.7 -> 0.665
-63 valid candidates left.
-[239/500] Best crop index:  5, Max overlap: 0.91, Filename: 420319741_Large.jpg
-thresh_content: 0.7 -> 0.7
-101 valid candidates left.
-[240/500] Best crop index:  5, Max overlap: 0.83, Filename: 42242031_Large.jpg
-thresh_content: 0.7 -> 0.600162
-64 valid candidates left.
-[113/500] Best crop index:  2, Max overlap: 0.87, Filename: 1549096915_Large.jpg
-thresh_content: 0.7 -> 0.665
-52 valid candidates left.
-[368/500] Best crop index:  9, Max overlap: 0.85, Filename: 6853247682_Large.jpg
-thresh_content: 0.7 -> 0.665
-95 valid candidates left.
-[241/500] Best crop index:  3, Max overlap: 0.80, Filename: 426037078_Large.jpg
-thresh_content: 0.7 -> 0.63175
-56 valid candidates left.
-[491/500] Best crop index:  5, Max overlap: 0.80, Filename: 96843175_Large.jpg
-thresh_content: 0.7 -> 0.665
-89 valid candidates left.
-[369/500] Best crop index:  9, Max overlap: 0.90, Filename: 6853249182_Large.jpg
-thresh_content: 0.7 -> 0.7
-54 valid candidates left.
-[492/500] Best crop index:  1, Max overlap: 0.84, Filename: 969763145_Large.jpg
-thresh_content: 0.7 -> 0.665
-98 valid candidates left.
-[114/500] Best crop index:  8, Max overlap: 0.88, Filename: 15659590_Large.jpg
-thresh_content: 0.7 -> 0.665
-55 valid candidates left.
-[370/500] Best crop index:  1, Max overlap: 0.88, Filename: 6853250610_Large.jpg
-thresh_content: 0.7 -> 0.665
-72 valid candidates left.
-[493/500] Best crop index:  8, Max overlap: 0.84, Filename: 977761334_Large.jpg
-thresh_content: 0.7 -> 0.665
-55 valid candidates left.
-[115/500] Best crop index:  9, Max overlap: 0.91, Filename: 1576892897_Large.jpg
-thresh_content: 0.7 -> 0.600162
-65 valid candidates left.
-[242/500] Best crop index:  4, Max overlap: 0.86, Filename: 42610711_Large.jpg
-thresh_content: 0.7 -> 0.665
-77 valid candidates left.
-[371/500] Best crop index:  0, Max overlap: 0.89, Filename: 6853254030_Large.jpg
-thresh_content: 0.7 -> 0.665
-74 valid candidates left.
-[116/500] Best crop index:  1, Max overlap: 0.88, Filename: 1588688990_Large.jpg
-thresh_content: 0.7 -> 0.63175
-69 valid candidates left.
-[494/500] Best crop index:  1, Max overlap: 0.91, Filename: 990740513_Large.jpg
-thresh_content: 0.7 -> 0.63175
-96 valid candidates left.
-[372/500] Best crop index:  4, Max overlap: 0.91, Filename: 6853255188_Large.jpg
-thresh_content: 0.7 -> 0.665
-70 valid candidates left.
-[117/500] Best crop index:  7, Max overlap: 0.76, Filename: 1596036406_Large.jpg
-thresh_content: 0.7 -> 0.7
-65 valid candidates left.
-[373/500] Best crop index:  6, Max overlap: 0.87, Filename: 6853259362_Large.jpg
-thresh_content: 0.7 -> 0.600162
-74 valid candidates left.
-[243/500] Best crop index:  9, Max overlap: 0.89, Filename: 428858104_Large.jpg
-thresh_content: 0.7 -> 0.7
-100 valid candidates left.
-[118/500] Best crop index:  9, Max overlap: 0.88, Filename: 1616906106_Large.jpg
-thresh_content: 0.7 -> 0.7
-76 valid candidates left.
-[374/500] Best crop index:  5, Max overlap: 0.73, Filename: 6853260532_Large.jpg
-thresh_content: 0.7 -> 0.63175
-83 valid candidates left.
-[244/500] Best crop index:  1, Max overlap: 0.91, Filename: 430762358_Large.jpg
-thresh_content: 0.7 -> 0.600162
-66 valid candidates left.
-[495/500] Best crop index:  6, Max overlap: 0.86, Filename: 997626761_Large.jpg
-thresh_content: 0.7 -> 0.7
-104 valid candidates left.
-[245/500] Best crop index:  9, Max overlap: 0.92, Filename: 4451103452_Large.jpg
-thresh_content: 0.7 -> 0.665
-83 valid candidates left.
-[119/500] Best crop index:  8, Max overlap: 0.86, Filename: 16214490_Large.jpg
-thresh_content: 0.7 -> 0.63175
-64 valid candidates left.
-[246/500] Best crop index:  7, Max overlap: 0.92, Filename: 445438416_Large.jpg
-thresh_content: 0.7 -> 0.665
-68 valid candidates left.
-[120/500] Best crop index:  7, Max overlap: 0.86, Filename: 1624182962_Large.jpg
-thresh_content: 0.7 -> 0.665
-62 valid candidates left.
-[496/500] Best crop index:  1, Max overlap: 0.87, Filename: IMG_0350.jpg
-thresh_content: 0.7 -> 0.665
-106 valid candidates left.
-[121/500] Best crop index:  0, Max overlap: 0.90, Filename: 163571998_Large.jpg
-thresh_content: 0.7 -> 0.63175
+[376/500] Best crop index:  6, Max overlap: 0.91, Filename: 6853264676_Large.jpg
+thresh_content: 0.7 -> 0.645658
 94 valid candidates left.
-[247/500] Best crop index:  7, Max overlap: 0.79, Filename: 453655331_Large.jpg
-thresh_content: 0.7 -> 0.665
-80 valid candidates left.
-[122/500] Best crop index:  6, Max overlap: 0.73, Filename: 1644908364_Large.jpg
-thresh_content: 0.7 -> 0.63175
-63 valid candidates left.
-[497/500] Best crop index:  2, Max overlap: 0.90, Filename: IMG_0965.jpg
-thresh_content: 0.7 -> 0.665
-55 valid candidates left.
-[248/500] Best crop index:  3, Max overlap: 0.93, Filename: 459646150_Large.jpg
-thresh_content: 0.7 -> 0.665
-68 valid candidates left.
-[123/500] Best crop index:  3, Max overlap: 0.83, Filename: 1670542006_Large.jpg
+[  1/500] Best crop index:  3, Max overlap: 0.88, Filename: 1011366896_Large.jpg
+thresh_content: 0.7 -> 0.607688
+98 valid candidates left.
+[127/500] Best crop index:  0, Max overlap: 0.80, Filename: 1702222221_Large.jpg
+thresh_content: 0.7 -> 0.62009
+92 valid candidates left.
+[251/500] Best crop index:  4, Max overlap: 0.87, Filename: 46694933_Large.jpg
+thresh_content: 0.7 -> 0.632745
+110 valid candidates left.
+[  2/500] Best crop index:  7, Max overlap: 0.85, Filename: 101685710_Large.jpg
+thresh_content: 0.7 -> 0.607688
+97 valid candidates left.
+[377/500] Best crop index:  8, Max overlap: 0.95, Filename: 6853265432_Large.jpg
+thresh_content: 0.7 -> 0.62009
+95 valid candidates left.
+[128/500] Best crop index:  5, Max overlap: 0.96, Filename: 1738339101_Large.jpg
+thresh_content: 0.7 -> 0.62009
+84 valid candidates left.
+[252/500] Best crop index:  9, Max overlap: 0.83, Filename: 470081137_Large.jpg
+thresh_content: 0.7 -> 0.67228
+117 valid candidates left.
+[  3/500] Best crop index:  2, Max overlap: 0.87, Filename: 1022974255_Large.jpg
+thresh_content: 0.7 -> 0.658834
+107 valid candidates left.
+[129/500] Best crop index:  2, Max overlap: 0.91, Filename: 1740154095_Large.jpg
+thresh_content: 0.7 -> 0.67228
+87 valid candidates left.
+[253/500] Best crop index:  8, Max overlap: 0.90, Filename: 471194853_Large.jpg
+thresh_content: 0.7 -> 0.67228
+91 valid candidates left.
+[  4/500] Best crop index:  2, Max overlap: 0.90, Filename: 1029965466_Large.jpg
+thresh_content: 0.7 -> 0.595534
+82 valid candidates left.
+[378/500] Best crop index:  6, Max overlap: 0.91, Filename: 6853270940_Large.jpg
+thresh_content: 0.7 -> 0.686
+87 valid candidates left.
+[  5/500] Best crop index:  9, Max overlap: 0.90, Filename: 1033058219_Large.jpg
+thresh_content: 0.7 -> 0.645658
+90 valid candidates left.
+[130/500] Best crop index:  3, Max overlap: 0.88, Filename: 174430493_Large.jpg
+thresh_content: 0.7 -> 0.658834
+87 valid candidates left.
+[379/500] Best crop index:  8, Max overlap: 0.88, Filename: 6853276082_Large.jpg
+thresh_content: 0.7 -> 0.632745
+95 valid candidates left.
+[254/500] Best crop index:  5, Max overlap: 0.92, Filename: 471368930_Large.jpg
+thresh_content: 0.7 -> 0.686
+96 valid candidates left.
+[131/500] Best crop index:  2, Max overlap: 0.82, Filename: 174643444_Large.jpg
+thresh_content: 0.7 -> 0.658834
+84 valid candidates left.
+[  6/500] Best crop index:  3, Max overlap: 0.94, Filename: 1041468152_Large.jpg
+thresh_content: 0.7 -> 0.645658
+83 valid candidates left.
+[380/500] Best crop index:  0, Max overlap: 0.88, Filename: 6853278840_Large.jpg
+thresh_content: 0.7 -> 0.632745
+90 valid candidates left.
+[132/500] Best crop index:  6, Max overlap: 0.85, Filename: 176598487_Large.jpg
+thresh_content: 0.7 -> 0.67228
+92 valid candidates left.
+[381/500] Best crop index:  0, Max overlap: 0.77, Filename: 6853308990_Large.jpg
+thresh_content: 0.7 -> 0.62009
+94 valid candidates left.
+[255/500] Best crop index:  3, Max overlap: 0.87, Filename: 472513603_Large.jpg
+thresh_content: 0.7 -> 0.607688
+94 valid candidates left.
+[  7/500] Best crop index:  9, Max overlap: 0.88, Filename: 104227458_Large.jpg
+thresh_content: 0.7 -> 0.67228
+108 valid candidates left.
+[382/500] Best crop index:  4, Max overlap: 0.91, Filename: 6853348602_Large.jpg
+thresh_content: 0.7 -> 0.62009
+103 valid candidates left.
+[133/500] Best crop index:  3, Max overlap: 0.93, Filename: 177045374_Large.jpg
+thresh_content: 0.7 -> 0.632745
+84 valid candidates left.
+[256/500] Best crop index:  9, Max overlap: 0.89, Filename: 472916905_Large.jpg
+thresh_content: 0.7 -> 0.632745
+81 valid candidates left.
+[383/500] Best crop index:  1, Max overlap: 0.94, Filename: 6853351442_Large.jpg
+thresh_content: 0.7 -> 0.658834
+102 valid candidates left.
+[134/500] Best crop index:  5, Max overlap: 0.76, Filename: 178668420_Large.jpg
+thresh_content: 0.7 -> 0.62009
+91 valid candidates left.
+[  8/500] Best crop index:  1, Max overlap: 0.93, Filename: 1042370906_Large.jpg
+thresh_content: 0.7 -> 0.645658
+83 valid candidates left.
+[384/500] Best crop index:  8, Max overlap: 0.86, Filename: 6853412628_Large.jpg
+thresh_content: 0.7 -> 0.632745
+92 valid candidates left.
+[  9/500] Best crop index:  3, Max overlap: 0.89, Filename: 1042532514_Large.jpg
+thresh_content: 0.7 -> 0.632745
+82 valid candidates left.
+[135/500] Best crop index:  7, Max overlap: 0.81, Filename: 180477464_Large.jpg
+thresh_content: 0.7 -> 0.607688
+99 valid candidates left.
+[257/500] Best crop index:  6, Max overlap: 0.89, Filename: 474242923_Large.jpg
+thresh_content: 0.7 -> 0.583623
+84 valid candidates left.
+[385/500] Best crop index:  9, Max overlap: 0.67, Filename: 6853418034_Large.jpg
+thresh_content: 0.7 -> 0.645658
+87 valid candidates left.
+[136/500] Best crop index:  5, Max overlap: 0.90, Filename: 1818097578_Large.jpg
+thresh_content: 0.7 -> 0.658834
+95 valid candidates left.
+[258/500] Best crop index:  5, Max overlap: 0.89, Filename: 47558869_Large.jpg
+thresh_content: 0.7 -> 0.67228
+117 valid candidates left.
+[386/500] Best crop index:  0, Max overlap: 0.84, Filename: 6853433974_Large.jpg
+thresh_content: 0.7 -> 0.607688
+91 valid candidates left.
+[ 10/500] Best crop index:  3, Max overlap: 0.94, Filename: 1046856548_Large.jpg
+thresh_content: 0.7 -> 0.645658
+82 valid candidates left.
+[259/500] Best crop index:  7, Max overlap: 0.84, Filename: 476081892_Large.jpg
+thresh_content: 0.7 -> 0.632745
+95 valid candidates left.
+[137/500] Best crop index:  0, Max overlap: 0.91, Filename: 1845766133_Large.jpg
 thresh_content: 0.7 -> 0.7
-179 valid candidates left.
-[498/500] Best crop index:  6, Max overlap: 0.83, Filename: IMG_2358.jpg
-thresh_content: 0.7 -> 0.665
-52 valid candidates left.
-[249/500] Best crop index:  9, Max overlap: 0.87, Filename: 46152273_Large.jpg
-thresh_content: 0.7 -> 0.665
-59 valid candidates left.
-[499/500] Best crop index:  0, Max overlap: 0.86, Filename: IMG_6266.jpg
-thresh_content: 0.7 -> 0.600162
-74 valid candidates left.
-[124/500] Best crop index:  8, Max overlap: 0.84, Filename: 1673916467_Large.jpg
+217 valid candidates left.
+[138/500] Best crop index:  1, Max overlap: 0.89, Filename: 185015097_Large.jpg
+thresh_content: 0.7 -> 0.62009
+95 valid candidates left.
+[387/500] Best crop index:  8, Max overlap: 0.84, Filename: 6853478100_Large.jpg
+thresh_content: 0.7 -> 0.645658
+112 valid candidates left.
+[ 11/500] Best crop index:  7, Max overlap: 0.90, Filename: 104726217_Large.jpg
+thresh_content: 0.7 -> 0.67228
+123 valid candidates left.
+[139/500] Best crop index:  2, Max overlap: 0.89, Filename: 1901798426_Large.jpg
+thresh_content: 0.7 -> 0.632745
+92 valid candidates left.
+[260/500] Best crop index:  3, Max overlap: 0.84, Filename: 476587544_Large.jpg
+thresh_content: 0.7 -> 0.658834
+98 valid candidates left.
+[388/500] Best crop index:  0, Max overlap: 0.87, Filename: 6853519666_Large.jpg
+thresh_content: 0.7 -> 0.632745
+91 valid candidates left.
+[140/500] Best crop index:  2, Max overlap: 0.90, Filename: 190354034_Large.jpg
+thresh_content: 0.7 -> 0.658834
+93 valid candidates left.
+[261/500] Best crop index:  0, Max overlap: 0.87, Filename: 481579017_Large.jpg
+thresh_content: 0.7 -> 0.658834
+105 valid candidates left.
+[389/500] Best crop index:  0, Max overlap: 0.91, Filename: 6853519804_Large.jpg
+thresh_content: 0.7 -> 0.658834
+90 valid candidates left.
+[262/500] Best crop index:  3, Max overlap: 0.90, Filename: 487683554_Large.jpg
+thresh_content: 0.7 -> 0.62009
+88 valid candidates left.
+[141/500] Best crop index:  2, Max overlap: 0.85, Filename: 1907976389_Large.jpg
+thresh_content: 0.7 -> 0.645658
+100 valid candidates left.
+[390/500] Best crop index:  1, Max overlap: 0.87, Filename: 6854531114_Large.jpg
+thresh_content: 0.7 -> 0.686
+117 valid candidates left.
+[391/500] Best crop index:  4, Max overlap: 0.80, Filename: 6854673518_Large.jpg
+thresh_content: 0.7 -> 0.645658
+95 valid candidates left.
+[ 12/500] Best crop index:  8, Max overlap: 0.94, Filename: 104902.jpg
+thresh_content: 0.7 -> 0.62009
+89 valid candidates left.
+[263/500] Best crop index:  2, Max overlap: 0.84, Filename: 487914275_Large.jpg
+thresh_content: 0.7 -> 0.645658
+94 valid candidates left.
+[392/500] Best crop index:  6, Max overlap: 0.88, Filename: 6854848592_Large.jpg
+thresh_content: 0.7 -> 0.62009
+94 valid candidates left.
+[142/500] Best crop index:  6, Max overlap: 0.79, Filename: 1913954314_Large.jpg
+thresh_content: 0.7 -> 0.645658
+100 valid candidates left.
+[393/500] Best crop index:  5, Max overlap: 0.85, Filename: 6854851202_Large.jpg
+thresh_content: 0.7 -> 0.632745
+97 valid candidates left.
+[ 13/500] Best crop index:  3, Max overlap: 0.81, Filename: 1049828137_Large.jpg
+thresh_content: 0.7 -> 0.67228
+124 valid candidates left.
+[394/500] Best crop index:  2, Max overlap: 0.84, Filename: 6854965228_Large.jpg
+thresh_content: 0.7 -> 0.62009
+87 valid candidates left.
+[264/500] Best crop index:  0, Max overlap: 0.92, Filename: 489791189_Large.jpg
+thresh_content: 0.7 -> 0.62009
+92 valid candidates left.
+[143/500] Best crop index:  2, Max overlap: 0.89, Filename: 19153292_Large.jpg
+thresh_content: 0.7 -> 0.658834
+94 valid candidates left.
+[ 14/500] Best crop index:  3, Max overlap: 0.90, Filename: 1055982952_Large.jpg
+thresh_content: 0.7 -> 0.67228
+92 valid candidates left.
+[144/500] Best crop index:  2, Max overlap: 0.86, Filename: 1935576626_Large.jpg
+thresh_content: 0.7 -> 0.658834
+105 valid candidates left.
+[ 15/500] Best crop index:  3, Max overlap: 0.92, Filename: 108059817_Large.jpg
+thresh_content: 0.7 -> 0.607688
+93 valid candidates left.
+[395/500] Best crop index:  2, Max overlap: 0.86, Filename: 6854968570_Large.jpg
+thresh_content: 0.7 -> 0.62009
+110 valid candidates left.
+[265/500] Best crop index:  5, Max overlap: 0.91, Filename: 490466578_Large.jpg
+thresh_content: 0.7 -> 0.645658
+102 valid candidates left.
+[145/500] Best crop index:  2, Max overlap: 0.88, Filename: 196137741_Large.jpg
+thresh_content: 0.7 -> 0.658834
+82 valid candidates left.
+[396/500] Best crop index:  6, Max overlap: 0.92, Filename: 6855076356_Large.jpg
+thresh_content: 0.7 -> 0.632745
+89 valid candidates left.
+[ 16/500] Best crop index:  6, Max overlap: 0.93, Filename: 109123697_Large.jpg
+thresh_content: 0.7 -> 0.645658
+90 valid candidates left.
+[266/500] Best crop index:  6, Max overlap: 0.90, Filename: 493121719_Large.jpg
+thresh_content: 0.7 -> 0.67228
+98 valid candidates left.
+[397/500] Best crop index:  0, Max overlap: 0.85, Filename: 6855128566_Large.jpg
+thresh_content: 0.7 -> 0.632745
+100 valid candidates left.
+[146/500] Best crop index:  6, Max overlap: 0.88, Filename: 196810441_Large.jpg
+thresh_content: 0.7 -> 0.658834
+109 valid candidates left.
+[ 17/500] Best crop index:  4, Max overlap: 0.87, Filename: 1092621641_Large.jpg
+thresh_content: 0.7 -> 0.7
+82 valid candidates left.
+[398/500] Best crop index:  9, Max overlap: 0.85, Filename: 6855292276_Large.jpg
+thresh_content: 0.7 -> 0.67228
+128 valid candidates left.
+[147/500] Best crop index:  2, Max overlap: 0.88, Filename: 199136372_Large.jpg
+thresh_content: 0.7 -> 0.645658
+84 valid candidates left.
+[267/500] Best crop index:  0, Max overlap: 0.79, Filename: 493396069_Large.jpg
+thresh_content: 0.7 -> 0.645658
+94 valid candidates left.
+[399/500] Best crop index:  3, Max overlap: 0.90, Filename: 6856011808_Large.jpg
+thresh_content: 0.7 -> 0.632745
+85 valid candidates left.
+[ 18/500] Best crop index:  9, Max overlap: 0.85, Filename: 1108687475_Large.jpg
+thresh_content: 0.7 -> 0.645658
+91 valid candidates left.
+[400/500] Best crop index:  6, Max overlap: 0.88, Filename: 6856012638_Large.jpg
+thresh_content: 0.7 -> 0.607688
+91 valid candidates left.
+[148/500] Best crop index:  9, Max overlap: 0.86, Filename: 1991777502_Large.jpg
+thresh_content: 0.7 -> 0.62009
+99 valid candidates left.
+[268/500] Best crop index:  6, Max overlap: 0.92, Filename: 494971901_Large.jpg
+thresh_content: 0.7 -> 0.658834
+108 valid candidates left.
+[ 19/500] Best crop index:  8, Max overlap: 0.81, Filename: 110906639_Large.jpg
+thresh_content: 0.7 -> 0.67228
+85 valid candidates left.
+[269/500] Best crop index:  5, Max overlap: 0.82, Filename: 495125446_Large.jpg
+thresh_content: 0.7 -> 0.67228
+85 valid candidates left.
+[ 20/500] Best crop index:  3, Max overlap: 0.83, Filename: 1110241932_Large.jpg
+thresh_content: 0.7 -> 0.7
+110 valid candidates left.
+[270/500] Best crop index:  0, Max overlap: 0.94, Filename: 49574481_Large.jpg
+thresh_content: 0.7 -> 0.645658
+85 valid candidates left.
+[149/500] Best crop index:  8, Max overlap: 0.83, Filename: 1996670157_Large.jpg
+thresh_content: 0.7 -> 0.67228
+99 valid candidates left.
+[ 21/500] Best crop index:  0, Max overlap: 0.89, Filename: 1118631284_Large.jpg
+thresh_content: 0.7 -> 0.67228
+82 valid candidates left.
+[271/500] Best crop index:  3, Max overlap: 0.92, Filename: 495880319_Large.jpg
+thresh_content: 0.7 -> 0.607688
+95 valid candidates left.
+[401/500] Best crop index:  0, Max overlap: 0.94, Filename: 6856178550_Large.jpg
+thresh_content: 0.7 -> 0.645658
+89 valid candidates left.
+[150/500] Best crop index:  6, Max overlap: 0.88, Filename: 1996918152_Large.jpg
+thresh_content: 0.7 -> 0.67228
+134 valid candidates left.
+[ 22/500] Best crop index:  9, Max overlap: 0.91, Filename: 1122011350_Large.jpg
+thresh_content: 0.7 -> 0.658834
+82 valid candidates left.
+[402/500] Best crop index:  2, Max overlap: 0.93, Filename: 6856279866_Large.jpg
+thresh_content: 0.7 -> 0.645658
+97 valid candidates left.
+[272/500] Best crop index:  0, Max overlap: 0.87, Filename: 496284735_Large.jpg
+thresh_content: 0.7 -> 0.67228
+81 valid candidates left.
+[403/500] Best crop index:  4, Max overlap: 0.87, Filename: 6856320142_Large.jpg
+thresh_content: 0.7 -> 0.632745
+95 valid candidates left.
+[ 23/500] Best crop index:  4, Max overlap: 0.87, Filename: 113963846_Large.jpg
+thresh_content: 0.7 -> 0.632745
+88 valid candidates left.
+[151/500] Best crop index:  9, Max overlap: 0.82, Filename: 1999863992_Large.jpg
+thresh_content: 0.7 -> 0.658834
+104 valid candidates left.
+[273/500] Best crop index:  6, Max overlap: 0.95, Filename: 49863386_Large.jpg
+thresh_content: 0.7 -> 0.645658
+97 valid candidates left.
+[404/500] Best crop index:  2, Max overlap: 0.85, Filename: 6856363906_Large.jpg
+thresh_content: 0.7 -> 0.67228
+83 valid candidates left.
+[274/500] Best crop index:  6, Max overlap: 0.85, Filename: 501074015_Large.jpg
+thresh_content: 0.7 -> 0.632745
+111 valid candidates left.
+[ 24/500] Best crop index:  7, Max overlap: 0.80, Filename: 1145649643_Large.jpg
+thresh_content: 0.7 -> 0.62009
+84 valid candidates left.
+[152/500] Best crop index:  8, Max overlap: 0.82, Filename: 201612250_Large.jpg
+thresh_content: 0.7 -> 0.658834
+110 valid candidates left.
+[153/500] Best crop index:  6, Max overlap: 0.89, Filename: 204812207_Large.jpg
+thresh_content: 0.7 -> 0.645658
+90 valid candidates left.
+[405/500] Best crop index:  5, Max overlap: 0.85, Filename: 6856386120_Large.jpg
+thresh_content: 0.7 -> 0.645658
+105 valid candidates left.
+[275/500] Best crop index:  5, Max overlap: 0.87, Filename: 502666125_Large.jpg
+thresh_content: 0.7 -> 0.632745
+90 valid candidates left.
+[ 25/500] Best crop index:  5, Max overlap: 0.75, Filename: 1155907432_Large.jpg
+thresh_content: 0.7 -> 0.658834
+87 valid candidates left.
+[276/500] Best crop index:  5, Max overlap: 0.91, Filename: 502834405_Large.jpg
+thresh_content: 0.7 -> 0.658834
+86 valid candidates left.
+[ 26/500] Best crop index:  5, Max overlap: 0.69, Filename: 115726194_Large.jpg
+thresh_content: 0.7 -> 0.62009
+106 valid candidates left.
+[406/500] Best crop index:  0, Max overlap: 0.85, Filename: 6856386376_Large.jpg
+thresh_content: 0.7 -> 0.658834
+96 valid candidates left.
+[277/500] Best crop index:  0, Max overlap: 0.90, Filename: 504325680_Large.jpg
+thresh_content: 0.7 -> 0.571951
+82 valid candidates left.
+[154/500] Best crop index:  9, Max overlap: 0.87, Filename: 205274196_Large.jpg
+thresh_content: 0.7 -> 0.645658
+96 valid candidates left.
+[407/500] Best crop index:  1, Max overlap: 0.83, Filename: 6856436246_Large.jpg
+thresh_content: 0.7 -> 0.62009
+85 valid candidates left.
+[ 27/500] Best crop index:  4, Max overlap: 0.89, Filename: 1158647496_Large.jpg
+thresh_content: 0.7 -> 0.645658
+92 valid candidates left.
+[278/500] Best crop index:  9, Max overlap: 0.77, Filename: 504378522_Large.jpg
+thresh_content: 0.7 -> 0.632745
+88 valid candidates left.
+[155/500] Best crop index:  6, Max overlap: 0.67, Filename: 206067269_Large.jpg
+thresh_content: 0.7 -> 0.62009
+93 valid candidates left.
+[408/500] Best crop index:  2, Max overlap: 0.82, Filename: 6856482824_Large.jpg
+thresh_content: 0.7 -> 0.658834
+89 valid candidates left.
+[ 28/500] Best crop index:  8, Max overlap: 0.89, Filename: 116065259_Large.jpg
+thresh_content: 0.7 -> 0.62009
+85 valid candidates left.
+[279/500] Best crop index:  1, Max overlap: 0.88, Filename: 511056550_Large.jpg
+thresh_content: 0.7 -> 0.658834
+113 valid candidates left.
+[156/500] Best crop index:  9, Max overlap: 0.91, Filename: 208195375_Large.jpg
+thresh_content: 0.7 -> 0.632745
+87 valid candidates left.
+[ 29/500] Best crop index:  4, Max overlap: 0.84, Filename: 1162200321_Large.jpg
+thresh_content: 0.7 -> 0.62009
+88 valid candidates left.
+[409/500] Best crop index:  9, Max overlap: 0.78, Filename: 6856486214_Large.jpg
+thresh_content: 0.7 -> 0.658834
+119 valid candidates left.
+[280/500] Best crop index:  5, Max overlap: 0.91, Filename: 511363734_Large.jpg
+thresh_content: 0.7 -> 0.7
+190 valid candidates left.
+[ 30/500] Best crop index:  8, Max overlap: 0.80, Filename: 116848678_Large.jpg
+thresh_content: 0.7 -> 0.645658
+106 valid candidates left.
+[157/500] Best crop index:  4, Max overlap: 0.95, Filename: 210132510_Large.jpg
+thresh_content: 0.7 -> 0.67228
+88 valid candidates left.
+[410/500] Best crop index:  9, Max overlap: 0.86, Filename: 6856486838_Large.jpg
+thresh_content: 0.7 -> 0.686
+85 valid candidates left.
+[158/500] Best crop index:  3, Max overlap: 0.83, Filename: 211207362_Large.jpg
+thresh_content: 0.7 -> 0.645658
+105 valid candidates left.
+[ 31/500] Best crop index:  7, Max overlap: 0.88, Filename: 117335388_Large.jpg
+thresh_content: 0.7 -> 0.607688
+99 valid candidates left.
+[281/500] Best crop index:  5, Max overlap: 0.83, Filename: 511857260_Large.jpg
+thresh_content: 0.7 -> 0.645658
+97 valid candidates left.
+[411/500] Best crop index:  7, Max overlap: 0.84, Filename: 6856487480_Large.jpg
+thresh_content: 0.7 -> 0.7
+85 valid candidates left.
+[412/500] Best crop index:  1, Max overlap: 0.88, Filename: 6857081990_Large.jpg
+thresh_content: 0.7 -> 0.632745
+102 valid candidates left.
+[159/500] Best crop index:  2, Max overlap: 0.89, Filename: 214657170_Large.jpg
+thresh_content: 0.7 -> 0.686
+93 valid candidates left.
+[282/500] Best crop index:  3, Max overlap: 0.82, Filename: 512146282_Large.jpg
+thresh_content: 0.7 -> 0.632745
+95 valid candidates left.
+[ 32/500] Best crop index:  3, Max overlap: 0.91, Filename: 1173995169_Large.jpg
+thresh_content: 0.7 -> 0.67228
+90 valid candidates left.
+[413/500] Best crop index:  5, Max overlap: 0.80, Filename: 6857138918_Large.jpg
+thresh_content: 0.7 -> 0.62009
+109 valid candidates left.
+[283/500] Best crop index:  4, Max overlap: 0.90, Filename: 514279748_Large.jpg
+thresh_content: 0.7 -> 0.645658
+96 valid candidates left.
+[ 33/500] Best crop index:  7, Max overlap: 0.83, Filename: 1175740307_Large.jpg
+thresh_content: 0.7 -> 0.595534
+98 valid candidates left.
+[160/500] Best crop index:  6, Max overlap: 0.82, Filename: 214768981_Large.jpg
+thresh_content: 0.7 -> 0.632745
+87 valid candidates left.
+[414/500] Best crop index:  1, Max overlap: 0.89, Filename: 68757110_Large.jpg
+thresh_content: 0.7 -> 0.686
+90 valid candidates left.
+[284/500] Best crop index:  9, Max overlap: 0.86, Filename: 515510054_Large.jpg
+thresh_content: 0.7 -> 0.67228
+101 valid candidates left.
+[285/500] Best crop index:  7, Max overlap: 0.85, Filename: 518045753_Large.jpg
+thresh_content: 0.7 -> 0.645658
+106 valid candidates left.
+[ 34/500] Best crop index:  9, Max overlap: 0.95, Filename: 1183481110_Large.jpg
+thresh_content: 0.7 -> 0.62009
+96 valid candidates left.
+[415/500] Best crop index:  4, Max overlap: 0.86, Filename: 690218983_Large.jpg
+thresh_content: 0.7 -> 0.62009
+112 valid candidates left.
+[161/500] Best crop index:  7, Max overlap: 0.86, Filename: 214774269_Large.jpg
+thresh_content: 0.7 -> 0.67228
+99 valid candidates left.
+[ 35/500] Best crop index:  4, Max overlap: 0.85, Filename: 1183779253_Large.jpg
+thresh_content: 0.7 -> 0.632745
+96 valid candidates left.
+[286/500] Best crop index:  4, Max overlap: 0.87, Filename: 519975403_Large.jpg
+thresh_content: 0.7 -> 0.645658
+98 valid candidates left.
+[416/500] Best crop index:  1, Max overlap: 0.77, Filename: 693687448_Large.jpg
+thresh_content: 0.7 -> 0.686
+121 valid candidates left.
+[417/500] Best crop index:  1, Max overlap: 0.81, Filename: 69576246_Large.jpg
+thresh_content: 0.7 -> 0.686
+94 valid candidates left.
+[287/500] Best crop index:  2, Max overlap: 0.81, Filename: 520651056_Large.jpg
+thresh_content: 0.7 -> 0.67228
+114 valid candidates left.
+[418/500] Best crop index:  6, Max overlap: 0.89, Filename: 6995780983_Large.jpg
+thresh_content: 0.7 -> 0.62009
+94 valid candidates left.
+[162/500] Best crop index:  0, Max overlap: 0.86, Filename: 217683137_Large.jpg
+thresh_content: 0.7 -> 0.607688
+88 valid candidates left.
+[ 36/500] Best crop index:  3, Max overlap: 0.80, Filename: 118697470_Large.jpg
+thresh_content: 0.7 -> 0.658834
+98 valid candidates left.
+[288/500] Best crop index:  3, Max overlap: 0.94, Filename: 520706614_Large.jpg
+thresh_content: 0.7 -> 0.658834
+103 valid candidates left.
+[419/500] Best crop index:  3, Max overlap: 0.86, Filename: 7000751391_Large.jpg
+thresh_content: 0.7 -> 0.658834
+83 valid candidates left.
+[ 37/500] Best crop index:  1, Max overlap: 0.62, Filename: 119260988_Large.jpg
+thresh_content: 0.7 -> 0.67228
+81 valid candidates left.
+[ 38/500] Best crop index:  4, Max overlap: 0.89, Filename: 1192872104_Large.jpg
+thresh_content: 0.7 -> 0.632745
+89 valid candidates left.
+[289/500] Best crop index:  4, Max overlap: 0.71, Filename: 521629546_Large.jpg
+thresh_content: 0.7 -> 0.595534
+95 valid candidates left.
+[163/500] Best crop index:  7, Max overlap: 0.90, Filename: 219460039_Large.jpg
+thresh_content: 0.7 -> 0.607688
+97 valid candidates left.
+[420/500] Best crop index:  7, Max overlap: 0.93, Filename: 7001038129_Large.jpg
+thresh_content: 0.7 -> 0.658834
+88 valid candidates left.
+[164/500] Best crop index:  3, Max overlap: 0.96, Filename: 225678198_Large.jpg
+thresh_content: 0.7 -> 0.607688
+92 valid candidates left.
+[ 39/500] Best crop index:  3, Max overlap: 0.88, Filename: 119442448_Large.jpg
+thresh_content: 0.7 -> 0.67228
+94 valid candidates left.
+[165/500] Best crop index:  9, Max overlap: 0.84, Filename: 226854451_Large.jpg
+thresh_content: 0.7 -> 0.645658
+95 valid candidates left.
+[421/500] Best crop index:  9, Max overlap: 0.91, Filename: 7001611717_Large.jpg
+thresh_content: 0.7 -> 0.583623
+93 valid candidates left.
+[290/500] Best crop index:  9, Max overlap: 0.87, Filename: 521655532_Large.jpg
+thresh_content: 0.7 -> 0.658834
+91 valid candidates left.
+[422/500] Best crop index:  6, Max overlap: 0.66, Filename: 7001730083_Large.jpg
+thresh_content: 0.7 -> 0.595534
+102 valid candidates left.
+[ 40/500] Best crop index:  3, Max overlap: 0.92, Filename: 1232707579_Large.jpg
+thresh_content: 0.7 -> 0.607688
+94 valid candidates left.
+[166/500] Best crop index:  4, Max overlap: 0.95, Filename: 226891448_Large.jpg
+thresh_content: 0.7 -> 0.67228
+89 valid candidates left.
+[ 41/500] Best crop index:  1, Max overlap: 0.85, Filename: 1238479583_Large.jpg
+thresh_content: 0.7 -> 0.658834
+96 valid candidates left.
+[423/500] Best crop index:  6, Max overlap: 0.63, Filename: 7002099973_Large.jpg
+thresh_content: 0.7 -> 0.67228
+93 valid candidates left.
+[167/500] Best crop index:  7, Max overlap: 0.92, Filename: 229122444_Large.jpg
+thresh_content: 0.7 -> 0.607688
+88 valid candidates left.
+[291/500] Best crop index:  2, Max overlap: 0.94, Filename: 523381314_Large.jpg
+thresh_content: 0.7 -> 0.658834
+88 valid candidates left.
+[424/500] Best crop index:  2, Max overlap: 0.82, Filename: 7002101111_Large.jpg
+thresh_content: 0.7 -> 0.686
+142 valid candidates left.
+[168/500] Best crop index:  7, Max overlap: 0.92, Filename: 22991092_Large.jpg
+thresh_content: 0.7 -> 0.645658
+96 valid candidates left.
+[ 42/500] Best crop index:  7, Max overlap: 0.87, Filename: 1248455494_Large.jpg
+thresh_content: 0.7 -> 0.658834
+82 valid candidates left.
+[425/500] Best crop index:  7, Max overlap: 0.94, Filename: 7002304163_Large.jpg
+thresh_content: 0.7 -> 0.658834
+104 valid candidates left.
+[292/500] Best crop index:  9, Max overlap: 0.84, Filename: 52527495_Large.jpg
+thresh_content: 0.7 -> 0.686
+90 valid candidates left.
+[426/500] Best crop index:  8, Max overlap: 0.87, Filename: 7002304727_Large.jpg
+thresh_content: 0.7 -> 0.632745
+93 valid candidates left.
+[ 43/500] Best crop index:  6, Max overlap: 0.93, Filename: 1250903740_Large.jpg
+thresh_content: 0.7 -> 0.67228
+111 valid candidates left.
+[293/500] Best crop index:  0, Max overlap: 0.91, Filename: 526638047_Large.jpg
+thresh_content: 0.7 -> 0.607688
+97 valid candidates left.
+[169/500] Best crop index:  2, Max overlap: 0.90, Filename: 232393377_Large.jpg
+thresh_content: 0.7 -> 0.686
+128 valid candidates left.
+[427/500] Best crop index:  6, Max overlap: 0.89, Filename: 7002562155_Large.jpg
+thresh_content: 0.7 -> 0.67228
+81 valid candidates left.
+[ 44/500] Best crop index:  4, Max overlap: 0.89, Filename: 1255809126_Large.jpg
+thresh_content: 0.7 -> 0.67228
+102 valid candidates left.
+[294/500] Best crop index:  1, Max overlap: 0.86, Filename: 529252466_Large.jpg
+thresh_content: 0.7 -> 0.67228
+91 valid candidates left.
+[ 45/500] Best crop index:  9, Max overlap: 0.82, Filename: 1256880283_Large.jpg
+thresh_content: 0.7 -> 0.645658
+86 valid candidates left.
+[428/500] Best crop index:  9, Max overlap: 0.80, Filename: 7002597307_Large.jpg
+thresh_content: 0.7 -> 0.645658
+81 valid candidates left.
+[170/500] Best crop index:  6, Max overlap: 0.91, Filename: 234790932_Large.jpg
+thresh_content: 0.7 -> 0.67228
+103 valid candidates left.
+[295/500] Best crop index:  6, Max overlap: 0.79, Filename: 52968615_Large.jpg
+thresh_content: 0.7 -> 0.658834
+99 valid candidates left.
+[429/500] Best crop index:  8, Max overlap: 0.82, Filename: 7003256565_Large.jpg
+thresh_content: 0.7 -> 0.658834
+96 valid candidates left.
+[171/500] Best crop index:  6, Max overlap: 0.83, Filename: 235591862_Large.jpg
+thresh_content: 0.7 -> 0.632745
+103 valid candidates left.
+[ 46/500] Best crop index:  8, Max overlap: 0.90, Filename: 1260661717_Large.jpg
+thresh_content: 0.7 -> 0.67228
+111 valid candidates left.
+[430/500] Best crop index:  7, Max overlap: 0.97, Filename: 7003508961_Large.jpg
+thresh_content: 0.7 -> 0.67228
+87 valid candidates left.
+[ 47/500] Best crop index:  5, Max overlap: 0.92, Filename: 126085096_Large.jpg
+thresh_content: 0.7 -> 0.658834
+89 valid candidates left.
+[172/500] Best crop index:  3, Max overlap: 0.89, Filename: 236441280_Large.jpg
+thresh_content: 0.7 -> 0.632745
+90 valid candidates left.
+[296/500] Best crop index:  6, Max overlap: 0.95, Filename: 531343601_Large.jpg
+thresh_content: 0.7 -> 0.658834
+96 valid candidates left.
+[ 48/500] Best crop index:  9, Max overlap: 0.91, Filename: 1263185980_Large.jpg
+thresh_content: 0.7 -> 0.67228
+99 valid candidates left.
+[297/500] Best crop index:  0, Max overlap: 0.97, Filename: 531489564_Large.jpg
+thresh_content: 0.7 -> 0.658834
+98 valid candidates left.
+[173/500] Best crop index:  1, Max overlap: 0.94, Filename: 237331953_Large.jpg
+thresh_content: 0.7 -> 0.686
+86 valid candidates left.
+[174/500] Best crop index:  8, Max overlap: 0.83, Filename: 244081284_Large.jpg
+thresh_content: 0.7 -> 0.632745
+95 valid candidates left.
+[ 49/500] Best crop index:  7, Max overlap: 0.78, Filename: 1270979145_Large.jpg
+thresh_content: 0.7 -> 0.595534
+97 valid candidates left.
+[431/500] Best crop index:  7, Max overlap: 0.94, Filename: 7003633057_Large.jpg
+thresh_content: 0.7 -> 0.658834
+89 valid candidates left.
+[432/500] Best crop index:  7, Max overlap: 0.91, Filename: 7004028601_Large.jpg
+thresh_content: 0.7 -> 0.645658
+85 valid candidates left.
+[175/500] Best crop index:  0, Max overlap: 0.91, Filename: 244904543_Large.jpg
+thresh_content: 0.7 -> 0.595534
+86 valid candidates left.
+[298/500] Best crop index:  8, Max overlap: 0.92, Filename: 532760973_Large.jpg
+thresh_content: 0.7 -> 0.62009
+82 valid candidates left.
+[ 50/500] Best crop index:  3, Max overlap: 0.88, Filename: 1276327129_Large.jpg
+thresh_content: 0.7 -> 0.658834
+116 valid candidates left.
+[433/500] Best crop index:  0, Max overlap: 0.87, Filename: 7004031595_Large.jpg
+thresh_content: 0.7 -> 0.686
+100 valid candidates left.
+[434/500] Best crop index:  3, Max overlap: 0.85, Filename: 7004033151_Large.jpg
+thresh_content: 0.7 -> 0.632745
+95 valid candidates left.
+[176/500] Best crop index:  9, Max overlap: 0.89, Filename: 24862458_Large.jpg
+thresh_content: 0.7 -> 0.583623
+87 valid candidates left.
+[299/500] Best crop index:  3, Max overlap: 0.83, Filename: 535530800_Large.jpg
+thresh_content: 0.7 -> 0.62009
+89 valid candidates left.
+[ 51/500] Best crop index:  7, Max overlap: 0.68, Filename: 127790372_Large.jpg
+thresh_content: 0.7 -> 0.645658
+105 valid candidates left.
+[435/500] Best crop index:  1, Max overlap: 0.90, Filename: 7004039717_Large.jpg
+thresh_content: 0.7 -> 0.632745
+89 valid candidates left.
+[177/500] Best crop index:  2, Max overlap: 0.73, Filename: 251229229_Large.jpg
+thresh_content: 0.7 -> 0.658834
+87 valid candidates left.
+[300/500] Best crop index:  0, Max overlap: 0.92, Filename: 537769071_Large.jpg
+thresh_content: 0.7 -> 0.645658
+86 valid candidates left.
+[ 52/500] Best crop index:  0, Max overlap: 0.83, Filename: 1296269122_Large.jpg
+thresh_content: 0.7 -> 0.645658
+86 valid candidates left.
+[436/500] Best crop index:  2, Max overlap: 0.84, Filename: 7004041683_Large.jpg
+thresh_content: 0.7 -> 0.62009
+89 valid candidates left.
+[178/500] Best crop index:  5, Max overlap: 0.89, Filename: 258502232_Large.jpg
+thresh_content: 0.7 -> 0.632745
+90 valid candidates left.
+[301/500] Best crop index:  2, Max overlap: 0.91, Filename: 53875475_Large.jpg
+thresh_content: 0.7 -> 0.632745
+91 valid candidates left.
+[ 53/500] Best crop index:  8, Max overlap: 0.87, Filename: 130057475_Large.jpg
+thresh_content: 0.7 -> 0.67228
+107 valid candidates left.
+[302/500] Best crop index:  7, Max overlap: 0.93, Filename: 542331268_Large.jpg
+thresh_content: 0.7 -> 0.632745
+95 valid candidates left.
+[179/500] Best crop index:  5, Max overlap: 0.93, Filename: 261171863_Large.jpg
+thresh_content: 0.7 -> 0.595534
+83 valid candidates left.
+[437/500] Best crop index:  7, Max overlap: 0.86, Filename: 704473751_Large.jpg
+thresh_content: 0.7 -> 0.67228
+83 valid candidates left.
+[303/500] Best crop index:  7, Max overlap: 0.81, Filename: 544225073_Large.jpg
+thresh_content: 0.7 -> 0.658834
+113 valid candidates left.
+[ 54/500] Best crop index:  4, Max overlap: 0.87, Filename: 13043341_Large.jpg
+thresh_content: 0.7 -> 0.658834
+85 valid candidates left.
+[180/500] Best crop index:  6, Max overlap: 0.87, Filename: 264687173_Large.jpg
+thresh_content: 0.7 -> 0.645658
+81 valid candidates left.
+[438/500] Best crop index:  7, Max overlap: 0.90, Filename: 706807676_Large.jpg
+thresh_content: 0.7 -> 0.645658
+105 valid candidates left.
+[ 55/500] Best crop index:  6, Max overlap: 0.95, Filename: 1305046399_Large.jpg
+thresh_content: 0.7 -> 0.645658
+83 valid candidates left.
+[304/500] Best crop index:  4, Max overlap: 0.88, Filename: 55408227_Large.jpg
+thresh_content: 0.7 -> 0.7
+113 valid candidates left.
+[ 56/500] Best crop index:  9, Max overlap: 0.87, Filename: 1308223880_Large.jpg
+thresh_content: 0.7 -> 0.645658
+91 valid candidates left.
+[439/500] Best crop index:  6, Max overlap: 0.89, Filename: 716594529_Large.jpg
+thresh_content: 0.7 -> 0.62009
+104 valid candidates left.
+[181/500] Best crop index:  8, Max overlap: 0.82, Filename: 266460830_Large.jpg
+thresh_content: 0.7 -> 0.645658
+87 valid candidates left.
+[305/500] Best crop index:  9, Max overlap: 0.84, Filename: 56008380_Large.jpg
+thresh_content: 0.7 -> 0.645658
+104 valid candidates left.
+[ 57/500] Best crop index:  4, Max overlap: 0.93, Filename: 1313111460_Large.jpg
+thresh_content: 0.7 -> 0.658834
+97 valid candidates left.
+[440/500] Best crop index:  0, Max overlap: 0.89, Filename: 721612607_Large.jpg
+thresh_content: 0.7 -> 0.67228
+112 valid candidates left.
+[ 58/500] Best crop index:  2, Max overlap: 0.95, Filename: 1315594870_Large.jpg
+thresh_content: 0.7 -> 0.645658
+81 valid candidates left.
+[306/500] Best crop index:  2, Max overlap: 0.86, Filename: 563030678_Large.jpg
+thresh_content: 0.7 -> 0.67228
+110 valid candidates left.
+[441/500] Best crop index:  9, Max overlap: 0.90, Filename: 728891636_Large.jpg
+thresh_content: 0.7 -> 0.62009
+86 valid candidates left.
+[182/500] Best crop index:  3, Max overlap: 0.91, Filename: 271439333_Large.jpg
+thresh_content: 0.7 -> 0.645658
+85 valid candidates left.
+[ 59/500] Best crop index:  1, Max overlap: 0.65, Filename: 1315613332_Large.jpg
+thresh_content: 0.7 -> 0.658834
+110 valid candidates left.
+[442/500] Best crop index:  5, Max overlap: 0.90, Filename: 730765921_Large.jpg
+thresh_content: 0.7 -> 0.658834
+89 valid candidates left.
+[183/500] Best crop index:  3, Max overlap: 0.83, Filename: 271595545_Large.jpg
+thresh_content: 0.7 -> 0.632745
+90 valid candidates left.
+[307/500] Best crop index:  7, Max overlap: 0.91, Filename: 569711177_Large.jpg
+thresh_content: 0.7 -> 0.658834
+107 valid candidates left.
+[ 60/500] Best crop index:  7, Max overlap: 0.86, Filename: 1334989245_Large.jpg
+thresh_content: 0.7 -> 0.658834
+104 valid candidates left.
+[308/500] Best crop index:  6, Max overlap: 0.95, Filename: 571793974_Large.jpg
+thresh_content: 0.7 -> 0.645658
+92 valid candidates left.
+[184/500] Best crop index:  0, Max overlap: 0.90, Filename: 274700974_Large.jpg
+thresh_content: 0.7 -> 0.607688
+84 valid candidates left.
+[443/500] Best crop index:  6, Max overlap: 0.86, Filename: 735049260_Large.jpg
+thresh_content: 0.7 -> 0.67228
+102 valid candidates left.
+[444/500] Best crop index:  2, Max overlap: 0.85, Filename: 761800507_Large.jpg
+thresh_content: 0.7 -> 0.658834
+81 valid candidates left.
+[309/500] Best crop index:  1, Max overlap: 0.82, Filename: 57813241_Large.jpg
+thresh_content: 0.7 -> 0.632745
+99 valid candidates left.
+[ 61/500] Best crop index:  8, Max overlap: 0.85, Filename: 133910968_Large.jpg
+thresh_content: 0.7 -> 0.686
+103 valid candidates left.
+[445/500] Best crop index:  3, Max overlap: 0.86, Filename: 76190740_Large.jpg
+thresh_content: 0.7 -> 0.62009
+84 valid candidates left.
+[185/500] Best crop index:  6, Max overlap: 0.93, Filename: 278242_Large.jpg
+thresh_content: 0.7 -> 0.632745
+108 valid candidates left.
+[310/500] Best crop index:  7, Max overlap: 0.86, Filename: 600728457_Large.jpg
+thresh_content: 0.7 -> 0.62009
+96 valid candidates left.
+[ 62/500] Best crop index:  2, Max overlap: 0.81, Filename: 13430895_Large.jpg
+thresh_content: 0.7 -> 0.67228
+84 valid candidates left.
+[311/500] Best crop index:  8, Max overlap: 0.83, Filename: 60132202_Large.jpg
+thresh_content: 0.7 -> 0.67228
+102 valid candidates left.
+[186/500] Best crop index:  4, Max overlap: 0.86, Filename: 278449981_Large.jpg
+thresh_content: 0.7 -> 0.595534
+89 valid candidates left.
+[446/500] Best crop index:  2, Max overlap: 0.96, Filename: 762111619_Large.jpg
+thresh_content: 0.7 -> 0.658834
+82 valid candidates left.
+[312/500] Best crop index:  2, Max overlap: 0.97, Filename: 605623074_Large.jpg
+thresh_content: 0.7 -> 0.645658
+94 valid candidates left.
+[187/500] Best crop index:  2, Max overlap: 0.87, Filename: 284648287_Large.jpg
+thresh_content: 0.7 -> 0.62009
+101 valid candidates left.
+[ 63/500] Best crop index:  9, Max overlap: 0.87, Filename: 1343768957_Large.jpg
+thresh_content: 0.7 -> 0.686
+90 valid candidates left.
+[ 64/500] Best crop index:  2, Max overlap: 0.91, Filename: 1347846010_Large.jpg
+thresh_content: 0.7 -> 0.62009
+84 valid candidates left.
+[313/500] Best crop index:  0, Max overlap: 0.92, Filename: 61014842_Large.jpg
+thresh_content: 0.7 -> 0.632745
+89 valid candidates left.
+[447/500] Best crop index:  1, Max overlap: 0.84, Filename: 767892395_Large.jpg
+thresh_content: 0.7 -> 0.645658
+90 valid candidates left.
+[188/500] Best crop index:  8, Max overlap: 0.95, Filename: 285465258_Large.jpg
+thresh_content: 0.7 -> 0.645658
+90 valid candidates left.
+[ 65/500] Best crop index:  0, Max overlap: 0.88, Filename: 1348208827_Large.jpg
+thresh_content: 0.7 -> 0.645658
+102 valid candidates left.
+[314/500] Best crop index:  7, Max overlap: 0.90, Filename: 638464819_Large.jpg
+thresh_content: 0.7 -> 0.658834
+82 valid candidates left.
+[189/500] Best crop index:  4, Max overlap: 0.83, Filename: 294716499_Large.jpg
+thresh_content: 0.7 -> 0.645658
+89 valid candidates left.
+[448/500] Best crop index:  8, Max overlap: 0.91, Filename: 768693371_Large.jpg
+thresh_content: 0.7 -> 0.645658
+112 valid candidates left.
+[ 66/500] Best crop index:  6, Max overlap: 0.91, Filename: 1349095323_Large.jpg
+thresh_content: 0.7 -> 0.658834
+119 valid candidates left.
+[449/500] Best crop index:  4, Max overlap: 0.90, Filename: 780522886_Large.jpg
+thresh_content: 0.7 -> 0.658834
+98 valid candidates left.
+[190/500] Best crop index:  1, Max overlap: 0.92, Filename: 295692974_Large.jpg
+thresh_content: 0.7 -> 0.67228
+95 valid candidates left.
+[450/500] Best crop index:  4, Max overlap: 0.90, Filename: 782310010_Large.jpg
+thresh_content: 0.7 -> 0.607688
+97 valid candidates left.
+[315/500] Best crop index:  9, Max overlap: 0.76, Filename: 642111916_Large.jpg
+thresh_content: 0.7 -> 0.686
+167 valid candidates left.
+[451/500] Best crop index:  2, Max overlap: 0.84, Filename: 788697303_Large.jpg
+thresh_content: 0.7 -> 0.607688
+87 valid candidates left.
+[ 67/500] Best crop index:  6, Max overlap: 0.83, Filename: 1350255501_Large.jpg
+thresh_content: 0.7 -> 0.632745
+105 valid candidates left.
+[191/500] Best crop index:  0, Max overlap: 0.90, Filename: 296064548_Large.jpg
+thresh_content: 0.7 -> 0.658834
+96 valid candidates left.
+[316/500] Best crop index:  4, Max overlap: 0.86, Filename: 6487781379_Large.jpg
+thresh_content: 0.7 -> 0.645658
+89 valid candidates left.
+[452/500] Best crop index:  7, Max overlap: 0.93, Filename: 789097501_Large.jpg
+thresh_content: 0.7 -> 0.645658
+105 valid candidates left.
+[ 68/500] Best crop index:  9, Max overlap: 0.90, Filename: 1351032584_Large.jpg
+thresh_content: 0.7 -> 0.658834
+83 valid candidates left.
+[453/500] Best crop index:  7, Max overlap: 0.94, Filename: 795230518_Large.jpg
+thresh_content: 0.7 -> 0.645658
+85 valid candidates left.
+[ 69/500] Best crop index:  6, Max overlap: 0.90, Filename: 1352005047_Large.jpg
+thresh_content: 0.7 -> 0.595534
+85 valid candidates left.
+[317/500] Best crop index:  0, Max overlap: 0.94, Filename: 65574317_Large.jpg
+thresh_content: 0.7 -> 0.658834
+101 valid candidates left.
+[ 70/500] Best crop index:  2, Max overlap: 0.87, Filename: 1352865693_Large.jpg
+thresh_content: 0.7 -> 0.583623
+91 valid candidates left.
+[192/500] Best crop index:  8, Max overlap: 0.90, Filename: 300979541_Large.jpg
+thresh_content: 0.7 -> 0.632745
+109 valid candidates left.
+[454/500] Best crop index:  2, Max overlap: 0.92, Filename: 798421473_Large.jpg
+thresh_content: 0.7 -> 0.645658
+94 valid candidates left.
+[ 71/500] Best crop index:  9, Max overlap: 0.81, Filename: 1367595696_Large.jpg
+thresh_content: 0.7 -> 0.632745
+104 valid candidates left.
+[318/500] Best crop index:  8, Max overlap: 0.89, Filename: 65790614_Large.jpg
+thresh_content: 0.7 -> 0.632745
+97 valid candidates left.
+[193/500] Best crop index:  8, Max overlap: 0.93, Filename: 321738279_Large.jpg
+thresh_content: 0.7 -> 0.658834
+101 valid candidates left.
+[455/500] Best crop index:  7, Max overlap: 0.85, Filename: 798659701_Large.jpg
+thresh_content: 0.7 -> 0.645658
+82 valid candidates left.
+[ 72/500] Best crop index:  8, Max overlap: 0.89, Filename: 1367679227_Large.jpg
+thresh_content: 0.7 -> 0.686
+86 valid candidates left.
+[456/500] Best crop index:  5, Max overlap: 0.83, Filename: 799562644_Large.jpg
+thresh_content: 0.7 -> 0.67228
+104 valid candidates left.
+[194/500] Best crop index:  8, Max overlap: 0.84, Filename: 322195407_Large.jpg
+thresh_content: 0.7 -> 0.645658
+109 valid candidates left.
+[319/500] Best crop index:  5, Max overlap: 0.85, Filename: 66085770_Large.jpg
+thresh_content: 0.7 -> 0.686
+97 valid candidates left.
+[195/500] Best crop index:  6, Max overlap: 0.91, Filename: 326351586_Large.jpg
+thresh_content: 0.7 -> 0.632745
+84 valid candidates left.
+[ 73/500] Best crop index:  8, Max overlap: 0.75, Filename: 13681875_Large.jpg
+thresh_content: 0.7 -> 0.7
+91 valid candidates left.
+[ 74/500] Best crop index:  1, Max overlap: 0.85, Filename: 1373163594_Large.jpg
+thresh_content: 0.7 -> 0.645658
+88 valid candidates left.
+[320/500] Best crop index:  2, Max overlap: 0.84, Filename: 67175822_Large.jpg
+thresh_content: 0.7 -> 0.645658
+103 valid candidates left.
+[196/500] Best crop index:  5, Max overlap: 0.90, Filename: 328801008_Large.jpg
+thresh_content: 0.7 -> 0.607688
+94 valid candidates left.
+[457/500] Best crop index:  7, Max overlap: 0.89, Filename: 803375650_Large.jpg
+thresh_content: 0.7 -> 0.658834
+86 valid candidates left.
+[ 75/500] Best crop index:  9, Max overlap: 0.75, Filename: 1381529340_Large.jpg
+thresh_content: 0.7 -> 0.658834
+90 valid candidates left.
+[197/500] Best crop index:  9, Max overlap: 0.77, Filename: 329479720_Large.jpg
+thresh_content: 0.7 -> 0.645658
+90 valid candidates left.
+[321/500] Best crop index:  7, Max overlap: 0.90, Filename: 672284493_Large.jpg
+thresh_content: 0.7 -> 0.632745
+86 valid candidates left.
+[458/500] Best crop index:  0, Max overlap: 0.86, Filename: 807873536_Large.jpg
+thresh_content: 0.7 -> 0.67228
+89 valid candidates left.
+[198/500] Best crop index:  6, Max overlap: 0.93, Filename: 33006163_Large.jpg
+thresh_content: 0.7 -> 0.658834
+82 valid candidates left.
+[ 76/500] Best crop index:  2, Max overlap: 0.87, Filename: 138607971_Large.jpg
+thresh_content: 0.7 -> 0.658834
+119 valid candidates left.
+[322/500] Best crop index:  8, Max overlap: 0.89, Filename: 6849161342_Large.jpg
+thresh_content: 0.7 -> 0.686
+81 valid candidates left.
+[459/500] Best crop index:  4, Max overlap: 0.73, Filename: 81318524_Large.jpg
+thresh_content: 0.7 -> 0.686
+108 valid candidates left.
+[199/500] Best crop index:  6, Max overlap: 0.88, Filename: 332049039_Large.jpg
+thresh_content: 0.7 -> 0.645658
+96 valid candidates left.
+[323/500] Best crop index:  2, Max overlap: 0.94, Filename: 6850527306_Large.jpg
+thresh_content: 0.7 -> 0.658834
+97 valid candidates left.
+[200/500] Best crop index:  3, Max overlap: 0.91, Filename: 332532085_Large.jpg
+thresh_content: 0.7 -> 0.686
+99 valid candidates left.
+[201/500] Best crop index:  9, Max overlap: 0.71, Filename: 33496701_Large.jpg
+thresh_content: 0.7 -> 0.607688
+103 valid candidates left.
+[ 77/500] Best crop index:  4, Max overlap: 0.87, Filename: 138895540_Large.jpg
+thresh_content: 0.7 -> 0.595534
+87 valid candidates left.
+[460/500] Best crop index:  9, Max overlap: 0.89, Filename: 82052675_Large.jpg
+thresh_content: 0.7 -> 0.67228
+94 valid candidates left.
+[324/500] Best crop index:  3, Max overlap: 0.88, Filename: 6850638972_Large.jpg
+thresh_content: 0.7 -> 0.67228
+87 valid candidates left.
+[ 78/500] Best crop index:  9, Max overlap: 0.90, Filename: 139020551_Large.jpg
+thresh_content: 0.7 -> 0.67228
+92 valid candidates left.
+[461/500] Best crop index:  5, Max overlap: 0.79, Filename: 824401800_Large.jpg
+thresh_content: 0.7 -> 0.67228
+94 valid candidates left.
+[325/500] Best crop index:  3, Max overlap: 0.90, Filename: 6850642018_Large.jpg
+thresh_content: 0.7 -> 0.632745
+81 valid candidates left.
+[202/500] Best crop index:  0, Max overlap: 0.88, Filename: 336081073_Large.jpg
+thresh_content: 0.7 -> 0.658834
+89 valid candidates left.
+[ 79/500] Best crop index:  3, Max overlap: 0.85, Filename: 1393264200_Large.jpg
+thresh_content: 0.7 -> 0.658834
+95 valid candidates left.
+[326/500] Best crop index:  7, Max overlap: 0.86, Filename: 6850666002_Large.jpg
+thresh_content: 0.7 -> 0.658834
+119 valid candidates left.
+[462/500] Best crop index:  5, Max overlap: 0.86, Filename: 830707819_Large.jpg
+thresh_content: 0.7 -> 0.686
+82 valid candidates left.
+[463/500] Best crop index:  0, Max overlap: 0.92, Filename: 839361654_Large.jpg
+thresh_content: 0.7 -> 0.686
+88 valid candidates left.
+[327/500] Best crop index:  4, Max overlap: 0.81, Filename: 6850970398_Large.jpg
+thresh_content: 0.7 -> 0.67228
+91 valid candidates left.
+[328/500] Best crop index:  1, Max overlap: 0.90, Filename: 6851012624_Large.jpg
+thresh_content: 0.7 -> 0.632745
+96 valid candidates left.
+[203/500] Best crop index:  7, Max overlap: 0.81, Filename: 33683009_Large.jpg
+thresh_content: 0.7 -> 0.686
+161 valid candidates left.
+[464/500] Best crop index:  5, Max overlap: 0.89, Filename: 843401087_Large.jpg
+thresh_content: 0.7 -> 0.67228
+113 valid candidates left.
+[465/500] Best crop index:  9, Max overlap: 0.74, Filename: 84471596_Large.jpg
+thresh_content: 0.7 -> 0.62009
+83 valid candidates left.
+[ 80/500] Best crop index:  1, Max overlap: 0.86, Filename: 1395416954_Large.jpg
+thresh_content: 0.7 -> 0.67228
+81 valid candidates left.
+[204/500] Best crop index:  8, Max overlap: 0.82, Filename: 338774403_Large.jpg
+thresh_content: 0.7 -> 0.645658
+87 valid candidates left.
+[329/500] Best crop index:  3, Max overlap: 0.87, Filename: 6851132272_Large.jpg
+thresh_content: 0.7 -> 0.658834
+97 valid candidates left.
+[466/500] Best crop index:  0, Max overlap: 0.86, Filename: 846545152_Large.jpg
+thresh_content: 0.7 -> 0.632745
+95 valid candidates left.
+[205/500] Best crop index:  6, Max overlap: 0.95, Filename: 342363785_Large.jpg
+thresh_content: 0.7 -> 0.645658
+104 valid candidates left.
+[330/500] Best crop index:  3, Max overlap: 0.86, Filename: 6851820388_Large.jpg
+thresh_content: 0.7 -> 0.607688
+102 valid candidates left.
+[ 81/500] Best crop index:  5, Max overlap: 0.87, Filename: 1397975189_Large.jpg
+thresh_content: 0.7 -> 0.607688
+97 valid candidates left.
+[467/500] Best crop index:  9, Max overlap: 0.83, Filename: 84933575_Large.jpg
+thresh_content: 0.7 -> 0.645658
+92 valid candidates left.
+[331/500] Best crop index:  5, Max overlap: 0.89, Filename: 6851859244_Large.jpg
+thresh_content: 0.7 -> 0.62009
+91 valid candidates left.
+[206/500] Best crop index:  8, Max overlap: 0.89, Filename: 34380598_Large.jpg
+thresh_content: 0.7 -> 0.607688
+94 valid candidates left.
+[ 82/500] Best crop index:  3, Max overlap: 0.85, Filename: 1402809452_Large.jpg
+thresh_content: 0.7 -> 0.632745
+95 valid candidates left.
+[332/500] Best crop index:  2, Max overlap: 0.74, Filename: 6852101020_Large.jpg
+thresh_content: 0.7 -> 0.595534
+94 valid candidates left.
+[207/500] Best crop index:  8, Max overlap: 0.77, Filename: 345801521_Large.jpg
+thresh_content: 0.7 -> 0.607688
+106 valid candidates left.
+[468/500] Best crop index:  8, Max overlap: 0.88, Filename: 859542660_Large.jpg
+thresh_content: 0.7 -> 0.632745
+99 valid candidates left.
+[ 83/500] Best crop index:  6, Max overlap: 0.88, Filename: 1405753101_Large.jpg
+thresh_content: 0.7 -> 0.645658
+114 valid candidates left.
+[333/500] Best crop index:  1, Max overlap: 0.90, Filename: 6852321122_Large.jpg
+thresh_content: 0.7 -> 0.686
+102 valid candidates left.
+[469/500] Best crop index:  5, Max overlap: 0.90, Filename: 860251190_Large.jpg
+thresh_content: 0.7 -> 0.67228
+112 valid candidates left.
+[208/500] Best crop index:  2, Max overlap: 0.86, Filename: 345884594_Large.jpg
+thresh_content: 0.7 -> 0.686
+95 valid candidates left.
+[ 84/500] Best crop index:  4, Max overlap: 0.85, Filename: 1410307515_Large.jpg
+thresh_content: 0.7 -> 0.658834
+85 valid candidates left.
+[334/500] Best crop index:  3, Max overlap: 0.85, Filename: 6852492448_Large.jpg
+thresh_content: 0.7 -> 0.645658
+116 valid candidates left.
+[ 85/500] Best crop index:  6, Max overlap: 0.91, Filename: 1421563502_Large.jpg
+thresh_content: 0.7 -> 0.658834
+110 valid candidates left.
+[335/500] Best crop index:  3, Max overlap: 0.91, Filename: 6852560486_Large.jpg
+thresh_content: 0.7 -> 0.645658
+97 valid candidates left.
+[209/500] Best crop index:  9, Max overlap: 0.90, Filename: 346203306_Large.jpg
+thresh_content: 0.7 -> 0.67228
+91 valid candidates left.
+[210/500] Best crop index:  9, Max overlap: 0.85, Filename: 349691224_Large.jpg
+thresh_content: 0.7 -> 0.658834
+99 valid candidates left.
+[336/500] Best crop index:  1, Max overlap: 0.83, Filename: 6852594740_Large.jpg
+thresh_content: 0.7 -> 0.632745
+95 valid candidates left.
+[ 86/500] Best crop index:  3, Max overlap: 0.85, Filename: 143349262_Large.jpg
+thresh_content: 0.7 -> 0.560512
+91 valid candidates left.
+[470/500] Best crop index:  5, Max overlap: 0.90, Filename: 866331633_Large.jpg
+thresh_content: 0.7 -> 0.645658
+85 valid candidates left.
+[211/500] Best crop index:  9, Max overlap: 0.66, Filename: 352180169_Large.jpg
+thresh_content: 0.7 -> 0.645658
+97 valid candidates left.
+[ 87/500] Best crop index:  9, Max overlap: 0.91, Filename: 1433915651_Large.jpg
+thresh_content: 0.7 -> 0.595534
+85 valid candidates left.
+[337/500] Best crop index:  2, Max overlap: 0.88, Filename: 6852595302_Large.jpg
+thresh_content: 0.7 -> 0.62009
+87 valid candidates left.
+[471/500] Best crop index:  1, Max overlap: 0.83, Filename: 869858460_Large.jpg
+thresh_content: 0.7 -> 0.658834
+105 valid candidates left.
+[ 88/500] Best crop index:  8, Max overlap: 0.80, Filename: 1434318743_Large.jpg
+thresh_content: 0.7 -> 0.67228
+84 valid candidates left.
+[472/500] Best crop index:  7, Max overlap: 0.79, Filename: 87097024_Large.jpg
+thresh_content: 0.7 -> 0.62009
+94 valid candidates left.
+[212/500] Best crop index:  1, Max overlap: 0.84, Filename: 358806781_Large.jpg
+thresh_content: 0.7 -> 0.645658
+110 valid candidates left.
+[338/500] Best crop index:  6, Max overlap: 0.89, Filename: 6852595620_Large.jpg
+thresh_content: 0.7 -> 0.658834
+104 valid candidates left.
+[ 89/500] Best crop index:  3, Max overlap: 0.88, Filename: 1438703196_Large.jpg
+thresh_content: 0.7 -> 0.658834
+111 valid candidates left.
+[473/500] Best crop index:  6, Max overlap: 0.88, Filename: 87749006_Large.jpg
+thresh_content: 0.7 -> 0.645658
+81 valid candidates left.
+[213/500] Best crop index:  0, Max overlap: 0.89, Filename: 363867519_Large.jpg
+thresh_content: 0.7 -> 0.645658
+93 valid candidates left.
+[339/500] Best crop index:  2, Max overlap: 0.87, Filename: 6852653224_Large.jpg
+thresh_content: 0.7 -> 0.632745
+89 valid candidates left.
+[ 90/500] Best crop index:  0, Max overlap: 0.90, Filename: 1447330891_Large.jpg
+thresh_content: 0.7 -> 0.658834
+118 valid candidates left.
+[214/500] Best crop index:  7, Max overlap: 0.87, Filename: 364124506_Large.jpg
+thresh_content: 0.7 -> 0.632745
+102 valid candidates left.
+[340/500] Best crop index:  3, Max overlap: 0.86, Filename: 6852681750_Large.jpg
+thresh_content: 0.7 -> 0.658834
+85 valid candidates left.
+[ 91/500] Best crop index:  3, Max overlap: 0.90, Filename: 144836967_Large.jpg
+thresh_content: 0.7 -> 0.632745
+110 valid candidates left.
+[474/500] Best crop index:  3, Max overlap: 0.90, Filename: 881342176_Large.jpg
+thresh_content: 0.7 -> 0.645658
+95 valid candidates left.
+[341/500] Best crop index:  8, Max overlap: 0.85, Filename: 6852682192_Large.jpg
+thresh_content: 0.7 -> 0.632745
+82 valid candidates left.
+[215/500] Best crop index:  4, Max overlap: 0.84, Filename: 37133046_Large.jpg
+thresh_content: 0.7 -> 0.645658
+90 valid candidates left.
+[475/500] Best crop index:  7, Max overlap: 0.88, Filename: 88716968_Large.jpg
+thresh_content: 0.7 -> 0.632745
+84 valid candidates left.
+[ 92/500] Best crop index:  1, Max overlap: 0.92, Filename: 1451520385_Large.jpg
+thresh_content: 0.7 -> 0.67228
+108 valid candidates left.
+[216/500] Best crop index:  2, Max overlap: 0.95, Filename: 371485783_Large.jpg
+thresh_content: 0.7 -> 0.632745
+104 valid candidates left.
+[342/500] Best crop index:  3, Max overlap: 0.82, Filename: 6852764070_Large.jpg
+thresh_content: 0.7 -> 0.67228
+106 valid candidates left.
+[ 93/500] Best crop index:  4, Max overlap: 0.88, Filename: 1457024371_Large.jpg
+thresh_content: 0.7 -> 0.645658
+83 valid candidates left.
+[476/500] Best crop index:  6, Max overlap: 0.82, Filename: 887993249_Large.jpg
+thresh_content: 0.7 -> 0.645658
+81 valid candidates left.
+[217/500] Best crop index:  2, Max overlap: 0.84, Filename: 377446890_Large.jpg
+thresh_content: 0.7 -> 0.658834
+102 valid candidates left.
+[343/500] Best crop index:  5, Max overlap: 0.88, Filename: 6852819890_Large.jpg
+thresh_content: 0.7 -> 0.632745
+90 valid candidates left.
+[ 94/500] Best crop index:  0, Max overlap: 0.92, Filename: 1459039732_Large.jpg
+thresh_content: 0.7 -> 0.658834
+123 valid candidates left.
+[344/500] Best crop index:  2, Max overlap: 0.91, Filename: 6852821870_Large.jpg
+thresh_content: 0.7 -> 0.607688
+87 valid candidates left.
+[477/500] Best crop index:  4, Max overlap: 0.83, Filename: 898619475_Large.jpg
+thresh_content: 0.7 -> 0.595534
+92 valid candidates left.
+[218/500] Best crop index:  6, Max overlap: 0.85, Filename: 377880646_Large.jpg
+thresh_content: 0.7 -> 0.632745
+96 valid candidates left.
+[ 95/500] Best crop index:  0, Max overlap: 0.86, Filename: 1459753403_Large.jpg
+thresh_content: 0.7 -> 0.658834
+89 valid candidates left.
+[345/500] Best crop index:  6, Max overlap: 0.90, Filename: 6852888558_Large.jpg
+thresh_content: 0.7 -> 0.7
+241 valid candidates left.
+[346/500] Best crop index:  2, Max overlap: 0.76, Filename: 6853013340_Large.jpg
+thresh_content: 0.7 -> 0.645658
+117 valid candidates left.
+[478/500] Best crop index:  3, Max overlap: 0.83, Filename: 91762968_Large.jpg
+thresh_content: 0.7 -> 0.645658
+97 valid candidates left.
+[ 96/500] Best crop index:  7, Max overlap: 0.85, Filename: 146931510_Large.jpg
+thresh_content: 0.7 -> 0.67228
+120 valid candidates left.
+[347/500] Best crop index:  7, Max overlap: 0.96, Filename: 6853023680_Large.jpg
+thresh_content: 0.7 -> 0.645658
+91 valid candidates left.
+[479/500] Best crop index:  0, Max overlap: 0.86, Filename: 917643980_Large.jpg
+thresh_content: 0.7 -> 0.607688
+101 valid candidates left.
+[219/500] Best crop index:  3, Max overlap: 0.85, Filename: 379047973_Large.jpg
+thresh_content: 0.7 -> 0.686
+121 valid candidates left.
+[ 97/500] Best crop index:  0, Max overlap: 0.90, Filename: 1469687892_Large.jpg
+thresh_content: 0.7 -> 0.67228
+99 valid candidates left.
+[220/500] Best crop index:  5, Max overlap: 0.87, Filename: 379266659_Large.jpg
+thresh_content: 0.7 -> 0.645658
+89 valid candidates left.
+[348/500] Best crop index:  6, Max overlap: 0.86, Filename: 6853036726_Large.jpg
+thresh_content: 0.7 -> 0.645658
+85 valid candidates left.
+[480/500] Best crop index:  4, Max overlap: 0.92, Filename: 919442457_Large.jpg
+thresh_content: 0.7 -> 0.645658
+92 valid candidates left.
+[ 98/500] Best crop index:  5, Max overlap: 0.85, Filename: 147749309_Large.jpg
+thresh_content: 0.7 -> 0.686
+81 valid candidates left.
+[221/500] Best crop index:  8, Max overlap: 0.71, Filename: 379347063_Large.jpg
+thresh_content: 0.7 -> 0.67228
+92 valid candidates left.
+[349/500] Best crop index:  5, Max overlap: 0.92, Filename: 6853040778_Large.jpg
+thresh_content: 0.7 -> 0.658834
+91 valid candidates left.
+[ 99/500] Best crop index:  9, Max overlap: 0.90, Filename: 1479628321_Large.jpg
+thresh_content: 0.7 -> 0.632745
+91 valid candidates left.
+[481/500] Best crop index:  5, Max overlap: 0.90, Filename: 92721947_Large.jpg
+thresh_content: 0.7 -> 0.686
+106 valid candidates left.
+[100/500] Best crop index:  5, Max overlap: 0.95, Filename: 1485042599_Large.jpg
+thresh_content: 0.7 -> 0.645658
+96 valid candidates left.
+[350/500] Best crop index:  5, Max overlap: 0.86, Filename: 6853041222_Large.jpg
+thresh_content: 0.7 -> 0.645658
+115 valid candidates left.
+[222/500] Best crop index:  0, Max overlap: 0.79, Filename: 379451946_Large.jpg
+thresh_content: 0.7 -> 0.67228
+96 valid candidates left.
+[223/500] Best crop index:  0, Max overlap: 0.98, Filename: 380371516_Large.jpg
+thresh_content: 0.7 -> 0.645658
+85 valid candidates left.
+[101/500] Best crop index:  6, Max overlap: 0.87, Filename: 1488185488_Large.jpg
+thresh_content: 0.7 -> 0.658834
+114 valid candidates left.
+[224/500] Best crop index:  9, Max overlap: 0.79, Filename: 38218027_Large.jpg
+thresh_content: 0.7 -> 0.62009
+101 valid candidates left.
+[351/500] Best crop index:  6, Max overlap: 0.86, Filename: 6853046456_Large.jpg
+thresh_content: 0.7 -> 0.607688
+81 valid candidates left.
+[482/500] Best crop index:  6, Max overlap: 0.78, Filename: 931179600_Large.jpg
+thresh_content: 0.7 -> 0.632745
+106 valid candidates left.
+[102/500] Best crop index:  8, Max overlap: 0.91, Filename: 1488380947_Large.jpg
+thresh_content: 0.7 -> 0.645658
+87 valid candidates left.
+[225/500] Best crop index:  3, Max overlap: 0.84, Filename: 383037318_Large.jpg
+thresh_content: 0.7 -> 0.658834
+90 valid candidates left.
+[483/500] Best crop index:  0, Max overlap: 0.88, Filename: 93300637_Large.jpg
+thresh_content: 0.7 -> 0.645658
+91 valid candidates left.
+[352/500] Best crop index:  2, Max overlap: 0.86, Filename: 6853049124_Large.jpg
+thresh_content: 0.7 -> 0.658834
+92 valid candidates left.
+[103/500] Best crop index:  8, Max overlap: 0.84, Filename: 149689515_Large.jpg
+thresh_content: 0.7 -> 0.686
+128 valid candidates left.
+[226/500] Best crop index:  0, Max overlap: 0.84, Filename: 387168001_Large.jpg
+thresh_content: 0.7 -> 0.658834
+91 valid candidates left.
+[484/500] Best crop index:  2, Max overlap: 0.89, Filename: 937283984_Large.jpg
+thresh_content: 0.7 -> 0.658834
+103 valid candidates left.
+[104/500] Best crop index:  3, Max overlap: 0.89, Filename: 1497843040_Large.jpg
+thresh_content: 0.7 -> 0.658834
+106 valid candidates left.
+[227/500] Best crop index:  3, Max overlap: 0.89, Filename: 395373405_Large.jpg
+thresh_content: 0.7 -> 0.686
+106 valid candidates left.
+[485/500] Best crop index:  1, Max overlap: 0.87, Filename: 939986858_Large.jpg
+thresh_content: 0.7 -> 0.645658
+111 valid candidates left.
+[353/500] Best crop index:  7, Max overlap: 0.88, Filename: 6853050148_Large.jpg
+thresh_content: 0.7 -> 0.686
+87 valid candidates left.
+[354/500] Best crop index:  5, Max overlap: 0.85, Filename: 6853058902_Large.jpg
+thresh_content: 0.7 -> 0.645658
+83 valid candidates left.
+[486/500] Best crop index:  7, Max overlap: 0.93, Filename: 941622718_Large.jpg
+thresh_content: 0.7 -> 0.645658
+91 valid candidates left.
+[355/500] Best crop index:  2, Max overlap: 0.91, Filename: 6853107882_Large.jpg
+thresh_content: 0.7 -> 0.607688
+101 valid candidates left.
+[105/500] Best crop index:  2, Max overlap: 0.87, Filename: 1500796205_Large.jpg
+thresh_content: 0.7 -> 0.632745
+87 valid candidates left.
+[228/500] Best crop index:  9, Max overlap: 0.86, Filename: 3970931_Large.jpg
+thresh_content: 0.7 -> 0.658834
+93 valid candidates left.
+[487/500] Best crop index:  3, Max overlap: 0.94, Filename: 944545105_Large.jpg
+thresh_content: 0.7 -> 0.632745
+86 valid candidates left.
+[356/500] Best crop index:  1, Max overlap: 0.65, Filename: 6853135814_Large.jpg
+thresh_content: 0.7 -> 0.67228
+95 valid candidates left.
+[488/500] Best crop index:  1, Max overlap: 0.90, Filename: 948981768_Large.jpg
+thresh_content: 0.7 -> 0.632745
+81 valid candidates left.
+[106/500] Best crop index:  2, Max overlap: 0.79, Filename: 1513471664_Large.jpg
+thresh_content: 0.7 -> 0.645658
+98 valid candidates left.
+[357/500] Best crop index:  2, Max overlap: 0.87, Filename: 6853136446_Large.jpg
+thresh_content: 0.7 -> 0.595534
+93 valid candidates left.
+[229/500] Best crop index:  6, Max overlap: 0.80, Filename: 39908277_Large.jpg
+thresh_content: 0.7 -> 0.658834
+104 valid candidates left.
+[107/500] Best crop index:  7, Max overlap: 0.95, Filename: 1514752652_Large.jpg
+thresh_content: 0.7 -> 0.632745
+87 valid candidates left.
+[489/500] Best crop index:  6, Max overlap: 0.87, Filename: 95343110_Large.jpg
+thresh_content: 0.7 -> 0.658834
+105 valid candidates left.
+[358/500] Best crop index:  2, Max overlap: 0.80, Filename: 6853156632_Large.jpg
+thresh_content: 0.7 -> 0.658834
+94 valid candidates left.
+[230/500] Best crop index:  2, Max overlap: 0.92, Filename: 401331354_Large.jpg
+thresh_content: 0.7 -> 0.645658
+88 valid candidates left.
+[108/500] Best crop index:  7, Max overlap: 0.89, Filename: 1518253730_Large.jpg
+thresh_content: 0.7 -> 0.645658
+109 valid candidates left.
+[490/500] Best crop index:  8, Max overlap: 0.87, Filename: 95700975_Large.jpg
+thresh_content: 0.7 -> 0.632745
+103 valid candidates left.
+[359/500] Best crop index:  7, Max overlap: 0.95, Filename: 6853159252_Large.jpg
+thresh_content: 0.7 -> 0.645658
+114 valid candidates left.
+[109/500] Best crop index:  1, Max overlap: 0.82, Filename: 1520738528_Large.jpg
+thresh_content: 0.7 -> 0.632745
+90 valid candidates left.
+[231/500] Best crop index:  4, Max overlap: 0.87, Filename: 402301070_Large.jpg
+thresh_content: 0.7 -> 0.645658
+85 valid candidates left.
+[491/500] Best crop index:  6, Max overlap: 0.82, Filename: 96843175_Large.jpg
+thresh_content: 0.7 -> 0.645658
+105 valid candidates left.
+[110/500] Best crop index:  5, Max overlap: 0.89, Filename: 1523881600_Large.jpg
+thresh_content: 0.7 -> 0.67228
+103 valid candidates left.
+[232/500] Best crop index:  1, Max overlap: 0.82, Filename: 405279699_Large.jpg
+thresh_content: 0.7 -> 0.62009
+89 valid candidates left.
+[360/500] Best crop index:  7, Max overlap: 0.73, Filename: 6853180932_Large.jpg
+thresh_content: 0.7 -> 0.7
+183 valid candidates left.
+[361/500] Best crop index:  9, Max overlap: 0.85, Filename: 6853227274_Large.jpg
+thresh_content: 0.7 -> 0.67228
+104 valid candidates left.
+[492/500] Best crop index:  1, Max overlap: 0.91, Filename: 969763145_Large.jpg
+thresh_content: 0.7 -> 0.686
+101 valid candidates left.
+[233/500] Best crop index:  0, Max overlap: 0.82, Filename: 406813066_Large.jpg
+thresh_content: 0.7 -> 0.658834
+103 valid candidates left.
+[111/500] Best crop index:  7, Max overlap: 0.93, Filename: 1539585398_Large.jpg
+thresh_content: 0.7 -> 0.67228
+88 valid candidates left.
+[234/500] Best crop index:  0, Max overlap: 0.87, Filename: 41224665_Large.jpg
+thresh_content: 0.7 -> 0.67228
+123 valid candidates left.
+[112/500] Best crop index:  6, Max overlap: 0.91, Filename: 1547115564_Large.jpg
+thresh_content: 0.7 -> 0.658834
+100 valid candidates left.
+[493/500] Best crop index:  9, Max overlap: 0.85, Filename: 977761334_Large.jpg
+thresh_content: 0.7 -> 0.62009
+82 valid candidates left.
+[362/500] Best crop index:  4, Max overlap: 0.88, Filename: 6853228582_Large.jpg
+thresh_content: 0.7 -> 0.645658
+83 valid candidates left.
+[494/500] Best crop index:  1, Max overlap: 0.95, Filename: 990740513_Large.jpg
+thresh_content: 0.7 -> 0.658834
+84 valid candidates left.
+[363/500] Best crop index:  6, Max overlap: 0.88, Filename: 6853240718_Large.jpg
+thresh_content: 0.7 -> 0.632745
+95 valid candidates left.
+[235/500] Best crop index:  7, Max overlap: 0.82, Filename: 412624055_Large.jpg
+thresh_content: 0.7 -> 0.632745
+81 valid candidates left.
+[113/500] Best crop index:  2, Max overlap: 0.88, Filename: 1549096915_Large.jpg
+thresh_content: 0.7 -> 0.67228
+99 valid candidates left.
+[364/500] Best crop index:  4, Max overlap: 0.91, Filename: 6853241848_Large.jpg
+thresh_content: 0.7 -> 0.67228
+128 valid candidates left.
+[114/500] Best crop index:  0, Max overlap: 0.85, Filename: 15659590_Large.jpg
+thresh_content: 0.7 -> 0.658834
+83 valid candidates left.
+[236/500] Best crop index:  1, Max overlap: 0.86, Filename: 413233235_Large.jpg
+thresh_content: 0.7 -> 0.658834
+101 valid candidates left.
+[365/500] Best crop index:  4, Max overlap: 0.80, Filename: 6853243376_Large.jpg
+thresh_content: 0.7 -> 0.658834
+96 valid candidates left.
+[115/500] Best crop index:  9, Max overlap: 0.81, Filename: 1576892897_Large.jpg
+thresh_content: 0.7 -> 0.658834
+85 valid candidates left.
+[237/500] Best crop index:  9, Max overlap: 0.82, Filename: 41506835_Large.jpg
+thresh_content: 0.7 -> 0.607688
+103 valid candidates left.
+[495/500] Best crop index:  3, Max overlap: 0.88, Filename: 997626761_Large.jpg
+thresh_content: 0.7 -> 0.632745
+89 valid candidates left.
+[366/500] Best crop index:  9, Max overlap: 0.78, Filename: 6853244476_Large.jpg
+thresh_content: 0.7 -> 0.658834
+110 valid candidates left.
+[116/500] Best crop index:  7, Max overlap: 0.87, Filename: 1588688990_Large.jpg
+thresh_content: 0.7 -> 0.658834
+89 valid candidates left.
+[238/500] Best crop index:  9, Max overlap: 0.80, Filename: 415821983_Large.jpg
+thresh_content: 0.7 -> 0.658834
+82 valid candidates left.
+[117/500] Best crop index:  7, Max overlap: 0.79, Filename: 1596036406_Large.jpg
+thresh_content: 0.7 -> 0.7
+95 valid candidates left.
+[118/500] Best crop index:  4, Max overlap: 0.87, Filename: 1616906106_Large.jpg
+thresh_content: 0.7 -> 0.632745
+85 valid candidates left.
+[367/500] Best crop index:  0, Max overlap: 0.93, Filename: 6853245664_Large.jpg
+thresh_content: 0.7 -> 0.658834
+99 valid candidates left.
+[239/500] Best crop index:  7, Max overlap: 0.86, Filename: 420319741_Large.jpg
+thresh_content: 0.7 -> 0.645658
+115 valid candidates left.
+[496/500] Best crop index:  8, Max overlap: 0.87, Filename: IMG_0350.jpg
+thresh_content: 0.7 -> 0.686
+153 valid candidates left.
+[240/500] Best crop index:  0, Max overlap: 0.85, Filename: 42242031_Large.jpg
+thresh_content: 0.7 -> 0.67228
+106 valid candidates left.
+[119/500] Best crop index:  4, Max overlap: 0.87, Filename: 16214490_Large.jpg
+thresh_content: 0.7 -> 0.658834
+97 valid candidates left.
+[368/500] Best crop index:  3, Max overlap: 0.88, Filename: 6853247682_Large.jpg
+thresh_content: 0.7 -> 0.67228
+107 valid candidates left.
+[241/500] Best crop index:  1, Max overlap: 0.87, Filename: 426037078_Large.jpg
+thresh_content: 0.7 -> 0.67228
+108 valid candidates left.
+[120/500] Best crop index:  9, Max overlap: 0.85, Filename: 1624182962_Large.jpg
+thresh_content: 0.7 -> 0.67228
+125 valid candidates left.
+[369/500] Best crop index:  9, Max overlap: 0.90, Filename: 6853249182_Large.jpg
+thresh_content: 0.7 -> 0.645658
+89 valid candidates left.
+[497/500] Best crop index:  8, Max overlap: 0.88, Filename: IMG_0965.jpg
+thresh_content: 0.7 -> 0.67228
+119 valid candidates left.
+[121/500] Best crop index:  5, Max overlap: 0.92, Filename: 163571998_Large.jpg
+thresh_content: 0.7 -> 0.658834
+92 valid candidates left.
+[370/500] Best crop index:  3, Max overlap: 0.87, Filename: 6853250610_Large.jpg
+thresh_content: 0.7 -> 0.7
+143 valid candidates left.
+[498/500] Best crop index:  0, Max overlap: 0.91, Filename: IMG_2358.jpg
+thresh_content: 0.7 -> 0.62009
+88 valid candidates left.
+[242/500] Best crop index:  9, Max overlap: 0.84, Filename: 42610711_Large.jpg
+thresh_content: 0.7 -> 0.67228
+95 valid candidates left.
+[122/500] Best crop index:  9, Max overlap: 0.86, Filename: 1644908364_Large.jpg
+thresh_content: 0.7 -> 0.658834
+104 valid candidates left.
+[371/500] Best crop index:  6, Max overlap: 0.84, Filename: 6853254030_Large.jpg
+thresh_content: 0.7 -> 0.658834
+124 valid candidates left.
+[123/500] Best crop index:  1, Max overlap: 0.88, Filename: 1670542006_Large.jpg
+thresh_content: 0.7 -> 0.658834
+82 valid candidates left.
+[499/500] Best crop index:  4, Max overlap: 0.87, Filename: IMG_6266.jpg
+thresh_content: 0.7 -> 0.658834
+82 valid candidates left.
+[372/500] Best crop index:  5, Max overlap: 0.95, Filename: 6853255188_Large.jpg
+thresh_content: 0.7 -> 0.607688
+97 valid candidates left.
+[243/500] Best crop index:  2, Max overlap: 0.87, Filename: 428858104_Large.jpg
+thresh_content: 0.7 -> 0.686
+124 valid candidates left.
+[373/500] Best crop index:  7, Max overlap: 0.91, Filename: 6853259362_Large.jpg
+thresh_content: 0.7 -> 0.686
+137 valid candidates left.
+[374/500] Best crop index:  0, Max overlap: 0.76, Filename: 6853260532_Large.jpg
+thresh_content: 0.7 -> 0.645658
+84 valid candidates left.
+[244/500] Best crop index:  4, Max overlap: 0.87, Filename: 430762358_Large.jpg
+thresh_content: 0.7 -> 0.686
+169 valid candidates left.
+[245/500] Best crop index:  4, Max overlap: 0.80, Filename: 4451103452_Large.jpg
+thresh_content: 0.7 -> 0.595534
+108 valid candidates left.
+[124/500] Best crop index:  7, Max overlap: 0.86, Filename: 1673916467_Large.jpg
+thresh_content: 0.7 -> 0.645658
+86 valid candidates left.
+[246/500] Best crop index:  2, Max overlap: 0.87, Filename: 445438416_Large.jpg
+thresh_content: 0.7 -> 0.658834
+94 valid candidates left.
+[247/500] Best crop index:  9, Max overlap: 0.81, Filename: 453655331_Large.jpg
+thresh_content: 0.7 -> 0.658834
+114 valid candidates left.
+[248/500] Best crop index:  1, Max overlap: 0.88, Filename: 459646150_Large.jpg
+thresh_content: 0.7 -> 0.645658
+94 valid candidates left.
+[249/500] Best crop index:  5, Max overlap: 0.90, Filename: 46152273_Large.jpg
 
 500 images were evaluated.
 
 For 1 top candidates only:
-- Mean max overlap is: 0.760
-- Median max overlap is: 0.769
+- Mean max overlap is: 0.767
+- Median max overlap is: 0.775
 
 
 For 2 top candidates only:
-- Mean max overlap is: 0.802
-- Median max overlap is: 0.814
+- Mean max overlap is: 0.799
+- Median max overlap is: 0.810
 
 
 For 3 top candidates only:
-- Mean max overlap is: 0.818
-- Median max overlap is: 0.828
+- Mean max overlap is: 0.819
+- Median max overlap is: 0.831
 
 
 For 4 top candidates only:
-- Mean max overlap is: 0.829
-- Median max overlap is: 0.839
+- Mean max overlap is: 0.833
+- Median max overlap is: 0.843
 
 
 For 5 top candidates only:
-- Mean max overlap is: 0.837
-- Median max overlap is: 0.847
+- Mean max overlap is: 0.841
+- Median max overlap is: 0.851
 
-- Mean best crop index is: 4.7
+- Mean best crop index is: 4.6
 - Median best crop index is: 5.0
