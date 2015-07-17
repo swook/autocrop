@@ -65,7 +65,7 @@ void Trainer::train()
 	              degreeGrid = ml::SVM::getDefaultGrid(ml::SVM::DEGREE)
 	;
 
-	CGrid.logStep = 1.2f;
+	CGrid.logStep = 1.1f;
 	CGrid.minVal = 1e-4;
 	CGrid.maxVal = 1e4;
 

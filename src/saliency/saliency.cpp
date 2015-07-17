@@ -235,7 +235,7 @@ Mat _getWeightMap(Mat& D)
  * 2) Acquire colour distinctiveness map
  * 3) Calculate pixelwise multiplication of the two maps
  */
-const float maxSize = 800.f;
+const float maxSize = 600.f;
 
 Mat getSaliency(const Mat& img)
 {
@@ -340,12 +340,16 @@ Mat getSaliency(const Mat& img)
 	// Show result of Boolean Map approach
 	// 2013. Zhang and Sclaroff
 	// input_image, dilation_width, normalize, handle_border, colour_space, whitening
-	auto bms = BMS(img_BGR_1, 3, false, true, CL_Lab, false);
-	bms.computeSaliency(3);
-	Mat out;
-	GaussianBlur(bms.getSaliencyMap(), out, Size(9, 9), 500.f);
-	//normalize(out, out, 0.f, 1.f, NORM_MINMAX);
-	//showImage("Boolean Map", bms.getSaliencyMap());
+	auto bms = BMS(img_BGR_1, 2, false, true, CL_Lab, true);
+	bms.computeSaliency(6);
+
+	Mat out = bms.getSaliencyMap();
+	out.convertTo(out, CV_32FC1);
+	normalize(out, out, 0.f, 1.f, NORM_MINMAX);
+
+	Mat element = getStructuringElement(MORPH_ELLIPSE, Size(5, 5), Point(2, 2));
+	dilate(out, out, element);
+	GaussianBlur(out, out, Size(11, 11), 50.f);
 
 	// Scale back to original size for further processing
 	Mat out_scaled = Mat();

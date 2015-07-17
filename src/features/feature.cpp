@@ -126,10 +126,6 @@ Mat getFeatureVector(const Mat& saliency, const Mat& gradient)
 	_feats[i] = mean(gradient(Rect(w-1-b, 0,     b, h)))[0]; i++; // Right
 
 
-	// Add sum of all pixels in saliency map
-	_feats[i] = sum(_saliency)[0];
-
-
 	return feats;
 }
 
@@ -144,11 +140,19 @@ Mat getGradient(const Mat& img)
 	}
 	else gray = img;
 
+	// Resize to 600px
+	int H = img.rows, W = img.cols;
+	float scale = (float) max(H, W) / 600.f;
+	resize(gray, gray, Size(W / scale, H / scale));
+
 	// Calculate gradient of image
 	Mat grad;
-	Sobel(gray, grad, CV_32F, 1, 1, 3);
+	Sobel(gray, grad, CV_32F, 1, 1, 5);
 	grad = abs(grad);
+	GaussianBlur(grad, grad, Size(11, 11), 50.f);
 
-	return abs(grad);
+	// Return to original size
+	resize(grad, grad, img.size());
+	return grad;
 }
 

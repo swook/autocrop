@@ -10,9 +10,9 @@
 #define spsm3 false
 
 #if spsm3
-#define FEATS_N 90
+#define FEATS_N 89
 #else
-#define FEATS_N 26
+#define FEATS_N 25
 #endif
 
 
@@ -20,7 +20,7 @@
  * getFeatureVector constructs a feature vector from a given saliency map and
  * gradient map.
  *
- * - 64 + 16 + 4 + 1 + 4 + 1 = 90 features
+ * - 64 + 16 + 4 + 1 + 4 = 89 features
  *
  * 1) Resize image to 8x8 to average saliency values
  * 2) Store 1/64ths as feature values
@@ -28,7 +28,6 @@
  * 3) Average 1/16 values to get feature values for 1/4ths
  * 4) Average 1/4 value to get feature value for whole image
  * 5) Average 2-pixel width edges
- * 5) Sum of all saliency values
  */
 cv::Mat getFeatureVector(const cv::Mat& saliency, const cv::Mat& gradient);
 
