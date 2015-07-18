@@ -32,11 +32,21 @@ float var(std::vector<float>& v)
 	if (n == 0) return 0.f;
 
 	float _mean = mean(v);
-	return sqrt(std::accumulate(std::begin(v), std::end(v), 0.f,
+	return std::accumulate(std::begin(v), std::end(v), 0.f,
 		[&](const float b, const float e) {
 			float diff = e - _mean;
 			return b + diff * diff;
-		}) / n);
+		}) / n;
+}
+
+float stdev(std::vector<float>& v)
+{
+	return sqrt(var(v));
+}
+
+float stder(std::vector<float>& v)
+{
+	return sqrt(var(v) / v.size());
 }
 
 

@@ -141,7 +141,8 @@ namespace ds
 		{
 			printf("\nFor %d top candidates only:\n", C);
 			printf("- Mean max overlap is: %.3f\n", mean(overlaps[C-1]));
-			printf("- Median max overlap is: %.3f\n\n", median(overlaps[C-1]));
+			printf("- Median max overlap is: %.3f\n", median(overlaps[C-1]));
+			printf("- std. err. of max overlaps is: %.3f\n\n", stder(overlaps[C-1]));
 		}
 		printf("- Mean best crop index is: %.1f\n", mean(indices));
 		printf("- Median best crop index is: %.1f\n", median(indices));

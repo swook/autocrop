@@ -8,6 +8,8 @@
 float median(std::vector<float>& v);
 float mean(std::vector<float>& v);
 float var(std::vector<float>& v);
+float stdev(std::vector<float>& v);
+float stder(std::vector<float>& v);
 
 
 /**
