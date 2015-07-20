@@ -68,25 +68,35 @@ int main(int argc, char** argv)
 		// Set crop border pixels to red
 		Mat in_crop = in.clone();
 		Scalar red = Scalar(0, 0, 255);
-		in_crop(Rect(crop.x, crop.y, crop.width, 1)) = red; // Top
-		in_crop(Rect(crop.x+crop.width-1, crop.y, 1, crop.height)) = red; // Right
-		in_crop(Rect(crop.x, crop.y+crop.height-1, crop.width, 1)) = red; // Bottom
-		in_crop(Rect(crop.x, crop.y, 1, crop.height)) = red; // Left
+		in_crop(Rect(crop.x, crop.y, crop.width, 3)) = red; // Top
+		in_crop(Rect(crop.x+crop.width-3, crop.y, 3, crop.height)) = red; // Right
+		in_crop(Rect(crop.x, crop.y+crop.height-3, crop.width, 3)) = red; // Bottom
+		in_crop(Rect(crop.x, crop.y, 3, crop.height)) = red; // Left
+
+		// Set crop border pixels in maps to white
+		Mat out_sali;
+		normalize(saliency, out_sali, 0.f, 255.f, NORM_MINMAX);
+		cvtColor(out_sali, out_sali, CV_GRAY2BGR);
+		out_sali(Rect(crop.x, crop.y, crop.width, 3)) = red; // Top
+		out_sali(Rect(crop.x+crop.width-3, crop.y, 3, crop.height)) = red; // Right
+		out_sali(Rect(crop.x, crop.y+crop.height-3, crop.width, 3)) = red; // Bottom
+		out_sali(Rect(crop.x, crop.y, 3, crop.height)) = red; // Left
+
+		Mat out_grad;
+		normalize(gradient, out_grad, 0.f, 255.f, NORM_MINMAX);
+		cvtColor(out_grad, out_grad, CV_GRAY2BGR);
+		out_grad(Rect(crop.x, crop.y, crop.width, 3)) = red; // Top
+		out_grad(Rect(crop.x+crop.width-3, crop.y, 3, crop.height)) = red; // Right
+		out_grad(Rect(crop.x, crop.y+crop.height-3, crop.width, 3)) = red; // Bottom
+		out_grad(Rect(crop.x, crop.y, 3, crop.height)) = red; // Left
 
 		// Set cropped out region black
 		Mat out_crop = in.clone()(crop);
 		double ratio = (double)in.rows / (double)crop.height;
 		resize(out_crop, out_crop, Size(), ratio, ratio);
 
-		// Vertical black strip
-		Mat border = Mat(Size(10, saliency.rows), CV_8UC3);
-		border = Scalar(0, 0, 0);
-
 		// Show saliency and crop side-by-side
-		normalize(gradient, gradient, 0.f, 1.f, NORM_MINMAX);
-		gradient += 0.5;
-		threshold(gradient, gradient, 1.f, 1.f, THRESH_TRUNC);
-		const Mat out = my_hconcat({saliency, border, gradient, border, in_crop, border, out_crop});
+		const Mat out = my_hconcat({in_crop, out_sali, out_grad, out_crop});
 
 		// Show output image
 		showImageAndWait("Input - Cropped", out);
