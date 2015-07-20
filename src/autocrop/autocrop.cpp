@@ -55,7 +55,7 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 
 	// Candidates generation parameters
 	const int   MAX_INITIAL_CROP_CANDIDATES = 4000;
-	const int   MAX_TOTAL_CROP_CANDIDATES   = 80;
+	const int   MAX_TOTAL_CROP_CANDIDATES   = 100;
 	const float THRESHOLD_REDUCE_FACTOR     = 0.98;
 
 	std::vector<Candidate*> candidates;

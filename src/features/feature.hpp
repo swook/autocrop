@@ -7,7 +7,7 @@
  * Switch between 3-level Spatial Pyramid of Saliency Maps (SPSM) and 2-level
  * SPSM by enabling the correct define.
  */
-#define spsm3 false
+#define spsm3 true
 
 #if spsm3
 #define FEATS_N 89

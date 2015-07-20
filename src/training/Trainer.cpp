@@ -53,7 +53,7 @@ void Trainer::train()
 
 	model->setC(10.f);
 
-	int  kFold    = 20;   // K-fold Cross-Validation
+	int  kFold    = 25;   // K-fold Cross-Validation
 	bool balanced = true;
 
 	// Set candidate hyperparameter values
@@ -65,7 +65,7 @@ void Trainer::train()
 	              degreeGrid = ml::SVM::getDefaultGrid(ml::SVM::DEGREE)
 	;
 
-	CGrid.logStep = 1.1f;
+	CGrid.logStep = 1.05f;
 	CGrid.minVal = 1e-4;
 	CGrid.maxVal = 1e4;
 
