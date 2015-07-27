@@ -25,7 +25,8 @@ class Classifier:
         return self.clf.decision_function(feats)[0]
 
     def predictFeats(self, feats):
-        if self.getScore(feats) > 0.5:
+        score = self.getScore(feats)
+        if score > 0:
             return 1
         else:
             return 0
