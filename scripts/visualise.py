@@ -12,7 +12,7 @@ import cv2 as cv
 from suitability.Classifier import *
 from suitability.util import *
 
-if_path = '../datasets/Wookie'
+if_path = '../datasets/Michael'
 
 def main():
     M = 5
@@ -29,7 +29,7 @@ def main():
     def get_gray(img):
         h, w, _ = img.shape
         gray = np.ndarray((h, w, 1), dtype=np.uint8)
-        gray[:, :, 0] = cv.cvtColor(img, cv.COLOR_BGR2GRAY) * 0.3
+        gray[:, :, 0] = cv.cvtColor(img, cv.COLOR_BGR2GRAY) * 0.6
         gray = np.repeat(gray, 3, 2)
         return gray
 
@@ -110,18 +110,18 @@ def get_images(n):
     cv.imwrite('top_suitable.jpg', out)
 
     # Get up to n entries
-    pairs = sorted(zip(suitable, files))
-    good = [(files[i], suitable[i]) for i in range(len(files)) if suitable[i]]
-    bad = [(files[i], suitable[i]) for i in range(len(files)) if not suitable[i]]
-    random.shuffle(good)
-    random.shuffle(bad)
-    n_good = int(n * 0.35)
-    n_bad = n - n_good
-    pairs = bad[:n_bad] + good[:n_good]
-    random.shuffle(pairs)
-    files, suitable = zip(*pairs)
-    #files = files[:n]
-    #suitable = suitable[:n]
+    #pairs = sorted(zip(suitable, files))
+    #good = [(files[i], suitable[i]) for i in range(len(files)) if suitable[i]]
+    #bad = [(files[i], suitable[i]) for i in range(len(files)) if not suitable[i]]
+    #random.shuffle(good)
+    #random.shuffle(bad)
+    #n_good = int(n * 0.35)
+    #n_bad = n - n_good
+    #pairs = bad[:n_bad] + good[:n_good]
+    #random.shuffle(pairs)
+    #files, suitable = zip(*pairs)
+    files = files[:n]
+    suitable = suitable[:n]
 
     files = ['%s/%s' % (if_path, fname) for fname in files]
 
@@ -135,12 +135,13 @@ def get_images(n):
 def draw_grid(M, N, imgs):
     img_w = 356
     img_h = 200
-    border = 0
+    border = 20
 
     W = img_w * N + border * (N + 1)
     H = img_h * M + border * (M + 1)
 
     out = np.zeros((H, W, 3), dtype=np.uint8)
+    out.fill(255)
 
     def resize(img):
         xscal = float(img_w) / img.shape[1]

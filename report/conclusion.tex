@@ -7,5 +7,57 @@
 
 \chapter{Conclusion}
 
-List the conclusions of your work and give evidence for these. Often, the discussion and the conclusion sections are fused.
+We were initially faced with the problem of reviewing photos from a mobile phone
+photo collection, where the photos are used as wallpapers.
+This is a two-fold problem concerning the selection of photos to use as
+wallpapers, and centering or cropping the image appropriately such that
+important or salient areas are shown in an aesthetically pleasing way on the
+phone display.
+
+When determining if an image could be used as a wallpaper, it is propagated
+through a deep convolutional neural network trained to identify object
+categories.
+The neuron activations together with annotations are then used to train a SVM.
+In practise this works quite well though with a bias towards distant natural
+scenes.
+Further work could be done in matching personal tastes.
+
+When trained on the Michael dataset and evaluated on the Wookie dataset, an
+error rate of 3.7\% is observed where most images are classified correctly.
+It is noted that for each annotator there is usually an improvement in precision
+when training on just his/her own annotations.
+This is to be expected as personal tastes would be better reflected in the
+learning phase.
+For the case of low correlation between annotations however, it would be
+interesting to combine annotations selectively to yield a more aesthetically
+pleasing final set of images.
+
+Automatic cropping was selected for retargeting images to a specific aspect
+ratio.
+For cropping any given image, three cues are considered.
+These are: saliency composition, boundary simplicity, and content preservation.
+A SVM is trained with features based on these cues using a dataset sourced using
+the Reddit web service.
+The resulting model and algorithm works quite well, yielding a median maximum
+overlap of 0.782 for top 1 crops.
+This is an improvement over previous implementations.
+
+Much more could be done to improve the suggested algorithms.
+
+For instance, the datasets used in the selection stage could be improved with a
+greater variety of photos as well as a larger number of both photos and
+annotations.
+Annotators could be asked to annotate based on several keywords or themes,
+allowing for a classifier which attempts to adhere to user tastes.
+More features could be added during the learning stage.
+For instance, the colour distribution or blurriness of the image may change how
+suitable an annotator finds the image.
+
+The cropping algorithm shows issues especially in the case where the saliency
+map or gradient map does not work as expected.
+Future work on enhancing algorithms for generating the two maps should improve
+the cropping algorithm.
+Further on, image segmentation using SLIC superpixels for example could allow
+for more advanced ways in respecting boundary simplicity as well as generating
+better crop boundaries in general.
 

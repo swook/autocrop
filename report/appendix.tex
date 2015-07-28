@@ -4,12 +4,38 @@
 % Created 09/29/2006 by Andreas Ess
 % Extended 13/02/2009 by Jan Lesniak - jlesniak@vision.ee.ethz.ch
 %% ----------------------------------------------------------------------------
-\chapter{The First Appendix}
+\chapter{Source Code}
 
-In the appendix, list the following material:
-
+The following dependencies are required for running all code:
 \begin{itemize}
- \item Data (evaluation tables, graphs etc.)
- \item Program code
- \item Further material
+\item \texttt{CMake 2.8+}
+\item \texttt{C++}
+\item \texttt{Boost 1.5+}
+\item \texttt{cvmatio - \url{https://github.com/hbristow/cvmatio}}
+\item \texttt{Python 2.7+}
+\item \texttt{scikit-learn}
+\item \texttt{numpy}
+\item \texttt{PIL}
 \end{itemize}
+
+\noindent
+\texttt{datasets/get\_all\_datasets.sh} retrieves all required data,
+
+\noindent
+\texttt{scripts/trainer\_pipeline.sh} trains the cropping model,
+
+\noindent
+\texttt{scripts/get\_features.py} calculates object class features for selection,
+
+\noindent
+\texttt{scripts/train.py} trains the selection model,
+
+\noindent
+and finally \texttt{scripts/pipeline.py} shows an example wallpaper slideshow
+where MMR is used to diversify displayed images.
+
+\vskip15pt
+
+\noindent
+All source code can be found at \url{https://github.com/swook/autocrop}.
+

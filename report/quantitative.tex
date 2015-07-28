@@ -1,0 +1,111 @@
+%% ----------------------------------------------------------------------------
+% BIWI SA/MA thesis template
+%
+% Created 09/29/2006 by Andreas Ess
+% Extended 13/02/2009 by Jan Lesniak - jlesniak@vision.ee.ethz.ch
+%% ----------------------------------------------------------------------------
+\newpage
+\chapter{Quantitative Analysis\label{sec:quantitative}}
+
+\section{Selection}
+
+4 volunteers were asked to annotate the wallpaper datasets.
+For the Michael dataset, there is a correlation coefficient ($R$) of 0.49 in
+annotations, while $R=0.28$ for the Wookie dataset.
+It could already be seen that the Michael dataset is perhaps of higher quality
+in terms of variety of objects imaged and lower repetitions.
+
+When training a model on the Michael dataset and evaluating the model on the
+Wookie dataset, there are 5 incorrect predictions for 135 images where
+annotations agree.
+This is an error rate of $3.7\%$, much lower than the opposite where training is
+performed on the Wookie dataset and evaluation done on the Michael dataset.
+In this case, there are 42 incorrect predictions for 141 images where
+annotations agree.
+This is a $29.8\%$ error, confirming that the quality of the Wookie dataset
+could be improved.
+
+Furthermore, we evaluate the performance of the classifier when training on
+one’s own annotations vs training on all available annotations.
+While this error fluctuates for each annotator, the average error is $59.2\%$
+for the case where training is performed using all available annotations.
+This is a much higher error compared the case when training is only done using
+an annotator’s own annotations ($29.2\%$ error).
+An interesting study would be to see if combining annotations with high
+correlation helps to improve the performance of the personalised classifier
+of a user.
+
+Another analysis done is the assessment of the Precision-Recall curve of the
+classifier (figure \ref{fig:PR}).
+This is for the case when training on all annotations for either datasets and
+evaluating on the other dataset.
+For the case where training occurs on the Michael dataset, there is higher
+precision for low recall ($<0.4$) cases.
+This may be useful for a conservative system where it is more preferable for
+the classifier to be correct than to make use of as many photos as possible.
+In general, both exhibit high precision.
+
+\begin{figure}
+\centering\includegraphics[width=0.8\columnwidth]{../figures/PRcurve.pdf}
+\caption{Precision-Recall curve of selection classifier trained on either dataset.\label{fig:PR}}
+\end{figure}
+
+
+\section{Cropping}
+
+It has been shown that the automatic cropping algorithm works quite well in
+practise.
+However, it is difficult to tell if this is an improvement over the
+implementation by Fang \cite{fang2014automatic}.
+The differences between the proposed algorithm and that of Fang are:
+
+\begin{enumerate}
+\item 4 separate boundary features used in training as opposed to a single
+      boundary simplicity score post-classification.
+\item A shrinking crop size algorithm for candidate crop generation.
+\item The use of a Reddit-based dataset for training.
+\end{enumerate}
+
+To evaluate the effect of these changes quantitatively, the evaluation method
+introduced by Fang is used.
+Fang provides a 500-image dataset annotated with the use of Amazon Mechanical
+Turk.
+Each image has 10 associated ideal crop which can be regarded as a ground truth
+crop.
+This human crop dataset is used for quantitative evaluation.
+
+Given a candidate crop $C_i$, the maximum overlap between the crop and available
+human crops is calculated as shown in equations \ref{eq:Overlap} and \ref{eq:MaxOverlap}.
+This can be assessed for just the top crop candidate as well as up to top 5 crop
+candidates.
+It is expected that the maximum overlap increases with more top candidates
+considered as the model is not perfect and the true top crop candidate may be a
+few places offset.
+
+\begin{align}
+	\mathrm{Overlap}(C_i, H_j)  &= \frac{C_i \cap H_j}{C_i \cup H_j} \label{eq:Overlap}\\
+	\mathrm{MaxOverlap}(C_i, H) &= \max_j\mathrm{Overlap}(C_i, H_j)  \label{eq:MaxOverlap}
+\end{align}
+
+The maximum overlap scores over top 5 crop candidates is calculated over the
+mentioned 500-image dataset to yield scores as seen in figure \ref{fig:cropping_comparison}.
+It can be seen that the suggested algorithm works better in general.
+The standard error of maximum overlap values are negligible and therefore it can
+be seen that the proposed implementation is an improvement over \cite{fang2014automatic}.
+Consequently, compared to \cite{park2012modeling} and \cite{yan2013learning} the
+top 1 candidate score is a marked improvement.
+Compared to \cite{yan2013learning}, our method is almost a 2x improvement.
+It should also be noted that the maximum overlap score increases slower for our
+method than compared to earlier methods.
+This indicates that the top crop candidates are more reliable.
+
+In terms of \textrm{MaxOverlap} values, our implementation yields $0.782\pm0.004$
+when top 1 crops are considered with the value increasing up to $0.860\pm0.003$
+for the case of top 5 crops being considered.
+
+\begin{figure}
+\centering\includegraphics[width=0.8\columnwidth]{../figures/comparison.pdf}
+\caption{Quantitative evaluation of various automatic cropping algorithms
+	\cite{fang2014automatic,park2012modeling,yan2013learning}.\label{fig:cropping_comparison}}
+\end{figure}
+

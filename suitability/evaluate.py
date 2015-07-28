@@ -168,8 +168,8 @@ class Evaluator:
     def plot_PR(self, ofpath, label):
         y_true = self.eval_data.y
         y_score = self.classifier.clf.decision_function(self.eval_data.X)
-        precision, recall, _ = precision_recall_curve(y_true, y_score, pos_label=1)
-        area = average_precision_score(y_true, y_score, average='weighted')
+        precision, recall, _ = precision_recall_curve(y_true, y_score)
+        area = average_precision_score(y_true, y_score)
 
         x = np.linspace(0, 1, 200)
         y = np.interp(x, np.flipud(recall), np.flipud(precision))

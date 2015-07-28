@@ -7,11 +7,59 @@
 \newpage
 \chapter{Related Work}
 
-Describe the other's work in the field, with the following purposes in mind:
+As mentioned in the previous section, the aim is to improve the experience of
+viewing photos from a mobile phone gallery as wallpapers.
+This requires the determination of whether an image should be selected for
+display, and the selection of a window or crop of the original image which
+should be displayed on a given screen.
 
-\begin{itemize}
- \item \textit{Is the overview concise?} Give an overview of the most relevant work to the needed extent. Make sure the reader can understand your work without referring to other literature.
- \item \textit{Does the compilation of work help to define the ``niche'' you are working in?} Another purpose of this section is to lay the groundwork for showing that you did significant work. The selection and presentation of the related work should enable you to name the implications, differences and similarities sufficiently in the ``discussion'' section.
-\end{itemize}
+There is no prior work for automatically selecting wallpapers.
+The most similar work is the summarisation of photo albums
+\cite{sinha2009personal}.
+Unfortunately, there is lack of detail and reliance on detailed
+annotations.
+Thus in this study, the problem of deciding if a photo could be used as a
+wallpaper is dealt with in a simple manner which requires minimal annotations.
 
+Depending on which object or scene is given focus, an image can be perceived
+very differently by a viewer.
+Thefore there is great interest in attempting to improve how well an image is
+composed.
+To this effect, there have been many previous studies in cropping or deforming
+images to a target size or aspect ratio.
+
+Seam carving is an effective way to removing less
+interesting seams or regions in an image but unfortunately can warp the image
+badly when failing to work successfully \cite{avidan2007seam}.
+Other similar methods such as Multi-operator retargeting also suffer from
+heavy deformation and artifacts depending on the input image \cite{rubinstein2009multi}.
+In fact, \cite{rubinstein2010comparative} notes that:
+\emph{"Cropping, although a relatively naive operation, is still one of the most
+	favored methods, most often since it does not create any artifacts. Our
+	findings indicate that the search for an optimal cropping window, which
+	was somewhat abandoned by researchers in the past few years, could often
+	be favorable and should not be overlooked."}
+Therefore, cropping algorithms are focused on for choosing how to display a
+candidate wallpaper image on a given display.
+
+The automatic cropping of an image can be done in two major ways, one which
+requires a set of rules, and a learning-based model which associates a set of
+features to a score.
+Rules-based croppers such as \cite{liu2010optimizing, zhang2005auto} can suffer
+from bias or imprecision due to human-selected rules and parameters.
+Learning-based croppers such as \cite{park2012modeling, yan2013learning} are
+not without fault however, with low precision due to lack of training data being
+a particularly big issue.
+
+A novel method suggested by Fang et al. \cite{fang2014automatic} attempts to
+combine the advantages of both approaches by introducing three cues into the
+learning and cropping stages.
+These include saliency composition, boundary simplicity, and content
+preservation.
+This is described in greater detail in the next sections.
+Another improvement in the suggested method is the use of public datasets such
+as those which can be found on image hosting services such as Flickr and
+Photo.net.
+These services can indicate how good an image is perceived to be and allow for
+automatic annotation of possible image crops.
 
