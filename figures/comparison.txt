@@ -1,4 +1,4 @@
-No. of crops	Ours	Chen et al.	Park et al.	Yan et al.
+No. of crops	Ours	Fang et al.	Park et al.	Yan et al.
 1	0.782	0.740	0.635	0.425
 2	0.818	0.765	0.695	0.495
 3	0.836	0.795	0.735	0.592
