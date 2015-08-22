@@ -25,25 +25,51 @@ These collections can include photos capturing among other objects:
 \item Quick shots for instant messaging
 \end{itemize}
 
-Not all photos taken are of high value to a user.
-For example, photos of posters, street signs or maps are used for short term
-memory and do not have value in being reviewed.
-Additionally, some photos are intentionally taken with less care for use in
-instant messaging.
+It may sometimes be desirable to review some photos from a mobile phone via the use of widgets or wallpaper carousels.
+One such application which serves this purpose is Muzei for Android \footnote{\url{http://www.muzei.co/}}.
+A user can set Muzei to show a random photo from the mobile phone gallery as a wallpaper with a new photo being chosen at a set time interval.
+It should be noted that such a photo carousel may suffer from two issues.
 
-Photos which are taken with care can often have high value in being reviewed
-occasionally.
-To this purpose, applications such as Muzei for Android allow the displaying of
-photos from a mobile phone album as a wallpaper.
-Unfortunately, this is not done in the most ideal manner.
-There are two big issues, (1) not all images are appropriate to be used as a
-wallpaper, and (2) the image is not well aligned when displayed.
-For example, it is undesirable to have a passport scan as a wallpaper or an
-image where only the rear of an elephant is visible.
+\begin{figure}
+\centering
+\begin{subfigure}{0.46\columnwidth}
+  \centering
+  \includegraphics[width=0.95\columnwidth]{../figures/Michael/2013-12-04 13.44.24.jpg}
+  \caption{An academic poster, useful for review purposes but not possibly unsuitable as a wallpaper.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.46\columnwidth}
+  \centering
+  \includegraphics[width=0.95\columnwidth]{../figures/Michael/2013-12-25 16.32.32.jpg}
+  \caption{Scene of a beach at a vacation destination. Possibly suitable as a wallpaper.}
+\end{subfigure}
+\caption{An example of a potentially suitable and unsuitable photo to use in creating a wallpaper for a mobile device.\label{fig:good_n_bad_wallpaper}}
+\end{figure}
 
-This project aims to improve this experience and other similar experiences by
-first selecting photos which are appropriate to be used, then cropping the photo
-appropriately to display on the screen of a mobile phone.
-This is to be done in a fully automatic manner where no user intervention is
-required.
+The first issue is that certain photos may not be suitable to be used as a wallpaper.
+For instance, a bus route timetable may be useful to have for the cases where an estimated travel time is required, but not the most aesthetically pleasing image to have on the background of a mobile phone.
+An example of this is illustrated in figure \ref{fig:good_n_bad_wallpaper}
+At the most basic level, the objects present in the image could be used to determine if it would be suitable.
+
+The second issue comes from the alignment or cropping of a photo.
+Since a photo must be formatted appropriately to be shown on the given display, some information has to be discarded.
+A naive approach of centering the photo may lead to the cutting or complete omittance of objects.
+It would be desirable to crop a given image to a target aspect ratio without losing interesting regions.
+To this effect, work from \ref{fang2014automatic} is expanded on to provide an effective automatic cropping algorithm.
+
+This project aims to address the two mentioned issues: determination of wallpaper suitability and image cropping to fit a target display in an aesthetically pleasing manner.
+In short form, we will refer to the two areas as \emph{Selection} and \emph{Cropping}.
+
+To solve the photo selection problem, we propose a simple algorithm based on object class recognition and machine learning in section \ref{sec:meth_selection}.
+Out of a collection of images which have been annotated by 4 individuals, a subset is selected where annotations have consensus.
+The annotations are for whether the corresponding image should be used as a wallpaper.
+The final selection algorithm performs well on this dataset with an error of just 3.7\%.
+
+The cropping of images is carried out using a saliency and learning based model which derives from the algorithm introduced in \cite{fang2014automatic}.
+We extend the algorithm by considering boundary simplicity conditions for each image edge and employing a shrinking heuristic for evaluating potential crop regions.
+This work is outlined in section \ref{sec:method_cropping}.
+Our algorithm outperforms the approach of \cite{fang2014automatic} by approximately 6\%, achieving a maximum overlap of $0.782 \pm 0.004$ with crop regions annotated by professionals via the Amazon Mechanical Turk platform.
+The annotations are sourced from \cite{fang2014automatic}.
+
+In the following sections, We introduce the methodology and used datasets for both wallpaper selection and automatic cropping, and evaluate the performance of the two algorithms in a quantitative and qualitative manner.
 

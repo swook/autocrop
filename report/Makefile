@@ -1,5 +1,11 @@
 all: SeonwookPark_BIWI_SA.pdf
 
+dev: dev.pdf
+
+dev.pdf: main.tex *.tex
+	latexmk -pdf -jobname=dev $<
+	latexmk -c -jobname=dev $<
+
 SeonwookPark_BIWI_SA.pdf: main.tex *.tex
 	latexmk -pdf -jobname=$(basename $@) $<
 	latexmk -c -jobname=$(basename $@) $<
@@ -8,4 +14,4 @@ SeonwookPark_BIWI_SA.pdf: main.tex *.tex
 	rm tmp.pdf
 
 clean:
-	rm -f SeonwookPark_BIWI_SA.*
+	rm -f *.pdf

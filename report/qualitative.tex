@@ -30,9 +30,7 @@ wallpaper candidates are shown in figure \ref{fig:selection_out2}.
 It can be seen qualitatively that images with undesirable objects have been
 discarded, such as the image of furniture, a poster, or the model number
 of electronic equipment.
-Though in general photos with obviously undesirable objects are discarded as
-appropriate, photos of city skylines or prominent single foreground objects for
-example are not usually classified as being appropriate.
+Though in general photos with obviously undesirable objects are discarded, photos of city skylines or prominent single foreground objects for example are not usually classified as being appropriate.
 This is due to disagreements between annotators.
 A larger number of annotations per image may help in this case.
 
@@ -65,7 +63,9 @@ depending on wallpaper preferences.
 \newpage
 \section{Cropping\label{sec:qualitative_cropping}}
 
-The automatic cropping algorithm works quite well in general.
+As we have seen in section \ref{sec:quant_cropping}, the cropping algorithm performs well compared to previous works.
+We now assess how well the algorithm works in practise with the image dataset provided by \cite{fang2014automatic}.
+
 In the following figures, four images are shown per input image: the original
 image, a saliency map, a gradient map, and the final cropped image.
 It should be noted that brigher regions in a saliency map represent more
@@ -74,7 +74,7 @@ regions with large changes in colour.
 
 It is hoped that the saliency map emphasizes prominent objects well enough for
 irrelevant or less important details to be left out of the final crop, and the
-gradient map exhibit low values for background regions.
+gradient map exhibit high values for boundaries and detailed foreground objects.
 For the cases where this is true, it can be seen that the algorithm works very
 well.
 

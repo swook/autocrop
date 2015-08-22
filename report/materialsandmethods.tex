@@ -20,17 +20,25 @@ Thus for both selection and cropping, machine learning is utilised with aims to
 avoid introducing unnecessary bias.
 
 
-\section{Selection}
+\section{Selection\label{sec:meth_selection}}
 
-When considering a single photo, whether this photo could be used as a wallpaper
-is a subjective decision.
-One person may prefer city skylines while another may prefer distant mountain
-ranges.
-A simple way of assessing a photo in this case is via object class detection.
+When considering a single photo, whether this photo could be used as a wallpaper is a subjective decision.
+Ultimately, the decision depends on whether a photo is aesthetically pleasing to view in the background of the home screen of a mobile device.
+This may depend not only on the objects present in the scene, but image sharpness, colour composition, and density of detail.
+At the most basic level, it can be argued that the most important factor is the objects present.
+For instance, person A may prefer having city skylines on their wallpapers, while person B may prefer distant mountain peaks.
+When considering objects which most people would not like to have on their wallpapers, we can think of posters, advertisements, and price tags as examples.
+The detection of such objects would allow for a simple but effective way of picking or discarding images when attempting to find a suitable wallpaper.
+We therefore suggest a simple algorithm which performs object class recognition to determine if an image is suitable as a wallpaper.
+
+To address the inherent subjectivity of this process, we employ machine learning and acquire annotations from multiple individuals.
+By doing so, it is possible to train a model such that it can cater to the preferences of all annotators as well as possible.
+A feature vector is created per image, encoding information on detected objects.
+These vectors can be used to train a SVM.
 
 One way of performing object class recognition is via the use of deep
 convolutional neural networks.
-An existing implementation is one provided by Caffe, a deep learning framework.
+An existing implementation is one provided by Caffe, a deep learning framework\cite{jia2014caffe}.
 Caffe provides several models trained for the ILSVRC 2012 dataset \cite{ILSVRC15}.
 This dataset consists of 150,000 photographs and 1,000 associated object classes.
 
@@ -38,7 +46,8 @@ In a deep convolutional neural network, different convolutions are performed at
 each neuron with a focus on different portions of a given image.
 In \cite{DonahueJVHZTD13}, it is determined that using the activations of the
 hidden fully connected layer, \texttt{fc7} in conjunction with a SVM results
-yields the best classification results.
+yields the best classification results in domain adaptation tasks such as scene recognition.
+
 
 Therefore, an input image is propagated through the trained neural network and
 the activations at hidden layer \texttt{fc7} is used as the given image’s
@@ -48,7 +57,7 @@ This results in 4096 features per image.
 These feature vectors are used to train a SVM.
 The decision function of the trained model calculates a suitability score when
 provided a feature vector representative of an input image.
-If this score is positive, an image is suitable.
+If an image is classified as positive, it is considered to be suitable.
 
 The resulting model can then be used to classify new images.
 Figure \ref{fig:pipeline_selection} shows the full pipeline for
@@ -105,11 +114,15 @@ This would reduce bias further.
 
 \section{Cropping\label{sec:method_cropping}}
 
+This study bases its cropping method on \cite{fang2014automatic} with modifications.
+The differences are namely in moving boundary simplicity into the learning phase, the use of shrinking crop region candidates in crop selection, and the use of a Reddit based dataset.
+This is further outlined below as the algorithm is explained.
+
 To crop an image automatically, it should be possible to find out which regions
 of the image are worth retaining.
 To do so, we consider visual saliency.
-Visual saliency is a measure which represents how distinct a pixel is in
-relation to its neighbouring pixels.
+Visual saliency is a measure which represents how distinct a region is in
+relation to its neighbouring regions \cite{borji2013state}.
 Many saliency map algorithms have been suggested in the past, with ground truth
 collected by tracking the eye movements of human participants.
 
@@ -152,8 +165,11 @@ A 2-pixel wide strip is taken for each edge and the mean value is used as a
 feature.
 This results in 4 features encoding the amount of edges crossed by a given
 crop's boundary.
-This is because left or right edges may require higher boundary simplicity than
-top or bottom edges.
+This is different from the implementation in \cite{fang2014automatic} where a single boundary simplicity score is used later on in the evaluation of candidate crop regions.
+We introduce these changes for two reasons.
+The first is to avoid the weighting issue when dealing with multiple metrics in the final scoring of crop candidates, instead relying on SVM.
+The second reason is to allow for boundary metric to adapt to cases where saliency composition may affect boundary values.
+For example, a portrait photo of a person may have high saliency on the bottom edge of the image but still be considered to be well composed with good boundary simplicity.
 
 The gradient map of an image is created by first resizing the image to be at
 most 600 pixels wide or high, then applying a first-derivative $5\times5$ Sobel
@@ -180,7 +196,7 @@ The score as given by equation \ref{eq:S_content} represents how much
 interesting information is retained by the suggested crop.
 By using this score, one can discard inappropriate crops early on without
 comparing scores given by the trained model.
-Crops below a threshold score are retained in a list of crop candidates.
+Crops above a threshold score are retained in a list of crop candidates.
 The threshold is reduced until a target number of crops is reached.
 This algorithm is described in algorithm \ref{alg:autocrop}.
 
@@ -195,7 +211,7 @@ This algorithm is described in algorithm \ref{alg:autocrop}.
     \ForAll{crop}
         \State $cropped \gets saliency(crop)$
         \State $S\_content = sum(cropped) / sum(saliency)$
-        \If{$S\_content < thresh$}
+        \If{$S\_content > thresh$}
             \State Add crop to candidates
             \State $n = n + 1$
         \EndIf
@@ -216,6 +232,9 @@ representing how good the crop is.
 This is done using the previously trained model.
 The crop with the highest score is considered to be the best crop and is finally
 used to create a final crop of the input image.
+
+This is different to the method in \cite{fang2014automatic} where two separate scores for saliency composition and boundary simplicity are calculated, then a weighted sum taken.
+This results in two extra weighting parameters which must be determined empirically.
 
 This portion of the project is implemented using \texttt{C++},
 \texttt{Python}, and \texttt{OpenCV}.

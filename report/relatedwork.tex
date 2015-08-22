@@ -14,12 +14,10 @@ display, and the selection of a window or crop of the original image which
 should be displayed on a given screen.
 
 There is no prior work for automatically selecting wallpapers.
-The most similar work is the summarisation of photo albums
-\cite{sinha2009personal}.
-Unfortunately, there is lack of detail and reliance on detailed
-annotations.
-Thus in this study, the problem of deciding if a photo could be used as a
-wallpaper is dealt with in a simple manner which requires minimal annotations.
+The most similar work is the summarisation of photo albums \cite{sinha2009personal}.
+Unfortunately, there is lack of detail in terms of implementation and a reliance on detailed annotations in the form of tags and comments.
+Though the study is able to effectively find a subset of images matching a specific query, this is done by fusing multiple forms of information including location, time stamps, directory structure, and image features, resulting in a fairly complex system.
+Thus in this study, the problem of deciding if a photo could be used as a wallpaper is dealt with in a simple manner which requires minimal annotations.
 
 Depending on which object or scene is given focus, an image can be perceived
 very differently by a viewer.
@@ -60,6 +58,7 @@ This is described in greater detail in the next sections.
 Another improvement in the suggested method is the use of public datasets such
 as those which can be found on image hosting services such as Flickr and
 Photo.net.
-These services can indicate how good an image is perceived to be and allow for
-automatic annotation of possible image crops.
+By using popularity-based metrics to acquire photos from such services, it is possible to create a set of high quality images.
+These images could be considered to be aesthetically pleasing and have good saliency composition.
+This in turn allows for an automatic annotation of images where a popular image is considered to be well composed while a crop of the image would be less ideal or not as well composed.
 

@@ -51,13 +51,10 @@ In general, both exhibit high precision.
 \end{figure}
 
 
-\section{Cropping}
+\section{Cropping\label{sec:quant_cropping}}
 
-It has been shown that the automatic cropping algorithm works quite well in
-practise.
-However, it is difficult to tell if this is an improvement over the
-implementation by Fang \cite{fang2014automatic}.
-The differences between the proposed algorithm and that of Fang are:
+As mentioned in section \ref{sec:method_cropping}, the proposed algorithm is built on that suggested in \cite{fang2014automatic}.
+The differences are:
 
 \begin{enumerate}
 \item 4 separate boundary features used in training as opposed to a single
@@ -67,11 +64,9 @@ The differences between the proposed algorithm and that of Fang are:
 \end{enumerate}
 
 To evaluate the effect of these changes quantitatively, the evaluation method
-introduced by Fang is used.
-Fang provides a 500-image dataset annotated with the use of Amazon Mechanical
-Turk.
-Each image has 10 associated ideal crop which can be regarded as a ground truth
-crop.
+introduced in \cite{fang2014automatic} is used.
+This starts with the use of a 500-image dataset annotated with the use of Amazon Mechanical Turk.
+Each image has 10 associated ideal crop which can be regarded as a ground truth crop.
 This human crop dataset is used for quantitative evaluation.
 
 Given a candidate crop $C_i$, the maximum overlap between the crop and available

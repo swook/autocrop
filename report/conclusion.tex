@@ -18,8 +18,8 @@ When determining if an image could be used as a wallpaper, it is propagated
 through a deep convolutional neural network trained to identify object
 categories.
 The neuron activations together with annotations are then used to train a SVM.
-In practise this works quite well though with a bias towards distant natural
-scenes.
+In practise it successfully detects and discards scenes such as those with text and furniture.
+There however exists a bias towards distant scenes of nature where mountains, rivers, lakes and sky photos are favoured.
 Further work could be done in matching personal tastes.
 
 When trained on the Michael dataset and evaluated on the Wookie dataset, an
@@ -40,7 +40,7 @@ A SVM is trained with features based on these cues using a dataset sourced using
 the Reddit web service.
 The resulting model and algorithm works quite well, yielding a median maximum
 overlap of 0.782 for top 1 crops.
-This is an improvement over previous implementations.
+This is an improvement over the previous state of the art \cite{fang2014automatic}.
 
 Much more could be done to improve the suggested algorithms.
 
