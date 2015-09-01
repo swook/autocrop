@@ -47,23 +47,30 @@ def main():
         print('No images to read in: %s' % if_path)
         cleanup()
 
-    # Create list of last shown times
-    global last_times
-    last_times = [time.time()]*len(files)
-
     # Classify each image and keep suitable ones
+    global suitability_scores
     suitable = []
+    suitability_scores = []
     for fname in files:
-        if classifier.predictFeats(feats[fname]) == 1:
+        score = classifier.getScore(feats[fname])
+        if score > 0:
             suitable.append(fname)
+            suitability_scores.append(score)
 
     print('- Classified images to retain list of suitable images only')
     print('- %d/%d suitable images left' % (len(suitable), len(files)))
     files = suitable
 
+    # Create list of last shown times
+    global last_times
+    global selected
+    last_times = [time.time()]*len(files)
+    selected = [False]*len(files)
+
     # Main loop
-    global idx
-    idx = random.randint(0, len(files) - 1)
+    global num
+    num = 0
+    find_next_image()
     show_next_image()
 
     signal.signal(signal.SIGINT, cleanup)
@@ -71,6 +78,11 @@ def main():
     while True:
         # Wait for key for 50ms
         k = cv.waitKey(50)
+
+        # If no more images left to show, exit
+        n_left = len([x for x in selected if not x])
+        if n_left == 0:
+            break
 
         # Ignore if no key captured
         if k is -1:
@@ -83,6 +95,7 @@ def main():
         # If any other button, show previous image
         else:
             next_image()
+            print '%d images left to show' % n_left
 
     cleanup()
 
@@ -119,35 +132,48 @@ def next_image():
     show_next_image()
 
 def find_next_image():
-    global idx, files, if_path, feats, last_times
+    global idx, files, if_path, feats, last_times, selected, suitability_scores, num
 
-    idx_feat = feats[files[idx]]
+    idx_selected = [i for i, x in enumerate(selected) if x]
+    idx_not_selected = [i for i, x in enumerate(selected) if not x]
 
-    # Look through each "suitable" image to find one with maximum distance to
-    # last feature vector
     now = time.time()
-    n = len(files)
-    dists = np.ndarray((1, n), dtype=float)
-    novelties = np.ndarray((1, n), dtype=float)
-    for i, fname in enumerate(files):
-        if i == idx:
-            dist = 0.
-        else:
-            dist = np.linalg.norm(feats[fname] - idx_feat)
 
-        novelty = now - last_times[i]
+    def dist(idx1, idx2):
+        fn1 = files[idx1]
+        fn2 = files[idx2]
+        return np.linalg.norm(feats[fn1] - feats[fn2])
 
-        dists[0, i] = dist
-        novelties[0, i] = novelty
+    def min_dist(idx):
+        dists = []
+        for j in idx_selected:
+            dists.append(dist(idx, j))
+        return np.min(dists) if len(dists) > 0 else 0
 
-    dists = normalize(dists, axis=1)
-    novelties = normalize(novelties, axis=1)
+    def suitability(idx):
+        return suitability_scores[idx]
 
-    idx = np.argmax(0.3 * dists + 0.7 * novelties)
-    last_times[idx] = time.time()
+    def get_score(idx):
+        l = 0.8 # lambda for weighting
+        return l * suitability(idx) + (1. - l) * min_dist(idx)
+
+    def select(idx):
+        global num
+        selected[idx] = True
+        last_times[idx] = now
+        num += 1
+
+    # Go through each not selected image and evaluate score
+    scores = []
+    for j in idx_not_selected:
+        scores.append(get_score(j))
+
+    idx = idx_not_selected[np.argmax(scores)]
+    select(idx)
+
 
 def show_next_image():
-    global if_path, files, idx
+    global if_path, files, idx, num
     img_path = '%s/%s' % (if_path, files[idx])
 
     # Automatically crop image (scale down to 1000px width/height max)
@@ -162,6 +188,11 @@ def show_next_image():
     cv.imwrite(tmpfile, I)
     subprocess.check_call('../build/autocrop -h -i %s -o %s -r 0.5625' % (tmpfile, tmpfile), shell=True)
     I = cv.imread(tmpfile)
+
+    # TEMP: Save current image with index since start of slideshow
+    if not os.path.isdir('pipeline_out'):
+        os.mkdir('pipeline_out')
+    cv.imwrite('pipeline_out/%03d.jpg' % num, I)
 
     show_image(idx, I)
 
