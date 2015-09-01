@@ -1,6 +1,7 @@
 import json
 import os
 import pickle
+from random import randint
 import re
 
 import config
@@ -38,7 +39,7 @@ class Annotations:
     name = ''
     path = ''
 
-    def __init__(self, path):
+    def __init__(self, path, random=False):
         self.path = path
 
         # Get all annotations in folder or
@@ -49,6 +50,8 @@ class Annotations:
         elif os.path.isfile(path) and path.endswith('.json'):
             files = [path]
             self.name = '/'.join(re.search(r'\/([^\/]*)\/classifications_(.*)\.json', path).groups())
+        if random:
+            self.name = re.search(r'\/([^\/]*)\/?$', path).groups()[0] + '/random'
 
         self.n = len(files)
 
@@ -58,6 +61,8 @@ class Annotations:
                 classifs = json.load(f)
                 print('Loaded %s' % fpath)
             for fname, classif in classifs.iteritems():
+                if random:
+                    classif = randint(0, 1)
                 if fname in self.data:
                     self.data[fname].append(classif)
                 else:

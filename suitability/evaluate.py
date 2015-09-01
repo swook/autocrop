@@ -88,7 +88,7 @@ class Evaluator:
 
     def train(self):
         global Models
-        name = self.train_data.name
+        name = self.eval_data.name
         if name in Models:
             self.trainer = Models[name]
         else:
@@ -214,6 +214,7 @@ def main():
     # Michael dataset
     Michael         = Feats('../datasets/Michael')
     Michael_all     = Annotations('../datasets/Michael')
+    Michael_random  = Annotations('../datasets/Michael/classifications_michael.json', random=True)
     Michael_Michael = Annotations('../datasets/Michael/classifications_michael.json')
     Michael_Wookie  = Annotations('../datasets/Michael/classifications_wookie.json')
     Michael_Dengxin = Annotations('../datasets/Michael/classifications_dengxin.json')
@@ -222,6 +223,7 @@ def main():
     # Wookie dataset
     Wookie         = Feats('../datasets/Wookie')
     Wookie_all     = Annotations('../datasets/Wookie')
+    Wookie_random  = Annotations('../datasets/Wookie/classifications_michael.json', random=True)
     Wookie_Michael = Annotations('../datasets/Wookie/classifications_michael.json')
     Wookie_Wookie  = Annotations('../datasets/Wookie/classifications_wookie.json')
     Wookie_Dengxin = Annotations('../datasets/Wookie/classifications_dengxin.json')
@@ -261,14 +263,30 @@ def main():
         .train_on(Michael, Michael_all)   \
         .evaluate_on(Wookie, Wookie_all)  \
         .train()                          \
-        .plot_PR(None, 'Trained on Michael set') \
+        .plot_PR(None, 'Human annotations') \
         .evaluate()
+
+    Evaluator('Michael/random -> Wookie/all')\
+        .train_on(Michael, Michael_random)   \
+        .evaluate_on(Wookie, Wookie_all)  \
+        .train()                          \
+        .plot_PR('PRcurve_michael_wookie.pdf', 'Random annotations') \
+        .evaluate()
+
+    os.rename('PR.out', 'PR0.out')
 
     Evaluator('Wookie/all -> Michael/all') \
         .train_on(Wookie, Wookie_all)      \
         .evaluate_on(Michael, Michael_all) \
         .train()                           \
-        .plot_PR('PRcurve.pdf', 'Trained on Wookie set') \
+        .plot_PR(None, 'Human annotations') \
+        .evaluate()
+
+    Evaluator('Wookie/random -> Michael/all')\
+        .train_on(Wookie, Wookie_random)  \
+        .evaluate_on(Michael, Michael_all)   \
+        .train()                          \
+        .plot_PR('PRcurve_wookie_michael.pdf', 'Random annotations') \
         .evaluate()
     logf.flush()
 
