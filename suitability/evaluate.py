@@ -168,11 +168,24 @@ class Evaluator:
     def plot_PR(self, ofpath, label):
         y_true = self.eval_data.y
         y_score = self.classifier.clf.decision_function(self.eval_data.X)
+
+        # Scale random values to span same range as y_score
+        y_score_maxp = np.max(y_score)
+        y_score_maxn = -np.min(y_score)
+        y_score_span = y_score_maxp + y_score_maxn
+        y_rand = np.random.rand(y_true.shape[0], 1) * y_score_span - y_score_maxn
+
+        # Calculate PR (model)
         precision, recall, _ = precision_recall_curve(y_true, y_score)
         area = average_precision_score(y_true, y_score)
 
         x = np.linspace(0, 1, 200)
         y = np.interp(x, np.flipud(recall), np.flipud(precision))
+
+        # Calculate PR (random)
+        precision, recall, _ = precision_recall_curve(y_true, y_rand)
+        area_rand = average_precision_score(y_true, y_rand)
+        y_rand = np.interp(x, np.flipud(recall), np.flipud(precision))
 
         txtpath = 'PR.out'
         try:
@@ -181,8 +194,11 @@ class Evaluator:
         except:
             dat = np.array(x, dtype=[('Recall', float)])
 
-        label = label + ' (area: %.2f)' % area
-        dat = append_fields(dat, label, y)
+        # Add model PR
+        dat = append_fields(dat, '%s (area: %.2f)' % (label, area), y)
+
+        # Add random PR
+        dat = append_fields(dat, 'Random classifier (area: %.2f)' % area_rand, y_rand)
 
         np.savetxt(txtpath, dat, delimiter='\t',
                    header='\t'.join(dat.dtype.names), comments='')
@@ -214,7 +230,6 @@ def main():
     # Michael dataset
     Michael         = Feats('../datasets/Michael')
     Michael_all     = Annotations('../datasets/Michael')
-    Michael_random  = Annotations('../datasets/Michael/classifications_michael.json', random=True)
     Michael_Michael = Annotations('../datasets/Michael/classifications_michael.json')
     Michael_Wookie  = Annotations('../datasets/Michael/classifications_wookie.json')
     Michael_Dengxin = Annotations('../datasets/Michael/classifications_dengxin.json')
@@ -223,7 +238,6 @@ def main():
     # Wookie dataset
     Wookie         = Feats('../datasets/Wookie')
     Wookie_all     = Annotations('../datasets/Wookie')
-    Wookie_random  = Annotations('../datasets/Wookie/classifications_michael.json', random=True)
     Wookie_Michael = Annotations('../datasets/Wookie/classifications_michael.json')
     Wookie_Wookie  = Annotations('../datasets/Wookie/classifications_wookie.json')
     Wookie_Dengxin = Annotations('../datasets/Wookie/classifications_dengxin.json')
@@ -263,14 +277,7 @@ def main():
         .train_on(Michael, Michael_all)   \
         .evaluate_on(Wookie, Wookie_all)  \
         .train()                          \
-        .plot_PR(None, 'Human annotations') \
-        .evaluate()
-
-    Evaluator('Michael/random -> Wookie/all')\
-        .train_on(Michael, Michael_random)   \
-        .evaluate_on(Wookie, Wookie_all)  \
-        .train()                          \
-        .plot_PR('PRcurve_michael_wookie.pdf', 'Random annotations') \
+        .plot_PR('PRcurve_michael_wookie.pdf', 'Trained model') \
         .evaluate()
 
     os.rename('PR.out', 'PR0.out')
@@ -279,15 +286,9 @@ def main():
         .train_on(Wookie, Wookie_all)      \
         .evaluate_on(Michael, Michael_all) \
         .train()                           \
-        .plot_PR(None, 'Human annotations') \
+        .plot_PR('PRcurve_wookie_michael.pdf', 'Trained model') \
         .evaluate()
 
-    Evaluator('Wookie/random -> Michael/all')\
-        .train_on(Wookie, Wookie_random)  \
-        .evaluate_on(Michael, Michael_all)   \
-        .train()                          \
-        .plot_PR('PRcurve_wookie_michael.pdf', 'Random annotations') \
-        .evaluate()
     logf.flush()
 
     eAlls = []
