@@ -26,7 +26,7 @@ This is a $29.8\%$ error, confirming that the quality of the Wookie dataset
 could be improved.
 
 Furthermore, we evaluate the performance of the classifier when training on
-one’s own annotations vs training on all available annotations.
+one's own annotations vs training on all available annotations.
 While this error fluctuates for each annotator, the average error is $59.2\%$
 for the case where training is performed using all available annotations.
 This is a much higher error compared the case when training is only done using
@@ -36,21 +36,32 @@ correlation helps to improve the performance of the personalised classifier
 of a user.
 
 Another analysis done is the assessment of the Precision-Recall curve of the
-classifier (figure \ref{fig:PR}).
+classifiers (figure \ref{fig:PR}).
 This is for the case when training on all annotations for either datasets and
 evaluating on the other dataset.
-For the case where training occurs on the Michael dataset, there is higher
-precision for low recall ($<0.4$) cases.
-This may be useful for a conservative system where it is more preferable for
-the classifier to be correct than to make use of as many photos as possible.
-In general, both exhibit high precision.
+For both cases, the trained models exhibit higher precision than the case where a random classifier is used.
+The decision function of a random classifier returns a uniformly distributed random number in the range of expected values.
+It can therefore be concluded that the classifiers serve their purposes.
+In the case of the model trained on the Wookie set however, the base precision of $0.4$ is quite high, indicating that the annotations may not be well balanced.
 
 \begin{figure}
-\centering\includegraphics[width=0.8\columnwidth]{../figures/PRcurve.pdf}
-\caption{Precision-Recall curve of selection classifier trained on either dataset.\label{fig:PR}}
+\centering
+\begin{subfigure}{0.79\columnwidth}
+  \centering
+  \includegraphics[width=0.99\columnwidth]{../figures/PRcurve_michael_wookie.pdf}
+  \caption{Classifier trained on Michael set, evaluated on Wookie set.}
+\end{subfigure}
+\vskip8mm
+\begin{subfigure}{0.79\columnwidth}
+  \centering
+  \includegraphics[width=0.99\columnwidth]{../figures/PRcurve_wookie_michael.pdf}
+  \caption{Classifier trained on Wookie set, evaluated on Michael set.}
+\end{subfigure}
+\caption{Precision-Recall curve plots for trained wallpaper suitability models.\label{fig:PR}}
 \end{figure}
 
 
+\newpage
 \section{Cropping\label{sec:quant_cropping}}
 
 As mentioned in section \ref{sec:method_cropping}, the proposed algorithm is built on that suggested in \cite{fang2014automatic}.
@@ -99,7 +110,7 @@ when top 1 crops are considered with the value increasing up to $0.860\pm0.003$
 for the case of top 5 crops being considered.
 
 \begin{figure}
-\centering\includegraphics[width=0.8\columnwidth]{../figures/comparison.pdf}
+\centering\includegraphics[width=\columnwidth]{../figures/comparison.pdf}
 \caption{Quantitative evaluation of various automatic cropping algorithms
 	\cite{fang2014automatic,park2012modeling,yan2013learning}.\label{fig:cropping_comparison}}
 \end{figure}

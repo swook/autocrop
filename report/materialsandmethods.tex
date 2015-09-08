@@ -283,18 +283,18 @@ When provided a collection of images sourced from a mobile phone, the pipeline
 should first select images which can be used as a wallpaper.
 When this subset is found, some diversification can be attempted such that a
 user does not view similar images in succession.
-This can be done using Maximal Marginal Relevance (MMR) which uses uniqueness
-and novelty measures to find the next item \cite{carbonell1998use}.
-In our case, uniqueness can be calculated as the distance between the feature
-vector of the current image and a candidate image (equation \ref{eq:MMR_dist}).
-Novelty ($N_j$) can be represented as time elapsed since an image was last shown.
+This can be done using Maximal Marginal Relevance (MMR) which uses suitability ($S$) and uniqueness ($U$) measures to find the next item \cite{carbonell1998use}.
+In our case, uniqueness can be calculated as the minimum distance between the feature vector of the candidate image ($F_i$) and feature vectors of previously selected images (equation \ref{eq:MMR_dist}).
+$\mathcal{C}$ represents the full set of images, while $\mathcal{P}$ is the set of images which have previously been selected and displayed.
+Suitability is represented by the classifier score of the wallpaper suitability classifier.
 
 \begin{align}
-	D(I_i, I_j)  &= \|F_i - F_j\|_2                       \label{eq:MMR_dist} \\
-	MR(I_i, I_j) &= \lambda D(I_i, I_j) + (1-\lambda) N_j
+	D(I_i, I_j) &= \|F_i - F_j\|_2 \\
+	U(I_i)      &= \min_{j\in\mathcal{P}}D(I_i,I_j) \label{eq:MMR_dist} \\
+	R(I_i)      &= \lambda S(I_i) + (1-\lambda) U(I_i) \label{eq:MMR_R}
 \end{align}
 
-The index of the next image to show is then $\underset{j\in\mathcal{J}}{\arg\max}MR(I_i, I_j)$
-where the current image index is $i$, all candidate image indices are in set
-$\mathcal{J}$, and $\lambda=0.3$.
+The final relevance score $R$ (equation \ref{eq:MMR_R}) can then be used to find the index of the next image.
+This is done with $\underset{i\in\mathcal{C}\setminus\mathcal{P}}{\arg\max}\ R(I_i)$.
+The value of $\lambda$ used in this study is $0.8$. This value can be increased to focus more on suitability or decreased to focus more on variety in the images shown.
 
