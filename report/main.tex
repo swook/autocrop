@@ -20,6 +20,7 @@
 % \usepackage{algorithm}
 \usepackage{fancyhdr}		% Produce the nice header
 \usepackage{fullpage} % Use the full page
+\usepackage{pdfpages}
 
 \usepackage{amsmath}
 \usepackage{hyperref}
@@ -53,6 +54,9 @@
 \input{title.tex}
 \cleardoublepage
 
+\includepdf[pages=-]{declaration_originality_signed.pdf}
+
+\cleardoublepage
 \input{abstract.tex}
 
 %% Input here any acknowledgements
