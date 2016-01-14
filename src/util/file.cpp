@@ -1,36 +1,40 @@
+#include <iostream>
 #include <regex>
 
 #include "boost/filesystem.hpp"
 namespace fs = boost::filesystem;
 
+#include "boost/regex.hpp"
+
 #include "file.hpp"
 
-auto fname_regex = std::regex("^(.*[^\\/]+)(_([a-z]+))\\.([a-z]+)");
+boost::regex fname_regex = boost::regex("^(.*[^\\/]+)(_([a-z]+))\\.([a-z]+)",
+                                        boost::regex::extended);
 
 bool isUnprocessedImage(path file)
 {
-	std::smatch match;
-	std::regex_match(file.string(), match, fname_regex);
+	boost::smatch match;
+	const bool success = boost::regex_match(file.string(), match, fname_regex);
 
-	return match.size() == 0; // If no matches, not preprocessed
+	return !success; // If no matches, not preprocessed
 }
 
 bool isSaliencyImage(path file)
 {
-	std::smatch match;
-	std::regex_match(file.string(), match, fname_regex);
+	boost::smatch match;
+	const bool success = boost::regex_match(file.string(), match, fname_regex);
 
-	if (match.size() < 3) return false;
+	if (success && match.size() < 3) return false;
 
 	return match[2] == "saliency";
 }
 
 bool isGradImage(path file)
 {
-	std::smatch match;
-	std::regex_match(file.string(), match, fname_regex);
+	boost::smatch match;
+	const bool success = boost::regex_match(file.string(), match, fname_regex);
 
-	if (match.size() < 3) return false;
+	if (success && match.size() < 3) return false;
 
 	return match[2] == "gradient";
 }
@@ -41,11 +45,14 @@ path setSuffix(path file, std::string suffix)
 	{
 		throw std::runtime_error("Cannot set suffix of directory " + file.string());
 	}
-	std::smatch match;
-	std::regex_match(file.string(), match, fname_regex);
-	if (match.size())
-		return path(std::regex_replace(file.string(), fname_regex,
+	boost::smatch match;
+	const bool success = boost::regex_match(file.string(), match, fname_regex);
+	if (success)
+	{
+		std::cout << match << std::endl;
+		return path(boost::regex_replace(file.string(), fname_regex,
 		            "$2_" + suffix + ".exr"));
+	}
 	else
 	{
 		return path(file.parent_path().string() + "/" +

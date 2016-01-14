@@ -1,15 +1,10 @@
 cmake_minimum_required(VERSION 2.8)
 
-set(
-  CMAKE_CXX_COMPILER
-  "g++"
-)
-
-project(sfm)
+project(autocrop)
 
 # Add libraries
 find_package(OpenCV REQUIRED core highgui imgproc ml xphoto)
-find_package(Boost  REQUIRED program_options system filesystem)
+find_package(Boost  REQUIRED program_options system filesystem regex)
 
 include_directories(${Boost_INCLUDE_DIRS})
 #set(Boost_USE_STATIC_LIBS ON)
@@ -25,7 +20,7 @@ endif(APPLE)
 # Set compile options
 set(
   CMAKE_CXX_FLAGS
-  "${CMAKE_CXX_FLAGS} -DNDEBUG -O3 -m64 -fopenmp -msse3 -msse4 -mavx"
+  "${CMAKE_CXX_FLAGS} -DNDEBUG -O3 -m64 -fopenmp -msse3 -msse4"
 )
 
 # Add libraries
