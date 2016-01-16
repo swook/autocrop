@@ -21,7 +21,7 @@ class Classifier:
         return self.predictFeats(feats)
 
     def getScore(self, feats):
-        feats = self.preprocess.transform(feats)
+        feats = self.preprocess.transform([feats])
         return self.clf.decision_function(feats)[0]
 
     def predictFeats(self, feats):

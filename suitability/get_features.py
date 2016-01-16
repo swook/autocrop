@@ -4,8 +4,8 @@ import os
 import pickle
 
 import caffe
-caffe.set_mode_cpu()
-caffe_root = os.path.normpath(os.path.dirname('%s/../../../../' % caffe.__file__))
+#caffe.set_mode_cpu()
+caffe_root = os.path.normpath(os.path.dirname('%s/../../../' % caffe.__file__))
 
 import numpy as np
 

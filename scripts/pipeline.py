@@ -6,13 +6,14 @@ import random
 import signal
 import subprocess
 import sys
-sys.path.append('..')
+sys.path.append('../suitability/')
+sys.path.insert(0, '/usr/local/lib/python2.7/dist-packages/')
 import time
 
 from sklearn.preprocessing import normalize
 
-from suitability.Classifier import *
-from suitability.util import *
+from Classifier import *
+from util import *
 
 def main():
 
@@ -95,7 +96,7 @@ def main():
         # If any other button, show previous image
         else:
             next_image()
-            print '%d images left to show' % n_left
+            print('%d images left to show' % n_left)
 
     cleanup()
 

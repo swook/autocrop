@@ -6,6 +6,7 @@ import random
 import signal
 import sys
 
+sys.path.insert(0, '/usr/local/lib/python2.7/dist-packages/')
 import cv2 as cv
 import PIL.Image
 

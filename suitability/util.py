@@ -1,8 +1,11 @@
+#!/usr/bin/env python2
+
 import os
 import re
-
-import numpy as np
+import sys
+sys.path.insert(0, '/usr/local/lib/python2.7/dist-packages/')
 import cv2 as cv
+import numpy as np
 import PIL.Image
 
 def filesWithRe(path, regexp):
@@ -11,22 +14,19 @@ def filesWithRe(path, regexp):
 
 def imread_rotated(path):
     I = cv.imread(path, cv.IMREAD_UNCHANGED)
-    pil_img = None
     try:
-        pil_img   = PIL.Image.open(path)
-        rot_code  = pil_img._getexif()[274]
-        (h, w, _) = I.shape
-        if rot_code == 3:
-            I = cv.warpAffine(I, cv.getRotationMatrix2D((w/2., h/2.), 180, 1.), (w, h))
-        elif rot_code == 6:
-            m = min(h, w)
-            I = cv.warpAffine(I, cv.getRotationMatrix2D((m/2., m/2.), -90, 1.), (h, w))
-        elif rot_code == 8:
-            I = cv.warpAffine(I, cv.getRotationMatrix2D((w/2., w/2.), 90, 1.), (h, w))
-        pil_img.close()
+        with PIL.Image.open(path) as pil_img:
+            rot_code  = pil_img._getexif()[274]
+            (h, w, _) = I.shape
+            if rot_code == 3:
+                I = cv.warpAffine(I, cv.getRotationMatrix2D((w/2., h/2.), 180, 1.), (w, h))
+            elif rot_code == 6:
+                m = min(h, w)
+                I = cv.warpAffine(I, cv.getRotationMatrix2D((m/2., m/2.), -90, 1.), (h, w))
+            elif rot_code == 8:
+                I = cv.warpAffine(I, cv.getRotationMatrix2D((w/2., w/2.), 90, 1.), (h, w))
     except:
-        if pil_img:
-            pil_img.close()
+        pass
     return I
 
 windows = {}

@@ -4,13 +4,14 @@ import os
 import random
 import subprocess
 import sys
-sys.path.append('..')
+sys.path.append('../suitability/')
 
-import numpy as np
+sys.path.insert(0, '/usr/local/lib/python2.7/dist-packages/')
 import cv2 as cv
+import numpy as np
 
-from suitability.Classifier import *
-from suitability.util import *
+from Classifier import *
+from util import *
 
 if_path = '../datasets/Michael'
 

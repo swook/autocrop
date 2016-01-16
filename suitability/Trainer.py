@@ -1,5 +1,3 @@
-#!/usr/bin/env python2
-
 from multiprocessing import cpu_count
 
 from sklearn import svm

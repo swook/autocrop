@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 
 import argparse
 import json
@@ -8,6 +8,7 @@ import signal
 import sys
 import time
 
+sys.path.insert(0, '/usr/local/lib/python2.7/dist-packages/')
 import cv2   as cv
 import numpy as np
 import PIL.Image
