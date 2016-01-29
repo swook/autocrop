@@ -29,7 +29,7 @@ namespace ds
 			auto fname = turkCrops[i].fname;
 			auto crops = turkCrops[i].crops;
 
-			printf("Loading %s (%d/%d)\n", fname.c_str(), i + 1,
+			printf("Loading %s (%d/%lu)\n", fname.c_str(), i + 1,
 				turkCrops.size());
 
 			Mat saliency, gradient;
