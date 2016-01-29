@@ -44,6 +44,7 @@ datasets/**/*.exr
 
 # Output from pdflatex
 report/*.bbl
+report/dev.pdf
 
 # Misc
 .clang_complete
