@@ -174,8 +174,8 @@ namespace ds
 		path ipath = path("../datasets/Chen/image/" + fname);
 
 		// Load cached image maps. Abort if invalid image [maps]
-		Mat saliency = imread(setSuffix(ipath, "saliency").string(), CV_LOAD_IMAGE_UNCHANGED);
-		Mat gradient = imread(setSuffix(ipath, "gradient").string(), CV_LOAD_IMAGE_UNCHANGED);
+		Mat saliency = imread(setSuffix(ipath, "saliency").replace_extension(".exr").string(), CV_LOAD_IMAGE_UNCHANGED);
+		Mat gradient = imread(setSuffix(ipath, "gradient").replace_extension(".exr").string(), CV_LOAD_IMAGE_UNCHANGED);
 
 		if (!saliency.data || !gradient.data)
 			throw std::runtime_error("Chen: Error in loading image maps");

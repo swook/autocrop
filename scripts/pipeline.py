@@ -13,13 +13,14 @@ import time
 from sklearn.preprocessing import normalize
 
 from Classifier import *
+from get_features import FeatureExtractor
 from util import *
 
 def main():
 
     # Parse arguments
     parser = argparse.ArgumentParser(description='Classify images in a directory as good or bad.')
-    parser.add_argument('images-path', nargs='?', default='.', help='Path to directory of input images.')
+    parser.add_argument('images-path', help='Path to directory of input images.')
     args = vars(parser.parse_args())
 
     # Select directory
@@ -43,10 +44,45 @@ def main():
     valid_suffices = ('png', 'jpg', 'jpeg')
     files = [f for f in os.listdir(if_path) if \
              os.path.isfile('%s/%s' % (if_path, f)) and \
+             re.match(r'.*_steps\.[a-zA-Z]+$', f) is None and \
+             re.match(r'.*_Cropped\.[a-zA-Z]+$', f) is None and \
              f.lower().endswith(valid_suffices)]
     if len(files) == 0:
         print('No images to read in: %s' % if_path)
         cleanup()
+
+    # Crop every image
+    for idx, fname in enumerate(files):
+        fname_cropped = re.sub(r'(.*)\.(png|jpg|jpeg)$', r'\1_Cropped.jpg', fname)
+        fpath_cropped = '%s/%s' % (if_path, fname_cropped)
+        fpath = '%s/%s' % (if_path, fname)
+        if not os.path.exists(fpath_cropped):
+            # Scale and crop image
+            I = imread_rotated(fpath)
+            h, w, _ = I.shape
+            scale = 500. / max(h, w)
+            if scale < 1.:
+                I = cv.resize(I, None, fx=scale, fy=scale)
+            cv.imwrite(tmpfile, I)
+            print('Cropping %s...' % fname)
+            subprocess.check_call('../build/autocrop -h -i %s -o "%s" -r 0.5625' % (tmpfile, fpath_cropped), shell=True)
+
+        # Update path to cropped image
+        files[idx] = fname_cropped
+
+    # Calculate feature vector and store as pickle
+    extractor = None
+    for fname in files:
+        fpath = '%s/%s' % (if_path, fname)
+        if fpath in feats.data:
+            continue
+        if extractor is None:
+            extractor = FeatureExtractor()
+        ffeats = extractor.get_features(fpath)
+        with open('%s.pickle' % fpath, 'w') as f:
+            pickle.dump(ffeats, f)
+        feats.data[fpath] = ffeats
+        print('Calculated features for %s' % fname)
 
     # Classify each image and keep suitable ones
     global suitability_scores
@@ -177,18 +213,7 @@ def show_next_image():
     global if_path, files, idx, num
     img_path = '%s/%s' % (if_path, files[idx])
 
-    # Automatically crop image (scale down to 1000px width/height max)
-    print('- Cropping %s' % img_path)
-
-    I = imread_rotated(img_path)
-    h, w, _ = I.shape
-    scale = 500. / max(h, w)
-    if scale < 1.:
-        I = cv.resize(I, None, fx=scale, fy=scale)
-
-    cv.imwrite(tmpfile, I)
-    subprocess.check_call('../build/autocrop -h -i %s -o %s -r 0.5625' % (tmpfile, tmpfile), shell=True)
-    I = cv.imread(tmpfile)
+    I = cv.imread(re.sub('(.*)\.([a-z]+)$', r'\1_steps.\2', img_path))
 
     # TEMP: Save current image with index since start of slideshow
     if not os.path.isdir('pipeline_out'):

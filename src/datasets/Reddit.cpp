@@ -33,8 +33,8 @@ namespace ds
 			// Load image. Abort if invalid image [maps]
 			Mat saliency, gradient;
 			try {
-				saliency = imread(setSuffix(fpath, "saliency").string(), CV_LOAD_IMAGE_UNCHANGED);
-				gradient = imread(setSuffix(fpath, "gradient").string(), CV_LOAD_IMAGE_UNCHANGED);
+				saliency = imread(setSuffix(fpath, "saliency").replace_extension(".exr").string(), CV_LOAD_IMAGE_UNCHANGED);
+				gradient = imread(setSuffix(fpath, "gradient").replace_extension(".exr").string(), CV_LOAD_IMAGE_UNCHANGED);
 				if (!saliency.data || !gradient.data)
 					throw std::runtime_error("Failed loading maps");
 			} catch (std::exception e) {

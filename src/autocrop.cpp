@@ -56,8 +56,8 @@ int main(int argc, char** argv)
 	 */
 	Mat saliency, gradient;
 	try {
-		saliency = imread(setSuffix(f, "saliency").string(), CV_LOAD_IMAGE_UNCHANGED);
-		gradient = imread(setSuffix(f, "gradient").string(), CV_LOAD_IMAGE_UNCHANGED);
+		saliency = imread(setSuffix(f, "saliency").replace_extension(".exr").string(), CV_LOAD_IMAGE_UNCHANGED);
+		gradient = imread(setSuffix(f, "gradient").replace_extension(".exr").string(), CV_LOAD_IMAGE_UNCHANGED);
 	} catch (std::exception e) {}
 	if (!saliency.data) saliency = getSaliency(in);
 	if (!gradient.data) gradient = getGradient(in);
@@ -105,7 +105,10 @@ int main(int argc, char** argv)
 		 * Save output if necessary
 		 */
 		if (vm.count("output-file")) {
-			imwrite(vm["output-file"].as<std::string>(), out);
+			const std::string of1 = vm["output-file"].as<std::string>(),
+			                  of2 = setSuffix(of1, "steps").string();
+			imwrite(of1, in(crop));
+			imwrite(of2, out);
 		}
 	}
 	else

@@ -8,7 +8,7 @@ namespace fs = boost::filesystem;
 
 #include "file.hpp"
 
-boost::regex fname_regex = boost::regex("^(.*[^\\/]+)(_([a-z]+))\\.([a-z]+)",
+boost::regex fname_regex = boost::regex("^(.*[^\\/]+)(_([a-z]+))(\\.[a-z]+)",
                                         boost::regex::extended);
 
 bool isUnprocessedImage(path file)
@@ -49,14 +49,15 @@ path setSuffix(path file, std::string suffix)
 	const bool success = boost::regex_match(file.string(), match, fname_regex);
 	if (success)
 	{
-		std::cout << match << std::endl;
+		std::cout << "match: " << match << std::endl;
 		return path(boost::regex_replace(file.string(), fname_regex,
-		            "$2_" + suffix + ".exr"));
+		            "$1_" + suffix + "$4"));
 	}
 	else
 	{
 		return path(file.parent_path().string() + "/" +
-		            file.stem().string() + "_" + suffix + ".exr");
+		            file.stem().string() + "_" + suffix +
+			    file.extension().string());
 	}
 }
 

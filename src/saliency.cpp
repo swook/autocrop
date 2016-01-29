@@ -88,9 +88,13 @@ int main(int argc, char** argv)
 			{
 				path ipath = ins[i];
 				std::string osali = vm["output-dir"].as<std::string>() + "/" +
-				                    setSuffix(ins[i], "saliency").filename().string(),
+				                    setSuffix(ins[i], "saliency")
+						    .replace_extension(".exr")
+						    .filename().string(),
 				            ograd = vm["output-dir"].as<std::string>() + "/" +
-				                    setSuffix(ins[i], "gradient").filename().string();
+				                    setSuffix(ins[i], "gradient")
+						    .replace_extension(".exr")
+						    .filename().string();
 
 				if (fs::exists(osali)) continue;
 

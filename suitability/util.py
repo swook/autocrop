@@ -14,19 +14,22 @@ def filesWithRe(path, regexp):
 
 def imread_rotated(path):
     I = cv.imread(path, cv.IMREAD_UNCHANGED)
-    try:
-        with PIL.Image.open(path) as pil_img:
-            rot_code  = pil_img._getexif()[274]
-            (h, w, _) = I.shape
-            if rot_code == 3:
-                I = cv.warpAffine(I, cv.getRotationMatrix2D((w/2., h/2.), 180, 1.), (w, h))
-            elif rot_code == 6:
-                m = min(h, w)
-                I = cv.warpAffine(I, cv.getRotationMatrix2D((m/2., m/2.), -90, 1.), (h, w))
-            elif rot_code == 8:
-                I = cv.warpAffine(I, cv.getRotationMatrix2D((w/2., w/2.), 90, 1.), (h, w))
-    except:
-        pass
+    return I # It seems like OpenCV 3 loads images correctly rotated
+
+    with PIL.Image.open(path) as pil_img:
+        exif = pil_img._getexif()
+        if not exif or 274 not in exif:
+            return I
+        rot_code  = exif[274]
+        print('rot_code: %d' % rot_code)
+        (h, w, _) = I.shape
+        if rot_code == 3:
+            I = cv.warpAffine(I, cv.getRotationMatrix2D((w/2., h/2.), 180, 1.), (w, h))
+        elif rot_code == 6:
+            m = min(h, w)
+            I = cv.warpAffine(I, cv.getRotationMatrix2D((m/2., m/2.), -90, 1.), (h, w))
+        elif rot_code == 8:
+            I = cv.warpAffine(I, cv.getRotationMatrix2D((w/2., w/2.), 90, 1.), (h, w))
     return I
 
 windows = {}
