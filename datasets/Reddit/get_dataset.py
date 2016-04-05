@@ -14,14 +14,17 @@ def get_dataset():
     urls = get_urls([
         'CityPorn',
         'EarthPorn',
-        'itookapicture',
         'photocritique',
         'WaterPorn',
-        'windowshots',
-    ], 2000)
+        #'itookapicture',
+        #'windowshots',
+    ], 3000)
 
-    for i, url in enumerate(urls):
-        get_photo(i, url)
+    i = 1
+    for url in urls:
+        success = get_photo(i, url)
+        if success:
+            i += 1
 
 
 def get_urls(subreddits, n):
@@ -33,7 +36,7 @@ def get_urls(subreddits, n):
 
     while len(urls) < n:
         options = urlencode({
-            't':     'year',    # Past year
+            't':     'all',     # All time
             'after': last_name, # Previous result
             'limit': 100,       # Return 100 results (max)
         })
@@ -59,7 +62,7 @@ def get_urls(subreddits, n):
             dom = child['data']['domain']
 
             # Downloads disabled for flickr.com links, avoid
-            if dom == 'flickr.com':
+            if dom == 'flickr.com' or dom.endswith('.minus.com'):
                 continue
 
             # Fix URLs for imgur links
@@ -89,12 +92,21 @@ def get_photo(i, url):
     # Download URL to file specified by fn
     try:
         response = urlopen(Request(url, headers={'User-Agent': 'Auto-Crop Study'}))
+        code = response.getcode()
+        length = int(response.info()['Content-Length'])
+        if length < 100000:
+            raise Exception("Content-Length too short: %d" % length);
+        if code != 200:
+            raise Exception("Response Code %d" % code)
         with open(fn, 'wb') as f:
             f.write(response.read())
         response.close()
     except Exception as err:
         print(err)
         print('! [%04d] Failed.' % i)
+        return False
+
+    return True
 
 
 if __name__ == '__main__':
