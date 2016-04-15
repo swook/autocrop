@@ -64,6 +64,8 @@ class FeatureExtractor:
 
         # Open image for GIST descriptor calculation
         im = Image.open(img_path)
+        factor = 500.0 / max(im.size) # Resize for performance
+        im = im.resize((int(im.size[0] * factor), int(im.size[1] * factor)), Image.ANTIALIAS)
 
         return {
             'classes': self.net.blobs[layer].data.flatten(),
