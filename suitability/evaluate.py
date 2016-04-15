@@ -2,6 +2,7 @@
 
 from itertools import combinations
 import os
+from random import randint
 
 import matplotlib
 matplotlib.use('PDF')
@@ -92,7 +93,9 @@ class Evaluator:
         if name in Models:
             self.trainer = Models[name]
         else:
-            Models[name] = self.trainer.train(self.train_data, persist=False)
+            Models[name] = self.trainer
+            self.trainer.train(self.train_data, persist=False)
+            self.trainer.train_gist(self.train_data, persist=False)
         self.classifier = Classifier(self.trainer)
         return self
 
@@ -117,6 +120,8 @@ class Evaluator:
 
             # Get prediction
             est = self.classifier.predictFeats(self.eval_feats[fname])
+            est_gist = self.classifier.predictFeats_gist(self.eval_feats.gist(fname))
+            est_rand = randint(0, 1)
             est_cls = 1 if est > 0.5 else 0
 
             if tru_cls == est_cls:

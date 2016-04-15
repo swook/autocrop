@@ -11,6 +11,7 @@ import numpy as np
 
 class Feats:
     data = {}
+    _gist = {}
     name = ''
     path = ''
 
@@ -26,7 +27,13 @@ class Feats:
         for pikpath in util.filesWithRe(path, r'.*\.pickle$'):
             fpath = pikpath[:-7] # Strip .pickle
             with open(pikpath, 'rb') as f:
-                self.data[fpath] = pickle.load(f)['classes']
+                pik = pickle.load(f)
+		if 'classes' in pik and 'gist' in pik:
+                    self.data[fpath] = pik['classes']
+                    self._gist[fpath] = pik['gist']
+
+    def gist(self, fname):
+        return self._gist['%s/%s' % (self.path, fname)]
 
     def __getitem__(self, fname):
         return self.data['%s/%s' % (self.path, fname)]
@@ -77,6 +84,7 @@ class Annotations:
 
 class FeatMat:
     X = None
+    X_gist = None
     y = None
     anno_n = 0
 
@@ -103,11 +111,14 @@ class FeatMat:
             if row is None:
                 continue
 
+            row_gist = feats.gist(fname)
             if self.X is None:
                 self.X = np.array([row], dtype=np.float32)
+                self.X_gist = np.array([row_gist], dtype=np.float32)
                 self.y = np.array([classif], dtype=np.float32)
             else:
                 self.X = np.append(self.X, [row], axis=0)
+                self.X_gist = np.append(self.X_gist, [row_gist], axis=0)
                 self.y = np.append(self.y, classif)
             m += 1
 

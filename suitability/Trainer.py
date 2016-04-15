@@ -25,9 +25,20 @@ class Trainer:
                 n_jobs  = cpu_count(), # Parallelize over CPUs
                 verbose = 1,
             )
+            self.clf_gist = GridSearchCV(self.svm, params,
+                cv      = 5,           # k-fold CV
+                n_jobs  = cpu_count(), # Parallelize over CPUs
+                verbose = 1,
+            )
 
         elif config.model is 'Regression':
             self.clf = LassoCV(
+                cv         = 3,
+                max_iter   = 2000,
+                n_jobs     = cpu_count(),
+                verbose    = True,
+            )
+            self.clf_gist = LassoCV(
                 cv         = 3,
                 max_iter   = 2000,
                 n_jobs     = cpu_count(),
@@ -57,4 +68,29 @@ class Trainer:
 
         if persist:
             joblib.dump(self.clf, 'cv.out')
+
+    def train_gist(self, featMat, persist=True):
+        # Preprocess
+        scaler = StandardScaler()
+        featMat.X_gist = scaler.fit_transform(featMat.X_gist, featMat.y)
+
+        # Save preprocess output
+        self.scaler_gist = scaler
+        if persist:
+            joblib.dump(scaler, 'preprocess_gist.out')
+
+        # Perform CV
+        print('Running trainer on %d rows of data with %d features.' % featMat.X_gist.shape)
+        self.clf_gist.fit(featMat.X_gist, featMat.y)
+
+        # Save CV output
+        if config.model is 'SVM':
+            self.estimator_gist = self.clf_gist.best_estimator_
+        elif config.model is 'Regression':
+            self.estimator_gist = self.clf_gist
+        print(self.estimator_gist)
+
+        if persist:
+            joblib.dump(self.clf_gist, 'cv_gist.out')
+
 

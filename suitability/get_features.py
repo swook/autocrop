@@ -7,6 +7,9 @@ import caffe
 #caffe.set_mode_cpu()
 caffe_root = os.path.normpath(os.path.dirname('%s/../../../' % caffe.__file__))
 
+from PIL import Image
+import leargist
+
 import numpy as np
 
 import util
@@ -59,8 +62,12 @@ class FeatureExtractor:
         layer = 'fc7'
         out = self.net.forward(end=layer)
 
+        # Open image for GIST descriptor calculation
+        im = Image.open(img_path)
+
         return {
             'classes': self.net.blobs[layer].data.flatten(),
+            'gist': leargist.color_gist(im),
         }
 
 if __name__ == '__main__':

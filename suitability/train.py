@@ -14,6 +14,7 @@ def main():
 
     trainer = Trainer()
     trainer.train(featMat)
+    trainer.train_gist(featMat)
 
 if __name__ == '__main__':
     main()
