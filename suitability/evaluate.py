@@ -107,9 +107,13 @@ class Evaluator:
 
         errs = []
         C = 0                    # Correctly estimated
+        C_g = 0                  # - GIST + SVM
+        C_r = 0                  # - random
         I = 0                    # Inconsistent annotations
         A = 0                    # in Agreement (annotations)
         C_A = 0                  # correctly estimated where annotations in agreement
+        C_A_g = 0                # - GIST + SVM
+        C_A_r = 0                # - random
         T = len(self.eval_annos) # Total
 
         for fname, fclassifs in self.eval_annos.data.iteritems():
@@ -126,6 +130,10 @@ class Evaluator:
 
             if tru_cls == est_cls:
                 C += 1
+            if tru_cls == est_gist:
+                C_g += 1
+            if tru_cls == est_rand:
+                C_r += 1
 
             # If any inconsistent classifications
             if len(np.unique(fclassifs)) > 1:
@@ -134,6 +142,10 @@ class Evaluator:
                 A += 1
                 if tru_cls == est_cls:
                     C_A += 1
+                if tru_cls == est_gist:
+                    C_A_g += 1
+                if tru_cls == est_rand:
+                    C_A_r += 1
 
             # Add errors
             errs.append(abs(tru - est))
@@ -147,6 +159,8 @@ class Evaluator:
         if self.eval_annos.n > 1:
             log('%d/%d (%.2f%%) annotations in agreement' % (A, T, A/T*100))
             log('%d/%d (%.2f%%) incorrect for annotations in agreement' % (A-C_A, A, (A-C_A)/A*100))
+            log('%d/%d (%.2f%%) incorrect for annotations in agreement (GIST)' % (A-C_A_g, A, (A-C_A_g)/A*100))
+            log('%d/%d (%.2f%%) incorrect for annotations in agreement (RAND)' % (A-C_A_r, A, (A-C_A_r)/A*100))
 
         log('%d/%d (%.2f%%) incorrect' % (T-C, T, (T-C)/T*100))
 
