@@ -16,9 +16,9 @@ def get_dataset():
         'EarthPorn',
         'photocritique',
         'WaterPorn',
-        #'itookapicture',
-        #'windowshots',
-    ], 3000)
+        'itookapicture',
+        'windowshots',
+    ], 2100)
 
     i = 1
     for url in urls:
@@ -36,7 +36,7 @@ def get_urls(subreddits, n):
 
     while len(urls) < n:
         options = urlencode({
-            't':     'all',     # All time
+            't':     'year',    # Past year
             'after': last_name, # Previous result
             'limit': 100,       # Return 100 results (max)
         })
