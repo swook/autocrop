@@ -13,11 +13,11 @@ import numpy as np
 from Classifier import *
 from util import *
 
-if_path = '../datasets/Michael'
+if_path = '../datasets/Wookie'
 
 def main():
-    M = 5
-    N = 7
+    M = 6
+    N = 3
     print('- Output grid of images is %d x %d' % (M, N))
     fnames, imgs, suitable = get_images(M*N)
 
@@ -111,18 +111,18 @@ def get_images(n):
     cv.imwrite('top_suitable.jpg', out)
 
     # Get up to n entries
-    #pairs = sorted(zip(suitable, files))
-    #good = [(files[i], suitable[i]) for i in range(len(files)) if suitable[i]]
-    #bad = [(files[i], suitable[i]) for i in range(len(files)) if not suitable[i]]
-    #random.shuffle(good)
-    #random.shuffle(bad)
-    #n_good = int(n * 0.35)
-    #n_bad = n - n_good
-    #pairs = bad[:n_bad] + good[:n_good]
-    #random.shuffle(pairs)
-    #files, suitable = zip(*pairs)
-    files = files[:n]
-    suitable = suitable[:n]
+    pairs = sorted(zip(suitable, files))
+    good = [(files[i], suitable[i]) for i in range(len(files)) if suitable[i]]
+    bad = [(files[i], suitable[i]) for i in range(len(files)) if not suitable[i]]
+    random.shuffle(good)
+    random.shuffle(bad)
+    n_good = int(n * 0.35)
+    n_bad = n - n_good
+    pairs = bad[:n_bad] + good[:n_good]
+    random.shuffle(pairs)
+    files, suitable = zip(*pairs)
+    # files = files[:n]
+    # suitable = suitable[:n]
 
     files = ['%s/%s' % (if_path, fname) for fname in files]
 
@@ -136,7 +136,7 @@ def get_images(n):
 def draw_grid(M, N, imgs):
     img_w = 356
     img_h = 200
-    border = 20
+    border = 10
 
     W = img_w * N + border * (N + 1)
     H = img_h * M + border * (M + 1)
