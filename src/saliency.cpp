@@ -96,7 +96,7 @@ int main(int argc, char** argv)
 						    .replace_extension(".exr")
 						    .filename().string();
 
-				if (fs::exists(osali)) continue;
+				if (fs::exists(osali) && fs::exists(ograd)) continue;
 
 				// Load Image
 				Mat const img = imread(ins[i].string(), CV_LOAD_IMAGE_COLOR);
@@ -108,17 +108,24 @@ int main(int argc, char** argv)
 				std::cout << "> Processing\t" << i << "/" << ins.size()
 					<< ": " << ins[i] << "..." << std::endl;
 
-				// Calculate saliency and gradient map
-				Mat sali, grad, grey;
-				cvtColor(img, grey, CV_BGR2GRAY);
-				sali = getSaliency(img);
-				grad = getGradient(grey);
+				if (!fs::exists(osali)) {
+					// Calculate saliency map
+					Mat sali = getSaliency(img);
+					std::cout << "> Writing\t" << i << "/" << ins.size()
+						<< ": " << osali << "..." << std::endl;
+					imwrite(osali, sali);
+				}
+				if (!fs::exists(ograd)) {
+					// Calculate gradient map
+					Mat grey;
+					cvtColor(img, grey, CV_BGR2GRAY);
+					Mat grad = getGradient(grey);
 
-				// Save calculated maps
-				std::cout << "> Writing\t" << i << "/" << ins.size()
-					<< ": " << osali << "..." << std::endl;
-				imwrite(osali, sali);
-				imwrite(ograd, grad);
+					// Save calculated maps
+					std::cout << "> Writing\t" << i << "/" << ins.size()
+						<< ": " << ograd << "..." << std::endl;
+					imwrite(ograd, grad);
+				}
 			}
 		}
 		else
