@@ -1,0 +1,260 @@
+Loaded ../datasets/Michael/classifications_dengxin.json
+Loaded ../datasets/Michael/classifications_phineasng.json
+Loaded ../datasets/Michael/classifications_wookie.json
+Loaded ../datasets/Michael/classifications_michael.json
+Loaded ../datasets/Michael/classifications_michael.json
+Loaded ../datasets/Michael/classifications_wookie.json
+Loaded ../datasets/Michael/classifications_dengxin.json
+Loaded ../datasets/Michael/classifications_phineasng.json
+Loaded ../datasets/Wookie/classifications_dengxin.json
+Loaded ../datasets/Wookie/classifications_phineasng.json
+Loaded ../datasets/Wookie/classifications_wookie.json
+Loaded ../datasets/Wookie/classifications_michael.json
+Loaded ../datasets/Wookie/classifications_michael.json
+Loaded ../datasets/Wookie/classifications_wookie.json
+Loaded ../datasets/Wookie/classifications_dengxin.json
+Loaded ../datasets/Wookie/classifications_phineasng.json
+[Annotation correlations (Michael)] Michael/michael <-> Michael/wookie: 0.402554 3.89168e-12
+[Annotation correlations (Michael)] Michael/michael <-> Michael/dengxin: 0.475914 5.96992e-17
+[Annotation correlations (Michael)] Michael/michael <-> Michael/phineasng: 0.429794 8.64276e-14
+[Annotation correlations (Michael)] Michael/wookie <-> Michael/dengxin: 0.653258 7.59742e-35
+[Annotation correlations (Michael)] Michael/wookie <-> Michael/phineasng: 0.473385 9.16025e-17
+[Annotation correlations (Michael)] Michael/dengxin <-> Michael/phineasng: 0.513702 6.40014e-20
+[Annotation correlations (Michael)] Mean R: 0.491434
+
+[Annotation correlations (Wookie)] Wookie/michael <-> Wookie/wookie: 0.399468 1.30288e-11
+[Annotation correlations (Wookie)] Wookie/michael <-> Wookie/dengxin: 0.281525 3.09216e-06
+[Annotation correlations (Wookie)] Wookie/michael <-> Wookie/phineasng: 0.151476 0.0133925
+[Annotation correlations (Wookie)] Wookie/wookie <-> Wookie/dengxin: 0.334710 2.20033e-08
+[Annotation correlations (Wookie)] Wookie/wookie <-> Wookie/phineasng: 0.258208 2.00851e-05
+[Annotation correlations (Wookie)] Wookie/dengxin <-> Wookie/phineasng: 0.225583 0.000207457
+[Annotation correlations (Wookie)] Mean R: 0.275162
+
+Added 275 rows (Michael/all), now 275 rows
+Added 266 rows (Wookie/all), now 266 rows
+Running trainer on 275 rows of data with 4096 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.00206913808111, cache_size=200, class_weight=None, coef0=0.0,
+  degree=3, gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+Running trainer on 275 rows of data with 960 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.0379269019073, cache_size=200, class_weight=None, coef0=0.0, degree=3,
+  gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+x in [0.000000, 1.000000]
+y in [0.000000, 1.000000]
+[[0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]
+ [3 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]
+ [0 0 6 0 0 0 0 0 0 0]
+ [0 3 0 6 6 3 0 0 0 0]
+ [0 0 0 0 0 3 0 0 0 0]
+ [0 3 0 0 0 0 3 3 0 0]
+ [0 0 0 0 0 0 3 3 0 0]
+ [0 0 0 0 0 0 0 0 3 0]
+ [0 3 6 6 6 6 6 6 9 6]
+ [3 3 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]]
+Placing label at (0.845556, 0.482221) for "Trained model (area: 0.48)"
+Placing label at (0.102137, 0.204327) for "Random classifier (area: 0.12)"
+
+[Michael/all -> Wookie/all|eval] 135/266 (50.75%) annotations in agreement
+[Michael/all -> Wookie/all|eval] 10/135 (7.41%) incorrect for annotations in agreement
+[Michael/all -> Wookie/all|eval] 30/135 (22.22%) incorrect for annotations in agreement (GIST)
+[Michael/all -> Wookie/all|eval] 69/135 (51.11%) incorrect for annotations in agreement (RAND)
+[Michael/all -> Wookie/all|eval] 43/266 (16.17%) incorrect
+[Michael/all -> Wookie/all|eval] L1-error: 0.194
+[Michael/all -> Wookie/all|eval] L2-error: 0.024
+Running trainer on 266 rows of data with 4096 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=1e-05, cache_size=200, class_weight=None, coef0=0.0, degree=3,
+  gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+Running trainer on 266 rows of data with 960 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.00545559478117, cache_size=200, class_weight=None, coef0=0.0,
+  degree=3, gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+x in [0.000000, 1.000000]
+y in [0.000000, 1.000000]
+[[0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]
+ [3 0 0 0 0 0 0 0 0 0]
+ [0 0 3 6 3 0 0 0 0 0]
+ [0 6 3 0 3 6 3 0 0 0]
+ [0 0 0 0 0 0 3 3 0 0]
+ [0 0 0 0 0 0 0 3 3 0]
+ [0 0 0 3 0 0 3 0 3 0]
+ [0 6 6 3 6 6 3 6 6 6]
+ [0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]
+ [3 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]]
+Placing label at (0.785575, 0.842520) for "Trained model (area: 0.74)"
+Placing label at (0.246653, 0.563064) for "Random classifier (area: 0.42)"
+
+[Wookie/all -> Michael/all|eval] 141/275 (51.27%) annotations in agreement
+[Wookie/all -> Michael/all|eval] 53/141 (37.59%) incorrect for annotations in agreement
+[Wookie/all -> Michael/all|eval] 52/141 (36.88%) incorrect for annotations in agreement (GIST)
+[Wookie/all -> Michael/all|eval] 72/141 (51.06%) incorrect for annotations in agreement (RAND)
+[Wookie/all -> Michael/all|eval] 100/275 (36.36%) incorrect
+[Wookie/all -> Michael/all|eval] L1-error: 0.456
+[Wookie/all -> Michael/all|eval] L2-error: 0.039
+Added 266 rows (Wookie/michael), now 266 rows
+Running trainer on 275 rows of data with 4096 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.00206913808111, cache_size=200, class_weight=None, coef0=0.0,
+  degree=3, gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+Running trainer on 275 rows of data with 960 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.0379269019073, cache_size=200, class_weight=None, coef0=0.0, degree=3,
+  gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+
+[Michael/all -> Wookie/michael|eval] 153/266 (57.52%) incorrect
+[Michael/all -> Wookie/michael|eval] L1-error: 0.575
+[Michael/all -> Wookie/michael|eval] L2-error: 0.047
+Added 275 rows (Michael/michael), now 275 rows
+
+[Michael/michael -> Wookie/michael|eval] 153/266 (57.52%) incorrect
+[Michael/michael -> Wookie/michael|eval] L1-error: 0.575
+[Michael/michael -> Wookie/michael|eval] L2-error: 0.047
+Running trainer on 266 rows of data with 4096 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=1e-05, cache_size=200, class_weight=None, coef0=0.0, degree=3,
+  gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+Running trainer on 266 rows of data with 960 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.00545559478117, cache_size=200, class_weight=None, coef0=0.0,
+  degree=3, gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+
+[Wookie/all -> Michael/michael|eval] 101/275 (36.73%) incorrect
+[Wookie/all -> Michael/michael|eval] L1-error: 0.367
+[Wookie/all -> Michael/michael|eval] L2-error: 0.037
+
+[Wookie/michael -> Michael/michael|eval] 101/275 (36.73%) incorrect
+[Wookie/michael -> Michael/michael|eval] L1-error: 0.367
+[Wookie/michael -> Michael/michael|eval] L2-error: 0.037
+Added 266 rows (Wookie/wookie), now 266 rows
+Running trainer on 275 rows of data with 4096 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.00206913808111, cache_size=200, class_weight=None, coef0=0.0,
+  degree=3, gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+Running trainer on 275 rows of data with 960 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.0379269019073, cache_size=200, class_weight=None, coef0=0.0, degree=3,
+  gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+
+[Michael/all -> Wookie/wookie|eval] 134/266 (50.38%) incorrect
+[Michael/all -> Wookie/wookie|eval] L1-error: 0.504
+[Michael/all -> Wookie/wookie|eval] L2-error: 0.044
+Added 275 rows (Michael/wookie), now 275 rows
+
+[Michael/wookie -> Wookie/wookie|eval] 134/266 (50.38%) incorrect
+[Michael/wookie -> Wookie/wookie|eval] L1-error: 0.504
+[Michael/wookie -> Wookie/wookie|eval] L2-error: 0.044
+Running trainer on 266 rows of data with 4096 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=1e-05, cache_size=200, class_weight=None, coef0=0.0, degree=3,
+  gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+Running trainer on 266 rows of data with 960 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.00545559478117, cache_size=200, class_weight=None, coef0=0.0,
+  degree=3, gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+
+[Wookie/all -> Michael/wookie|eval] 172/275 (62.55%) incorrect
+[Wookie/all -> Michael/wookie|eval] L1-error: 0.625
+[Wookie/all -> Michael/wookie|eval] L2-error: 0.048
+
+[Wookie/wookie -> Michael/wookie|eval] 172/275 (62.55%) incorrect
+[Wookie/wookie -> Michael/wookie|eval] L1-error: 0.625
+[Wookie/wookie -> Michael/wookie|eval] L2-error: 0.048
+Added 266 rows (Wookie/dengxin), now 266 rows
+Running trainer on 275 rows of data with 4096 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.00206913808111, cache_size=200, class_weight=None, coef0=0.0,
+  degree=3, gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+Running trainer on 275 rows of data with 960 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.0379269019073, cache_size=200, class_weight=None, coef0=0.0, degree=3,
+  gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+
+[Michael/all -> Wookie/dengxin|eval] 140/266 (52.63%) incorrect
+[Michael/all -> Wookie/dengxin|eval] L1-error: 0.526
+[Michael/all -> Wookie/dengxin|eval] L2-error: 0.044
+Added 275 rows (Michael/dengxin), now 275 rows
+
+[Michael/dengxin -> Wookie/dengxin|eval] 140/266 (52.63%) incorrect
+[Michael/dengxin -> Wookie/dengxin|eval] L1-error: 0.526
+[Michael/dengxin -> Wookie/dengxin|eval] L2-error: 0.044
+Running trainer on 266 rows of data with 4096 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=1e-05, cache_size=200, class_weight=None, coef0=0.0, degree=3,
+  gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+Running trainer on 266 rows of data with 960 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.00545559478117, cache_size=200, class_weight=None, coef0=0.0,
+  degree=3, gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+
+[Wookie/all -> Michael/dengxin|eval] 132/275 (48.00%) incorrect
+[Wookie/all -> Michael/dengxin|eval] L1-error: 0.480
+[Wookie/all -> Michael/dengxin|eval] L2-error: 0.042
+
+[Wookie/dengxin -> Michael/dengxin|eval] 132/275 (48.00%) incorrect
+[Wookie/dengxin -> Michael/dengxin|eval] L1-error: 0.480
+[Wookie/dengxin -> Michael/dengxin|eval] L2-error: 0.042
+Added 266 rows (Wookie/phineasng), now 266 rows
+Running trainer on 275 rows of data with 4096 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.00206913808111, cache_size=200, class_weight=None, coef0=0.0,
+  degree=3, gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+Running trainer on 275 rows of data with 960 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.0379269019073, cache_size=200, class_weight=None, coef0=0.0, degree=3,
+  gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+
+[Michael/all -> Wookie/phineasng|eval] 151/266 (56.77%) incorrect
+[Michael/all -> Wookie/phineasng|eval] L1-error: 0.568
+[Michael/all -> Wookie/phineasng|eval] L2-error: 0.046
+Added 275 rows (Michael/phineasng), now 275 rows
+
+[Michael/phineasng -> Wookie/phineasng|eval] 151/266 (56.77%) incorrect
+[Michael/phineasng -> Wookie/phineasng|eval] L1-error: 0.568
+[Michael/phineasng -> Wookie/phineasng|eval] L2-error: 0.046
+Running trainer on 266 rows of data with 4096 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=1e-05, cache_size=200, class_weight=None, coef0=0.0, degree=3,
+  gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+Running trainer on 266 rows of data with 960 features.
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+SVC(C=0.00545559478117, cache_size=200, class_weight=None, coef0=0.0,
+  degree=3, gamma=0.0, kernel=linear, max_iter=-1, probability=False,
+  random_state=None, shrinking=True, tol=0.001, verbose=False)
+
+[Wookie/all -> Michael/phineasng|eval] 86/275 (31.27%) incorrect
+[Wookie/all -> Michael/phineasng|eval] L1-error: 0.313
+[Wookie/all -> Michael/phineasng|eval] L2-error: 0.034
+
+[Wookie/phineasng -> Michael/phineasng|eval] 86/275 (31.27%) incorrect
+[Wookie/phineasng -> Michael/phineasng|eval] L1-error: 0.313
+[Wookie/phineasng -> Michael/phineasng|eval] L2-error: 0.034
