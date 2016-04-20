@@ -60,8 +60,8 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 	// Candidates generation parameters
 #if FANG
 	const int   MAX_INITIAL_CROP_CANDIDATES = 10000;
-	const int   MAX_TOTAL_CROP_CANDIDATES   = 100;
-	float thresh_content0 = 0.5;
+	const int   MAX_TOTAL_CROP_CANDIDATES   = 200;
+	float thresh_content0 = 0.4;
 #else
 	const int   MAX_INITIAL_CROP_CANDIDATES = 4000;
 	const int   MAX_TOTAL_CROP_CANDIDATES   = 100;
