@@ -1,6 +1,7 @@
 #include "boost/program_options.hpp"
 namespace po = boost::program_options;
 
+#include "features/feature.hpp"
 #include "training/Trainer.hpp"
 
 int main(int argc, char** argv)
@@ -33,7 +34,11 @@ int main(int argc, char** argv)
 	Trainer trainer;
 	trainer.loadFeatures("Training.yml");
 	trainer.train();
+#if FANG
+	trainer.save("Trained_model_Fang.yml");
+#else
 	trainer.save("Trained_model.yml");
+#endif
 
 	return 0;
 

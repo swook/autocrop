@@ -3,16 +3,35 @@
 #include "opencv2/core.hpp"
 #include "FeatMat.hpp"
 
+#define FANG 1
+
 /**
  * Switch between 3-level Spatial Pyramid of Saliency Maps (SPSM) and 2-level
  * SPSM by enabling the correct define.
  */
-#define spsm3 true
+#define spsm3 1
+
+#if FANG
+#undef spsm3
+#define spsm3 0
+#endif
 
 #if spsm3
+
+#if FANG
+#define FEATS_N 85
+#else
 #define FEATS_N 89
+#endif
+
+#else
+
+#if FANG
+#define FEATS_N 21
 #else
 #define FEATS_N 25
+#endif
+
 #endif
 
 

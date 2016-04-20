@@ -2,6 +2,7 @@
 
 #include <opencv2/core.hpp>
 
+#include "../features/feature.hpp"
 #include "../saliency/saliency.hpp"
 #include "../classify/Classifier.hpp"
 
@@ -9,10 +10,12 @@ struct Candidate
 {
 	const cv::Rect crop;
 	float S_compos;
-
-	Candidate(const cv::Rect crop,
-	          const float S_compos)
-	: crop(crop), S_compos(S_compos) {}
+#if FANG
+	float S_boundary;
+	float R_compos;
+	float R_boundary;
+	float S_final;
+#endif
 };
 typedef std::vector<Candidate*> Candidates;
 

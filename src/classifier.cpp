@@ -52,7 +52,11 @@ int main(int argc, char** argv)
 	 * Load trained model
 	 */
 	Classifier classifier;
+#if FANG
+	classifier.loadModel("Trained_model_Fang.yml");
+#else
 	classifier.loadModel("Trained_model.yml");
+#endif
 	float score = classifier.classifyRaw(img);
 	std::cout << "Score: " << score << std::endl;
 	bool good = score < 0;

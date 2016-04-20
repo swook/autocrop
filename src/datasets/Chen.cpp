@@ -74,7 +74,11 @@ namespace ds
 
 		// Initialise classifier
 		Classifier classifier;
+#if FANG
+		classifier.loadModel("Trained_model_Fang.yml");
+#else
 		classifier.loadModel("Trained_model.yml");
+#endif
 
 		const int MAX_CROP_CANDS = 10;
 		std::vector<float> indices;

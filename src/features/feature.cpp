@@ -116,6 +116,9 @@ Mat getFeatureVector(const Mat& saliency, const Mat& gradient)
 		_feats[i - 1]
 	);
 	i++;
+#if FANG
+	return feats;
+#endif
 
 
 	// Boundary simplicity features
