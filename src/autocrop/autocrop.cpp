@@ -58,15 +58,15 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 	float sum_saliency = sum(saliency)[0];
 
 	// Candidates generation parameters
-#if FANG
-	const int   MAX_INITIAL_CROP_CANDIDATES = 10000;
-	const int   MAX_TOTAL_CROP_CANDIDATES   = 200;
-	float thresh_content0 = 0.4;
-#else
+#if SHRINKING
 	const int   MAX_INITIAL_CROP_CANDIDATES = 4000;
 	const int   MAX_TOTAL_CROP_CANDIDATES   = 100;
 	const float THRESHOLD_REDUCE_FACTOR     = 0.98;
 	float thresh_content0 = 0.7; // Lower bound of S_content for crop candidates
+#else
+	const int   MAX_INITIAL_CROP_CANDIDATES = 10000;
+	const int   MAX_TOTAL_CROP_CANDIDATES   = 200;
+	float thresh_content0 = 0.7;
 #endif
 
 	std::vector<Candidate*> candidates;
@@ -87,17 +87,21 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 
 			// Calculate content preservation
 			float S_content = sum(cr_saliency)[0] / sum_saliency;
-#if FANG
-			if (S_content < thresh_content0) continue;
-#else
+#if SHRINKING
 			if (S_content < thresh_content) continue;
+#else
+			if (S_content < thresh_content0) continue;
 #endif
 
 			// Calculate saliency composition
 			Mat cr_gradient = gradient(crop);
 			float S_compos = classifier.classifyRaw(cr_saliency, cr_gradient);
 
-#if FANG
+#if SHRINKING
+			// Add to valid candidates list
+#pragma omp critical
+			candidates.push_back(new Candidate{crop, S_compos});
+#else
 			// Add boundary simplicity
 			float S_boundary = 0.0f;
 			int b = 2, w = crop.width, h = crop.height;
@@ -108,19 +112,14 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 			S_boundary /= 4.0f;
 #pragma omp critical
 			candidates.push_back(new Candidate{crop, S_compos, S_boundary});
-#else
-
-			// Add to valid candidates list
-#pragma omp critical
-			candidates.push_back(new Candidate{crop, S_compos});
 #endif
 		}
 		if (candidates.size() > MAX_TOTAL_CROP_CANDIDATES) break;
-#if !FANG
+#if SHRINKING
 		thresh_content *= THRESHOLD_REDUCE_FACTOR;
 #endif
 	}
-#if !FANG
+#if SHRINKING
 	std::cout << "thresh_content: " << thresh_content0 << " -> " << thresh_content << std::endl;
 #endif
 
@@ -135,7 +134,7 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 		}
 	);
 
-#if FANG
+#if !SHRINKING
 	// Write R_compos
 	for (int i = 0; i < C; ++i) candidates[i]->R_compos = (float) i / fC;
 

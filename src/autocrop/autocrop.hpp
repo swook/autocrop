@@ -6,11 +6,17 @@
 #include "../saliency/saliency.hpp"
 #include "../classify/Classifier.hpp"
 
+#if FANG
+#define SHRINKING 0
+#else
+#define SHRINKING 1
+#endif
+
 struct Candidate
 {
 	const cv::Rect crop;
 	float S_compos;
-#if FANG
+#if !SHRINKING
 	float S_boundary;
 	float R_compos;
 	float R_boundary;
