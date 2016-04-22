@@ -66,7 +66,7 @@ Candidates getCropCandidates(const Classifier& classifier, const Mat& saliency,
 #else
 	const int   MAX_INITIAL_CROP_CANDIDATES = 10000;
 	const int   MAX_TOTAL_CROP_CANDIDATES   = 200;
-	float thresh_content0 = 0.7;
+	float thresh_content0 = 0.4;
 #endif
 
 	std::vector<Candidate*> candidates;
