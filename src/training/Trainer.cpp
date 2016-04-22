@@ -39,8 +39,22 @@ void Trainer::train()
 {
 	auto feats = featMat.getFeatureMatrix();
 	auto resps = featMat.getResponseVector();
-	auto traindata = ml::TrainData::create(feats, ml::ROW_SAMPLE, resps);
 
+	// Normalize: x' = (x - mean(x)) / stddev(x)
+	const int cols = feats.cols;
+	cv::Mat means(1, cols, CV_32F);
+	cv::Mat stddevs(1, cols, CV_32F);
+	for (int c = 0; c < cols; ++c) {
+		meanStdDev(feats.col(c), means.col(c), stddevs.col(c));
+		const float mean = means.col(c).at<float>(0),
+		            stddev = stddevs.col(c).at<float>(0);
+		feats.col(c) = (feats.col(c) - mean) / stddev;
+	}
+	// Save means and std. devs
+	imwrite("scal_means.exr", means);
+	imwrite("scal_stddevs.exr", stddevs);
+
+	auto traindata = ml::TrainData::create(feats, ml::ROW_SAMPLE, resps);
 	std::cout << "> Training with " << feats.rows << " rows of data." << std::endl;
 	std::cout << "> Training with " << feats.cols << " features." << std::endl;
 

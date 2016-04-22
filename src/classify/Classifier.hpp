@@ -32,6 +32,8 @@ public:
 
 private:
 	cv::Ptr<cv::ml::SVM> model;
+	cv::Mat means_;
+	cv::Mat stddevs_;
 
 	bool _classify(const cv::Mat& featVec) const;
 	float _classifyRaw(const cv::Mat& featVec) const;

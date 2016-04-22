@@ -15,6 +15,8 @@ void Classifier::clear()
 void Classifier::loadModel(std::string fpath)
 {
 	model = ml::SVM::load<ml::SVM>(fpath);
+	means_ = imread("scal_means.exr", CV_LOAD_IMAGE_UNCHANGED);
+	stddevs_ = imread("scal_stddevs.exr", CV_LOAD_IMAGE_UNCHANGED);
 }
 
 bool Classifier::_classify(const Mat& featVec) const
@@ -51,6 +53,9 @@ bool Classifier::classify(const Mat& saliency, const Mat& gradient,
 
 float Classifier::_classifyRaw(const Mat& featVec) const
 {
+	cv::Mat processed;
+	divide(featVec - means_, stddevs_, processed);
+
 	Mat result;
 	model->predict(featVec, result, ml::StatModel::RAW_OUTPUT);
 	return result.at<float>(0, 0);
